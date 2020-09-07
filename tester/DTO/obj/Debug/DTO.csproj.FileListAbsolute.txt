@@ -1,0 +1,10 @@
+C:\Users\This_User\Desktop\shira\tester\DTO\bin\Debug\DTO.dll
+C:\Users\This_User\Desktop\shira\tester\DTO\bin\Debug\DTO.pdb
+C:\Users\This_User\Desktop\shira\tester\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\This_User\Desktop\shira\tester\DTO\obj\Debug\DTO.dll
+C:\Users\This_User\Desktop\shira\tester\DTO\obj\Debug\DTO.pdb
+C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DTO\bin\Debug\DTO.dll
+C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DTO\bin\Debug\DTO.pdb
+C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DTO\obj\Debug\DTO.dll
+C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DTO\obj\Debug\DTO.pdb

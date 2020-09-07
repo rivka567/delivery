@@ -1,0 +1,46 @@
+<!-- <section>
+  <div class="example-label">
+    <div class="example-button-row">
+      <div class="example-flex-container">
+        <div class="example-button-container">
+          <button mat-fab color="primary" class="btn">
+            <a routerLink="/deliverymenu">הירשם כשליח</a>
+          </button>
+          <button mat-fab color="primary" class="btn">
+            <a routerLink="/customermenu">הזמן משלוח</a>
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</section> -->
+<!-- <div>
+  <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+</div> -->
+<button mat-button routerLink="/">ראשי</button>
+
+<button mat-button routerLink="/about">אודות</button>
+
+<button mat-button (click)="openDialog()"  routerLink="main" >הצטרף כשליח</button>
+  
+  <button mat-button [matMenuTriggerFor]="beforeMenu">בצע שליחות</button>
+  <mat-menu #beforeMenu="matMenu" xPosition="before">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+  
+  
+  <button mat-button [matMenuTriggerFor]="afterMenu" class="cnt">התחבר
+  <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #afterMenu="matMenu" xPosition="after">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>

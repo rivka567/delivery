@@ -1,0 +1,54 @@
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="form" (ngSubmit)="addOrder()"> 
+                <section>
+                    <mat-form-field [formControl]="size">
+                    <div class="example-button-row">
+                      <div class="example-flex-container">
+                        <div class="example-button-container">
+                          <button mat-mini-fab color="primary" formControlName="small"  >
+                            <mat-icon >S</mat-icon>
+                          </button >
+                        </div>
+                        <div class="example-button-container">
+                          <button mat-mini-fab color="accent" >
+                            <mat-icon id="m">M</mat-icon>
+                          </button>
+                        </div>
+                        <div class="example-button-container">
+                          <button mat-mini-fab color="warn" >
+                            <mat-icon id="l">L</mat-icon>
+                          </button>
+                        </div>
+                        <div class="example-button-container">
+                          <button mat-mini-fab color="white" >
+                            <mat-icon id="e">mail_outline</mat-icon>
+                        </button>
+
+                      
+                          </div>
+                        </div>
+                    </div>
+                    </mat-form-field>
+                  </section>
+          
+            <br>
+            
+          
+            <mat-form-field>
+              <input matInput type="text" placeholder="כתובת איסוף" class="inp"  formControlName="fromLocation" >
+            </mat-form-field>
+            <br> 
+
+            <mat-form-field>
+                <input matInput type="text" placeholder="כתובת יעד" class="inp"  formControlName="toLocation" >
+              </mat-form-field>
+              <br> 
+              
+              <mat-form-field>
+                <input matInput type="text" placeholder="תאור" class="inp"  formControlName="describe" >
+              </mat-form-field>
+              <br> 
+    <button  mat-button (click)="openDialog()"></button>
+      </form> 
+    </mat-dialog-content>
+    

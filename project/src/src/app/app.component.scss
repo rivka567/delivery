@@ -1,0 +1,28 @@
+
+.header {
+    height:15%;
+    width: 100%;
+    background-color: whitesmoke;
+}
+
+.menu {
+    height:100%;
+    width: 150px;
+    background-color:blue;
+    border: black;
+    float: right;
+}
+
+.footer {
+    width: 100%;
+    height: 15%;
+    background-color: lightseagreen;
+}
+
+.main {
+    height: 100%;
+    display:flex; 
+    font-size: inherit;
+    font-family: cursive;
+    background-image: url('../assets/pic.jpg');
+}

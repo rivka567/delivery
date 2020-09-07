@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBDeliveriesModelStoreContainer" CdmEntityContainer="DBDeliveriesEntities1">
+    <EntitySetMapping Name="Drives">
+      <EntityTypeMapping TypeName="DBDeliveriesModel.Drive">
+        <MappingFragment StoreEntitySet="Drives">
+          <ScalarProperty Name="driveCode" ColumnName="driveCode" />
+          <ScalarProperty Name="userCode" ColumnName="userCode" />
+          <ScalarProperty Name="drivingTime" ColumnName="drivingTime" />
+          <ScalarProperty Name="travelDate" ColumnName="travelDate" />
+          <ScalarProperty Name="fromLocation" ColumnName="fromLocation" />
+          <ScalarProperty Name="toLocation" ColumnName="toLocation" />
+          <ScalarProperty Name="readinessForChanges" ColumnName="readinessForChanges" />
+          <ScalarProperty Name="packageSizeCode" ColumnName="packageSizeCode" />
+          <ScalarProperty Name="howLongBeforeReminder" ColumnName="howLongBeforeReminder" />
+          <ScalarProperty Name="transportation" ColumnName="transportation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="packageDescriptions">
+      <EntityTypeMapping TypeName="DBDeliveriesModel.packageDescription">
+        <MappingFragment StoreEntitySet="packageDescription">
+          <ScalarProperty Name="packageDescriptionCode" ColumnName="packageDescriptionCode" />
+          <ScalarProperty Name="userCode" ColumnName="userCode" />
+          <ScalarProperty Name="packageType" ColumnName="packageType" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Packages">
+      <EntityTypeMapping TypeName="DBDeliveriesModel.Package">
+        <MappingFragment StoreEntitySet="Packages">
+          <ScalarProperty Name="packageCode" ColumnName="packageCode" />
+          <ScalarProperty Name="userCustomerCode" ColumnName="userCustomerCode" />
+          <ScalarProperty Name="userDeliveryCode" ColumnName="userDeliveryCode" />
+          <ScalarProperty Name="fromLocation" ColumnName="fromLocation" />
+          <ScalarProperty Name="toLocation" ColumnName="toLocation" />
+          <ScalarProperty Name="travelDate" ColumnName="travelDate" />
+          <ScalarProperty Name="drivingTime" ColumnName="drivingTime" />
+          <ScalarProperty Name="redinessForChanges" ColumnName="redinessForChanges" />
+          <ScalarProperty Name="confirmationDelivery" ColumnName="confirmationDelivery" />
+          <ScalarProperty Name="watingTimeForConfirmation" ColumnName="watingTimeForConfirmation" />
+          <ScalarProperty Name="happinesslevel" ColumnName="happinesslevel" />
+          <ScalarProperty Name="describeHappiness" ColumnName="describeHappiness" />
+          <ScalarProperty Name="packageType" ColumnName="packageType" />
+          <ScalarProperty Name="describePackage" ColumnName="describePackage" />
+          <ScalarProperty Name="packageSize" ColumnName="packageSize" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PackageSizes">
+      <EntityTypeMapping TypeName="DBDeliveriesModel.PackageSize">
+        <MappingFragment StoreEntitySet="PackageSize">
+          <ScalarProperty Name="packageSizeCode" ColumnName="packageSizeCode" />
+          <ScalarProperty Name="packageSizeName" ColumnName="packageSizeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PackageTypes">
+      <EntityTypeMapping TypeName="DBDeliveriesModel.PackageType">
+        <MappingFragment StoreEntitySet="PackageType">
+          <ScalarProperty Name="packageTypeCode" ColumnName="packageTypeCode" />
+          <ScalarProperty Name="packageTypeName" ColumnName="packageTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RefusesPackages">
+      <EntityTypeMapping TypeName="DBDeliveriesModel.RefusesPackage">
+        <MappingFragment StoreEntitySet="RefusesPackages">
+          <ScalarProperty Name="packageCode" ColumnName="packageCode" />
+          <ScalarProperty Name="userCode" ColumnName="userCode" />
+          <ScalarProperty Name="packageTypeCode" ColumnName="packageTypeCode" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DBDeliveriesModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="userCode" ColumnName="userCode" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="userPhone" ColumnName="userPhone" />
+          <ScalarProperty Name="userMail" ColumnName="userMail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

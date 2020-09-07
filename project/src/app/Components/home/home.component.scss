@@ -1,0 +1,57 @@
+section {
+  display: table;
+  margin: 20px;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 70px;
+  width: 120px;
+
+}
+
+.example-button-row {
+  display: table-cell;
+  
+}
+
+.example-button-row button {
+  display: table-cell;
+  margin-right: 70px;
+  
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+  
+}
+
+.example-button-container {
+  display: flex;
+  justify-content:space-around;
+  width: 500px;
+}
+.btn{
+    width:230px;
+    height:60px;
+   background-color: lightslategrey; 
+   border-radius: 30px;
+   text-align: center;
+   cursor: pointer;
+}
+.lbl
+{
+color: black;
+font-style: italic;
+font-size:25px ;
+cursor: pointer;
+}
+.header
+{
+  font-size: 50px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  text-align: center;
+}

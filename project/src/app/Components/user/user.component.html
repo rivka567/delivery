@@ -1,0 +1,34 @@
+<mat-dialog-content  class="mat-typography">
+    <form  *ngIf="form,newUser" [formGroup]="form" (ngSubmit)="addUser()">
+      <div class="example-container">
+       <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon>
+          <br>
+          <h1>פרטי השליח:</h1><br>
+          
+            <mat-form-field class="inp">
+              <input matInput placeholder="סיסמא"  type="password" formControlName="code" name="code" >
+            </mat-form-field>
+            <br>
+    
+            <mat-form-field>
+              <input matInput type="text" placeholder="שם " class="inp"  formControlName="name"  name="name">
+            </mat-form-field>
+            <br> 
+    
+            <mat-form-field >
+              <input matInput placeholder="טלפון " class="inp" formControlName="telephone" name="telephone">
+            </mat-form-field>
+            <br> 
+    
+              <mat-form-field>
+                <input matInput placeholder="gmail" class="inp" formControlName="gmail" name="gmail" >
+              </mat-form-field>
+            <br> 
+            <!-- TODO: לשנות שיראה כקישור -->
+            <a  style="cursor: pointer;" (click)="openDialog()" mat-dialog-close>התחבר</a>
+            
+            <button mat-dialog-close  style="cursor: pointer;" type="submit" mat-button  [disabled]="!form.valid" type="submit" (click)="submitted=true">Save</button>
+          <br>        
+      </div>
+    </form>
+    </mat-dialog-content>

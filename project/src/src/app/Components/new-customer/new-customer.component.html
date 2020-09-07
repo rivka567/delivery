@@ -1,0 +1,98 @@
+<mat-dialog-content class="mat-typography">
+    <form *ngIf="form,newDelivery" [formGroup]="form" (ngSubmit)="addDelivery()">
+      <div class="example-container">
+
+        
+          <br>
+          <h1>פרטי לקוח:</h1><br>
+            <mat-form-field >
+              <input matInput placeholder="תעודת זהות" class="inp" type="password" formControlName="id"  >
+            </mat-form-field>
+            <br>
+    
+            <mat-form-field>
+              <input matInput type="text" placeholder="שם " class="inp"  formControlName="name">
+            </mat-form-field>
+            <br> 
+    
+            <mat-form-field >
+              <input matInput placeholder="טלפון " class="inp" formControlName="telephone" >
+            </mat-form-field>
+            <br> 
+    
+              <mat-form-field>
+                <input matInput placeholder="gmail" class="inp" formControlName="gmail" >
+              </mat-form-field>
+            <br> 
+    
+            <mat-form-field >
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="picker" placeholder="date" class="inp" formControlName="date" name="date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+           <br>
+    
+             <mat-form-field >
+              <input matInput type="time" placeholder="שעת נסיעה" class="inp" formControlName="driving" > 
+            </mat-form-field>
+            <br> 
+    
+            <!-- קישור לגוגל מאפ -->
+            <mat-form-field >
+              <input matInput placeholder="כתובת איסוף " class="inp" formControlName="fromLocation"  >
+            </mat-form-field>
+            <br>
+    
+            <!-- קישור לגוגל מאפ -->
+            <mat-form-field >
+              <input matInput placeholder="כתובת יעד" class="inp" formControlName="toLocation" > 
+            </mat-form-field>
+    
+            <br>
+    
+            <mat-form-field >
+              <input matInput placeholder="קוד חבילה" class="inp" formControlName="packageCode" >
+            </mat-form-field>
+            <br>
+
+            <mat-form-field >
+                <input matInput placeholder="קוד שליח" class="inp" formControlName="deliveryCode" >
+              </mat-form-field>
+              <br>
+    
+            <mat-form-field >
+              <input matInput placeholder="מוכנות לשינויים" class="inp" formControlName="rediness" >
+            </mat-form-field>
+            <br>
+
+            <mat-form-field >
+                <mat-radio-button value="1" formControlName="delConfirm">אישור מהשליח</mat-radio-button>
+              </mat-form-field>
+              <br>
+
+            <mat-form-field >
+                <input matInput type="time" placeholder="כמה זמן מוכן לחכות לאישור" class="inp" formControlName="waitConfirm" >
+              </mat-form-field>
+              <br>
+
+            <mat-form-field >
+                <input matInput placeholder="כמה זמן קודם לתזכר" class="inp" formControlName="reminder">
+              </mat-form-field>
+              <br>
+
+              <mat-form-field >
+                <input matInput type="number" placeholder="רמת שביעות רצון" class="inp" formControlName="levelHappiness">
+              </mat-form-field>
+              <br>
+
+              <mat-form-field >
+                <input matInput placeholder="תאור שביעות רצון" class="inp" formControlName="hapiness">
+              </mat-form-field>
+              <br>
+    
+            <button type="submit" mat-button mat-mat-dialog-actions [disabled]="!form.valid" type="submit" (click)="submitted=true">Save</button>     
+        
+      </div>
+    </form>
+    </mat-dialog-content>

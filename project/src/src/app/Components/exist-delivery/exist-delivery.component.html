@@ -1,0 +1,22 @@
+<mat-dialog-content>
+<div class="example-container">
+  <br>
+
+  <input matInput placeholder="נא הכנס תעודת זהות" #id>
+
+  <button mat-button (click)="getDeliveryById(id.value)" >חפש</button>
+
+  <div *ngIf="delivery" >
+    <p> {{delivery.deliveryCode}}</p>
+    <p> {{delivery.deliveryName}}</p>
+    <p> {{delivery.deliverySms}}</p>
+    <p> {{delivery.travelDate}}</p>
+    <p> {{delivery.drivingTime}}</p>
+    <p> {{delivery.fromLocation}}</p>
+    <p>{{delivery.sizeCode}}</p>
+    <p> {{delivery.toLocation}}</p>
+    <p> {{delivery.deliveryMail}}</p>
+    <p> {{delivery.howLongBeforeReminder}}</p>
+  </div>
+</div>
+</mat-dialog-content>

@@ -1,0 +1,70 @@
+<mat-dialog-content class="mat-typography">
+<form *ngIf="form,newDelivery" [formGroup]="form" (ngSubmit)="addDelivery()">
+  <div class="example-container">
+   <mat-icon mat-dialog-close>highlight_off </mat-icon>
+      <br>
+      <h1>פרטי השליח:</h1><br>
+  
+        <mat-form-field >
+          <input matInput placeholder="סיסמא" class="inp" type="password" formControlName="id" name="id" >
+        </mat-form-field>
+        <br>
+
+        <mat-form-field>
+          <input matInput type="text" placeholder="שם " class="inp"  formControlName="name"  name="name">
+        </mat-form-field>
+        <br> 
+
+        <mat-form-field >
+          <input matInput placeholder="טלפון " class="inp" formControlName="telephone" name="telephone">
+        </mat-form-field>
+        <br> 
+
+          <mat-form-field>
+            <input matInput placeholder="gmail" class="inp" formControlName="gmail" name="gmail" >
+          </mat-form-field>
+        <br> 
+
+        <mat-form-field >
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="date" class="inp" formControlName="date" name="date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+       <br>
+
+         <mat-form-field >
+          <input matInput placeholder="שעת נסיעה" class="inp" formControlName="driving" name="driving"> 
+        </mat-form-field>
+        <br> 
+
+        <!-- קישור לגוגל מאפ -->
+        <mat-form-field >
+          <input matInput placeholder="כתובת איסוף " class="inp" formControlName="fromLocation" name="fromLocation" >
+        </mat-form-field>
+
+        <!-- קישור לגוגל מאפ -->
+        <mat-form-field >
+          <input matInput placeholder="כתובת יעד" class="inp" formControlName="toLocation" name="toLocation"> 
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field >
+          <input matInput placeholder="קוד חבילה" class="inp" formControlName="packageCode" name="packageCode">
+        </mat-form-field>
+        <br>
+
+        <mat-form-field >
+          <input matInput placeholder="כמה זמן קודם לתזכר" class="inp" formControlName="reminder" name="reminder">
+        </mat-form-field>
+        <br>
+        <!-- TODO: לשנות שיראה כקישור -->
+        <a (click)="openDialog()" mat-dialog-close>התחבר</a>
+      
+        <button type="submit" mat-button mat-mat-dialog-actions [disabled]="!form.valid" type="submit" (click)="submitted=true">Save</button>
+      
+    
+  </div>
+</form>
+</mat-dialog-content>
