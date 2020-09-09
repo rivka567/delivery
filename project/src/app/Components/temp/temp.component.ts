@@ -22,17 +22,17 @@ export class TempComponent implements OnInit {
         zoom: 15 };
   }
     
-//  onMapReady(map)
-//  {
-//    this.map=map["map"];
-//  } 
+ onMapReady(map)
+ {
+   this.map=map["map"];
+ } 
 
-//  public handleAddressChange(address: Address) {
-//   var m=address.geometry.location;
+ public handleAddressChange(address: Address) {
+  var m=address.geometry.location;
   
-//   this.options.center.lat=address.geometry.location.lat();
-//   this.options.center.lng=address.geometry.location.lng();
-//   this.googleMap.options=this.options;
-//  }
+  this.options.center.lat=address.geometry.location.lat();
+  this.options.center.lng=address.geometry.location.lng();
+  this.googleMap.options=this.options;
+ }
 
 }

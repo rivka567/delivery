@@ -26,9 +26,9 @@ import { AboutComponent } from './Components/about/about.component';
 import { UserComponent } from './Components/user/user.component';
 import { ExistUserComponent } from './Components/exist-user/exist-user.component';
 import { PackageComponent } from './Components/package/package.component';
-// import { AgmCoreModule} from '@agm/core';
-// import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
-// import { GMapModule } from 'primeng/gmap';
+import { AgmCoreModule} from '@agm/core';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { GMapModule } from 'primeng/gmap';
 import { TempComponent } from './Components/temp/temp.component';
 
 const appRoutes: Routes =
@@ -75,12 +75,12 @@ const appRoutes: Routes =
     MatInputModule,
     MatTreeModule,
     MatRadioModule,
-    // GooglePlaceModule,
-    // GMapModule,
-    // AgmCoreModule.forRoot({
-    //   apiKey: 'AIzaSyAj13gY0dRy3LKgxfbOkCPaqq_twe8eR3k',
-    //   libraries:['places','geometry','drawing']
-    //   }),
+    GooglePlaceModule,
+    GMapModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAj13gY0dRy3LKgxfbOkCPaqq_twe8eR3k',
+      libraries:['places','geometry','drawing']
+      }),
   ],
 
   providers: [],
