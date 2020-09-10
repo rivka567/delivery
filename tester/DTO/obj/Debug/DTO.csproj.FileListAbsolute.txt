@@ -8,3 +8,9 @@ C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליח
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DTO\obj\Debug\DTO.dll
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DTO\obj\Debug\DTO.pdb
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DTO\bin\Debug\DTO.dll
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DTO\bin\Debug\DTO.pdb
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DTO\obj\Debug\DTO.dll
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DTO\obj\Debug\DTO.pdb

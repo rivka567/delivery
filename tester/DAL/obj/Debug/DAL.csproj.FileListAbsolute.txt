@@ -21,3 +21,15 @@ C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליח
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DAL\obj\Debug\DAL.dll
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DAL\obj\Debug\DAL.pdb
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\bin\Debug\DAL.dll.config
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\bin\Debug\DAL.dll
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\bin\Debug\DAL.pdb
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\bin\Debug\EntityFramework.dll
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\bin\Debug\EntityFramework.xml
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\obj\Debug\DAL.dll
+C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\obj\Debug\DAL.pdb
