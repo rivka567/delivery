@@ -54,6 +54,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="PackageDal.cs" />
     <Compile Include="UserDal.cs" />
     <Compile Include="Drive.cs">
       <DependentUpon>Model1.tt</DependentUpon>

@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6ff140f6b2bd43da94702377444afb3b" Name="Diagram1">
-        <EntityTypeShape EntityType="DBDeliveriesModel.Drive" Width="1.5" PointX="3" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBDeliveriesModel.packageDescription" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveriesModel.Drive" Width="1.5" PointX="3.625" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveriesModel.packageDescription" Width="1.5" PointX="5.5" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DBDeliveriesModel.Package" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DBDeliveriesModel.PackageSize" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DBDeliveriesModel.PackageType" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />

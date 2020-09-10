@@ -12,22 +12,27 @@ namespace BLL
     {
         public static DTO.UserDTO GetUserById(string id)
         {
-            var d = DAL.UserDal.GetUserById(id);
+            var d = UserDal.GetUserById(id);
             return UserConverter.convertToUserDTO(d);
 
         }
 
         public static List<DTO.UserDTO> GetAllUsers()
         {
-            var d = DAL.UserDal.GetAllUsers();
+            var d = UserDal.GetAllUsers();
             return UserConverter.convertToUserDTOList(d);
 
         }
 
         public static string AddUser(User user)
         { 
-            return DAL.UserDal.AddUser(user); ;
+            return UserDal.AddUser(user); ;
 
+        }
+
+        public static string SendEmail(string sender,string contactAddress, string subject, string body)
+        {
+            return UserDal.SendEmail(sender, contactAddress, subject, body);
         }
 
     }
