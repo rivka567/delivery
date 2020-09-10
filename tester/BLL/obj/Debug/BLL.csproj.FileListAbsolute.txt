@@ -25,3 +25,16 @@ C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליח
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\BLL\bin\Debug\EntityFramework.xml
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\BLL\obj\Debug\BLL.csproj.CopyComplete
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\BLL\obj\Debug\BLL.dll
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\BLL\obj\Debug\BLL.pdb
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\BLL\bin\Debug\BLL.dll
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\BLL\bin\Debug\BLL.pdb
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\BLL\bin\Debug\DAL.dll
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\BLL\bin\Debug\DTO.dll
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\BLL\bin\Debug\EntityFramework.dll
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\BLL\bin\Debug\DAL.pdb
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\BLL\bin\Debug\DAL.dll.config
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\BLL\bin\Debug\DTO.pdb
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\BLL\bin\Debug\EntityFramework.xml
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\BLL\obj\Debug\BLL.csproj.CopyComplete
