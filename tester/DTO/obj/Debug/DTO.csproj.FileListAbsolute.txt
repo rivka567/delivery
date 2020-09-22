@@ -8,9 +8,17 @@ C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליח
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DTO\obj\Debug\DTO.dll
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DTO\obj\Debug\DTO.pdb
+<<<<<<< HEAD
 C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DTO\bin\Debug\DTO.dll
 C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DTO\bin\Debug\DTO.pdb
 C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
 C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DTO\obj\Debug\DTO.dll
 C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DTO\obj\Debug\DTO.pdb
+=======
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DTO\bin\Debug\DTO.dll
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DTO\bin\Debug\DTO.pdb
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DTO\obj\Debug\DTO.dll
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DTO\obj\Debug\DTO.pdb
+>>>>>>> 60d45ad685da9ae50ee28129ba4ceea0c1da35e7

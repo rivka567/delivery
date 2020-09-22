@@ -21,6 +21,7 @@ C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליח
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DAL\obj\Debug\DAL.dll
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DAL\obj\Debug\DAL.pdb
+<<<<<<< HEAD
 C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\bin\Debug\DAL.dll.config
 C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\bin\Debug\DAL.dll
 C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\bin\Debug\DAL.pdb
@@ -33,3 +34,17 @@ C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\D
 C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\obj\Debug\DAL.dll
 C:\Users\dvora bloch\Desktop\רבקה בלוך\repo\delivery1\delivery1\tester\DAL\obj\Debug\DAL.pdb
+=======
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DAL\bin\Debug\DAL.dll.config
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DAL\bin\Debug\DAL.dll
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DAL\bin\Debug\DAL.pdb
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DAL\bin\Debug\EntityFramework.dll
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DAL\bin\Debug\EntityFramework.xml
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DAL\obj\Debug\DAL.dll
+C:\Users\This_User\Desktop\shira\repo\delivery1\delivery1\tester\DAL\obj\Debug\DAL.pdb
+>>>>>>> 60d45ad685da9ae50ee28129ba4ceea0c1da35e7
