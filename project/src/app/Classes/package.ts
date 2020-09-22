@@ -2,7 +2,7 @@ import { Time } from '@angular/common'
 
 export class Package {
     constructor(
-       public packageCode:number=0,
+      
        public userCustomerCode:string="",
        public userDeliveryCode:string="",
        public fromLocation:string="",
@@ -18,5 +18,6 @@ export class Package {
        public describePackage:string="",
        public packageSize:number=0
     )
+    
     {}
 }

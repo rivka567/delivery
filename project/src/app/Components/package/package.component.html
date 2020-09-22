@@ -6,7 +6,7 @@
 <mat-dialog-content class="mat-typography">
   <form [formGroup]="form" (ngSubmit)="addPackage()">
     <div class="example-container">
-      <mat-icon style="cursor: pointer;" mat-dialog-close>highlight_off </mat-icon>
+      <mat-icon style="cursor: pointer;" mat-dialog-close routerLink="/home">highlight_off </mat-icon>
       <br>
       <section>
           <div class="example-button-row">
@@ -51,13 +51,13 @@
         <input type="radio" value="4" style="visibility: hidden;"  id="4" #4  formControlName="size" name="size"  >
       <br>
 
-        <button type="button" (click)="checkSize()">check size</button>
+        <button type="button" (click)="checkSize()">check size</button><br>
      <!-- <mat-form-field>
         <input matInput type="password" placeholder="קוד חבילה" class="inp" formControlName="packageCode" name="packageCode" >
       </mat-form-field>
       <br> --> 
       <mat-form-field>
-        <input matInput type="text" placeholder="קוד לקוח" class="inp" disabled formControlName="customerCode" name="customerCode">
+        <input matInput type="text" placeholder="קוד לקוח" class="inp" readonly formControlName="customerCode" name="customerCode">
       </mat-form-field>
       <br> 
       <!-- <mat-form-field>
@@ -65,11 +65,13 @@
         </mat-form-field>
         <br>  -->
       <mat-form-field>
-        <input matInput type="text" placeholder="כתובת איסוף" class="inp" formControlName="fromLocation" name="fromLocation">
+        <input matInput placeholder="מקום מוצא" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"
+        formControlName="fromLocation" name="fromLocation"/>
       </mat-form-field>
       <br>
       <mat-form-field>
-        <input matInput type="text" placeholder="כתובת יעד" class="inp" formControlName="toLocation" name="toLocation">
+        <input matInput placeholder="מקום יעד" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressChange($event)"
+        formControlName="toLocation" name="toLocation"/>
       </mat-form-field>
       <br>
       <mat-form-field class="example-full-width">
@@ -97,7 +99,7 @@
       <input  type="radio" value="4"  id="4"  formControlName="type" name="type" >
       <label> אחר</label>
       <br>
-      <mat-form-field>
+      <!-- <mat-form-field>
         <input matInput type="number" placeholder="רמת שביעות רצון" class="inp" formControlName="happinessLevel" name="happinessLevel">
       </mat-form-field>
       <br>
@@ -112,9 +114,9 @@
       <mat-form-field>
         <input matInput type="text" placeholder="מוכנות לשינויים" class="inp" formControlName="readiness" name="readiness">
       </mat-form-field>
-      <br>
+      <br> -->
       <mat-form-field>
-        <input matInput type="text" placeholder="תאור נוסף" class="inp" formControlName="describePackage" name="describePackage">
+        <input matInput type="text" placeholder=" תאור נוסף או הערה" class="inp" formControlName="describePackage" name="describePackage">
       </mat-form-field>
       <br>
 

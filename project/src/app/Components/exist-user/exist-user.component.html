@@ -1,4 +1,4 @@
-<mat-dialog-content>
+
     <div class="example-container">
       <br>
     <div>
@@ -6,12 +6,12 @@
     
       <button class="btn" mat-button (click)="getUserById(id.value)" >חפש</button>
     </div>
-      <div *ngIf="user" >
+      <div *ngIf="user.userName" >
         <p> {{user.userCode}}</p>
         <p> {{user.userName}}</p>
         <p> {{user.userPhone}}</p>
         <p> {{user.userMail}}</p>
-        <a class="btn" (click)="openDialogPackage()" mat-dialog-close>המשך</a>
+        <a routerLink="/home" class="btn" >המשך</a>
         </div> 
     </div>
-    </mat-dialog-content>
+

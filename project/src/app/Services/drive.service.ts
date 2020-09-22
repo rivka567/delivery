@@ -51,6 +51,8 @@ export class DriveService {
   }
 
   addDrive(drive:Drive): Observable<string> {
+    debugger
+    console.log(drive);
     return this.http.post<string>(this.URL + "/AddDrive",drive);
   }
 }

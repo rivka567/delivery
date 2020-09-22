@@ -24,21 +24,23 @@
     <button mat-menu-item>Item 2</button>
   </mat-menu>
 </div> -->
-<button  style="text-underline-position: inherit;" mat-button routerLink="/">ראשי</button>
+<button (click)="checkLogin()" style="text-underline-position: inherit;" mat-button >ראשי</button>
 
 <button mat-button routerLink="/about">אודות</button>
 
-<button mat-button  routerLink="main" >הצטרף כשליח</button>
+<button mat-button (click)="openDialog()" >הצטרף כשליח</button>
   
-  <button mat-button [matMenuTriggerFor]="beforeMenu">בצע שליחות</button>
-  <mat-menu #beforeMenu="matMenu" xPosition="before">
+<button mat-button >בצע שליחות</button>
+
+  <!-- <button mat-button [matMenuTriggerFor]="beforeMenu">בצע שליחות</button> -->
+  <!-- <mat-menu #beforeMenu="matMenu" xPosition="before">
     <button mat-menu-item>Item 1</button>
     <button mat-menu-item>Item 2</button>
-  </mat-menu>
+  </mat-menu> -->
   
   
-  <button *ngIf="userSer.currentUser==undefined" mat-button  class="cnt">התחבר
+  <button *ngIf="userSer.currentUser==undefined" routerLink="/" mat-button  class="cnt">התחבר
   <mat-icon>account_circle</mat-icon>
   </button>
-  <label *ngIf="userSer.currentUser">{{userSer.currentUser.userName}}</label>
+  <label style="float: left;" *ngIf="userSer.currentUser">{{userSer.currentUser.userName}}</label>
  

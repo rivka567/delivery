@@ -1,20 +1,17 @@
 <mat-dialog-content  class="mat-typography">
-    <form *ngIf="form,newDrive" [formGroup]="form" (ngSubmit)="addDrive()">
+    <form  [formGroup]="form" (ngSubmit)="addDrive()">
       <div class="example-container">
+        <mat-icon style="cursor: pointer;" mat-dialog-close routerLink="/home">highlight_off </mat-icon>
+
         <h1>פרטי נסיעה:</h1><br>
         
         <mat-form-field >
-          <input matInput placeholder="driveCode" type="text" class="inp" formControlName="driveCode" name="driveCode" >
+          <input matInput placeholder="driverCode" type="text" class="inp" readonly formControlName="driverCode" name="driverCode" >
         </mat-form-field>
         <br>
   
-        <mat-form-field>
-          <input matInput type="text" placeholder="userCode" class="inp"  formControlName="userCode"  name="userCode">
-        </mat-form-field>
-        <br> 
-  
         <mat-form-field >
-            <input matInput placeholder="שעת נסיעה" class="inp" formControlName="driving" name="driving"> 
+            <input type="time" matInput placeholder="שעת נסיעה" class="inp" formControlName="driving" name="driving"> 
           </mat-form-field>
           <br> 
   
@@ -28,28 +25,25 @@
   
          <!-- קישור לגוגל מאפ -->
         <mat-form-field >
-            <input matInput placeholder="כתובת איסוף " class="inp" formControlName="fromLocation" name="fromLocation" >
-          </mat-form-field>
+          <input matInput ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)"
+          placeholder="מקום מוצא" formControlName="fromLocation" name="fromLocation"/>
+        </mat-form-field>
          <br>
   
           <!-- קישור לגוגל מאפ -->
           <mat-form-field >
-            <input matInput placeholder="כתובת יעד" class="inp" formControlName="toLocation" name="toLocation"> 
+            <input matInput ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)"
+            placeholder="מקום יעד" formControlName="toLocation"  name="toLocation"/>
           </mat-form-field>
           <br>
   
-       <mat-form-field >
-          <input matInput placeholder="readinessForChanges" type="text" class="inp" formControlName="readinessForChanges" name="readinessForChanges">
-        </mat-form-field>
-        <br>  
-  
-         <mat-form-field >
+         <!-- <mat-form-field >
             <input matInput placeholder="קוד גודל חבילה" class="inp" formControlName="packageSizeCode" name="packageSizeCode">
           </mat-form-field>
           <br>
-  
+   -->
         <mat-form-field >
-          <input matInput placeholder="כמה זמן קודם לתזכר" class="inp" formControlName="reminder" name="reminder">
+          <input type="time" matInput placeholder="כמה זמן קודם לתזכר" class="inp" formControlName="reminder" name="reminder">
         </mat-form-field>
         <br> 
   
@@ -57,11 +51,15 @@
             <input matInput placeholder="כלי תחבורה" class="inp" formControlName="transportation" name="transportation">
           </mat-form-field>
           <br>
-  
+          
+          <mat-form-field >
+            <input matInput placeholder="הערה" type="text" class="inp" formControlName="describeDrive" name="describeDrive">
+          </mat-form-field>
+          <br>  
             <!-- TODO: לשנות שיראה כקישור -->
             <!-- <a style="cursor: pointer;" (click)="openDialog()" mat-dialog-close>התחבר</a> -->
-            <button (click)="checkValid()"></button>
-            <button type="submit" mat-button mat-mat-dialog-actions [disabled]="!form.valid" type="submit" (click)="submitted=true">Save</button>  
+           
+            <button type="submit" mat-button   (click)="submitted=true">Save</button>  
   
       </div>
     </form>

@@ -20,6 +20,8 @@ export class UserService {
     return this.http.get<Array<User>>(this.URL + "/GetAllUsers");
   }
   addUser(user:User): Observable<string> {
+    debugger
+    console.log("user service")
     return this.http.post<string>(this.URL+"/AddUser",user);
   }
 

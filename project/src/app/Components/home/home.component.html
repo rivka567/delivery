@@ -1,23 +1,83 @@
 <h1 class="header">שליחויות ללא התחייבות</h1>
 <section>
   
-    <div class="example-label">
+<!-- 
+ 
+  <mat-accordion class="example-headers-align" multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+       
+        <mat-panel-description>
+          Type your name and age
+          <mat-icon>account_circle</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+  
+      <mat-form-field>
+        <mat-label>First name</mat-label>
+        <input matInput>
+      </mat-form-field>
+  
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input matInput type="number" min="1">
+      </mat-form-field>
+  
+    </mat-expansion-panel>
+    <mat-expansion-panel disabled>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Destination
+        </mat-panel-title>
+      
+      </mat-expansion-panel-header>
+  
+    </mat-expansion-panel>
+  </mat-accordion>
+ -->
+
+    <div #id class="example-label">
       <div class="example-button-row">
         <div class="example-flex-container">
-          <!-- <div class="example-button-container"> 
-            <button mat-raised-button color="primary"  class="btn" mat-dialog-close (click)="openDialogOrder()">           
+          <div class="example-button-container"> 
+            <button mat-raised-button color="primary"  class="btn" mat-dialog-close (click)="openDialog()">           
                 <label class="lbl"> הזמן שליחות >> </label>
-            </button> -->
-
-            <input type="text" placeholder="sender" #sender> 
+            </button>
+              
+            <!-- <input type="text" placeholder="sender" #sender> 
+            </div>
             <br>
-            <input type="text" placeholder="contactEmail" #contactEmail> <br>
-            <input type="text" placeholder="subject" #subject> <br>
-            <input type="text" placeholder="body" #body> <br>
+            <div class="example-button-container"> 
+            <input type="text" placeholder="contactEmail" #contactEmail>
+            </div> <br>
+            <div class="example-button-container"> 
+            <input type="text" placeholder="subject" #subject>
+            </div> <br>
+            <div class="example-button-container"> 
+            <input type="text" placeholder="body" #body> 
+            </div>
+            <br>
+            <div class="example-button-container"> 
            <button (click)="SendMail(sender.value,contactEmail.value,subject.value,body.value)">
             send mail 
-           </button>
-            <!-- </div> -->
+           </button> -->
+
+<!-- שייך ל travel list for delivery: -->
+<!-- <div class="travelslDiv" *ngFor="let travel of travelList" > 
+  <div class="travelDiv1" *ngIf="travelsListByPlace('','')">
+  <p>{{travel.packageCode}} </p>
+  <p>{{travel.fromLocation}} </p>
+  <p>{{travel.toLocation}} </p>
+  <p>{{travel.travelDate}} </p>
+  <p>{{travel.drivingTime}} </p> -->
+  <!-- <button id="moreDetails" value="moreDetails" (click)="vis=true"></button>
+  <p *ngIf="vis">{{travel.packageType}} </p>
+  <p *ngIf="vis">{{travel.describePackage}} </p>
+  <p *ngIf="vis">{{travel.packageSize}} </p> -->
+<!-- </div>
+</div> -->
+<!--travelListForDelivery   -->
+            </div>
         </div>  
       </div>
     </div>

@@ -13,11 +13,13 @@ import { BuiltinType } from '@angular/compiler';
 export class ExistUserComponent implements OnInit {
 
   user:User = new User();
+
   constructor(private UserSer: UserService,private dialog:MatDialog) { }
   visible:VisibilityState;
  
 
   ngOnInit(): void {
+    
   }
 
  
