@@ -47,6 +47,7 @@ export class DriveService {
   }
   
   getDrives(): Observable<Array<Drive>> {
+    debugger
     return this.http.get<Array<Drive>>(this.URL + "/GetAllDrives");
   }
 

@@ -1,1 +1,9 @@
-<p>travel-list works!</p>
+
+<mat-dialog-content class="mat-typography">
+  <mat-icon style="cursor: pointer;" mat-dialog-close routerLink="/home">highlight_off </mat-icon>
+<div class="driveslDiv" *ngFor="let drive of allDrives" > 
+  <span>{{drive.fromLocationFormat}}</span><label>-----</label>
+  <span>{{drive.toLocationFormat}} </span>
+   
+  </div> 
+</mat-dialog-content>

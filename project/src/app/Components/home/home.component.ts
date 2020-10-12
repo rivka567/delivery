@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
       //כשרוצים לגשת לאלמנט בhtml ע"י id
    // this.id.nativeElement.
    this.travelList=[
-     new Package('jj','jkk','ooo','13-12-1999')
+    //  new Package('jj','jkk','ooo','13-12-1999')
    ]
   }
   openDialog() {

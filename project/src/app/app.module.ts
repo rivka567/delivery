@@ -31,9 +31,9 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { GMapModule } from 'primeng/gmap';
 import { TempComponent } from './Components/temp/temp.component';
 import { DriveComponent } from './Components/drive/drive.component';
-import { TravelListForDeliveryComponent } from './Components/travel-list-for-delivery/travel-list-for-delivery.component';
 import { LoginComponent } from './Components/login/login.component';
 import { TravelListComponent } from './Components/travel-list/travel-list.component';
+import { PackageListForDeliveryComponent } from './Components/package-list-for-delivery/package-list-for-delivery.component';
 
 const appRoutes: Routes =
 [
@@ -46,7 +46,7 @@ const appRoutes: Routes =
   {path:"drive",component:DriveComponent},
   {path:"about",component:AboutComponent},
   {path: "header", component: HeaderComponent},
-
+  {path:"travel-list",component:TravelListComponent}
 ];
 
 @NgModule({
@@ -62,9 +62,9 @@ const appRoutes: Routes =
     PackageComponent,
     TempComponent,
     DriveComponent,
-    TravelListForDeliveryComponent,
     LoginComponent,
     TravelListComponent,
+    PackageListForDeliveryComponent,
     
 
   ],

@@ -5,7 +5,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { DriveService } from 'src/app/Services/drive.service';
 import { UserService } from 'src/app/Services/user.service';
-import { TravelListForDeliveryComponent } from '../travel-list-for-delivery/travel-list-for-delivery.component';
 import { ExistUserComponent } from '../exist-user/exist-user.component';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete/ngx-google-places-autocomplete.directive';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
@@ -77,7 +76,7 @@ a:boolean
   myData => { console.log(myData);
 },
   myErr => { console.log(myErr.message); });
-  const dialogRef = this.dialog.open(TravelListForDeliveryComponent);
+  // const dialogRef = this.dialog.open(TravelListForDeliveryComponent);
   }
 
 

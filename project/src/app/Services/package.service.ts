@@ -18,12 +18,11 @@ export class PackageService {
   getPackages(): Observable<Array<Package>> {
     return this.http.get<Array<Package>>(this.URL + "/GetAllPackages");
   }
+
   addPackage(myPackage:Package): Observable<string> {
-    debugger
     console.log("from service:",myPackage);
-    
-    return this.http.post<string>(this.URL+"/AddPackage",myPackage);
+    return this.http.post<string>(this.URL + "/AddPackage",myPackage);
   }
 
-  
+
 }

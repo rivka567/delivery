@@ -1,5 +1,5 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
@@ -10,6 +10,7 @@ import { User } from 'src/app/Classes/user';
 import { UserService } from 'src/app/Services/user.service';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete/ngx-google-places-autocomplete.directive';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
+import { TravelListComponent } from '../travel-list/travel-list.component';
 
 @Component({
   selector: 'app-package',
@@ -19,10 +20,12 @@ import { Address } from 'ngx-google-places-autocomplete/objects/address';
 export class PackageComponent implements OnInit {
   form: FormGroup;
   submitted=false;
-  static rand=1;
   newPackage:Package;
+  @ViewChild("placesRef") placesRef : GooglePlaceDirective;
+
   // size:FormControl;
-  constructor(private userSer:UserService,private activatedRoute:ActivatedRoute, private formBuilder: FormBuilder,private dialog:MatDialog, private packageSer:PackageService) { }
+  constructor(private userSer:UserService,private activatedRoute:ActivatedRoute, private formBuilder: FormBuilder,private dialog:MatDialog, private packageSer:PackageService,
+    private router:Router) { }
   
   ngOnInit(): void {
    this.initForm();
@@ -33,11 +36,6 @@ export class PackageComponent implements OnInit {
 
     // Highlight the 1st and 20th day of each month.
     return (date === 1 || date === 20) ? 'example-custom-date-class' : '';
-  }
- 
-  randFunction()
-  {
-    return PackageComponent.rand=(PackageComponent.rand*1000)/20;
   }
   
 
@@ -51,10 +49,8 @@ export class PackageComponent implements OnInit {
     travelDate:[''],
     describeHappiness:[''],
     happinessLevel:[''],
-    readiness:[''],
     describePackage:[''],
     type:['',Validators.required],
-    waitForConfirmation:['']
     })
   }
   checkSize(){
@@ -64,12 +60,11 @@ export class PackageComponent implements OnInit {
   addPackage()
   {
   this.submitted=true;
-  this.newPackage=new Package(this.form.value.customerCode,null,this.form.value.fromLocation,
-  this.form.value.toLocation,this.form.value.travelDate,this.form.value.drivingTime,this.form.value.readiness, false,
-  this.form.value.waitForConfirmation,this.form.value.happinessLevel,this.form.value.describeHappiness,this.form.value.type,
-  this.form.value.describePackage,this.form.value.size);
+  this.newPackage=new Package(this.form.value.customerCode,null,this.from,this.fromLat,this.fromLng,this.to,this.toLat,this.toLng,
+    this.form.value.travelDate,this.form.value.drivingTime,false,this.form.value.happinessLevel,this.form.value.describeHappiness,
+    this.form.value.type,this.form.value.describePackage,this.form.value.size);
   console.log(this.newPackage);
-  
+  debugger
   this.packageSer.addPackage(this.newPackage).subscribe(
     myData => {console.log("from subscribe",this.newPackage);
      console.log("add sucssesful");},
@@ -77,13 +72,36 @@ export class PackageComponent implements OnInit {
     console.log(myErr.message);});
   }
 
-  @ViewChild("placesRef") placesRef : GooglePlaceDirective;
-    
-  public handleAddressChange(address: Address) {
-    debugger
-    
-    console.log(address.formatted_address +" "+address.geometry.location.lat()+ " "+address.geometry.location.lng())
-  // Do some stuff
+  openDialog() {
+    const dialogRef = this.dialog.open(TravelListComponent,{ disableClose: true })
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+   this.router.navigate(['/main'])
+  }
+
+  from="";
+  fromLat=0;
+  fromLng=0;
+  to="";
+  toLat=0;
+  toLng=0;
+public handleAddressFromChange(address: Address) {
+  debugger
+  this.from=address.formatted_address;
+  this.fromLat=address.geometry.location.lat();
+  this.fromLng=address.geometry.location.lng();
+  console.log(address.formatted_address +" "+address.geometry.location.lat()+ " "+address.geometry.location.lng())
+// Do some stuff
+}
+public handleAddressToChange(address: Address) {
+debugger
+this.to=address.formatted_address;
+this.toLat=address.geometry.location.lat();
+this.toLng=address.geometry.location.lng();
+console.log(address.formatted_address +" "+address.geometry.location.lat()+ " "+address.geometry.location.lng())
+// Do some stuff
 }
 public dirs: Array<any> = [{
 origin: { lat: 6.8403134, lng: 80.0021128 },
@@ -94,4 +112,5 @@ origin: { lat: 6.4319639, lng: 79.9983415 },
 destination: { lat: 6.73906232, lng: 80.15640132 },
 renderOptions: { polylineOptions: { strokeColor: '#0f0' } },
 }];
+
 }
