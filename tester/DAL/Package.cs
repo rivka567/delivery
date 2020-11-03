@@ -17,19 +17,19 @@ namespace DAL
         public int packageCode { get; set; }
         public string userCustomerCode { get; set; }
         public string userDeliveryCode { get; set; }
-        public string fromLocation { get; set; }
-        public string toLocation { get; set; }
+        public int fromLocation { get; set; }
+        public int toLocation { get; set; }
         public System.DateTime travelDate { get; set; }
         public System.TimeSpan drivingTime { get; set; }
-        public string redinessForChanges { get; set; }
         public bool confirmationDelivery { get; set; }
-        public Nullable<System.TimeSpan> watingTimeForConfirmation { get; set; }
         public int happinesslevel { get; set; }
         public string describeHappiness { get; set; }
         public int packageType { get; set; }
         public string describePackage { get; set; }
         public int packageSize { get; set; }
     
+        public virtual Loction Loction { get; set; }
+        public virtual Loction Loction1 { get; set; }
         public virtual PackageSize PackageSize1 { get; set; }
         public virtual PackageType PackageType1 { get; set; }
         public virtual User User { get; set; }

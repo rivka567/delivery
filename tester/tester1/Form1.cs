@@ -20,7 +20,7 @@ namespace tester1
         private void button1_Click(object sender, EventArgs e)
         {
 
-            dataGridView1.DataSource = DAL.DeliveryDal.GetAllDeliveries();
+            //dataGridView1.DataSource = DAL.DeliveryDal.GetAllDeliveries();
         }
     }
 }

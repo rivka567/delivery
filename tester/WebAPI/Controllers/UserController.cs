@@ -12,34 +12,44 @@ namespace WebAPI.Controllers
     [RoutePrefix("api/User")]
     public class UserController : ApiController
     {
-        //[HttpGet]
-        //[Route("GetAllDeliveries")]
-        //public IHttpActionResult GetAllDeliveries()
-        //{
-        //    var p = BLL.UserBLL.GetAllDeliveries();
-        //    if (p == null)
-        //        return NotFound();
-        //    return Ok(p);
-        //}
+        [HttpGet]
+        [Route("GetAllUsers")]
+        public IHttpActionResult GetAllUsers()
+        {
+            var u = BLL.UserBLL.GetAllUsers();
+            if (u == null)
+                return NotFound();
+            return Ok(u);
+        }
 
         [HttpGet]
         [Route("GetUserById/{id}")]
         public IHttpActionResult GetUserById(string id)
         {
-            var p = BLL.UserBLL.GetUserById(id);
-            if (p == null)
+            var u = BLL.UserBLL.GetUserById(id);
+            if (u == null)
                 return NotFound();
-            return Ok(p);
+            return Ok(u);
         }
 
         [HttpPost]
         [Route("AddUser")]
-        public IHttpActionResult AddUser( User user)
+        public IHttpActionResult AddUser(User user)
         {
-            var p = BLL.UserBLL.AddUser(user);
-            if (p == null)
+            var u = BLL.UserBLL.AddUser(user);
+            if (u == null)
                 return NotFound();
-            return Ok(p);
+            return Ok(u);
+        }
+
+       [HttpGet]
+        [Route("SendEmail")]
+        public IHttpActionResult SendEmail(string sender, string contactAddress, string subject, string body)
+        {
+          var u= UserBLL.SendEmail(sender, contactAddress, subject, body);
+            if (u == null)
+                return NotFound();
+            return Ok(u);
         }
 
         // PUT: api/User/5

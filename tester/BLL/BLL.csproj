@@ -47,8 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="converters\DriveConverter.cs" />
+    <Compile Include="converters\PackageConverter.cs" />
     <Compile Include="converters\UserConverter.cs" />
     <Compile Include="DriveBLL.cs" />
+    <Compile Include="PackageBLL.cs" />
     <Compile Include="UserBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

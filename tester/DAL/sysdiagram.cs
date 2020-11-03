@@ -12,14 +12,12 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class PackageDescription
+    public partial class sysdiagram
     {
-        public int packageDescriptionCode { get; set; }
-        public string userCode { get; set; }
-        public int packageType { get; set; }
-        public string value { get; set; }
-    
-        public virtual PackageType PackageType1 { get; set; }
-        public virtual User User { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

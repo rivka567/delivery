@@ -13,10 +13,10 @@ namespace DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DBDeliveriesEntities : DbContext
+    public partial class DBDeliveries1Entities : DbContext
     {
-        public DBDeliveriesEntities()
-            : base("name=DBDeliveriesEntities")
+        public DBDeliveries1Entities()
+            : base("name=DBDeliveries1Entities")
         {
         }
     
@@ -26,11 +26,13 @@ namespace DAL
         }
     
         public virtual DbSet<Drive> Drives { get; set; }
-        public virtual DbSet<packageDescription> packageDescriptions { get; set; }
+        public virtual DbSet<Loction> Loctions { get; set; }
         public virtual DbSet<Package> Packages { get; set; }
+        public virtual DbSet<PackageDescription> PackageDescriptions { get; set; }
         public virtual DbSet<PackageSize> PackageSizes { get; set; }
         public virtual DbSet<PackageType> PackageTypes { get; set; }
         public virtual DbSet<RefusesPackage> RefusesPackages { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
     }
 }

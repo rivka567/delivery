@@ -15,16 +15,21 @@ namespace DAL
     public partial class Drive
     {
         public int driveCode { get; set; }
-        public string userCode { get; set; }
+        public string driverCode { get; set; }
+        public string customerCode { get; set; }
         public System.TimeSpan drivingTime { get; set; }
         public System.DateTime travelDate { get; set; }
-        public string fromLocation { get; set; }
-        public string toLocation { get; set; }
-        public string readinessForChanges { get; set; }
+        public int fromLocation { get; set; }
+        public int toLocation { get; set; }
         public int packageSizeCode { get; set; }
         public Nullable<System.TimeSpan> howLongBeforeReminder { get; set; }
         public string transportation { get; set; }
+        public string describeDrive { get; set; }
+        public bool confirmationCustomer { get; set; }
     
+        public virtual Loction Loction { get; set; }
+        public virtual Loction Loction1 { get; set; }
         public virtual User User { get; set; }
+        public virtual User User1 { get; set; }
     }
 }

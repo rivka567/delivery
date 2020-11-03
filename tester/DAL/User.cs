@@ -18,9 +18,10 @@ namespace DAL
         public User()
         {
             this.Drives = new HashSet<Drive>();
-            this.packageDescriptions = new HashSet<packageDescription>();
+            this.Drives1 = new HashSet<Drive>();
             this.Packages = new HashSet<Package>();
             this.Packages1 = new HashSet<Package>();
+            this.PackageDescriptions = new HashSet<PackageDescription>();
             this.RefusesPackages = new HashSet<RefusesPackage>();
         }
     
@@ -32,11 +33,13 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Drive> Drives { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<packageDescription> packageDescriptions { get; set; }
+        public virtual ICollection<Drive> Drives1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Package> Packages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Package> Packages1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PackageDescription> PackageDescriptions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RefusesPackage> RefusesPackages { get; set; }
     }
