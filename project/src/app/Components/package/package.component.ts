@@ -59,6 +59,7 @@ export class PackageComponent implements OnInit {
 
   addPackage()
   {
+
   this.submitted=true;
   this.newPackage=new Package(this.form.value.customerCode,null,this.from,this.fromLat,this.fromLng,this.to,this.toLat,this.toLng,
     this.form.value.travelDate,this.form.value.drivingTime,false,this.form.value.happinessLevel,this.form.value.describeHappiness,
@@ -70,6 +71,7 @@ export class PackageComponent implements OnInit {
      console.log("add sucssesful");},
     myErr => {console.log("from subscribe",this.newPackage); 
     console.log(myErr.message);});
+    this.packageSer.package=this.newPackage;
   }
 
   openDialog() {
