@@ -4,15 +4,19 @@
 <div class="driveslDiv" *ngFor="let drive of allDrives" > 
   <span>{{drive.fromLocationFormat}}</span><label>-----</label>
   <span>{{drive.toLocationFormat}} </span>
-   
+   <button mat-button (click)="moreDetails=!moreDetails;show()" >{{show()}}</button>
+   <div *ngIf="moreDetails">
+   <p >{{drive.drivingTime}}</p>
+   <p>{{drive.travelDate}}</p>
+  </div>
+  
   </div> 
 <button (click)="searchDriver()">Search Drive</button>
-
-
   <mat-icon style="cursor: pointer;" mat-dialog-close routerLink="/home">highlight_off </mat-icon>
 <div class="driveslDiv" *ngFor="let drive of driversFound" > 
   <span>{{drive.fromLocationFormat}}</span><label>-----</label>
-  <span>{{drive.toLocationFormat}} </span>
+  <span>{{drive.toLocationFormat}} </span><label>=========></label>
+  <button mat-button (click)="sendEmail(drive)">שלח מייל</button>
    
   </div> 
 </mat-dialog-content>

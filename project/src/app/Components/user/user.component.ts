@@ -16,6 +16,7 @@ export class UserComponent implements OnInit {
   form: FormGroup;
   submitted=false;
   newUser:User;
+  hide=true;
   listUser:Array<User>=[];
   constructor(private dialog:MatDialog,private router:Router, private activatedRoute:ActivatedRoute, private formBuilder: FormBuilder,
     public userSer: UserService,) { }
@@ -34,7 +35,7 @@ export class UserComponent implements OnInit {
 
   initForm() {
    this.form = this.formBuilder.group({
-      code:['',[Validators.required,Validators.minLength(3)]],
+    password:['',[Validators.required,Validators.minLength(3)]],
       name:['',[Validators.required,Validators.pattern("[א-ת-a-z-A-Z]*")]],
       telephone:['',[Validators.required,Validators.pattern("[0-9]*")]],
       gmail:['',[Validators.required,Validators.email]]

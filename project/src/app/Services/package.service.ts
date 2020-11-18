@@ -11,7 +11,7 @@ export class PackageService {
   URL: string = "http://localhost:59587/api/Package";
 
   constructor(private http: HttpClient) { }
-  package:Package;
+  currentPackage:Package;
 
   getPackageById(id:number): Observable<Package> {
     return this.http.get<Package>(this.URL + "/GetPackageById/" + id);

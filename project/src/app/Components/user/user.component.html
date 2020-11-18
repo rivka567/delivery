@@ -1,15 +1,20 @@
-<!-- <mat-dialog-content  class="mat-typography"> -->
+<mat-dialog-content  class="mat-typography">
     <form  *ngIf="form,newUser" [formGroup]="form" (ngSubmit)="addUser()">
       <div class="example-container">
-       <!-- <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon> -->
+       <mat-icon style="cursor: pointer;" mat-dialog-close routerLink="/" >highlight_off </mat-icon> 
           <br>
           <h1>פרטי השליח:</h1><br>
           
-            <mat-form-field class="inp">
+            <!-- <mat-form-field class="inp">
               <input matInput placeholder="סיסמא"  type="password" formControlName="code" name="code" >
-            </mat-form-field>
+            </mat-form-field> -->
             <br>
-    
+            <mat-form-field>
+            <input style="display:inline;" matInput class="inp" placeholder="password" [type]="hide ? 'password' : 'text'" formControlName="password">
+            <mat-icon style="display:inline;" (mouseover)="hide=!hide" (mouseout)="hide=!hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            <!-- <mat-hint *ngIf="!passwordInput.value">Enter your password</mat-hint> -->
+            </mat-form-field>
+            <br>            
             <mat-form-field>
               <input matInput type="text" placeholder="שם " class="inp"  formControlName="name"  name="name">
             </mat-form-field>
@@ -27,10 +32,10 @@
             <!-- TODO: לשנות שיראה כקישור -->
             <!-- <a  style="cursor: pointer;" (click)="openDialog()" mat-dialog-close>התחבר</a> -->
             
-            <button style="cursor: pointer;" type="submit" mat-button  [disabled]="!form.valid" type="submit" (click)="submitted=true" >
+            <button mat-dialog-close style="cursor: pointer;" type="submit" mat-button  [disabled]="!form.valid" type="submit" (click)="submitted=true" >
               Save
             </button>
           <br>        
       </div>
     </form>
-    <!-- </mat-dialog-content> -->
+</mat-dialog-content>

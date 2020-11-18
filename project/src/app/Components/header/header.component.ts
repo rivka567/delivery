@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
 import { DriveComponent } from '../drive/drive.component';
+import { ExistUserComponent } from '../exist-user/exist-user.component';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,15 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  openUserDialog() {
+    const dialogRef = this.dialog.open(ExistUserComponent,{ disableClose: true })
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+   this.router.navigate(['/main'])
+  }
+
   openDialog() {
     if(this.userSer.currentUser!=undefined)
     {
@@ -28,6 +38,13 @@ export class HeaderComponent implements OnInit {
   else
   alert("עליך להתחבר או להירשם לפני השימוש באתר")
   }
+logOut()
+{
+  
+  this.userSer.currentUser=undefined;
+  console.log(this.userSer.currentUser);
+  this.router.navigate(['/']);
+}
 
   checkLogin()
   {

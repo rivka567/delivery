@@ -4,6 +4,7 @@ import { User } from 'src/app/Classes/user';
 import { MatDialog } from '@angular/material/dialog';
 import { PackageComponent } from '../package/package.component';
 import { BuiltinType } from '@angular/compiler';
+import { UserComponent } from '../user/user.component';
 
 @Component({
   selector: 'app-exist-user',
@@ -15,14 +16,27 @@ export class ExistUserComponent implements OnInit {
   user:User = new User();
 
   constructor(private UserSer: UserService,private dialog:MatDialog) { }
-  visible:VisibilityState;
+  vis=false;
  
 
   ngOnInit(): void {
-    
+   console.log(this.vis);
   }
 
+  sendMail(mail:string)
+  {
+  
+  }
  
+
+  openDialog() {
+    const dialogRef = this.dialog.open(UserComponent,{ disableClose: true })
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  
+  }
+
   getUserById(id:string) {   
         this.UserSer.getUserById(id).subscribe(
         myData => { this.user = myData; 

@@ -41,6 +41,8 @@ section {
    border-radius: 30px;
    text-align: center;
    cursor: pointer;
+   position: relative;
+   top:70px;
 }
 .lbl
 {
@@ -54,6 +56,8 @@ cursor: pointer;
   font-size: 50px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   text-align: center;
+  position: relative;
+  top:40px;
 }
 // travelListDelivery
 .example-action-buttons {

@@ -34,12 +34,22 @@
     justify-content:space-around;
     width: 500px;
   }
-  .btn{
-      width:140px;
-      height:120px;
-      
-  }
+button{
+      width:100px;
+      height:40px;
+      top: 0px;
+     
+      }
+
+button:hover{
+  background-color:lightgrey;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+}
   .cnt{
     background-color: lavender;
     float: left;
   }
+.cnt2{
+  float: left;
+}

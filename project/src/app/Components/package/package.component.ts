@@ -11,6 +11,9 @@ import { UserService } from 'src/app/Services/user.service';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete/ngx-google-places-autocomplete.directive';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { TravelListComponent } from '../travel-list/travel-list.component';
+import { DatePipe, Time } from '@angular/common';
+import { disableDebugTools } from '@angular/platform-browser';
+import { cpuUsage } from 'process';
 
 @Component({
   selector: 'app-package',
@@ -21,19 +24,24 @@ export class PackageComponent implements OnInit {
   form: FormGroup;
   submitted=false;
   newPackage:Package;
+  minDate: Date;
+  
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
   // size:FormControl;
   constructor(private userSer:UserService,private activatedRoute:ActivatedRoute, private formBuilder: FormBuilder,private dialog:MatDialog, private packageSer:PackageService,
-    private router:Router) { }
+    private router:Router) { 
+    this.minDate = new Date();
+    }
   
   ngOnInit(): void {
    this.initForm();
-   
+
   }
+
+ 
   dateClass = (d: Date): MatCalendarCellCssClasses => {
     const date = d.getDate();
-
     // Highlight the 1st and 20th day of each month.
     return (date === 1 || date === 20) ? 'example-custom-date-class' : '';
   }
@@ -56,27 +64,42 @@ export class PackageComponent implements OnInit {
   checkSize(){
     alert(this.form.value.size)
   }
+  savePackageAtService()
+  {
+    debugger
+    this.newPackage=new Package(this.form.value.customerCode,null,this.from,this.fromLat,this.fromLng,this.to,this.toLat,this.toLng,
+      this.form.value.travelDate,this.form.value.drivingTime,false,this.form.value.happinessLevel,this.form.value.describeHappiness,
+      this.form.value.type,this.form.value.describePackage,this.form.value.size);
+      console.log(this.newPackage);
+      this.packageSer.currentPackage=this.newPackage;
+      debugger
+      console.log("from package component"+this.packageSer.currentPackage);
+      this.openDialog();
+  }
 
   addPackage()
   {
-
-  this.submitted=true;
+  debugger
+  alert("add package function");
   this.newPackage=new Package(this.form.value.customerCode,null,this.from,this.fromLat,this.fromLng,this.to,this.toLat,this.toLng,
     this.form.value.travelDate,this.form.value.drivingTime,false,this.form.value.happinessLevel,this.form.value.describeHappiness,
     this.form.value.type,this.form.value.describePackage,this.form.value.size);
   console.log(this.newPackage);
-  debugger
   this.packageSer.addPackage(this.newPackage).subscribe(
     myData => {console.log("from subscribe",this.newPackage);
-     console.log("add sucssesful");},
+     console.log("add sucssesful");
+    this.openDialog();
+    },
     myErr => {console.log("from subscribe",this.newPackage); 
-    console.log(myErr.message);});
-    this.packageSer.package=this.newPackage;
+    console.log(myErr.message);
+  });
+    this.packageSer.currentPackage=this.newPackage;
+    debugger
+    console.log("from package component"+this.packageSer.currentPackage);
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(TravelListComponent,{ disableClose: true })
-
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

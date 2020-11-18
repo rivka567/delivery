@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Drive } from '../Classes/drive';
+import { Package } from '../Classes/package';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Time } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,8 @@ export class DriveService {
   URL: string = "http://localhost:59587/api/Drive";
   // id:string;
   // name:string;
-  listDrive:Array<Drive>=[]
+  listDrive:Array<Drive>=[];
+  id=12;
   //משתנה שלפיו תוצג רשימה המתאימה לשליח ולמקום ממנו הוא נוסע ממילא:
   fromPlace:string
   toPlace:string
@@ -40,18 +43,20 @@ export class DriveService {
 //     }
 // }
 
-  getDriveById(id: number): Observable<Drive> {
-    return this.http.get<Drive>(this.URL + "/GetDriveById/" + id);
+  getDriveById(): Observable<Drive> {
+    debugger
+    return this.http.get<Drive>(this.URL + "/GetDriveById/" + this.id);
   }
-  
+
   getDrives(): Observable<Array<Drive>> {
     debugger
     return this.http.get<Array<Drive>>(this.URL + "/GetAllDrives");
   }
-
-  GetSpesificDrives():Observable<Array<Drive>> {
+//הפונקציה הזאת 
+  getSpesificDrives(myPackage:Package):Observable<Array<Drive>> {
     debugger
-    return this.http.get<Array<Drive>>(this.URL + "/GetSpesificDrives");
+    console.log( "from drive service"+myPackage);
+    return this.http.get<Array<Drive>>(this.URL + "/GetSpesificDrives?package="+myPackage);
   }
 
   addDrive(drive:Drive): Observable<string> {

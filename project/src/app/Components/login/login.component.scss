@@ -1,7 +1,4 @@
-section {
-    display: table;
-    margin: 20px;
-  }
+
   
   .example-label {
     font-size: 14px;
@@ -9,8 +6,11 @@ section {
   }
   
   .a-container{
-     font-size:x-large;;
+     font-size:xx-large;
       color: red;
+      position: relative;
+      top: 100px;
+      right:100px;
   }
   .example-button-row button {
     display: table-cell;
@@ -46,7 +46,9 @@ section {
   }
   .header
   {
-    font-size: 50px;
+    font-size:100px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
+    color:black;
+
   }

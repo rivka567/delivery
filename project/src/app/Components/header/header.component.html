@@ -26,7 +26,7 @@
 </div> -->
 <button (click)="checkLogin()" style="text-underline-position: inherit;" mat-button >ראשי</button>
 
-<button mat-button routerLink="/about">אודות</button>
+<button mat-button routerLink="/about"  >אודות</button>
 
 <button mat-button (click)="openDialog()" >הצטרף כשליח</button>
   
@@ -39,8 +39,14 @@
   </mat-menu> -->
   
   
-  <button *ngIf="userSer.currentUser==undefined" routerLink="/" mat-button  class="cnt">התחבר
+  <button *ngIf="userSer.currentUser==undefined" (click)="openUserDialog()" mat-button  class="cnt">התחבר
   <mat-icon>account_circle</mat-icon>
   </button>
-  <label style="float: left;" *ngIf="userSer.currentUser">{{userSer.currentUser.userName}}</label>
+  <label style="float: left;" *ngIf="userSer.currentUser"> hello {{userSer.currentUser.userName}}</label>
+  <br>
+  
+  <button  *ngIf="userSer.currentUser" mat-button  (click)="logOut()" class="cnt2" >יציאה
+  </button>
+
+
  
