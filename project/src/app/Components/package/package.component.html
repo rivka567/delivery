@@ -52,12 +52,12 @@
         <input matInput type="text" placeholder="קוד לקוח" class="inp" readonly formControlName="customerCode" name="customerCode">
       </mat-form-field>
       <br> 
-      <mat-form-field>
+      <mat-form-field >
         <input matInput placeholder="מקום מוצא" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)"
         formControlName="fromLocation" name="fromLocation"/>
       </mat-form-field>
       <br>
-      <mat-form-field>
+      <mat-form-field >
         <input matInput placeholder="מקום יעד" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)"
         formControlName="toLocation" name="toLocation"/>
       </mat-form-field>
@@ -101,8 +101,8 @@
       <br>
 
       <!-- TODO: לשנות שיראה כקישור -->
-      <button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid" type="submit"
-        (click)="submitted=true " > המשך </button>
+      <button mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid" type="submit"
+        (click)="submitted=true " mat-dialog-close> המשך </button>
       <br>
     </div>
   </form>

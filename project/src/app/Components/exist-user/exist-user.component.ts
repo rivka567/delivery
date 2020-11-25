@@ -25,7 +25,7 @@ export class ExistUserComponent implements OnInit {
 
   sendMail(mail:string)
   {
-  
+  this.UserSer.sendEmail( mail,"password","your password"+this.UserSer.currentUser.userCode);
   }
  
 

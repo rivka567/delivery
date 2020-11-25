@@ -54,7 +54,7 @@ export class PackageComponent implements OnInit {
     fromLocation:['',Validators.required],
     toLocation:['',Validators.required],
     drivingTime:['',Validators.required],
-    travelDate:[''],
+    travelDate:['',Validators.required],
     describeHappiness:[''],
     happinessLevel:[''],
     describePackage:[''],

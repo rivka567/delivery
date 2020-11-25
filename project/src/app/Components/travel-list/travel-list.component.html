@@ -1,22 +1,24 @@
 
 <mat-dialog-content class="mat-typography">
   <mat-icon style="cursor: pointer;" mat-dialog-close routerLink="/home">highlight_off </mat-icon>
-<div class="driveslDiv" *ngFor="let drive of allDrives" > 
-  <span>{{drive.fromLocationFormat}}</span><label>-----</label>
+<div> 
+  <div  *ngFor="let drive of allDrives" >
+  <span >{{drive.fromLocationFormat}}</span><label>-----</label>
   <span>{{drive.toLocationFormat}} </span>
-   <button mat-button (click)="moreDetails=!moreDetails;show()" >{{show()}}</button>
-   <div *ngIf="moreDetails">
-   <p >{{drive.drivingTime}}</p>
-   <p>{{drive.travelDate}}</p>
+  <!-- <button mat-button (click)="moreDetails=!moreDetails" >{{show}}</button> 
+  <div *ngIf="moreDetails" >
+    <p >{{drive.drivingTime}}</p>
+    <p >{{drive.travelDate}}</p>
+  </div> -->
   </div>
-  
-  </div> 
-<button (click)="searchDriver()">Search Drive</button>
+
+</div>
+<button (click)="searchDriver()">נסיעות מותאמות</button>
   <mat-icon style="cursor: pointer;" mat-dialog-close routerLink="/home">highlight_off </mat-icon>
 <div class="driveslDiv" *ngFor="let drive of driversFound" > 
   <span>{{drive.fromLocationFormat}}</span><label>-----</label>
-  <span>{{drive.toLocationFormat}} </span><label>=========></label>
+  <span>{{drive.toLocationFormat}} </span><label>-----</label>
+  <span>{{drive.driverCode}} </span>
   <button mat-button (click)="sendEmail(drive)">שלח מייל</button>
-   
   </div> 
 </mat-dialog-content>

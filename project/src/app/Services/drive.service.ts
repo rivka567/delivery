@@ -56,7 +56,7 @@ export class DriveService {
   getSpesificDrives(myPackage:Package):Observable<Array<Drive>> {
     debugger
     console.log( "from drive service"+myPackage);
-    return this.http.get<Array<Drive>>(this.URL + "/GetSpesificDrives?package="+myPackage);
+    return this.http.post<Array<Drive>>(this.URL + "/GetSpesificDrives",myPackage);
   }
 
   addDrive(drive:Drive): Observable<string> {

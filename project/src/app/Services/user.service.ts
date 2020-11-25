@@ -27,13 +27,13 @@ export class UserService {
     return this.http.post<string>(this.URL+"/AddUser",user);
   }
 
-  // sendEmail(contactAddress:string,subject:string,body:string): Observable<string> {
-  //   debugger
-  //   return this.http.get<string>(this.URL+"/SendEmail&contactAddress="+contactAddress+"&subject="+subject+"&body="+body);
-  // }
-
-  sendEmail(sender:string, contactAddress:string,subject:string,body:string): Observable<string> {
-    debugger
-    return this.http.get<string>(this.URL+"/SendEmail?sender="+sender+"&contactAddress="+contactAddress+"&subject="+subject+"&body="+body);
+  sendEmail( contactAddress:string,subject:string,body:string): Observable<string> {
+ 
+    return this.http.get<string>(this.URL+"/SendEmail/"+contactAddress+"/"+subject+"/"+body);
   }
+
+  // sendEmail(sender:string, contactAddress:string,subject:string,body:string): Observable<string> {
+  //   debugger
+  //   return this.http.get<string>(this.URL+"/SendEmail?sender="+sender+"&contactAddress="+contactAddress+"&subject="+subject+"&body="+body);
+  // }
 }

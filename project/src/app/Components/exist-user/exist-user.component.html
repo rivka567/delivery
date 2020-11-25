@@ -5,15 +5,10 @@
     <div *ngIf="!user.userName&&vis==false">
       <br> 
       <input  matInput placeholder="הקש סיסמא" #id >
-    
       <button class="btn" mat-button (click)="getUserById(id.value)" >חפש</button>
       <br>
-      <a  class="a-container" (click)="vis=true" >
-        שחכתי סיסמא
-      </a>
-      <a mat-dialog-close class="b-container" (click)="openDialog()">
-        משתמש חדש
-      </a>
+      <a  class="a-container" (click)="vis=true" >שחכתי סיסמא </a>
+      <a mat-dialog-close class="b-container" (click)="openDialog()"> משתמש חדש</a>
     </div>
       <div *ngIf="vis==true">
         <input  matInput placeholder="הזן כתובת מייל" #mail >
