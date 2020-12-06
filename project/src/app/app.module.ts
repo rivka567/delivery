@@ -35,6 +35,8 @@ import { LoginComponent } from './Components/login/login.component';
 import { TravelListComponent } from './Components/travel-list/travel-list.component';
 import { PackageListForDeliveryComponent } from './Components/package-list-for-delivery/package-list-for-delivery.component';
 
+
+
 const appRoutes: Routes =
 [
 
@@ -90,6 +92,7 @@ const appRoutes: Routes =
     MatRadioModule,
     GooglePlaceModule,
     GMapModule,
+    
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCxE2_heEzD9OmVoUK_MVDNKmHwLjs9ct0&sensor=true',
       libraries:['places','geometry','drawing']

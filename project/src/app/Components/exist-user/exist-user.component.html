@@ -1,7 +1,7 @@
 
 <mat-dialog-content class="mat-typography">
   <div > 
-    <mat-icon style="cursor: pointer;" mat-dialog-close routerLink="/">highlight_off </mat-icon> 
+    <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon> 
     <div *ngIf="!user.userName&&vis==false">
       <br> 
       <input  matInput placeholder="הקש סיסמא" #id >
@@ -19,7 +19,7 @@
         <p> {{user.userName}}</p>
         <p> {{user.userPhone}}</p>
         <p> {{user.userMail}}</p>
-        <a mat-dialog-close routerLink="/home" class="btn" >המשך</a>
+        <a mat-dialog-close class="btn" >המשך</a>
         </div> 
       </div>
 </mat-dialog-content>

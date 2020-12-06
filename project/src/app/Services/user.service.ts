@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../Classes/user';
 import { Observable } from 'rxjs';
@@ -10,12 +10,15 @@ export class UserService {
 
   URL: string = "http://localhost:59587/api/User";
   currentUser: User;
+  delivery:User;
+  currentComponent:Component;
 
   constructor(private http: HttpClient) { 
   
   }
 
   getUserById(id:string): Observable<User> {
+    debugger
     return this.http.get<User>(this.URL + "/GetUserById/" + id);
   }
   getUsers(): Observable<Array<User>> {
@@ -28,8 +31,8 @@ export class UserService {
   }
 
   sendEmail( contactAddress:string,subject:string,body:string): Observable<string> {
- 
-    return this.http.get<string>(this.URL+"/SendEmail/"+contactAddress+"/"+subject+"/"+body);
+   debugger
+    return this.http.get<string>(this.URL+"/SendEmail?contactAddress="+contactAddress+"&subject="+subject+"&body="+body);
   }
 
   // sendEmail(sender:string, contactAddress:string,subject:string,body:string): Observable<string> {

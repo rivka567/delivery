@@ -24,29 +24,29 @@
     <button mat-menu-item>Item 2</button>
   </mat-menu>
 </div> -->
-<button (click)="checkLogin()" style="text-underline-position: inherit;" mat-button >ראשי</button>
+<button routerLink="/" style="text-underline-position: inherit;" mat-button >tenDrive</button>
 
-<button mat-button routerLink="/about"  >אודות</button>
 
-<button mat-button (click)="openDialog()" >הצטרף כשליח</button>
+
+<!-- <button mat-button (click)="openDialog()" >הצטרף כשליח</button>
   
-<button mat-button  routerLink="/travel-list">בצע שליחות</button>
+<button mat-button  routerLink="/travel-list">בצע שליחות</button> -->
 
   <!-- <button mat-button [matMenuTriggerFor]="beforeMenu">בצע שליחות</button> -->
   <!-- <mat-menu #beforeMenu="matMenu" xPosition="before">
     <button mat-menu-item>Item 1</button>
     <button mat-menu-item>Item 2</button>
   </mat-menu> -->
-  
-  
-  <button *ngIf="userSer.currentUser==undefined" (click)="openUserDialog()" mat-button  class="cnt">התחבר
+  <button mat-button routerLink="/about" class="btn" >אודות</button>
+  <button *ngIf="userSer.currentUser==undefined" (click)="openUserDialog()" mat-button  class="btn">התחבר
   <mat-icon>account_circle</mat-icon>
   </button>
   <label style="float: left;" *ngIf="userSer.currentUser"> hello {{userSer.currentUser.userName}}</label>
   <br>
-  
+
+<!--   
   <button  *ngIf="userSer.currentUser" mat-button  (click)="logOut()" class="cnt2" >יציאה
-  </button>
+  </button> -->
 
 
  

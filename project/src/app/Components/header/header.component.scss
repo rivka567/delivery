@@ -46,9 +46,11 @@ button:hover{
   text-decoration-line: underline;
   text-decoration-style: solid;
 }
-  .cnt{
+button.btn {
     background-color: lavender;
     float: left;
+    display: inline;
+    
   }
 .cnt2{
   float: left;

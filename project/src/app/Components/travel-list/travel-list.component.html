@@ -1,24 +1,52 @@
 
-<mat-dialog-content class="mat-typography">
-  <mat-icon style="cursor: pointer;" mat-dialog-close routerLink="/home">highlight_off </mat-icon>
 <div> 
-  <div  *ngFor="let drive of allDrives" >
-  <span >{{drive.fromLocationFormat}}</span><label>-----</label>
-  <span>{{drive.toLocationFormat}} </span>
-  <!-- <button mat-button (click)="moreDetails=!moreDetails" >{{show}}</button> 
-  <div *ngIf="moreDetails" >
-    <p >{{drive.drivingTime}}</p>
-    <p >{{drive.travelDate}}</p>
-  </div> -->
-  </div>
+  <h1> נסיעות</h1>
+<button class="btn" mat-button (click)="openPackageDialog()"> צור משלוח</button>
+<br><br>
+
+<div>
+  <input matInput  [min]="minDate" [matDatepicker]="picker" placeholder="תאריך" #date>
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
+  <mat-datepicker  [dateClass]="dateClass" #picker></mat-datepicker>
+
+  <input matInput type="text" placeholder="מוצא" ngx-google-places-autocomplete 
+   #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)" #fromL>
+
+  <input matInput type="text" placeholder="יעד" ngx-google-places-autocomplete  
+  #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)" #toL>
+
+  <input matInput type="time" placeholder="שעת יציאה" #time>
+
+  <!-- <button mat-button (click)="searchSpesificDrives(date.value,fromL.value,toL.value,time.value)">חפש תוצאות</button> -->
+  <button mat-button (click)="searchDriver(date.value,time.value)">חפש תוצאות</button>
+
 
 </div>
-<button (click)="searchDriver()">נסיעות מותאמות</button>
-  <mat-icon style="cursor: pointer;" mat-dialog-close routerLink="/home">highlight_off </mat-icon>
-<div class="driveslDiv" *ngFor="let drive of driversFound" > 
-  <span>{{drive.fromLocationFormat}}</span><label>-----</label>
-  <span>{{drive.toLocationFormat}} </span><label>-----</label>
-  <span>{{drive.driverCode}} </span>
-  <button mat-button (click)="sendEmail(drive)">שלח מייל</button>
-  </div> 
-</mat-dialog-content>
+
+<br>
+<table >
+  <th> תאריך </th>
+  <th> מוצא </th>
+  <th> יעד </th>
+  <th> שעת יציאה </th>
+  <th> מרחק </th>
+  <th> <mat-icon >email</mat-icon> </th>
+  <th></th>
+  <tr *ngFor="let drive of allDrives">
+<td> {{drive.travelDate.date}}</td>
+<td> {{drive.fromLocationFormat}}</td>
+<td> {{drive.toLocationFormat}}</td>
+<td> {{drive.drivingTime}}</td>
+<td>מרחק</td>
+<td>
+  <button mat-button (click)="sendEmail(drive)" >שלח מייל</button>
+</td>
+<td><mat-icon (click)="showMore(drive)" >expand_more</mat-icon></td>
+<td >{{drive.driverCode}}</td>
+  </tr>
+   
+</table>
+
+</div>
+
+ 

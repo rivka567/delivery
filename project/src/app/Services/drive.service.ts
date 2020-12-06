@@ -53,10 +53,9 @@ export class DriveService {
     return this.http.get<Array<Drive>>(this.URL + "/GetAllDrives");
   }
 //הפונקציה הזאת 
-  getSpesificDrives(myPackage:Package):Observable<Array<Drive>> {
+  getSpesificDrives(date:Date,time:Time):Observable<Array<Drive>> {
     debugger
-    console.log( "from drive service"+myPackage);
-    return this.http.post<Array<Drive>>(this.URL + "/GetSpesificDrives",myPackage);
+    return this.http.get<Array<Drive>>(this.URL + "/GetSpesificDrives?date="+date+"&time="+time);
   }
 
   addDrive(drive:Drive): Observable<string> {

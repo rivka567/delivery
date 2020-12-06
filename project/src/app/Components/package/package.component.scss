@@ -18,7 +18,7 @@ section {
 }
 .mat-typography {
   height: 600px;
-  width: 550px;
+  width: 850px;
   background-color: white;
   border-color: grey;
 }
@@ -49,4 +49,8 @@ height: 30px;
   background-color: hotpink;
 }
 example-button-container{  width: 100px !important;
+}
+.example-container{
+  width: 50%;
+  height: 100%;
 }
