@@ -5,11 +5,11 @@ export class Package {
       
        public userCustomerCode:string="",
        public userDeliveryCode:string="",
-       public fromLocationFormat:string="",
+       public fromLocationFormat:string,
         public fromLocationLat:number=0,
         public fromLocationLng:number=0,
         // public toLocatioId:number=0,
-        public toLocationFormat:string="",
+        public toLocationFormat:string,
         public toLocationLat:number=0,
         public toLocationLng:number=0,
        public travelDate:Date=null,

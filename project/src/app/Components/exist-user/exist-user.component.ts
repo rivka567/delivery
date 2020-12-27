@@ -23,10 +23,10 @@ export class ExistUserComponent implements OnInit {
    console.log(this.vis);
   }
 
-  sendMail(mail:string)
-  {
-  this.UserSer.sendEmail( mail,"password","your password"+this.UserSer.currentUser.userCode);
-  }
+  // sendMail(mail:string)
+  // {
+  // this.UserSer.sendEmail( mail,"password","your password"+this.UserSer.currentUser.userCode);
+  // }
  
 
   openDialog() {

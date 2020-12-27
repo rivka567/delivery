@@ -14,6 +14,9 @@ import { TravelListComponent } from '../travel-list/travel-list.component';
 import { DatePipe, Time } from '@angular/common';
 import { disableDebugTools } from '@angular/platform-browser';
 import { cpuUsage } from 'process';
+import { type } from 'os';
+import { types } from 'util';
+import { DriveService } from 'src/app/Services/drive.service';
 
 @Component({
   selector: 'app-package',
@@ -29,12 +32,13 @@ export class PackageComponent implements OnInit {
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
   // size:FormControl;
-  constructor(private userSer:UserService,private activatedRoute:ActivatedRoute, private formBuilder: FormBuilder,private dialog:MatDialog, private packageSer:PackageService,
-    private router:Router) { 
-    this.minDate = new Date();
+  constructor(private userSer:UserService,private activatedRoute:ActivatedRoute, private formBuilder: FormBuilder,private dialog:MatDialog, 
+    private packageSer:PackageService, private driveSer:DriveService,private router:Router) { 
+  
     }
   
   ngOnInit(): void {
+  this.minDate = new Date();
    this.initForm();
   }
 
@@ -50,19 +54,21 @@ export class PackageComponent implements OnInit {
    this.form = this.formBuilder.group({
     size:['',Validators.required],
     customerCode:[this.userSer.currentUser.userCode||'',Validators.required],
-    fromLocation:['',Validators.required],
-    toLocation:['',Validators.required],
+    fromLocation:[this.driveSer.from||'',Validators.required],
+    toLocation:[this.driveSer.to||'',Validators.required],
     drivingTime:['',Validators.required],
-    travelDate:['',Validators.required],
+    travelDate:[new Date(),Validators.required],
     describeHappiness:[''],
     happinessLevel:[''],
     describePackage:[''],
     type:['',Validators.required],
     })
   }
+  
   checkSize(){
     alert(this.form.value.size)
   }
+
   savePackageAtService()
   {
     debugger
@@ -73,7 +79,6 @@ export class PackageComponent implements OnInit {
       this.packageSer.currentPackage=this.newPackage;
       debugger
       console.log("from package component"+this.packageSer.currentPackage);
-      this.openDialog();
   }
 
   addPackage()
@@ -87,7 +92,6 @@ export class PackageComponent implements OnInit {
   this.packageSer.addPackage(this.newPackage).subscribe(
     myData => {console.log("from subscribe",this.newPackage);
      console.log("add sucssesful");
-    this.openDialog();
     },
     myErr => {console.log("from subscribe",this.newPackage); 
     console.log(myErr.message);
@@ -97,13 +101,6 @@ export class PackageComponent implements OnInit {
     console.log("from package component"+this.packageSer.currentPackage);
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(TravelListComponent,{ disableClose: true })
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-   this.router.navigate(['/main'])
-  }
 
   from="";
   fromLat=0;

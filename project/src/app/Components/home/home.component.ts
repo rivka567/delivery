@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { Package } from 'src/app/Classes/package';
 import { DriveService } from 'src/app/Services/drive.service';
 import {MatAccordion} from '@angular/material/expansion';
-
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-home',
@@ -28,15 +28,14 @@ export class HomeComponent implements OnInit {
   t="tel aviv"
   // travelListForDelivery 
  
-  constructor(public dialog: MatDialog, private userSer:UserService,private router:Router,public driveSer:DriveService) { }
+  constructor(public dialog: MatDialog, private userSer:UserService,private router:Router,public driveSer:DriveService) {}
+
   //כשרוצים לגשת לאלמנט בhtml ע"י id
 // @ViewChild('id') id:ElementRef<HTMLElement>
   ngOnInit(): void {
       //כשרוצים לגשת לאלמנט בhtml ע"י id
    // this.id.nativeElement.
-   this.travelList=[
-    //  new Package('jj','jkk','ooo','13-12-1999')
-   ]
+  
   }
   openDialog() {
     const dialogRef = this.dialog.open(PackageComponent,{ disableClose: true })
@@ -61,7 +60,7 @@ export class HomeComponent implements OnInit {
    }
   // travelListForDelivery  
 
-  SendMail(contactAddress:string,subject:string,body:string)
+  SendMail(contactAddress:string,subject:string,body:Package)
   {
     debugger
   this.userSer.sendEmail(contactAddress,subject,body).subscribe(data=>alert(data));

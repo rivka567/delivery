@@ -74,34 +74,11 @@ a:boolean
   this.form.value.reminder,this.form.value.describeDrive);
  this.driveSer.addDrive(this.newDrive).subscribe(
   myData => { console.log(myData);
+  this.driveSer.allDrives.push(this.newDrive);
 },
   myErr => { console.log(myErr.message); });
   // const dialogRef = this.dialog.open(TravelListForDeliveryComponent);
   }
-
-
-  //לבדוק שהלולאה עוברת על המערך הנכון
-  createDriveList()
-  {
-    for(var i=0;i<this.listDrive.length;i++)
-      {
-     
-      }
-  }
-  checkValid(){
-    debugger
-  var x=this.form.errors;
-   console.log(x);
-   
-  }
-
-  // openDialog() {
-  //   const dialogRef = this.dialog.open(ExistUserComponent);
-    
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log(`Dialog result: ${result}`);
-  //   });
-  // }
 
     from="";
     fromLat=0;

@@ -28,20 +28,22 @@
 
 
 
-<!-- <button mat-button (click)="openDialog()" >הצטרף כשליח</button>
+ <button mat-button (click)="openDialog()" >הצטרף כשליח</button>
   
-<button mat-button  routerLink="/travel-list">בצע שליחות</button> -->
-
-  <!-- <button mat-button [matMenuTriggerFor]="beforeMenu">בצע שליחות</button> -->
-  <!-- <mat-menu #beforeMenu="matMenu" xPosition="before">
-    <button mat-menu-item>Item 1</button>
-    <button mat-menu-item>Item 2</button>
-  </mat-menu> -->
-  <button mat-button routerLink="/about" class="btn" >אודות</button>
-  <button *ngIf="userSer.currentUser==undefined" (click)="openUserDialog()" mat-button  class="btn">התחבר
+<!--<button mat-button  routerLink="/travel-list">בצע שליחות</button> -->
+<button *ngIf="userSer.currentUser==undefined" (click)="openUserDialog()" mat-button  class="btn">התחבר
   <mat-icon>account_circle</mat-icon>
   </button>
-  <label style="float: left;" *ngIf="userSer.currentUser"> hello {{userSer.currentUser.userName}}</label>
+<div style="float: left;" *ngIf="userSer.currentUser">
+  <button mat-button [matMenuTriggerFor]="beforeMenu">hello {{userSer.currentUser.userName}}</button> 
+   <mat-menu #beforeMenu="matMenu" xPosition="before">
+    <button mat-menu-item>כניסה לאזור האישי</button>
+    <button mat-menu-item (click)="userSer.currentUser=undefined" >התנתק</button>
+  </mat-menu> 
+</div>
+  <button mat-button routerLink="/about" class="btn" >אודות</button>
+ 
+  <!-- <label style="float: left;" *ngIf="userSer.currentUser"> hello {{userSer.currentUser.userName}}</label> -->
   <br>
 
 <!--   

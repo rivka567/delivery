@@ -19,7 +19,8 @@ export class Drive {
             public howLongBeforeReminder:Time,
             public transportation:string="",
             public describeDrive:string="",
-            public confirmationCustomer:boolean=false
+            public confirmationCustomer:boolean=false,
+            public timeInDate?:Date
 
         ) { }
 }

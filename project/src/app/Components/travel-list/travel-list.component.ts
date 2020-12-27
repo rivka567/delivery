@@ -16,6 +16,11 @@ import { PackageComponent } from '../package/package.component';
 import { cpuUsage } from 'process';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 import { Time } from '@angular/common';
+import { ElementRef } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { DateAdapter } from '@angular/material/core';
+import { MyPackagesComponent } from 'src/app/Components/my-packages/my-packages.component';
+
 
 @Component({
   selector: 'app-travel-list',
@@ -24,36 +29,36 @@ import { Time } from '@angular/common';
 })
 export class TravelListComponent implements OnInit {
 
-  allDrives: Array<Drive>;
+  options:FormGroup;
   matchDrives:Array<Drive>;
   moreDetails=false;
   len:number;
   myUser:User;
   minDate:Date;
-
+  driversToSearch: Drive[];
+  driversFound: Drive[] = new Array();
   from="";
   fromLat=0;
   fromLng=0;
   to="";
   toLat=0;
   toLng=0;
-
+  date:'dd-MM-yyyy';
+  hideme=[];
+  panelOpenState = false;
+  time1:any;
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
   constructor(private driveSer: DriveService, private packageSer: PackageService,private userSer:UserService,
-  private dialog:MatDialog,private router:Router) { }
+  private dialog:MatDialog,private router:Router,private dateAdapter: DateAdapter<Date>) { 
+   // this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
 
-  ngOnInit(): void {
-   this.driversFound = new Array();
-   this.getAllDrives();
-   this.minDate=new Date();
   }
 
-showMore(drive:Drive)
-{
-
-}
-
+  ngOnInit(): void {
+   this.minDate=new Date();
+   this.getAllDrives();
+  }
 
 dateClass = (d: Date): MatCalendarCellCssClasses => {
   const date = d.getDate();
@@ -61,58 +66,28 @@ dateClass = (d: Date): MatCalendarCellCssClasses => {
   return (date === 1 || date === 20) ? 'example-custom-date-class' : '';
 }
 
-searchSpesificDrives(date:Date,time:Time)
-{
-
-  this.driveSer.getSpesificDrives(date,time).subscribe(
-  myData => {
-    this.matchDrives = myData
-    console.log(this.matchDrives)
-  },
-  myErr => {
-    console.log("from subscribe");
-    console.log(myErr.message);
-  });
-
-}
-
-login()
-{ 
-    const dialogRef = this.dialog.open(ExistUserComponent,{ disableClose: true })
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-}
-
 getAllDrives() {
-  this.driveSer.getDrives().subscribe(
+  this.driveSer.getAllDrives().subscribe(
     myData => {
-      this.allDrives = myData
-      console.log(this.allDrives)
+      this.driversFound=myData;
+      //תמיד נשאר כאן כל הנסיעות
+      this.driveSer.allDrives=myData;
+      this.len=this.driversFound.length;
     },
     myErr => {
       console.log("from subscribe");
       console.log(myErr.message);
     });
-  debugger
-
+ 
 }
-
-  getDriveById() {   
-    this.driveSer.getDriveById().subscribe(
-    myData => { console.log("add succseful");
-    },
-    myErr => { alert(myErr.message); });
-  }
 
  getUserById(drive:Drive)
  { 
 
-  debugger
     console.log(drive);
     this.userSer.getUserById(drive.driverCode).subscribe(
       myData => {
-        this.myUser = myData;
+        this.userSer.myDriver = myData;
         console.log(this.userSer.currentUser);
       },
       myErr => {
@@ -123,72 +98,104 @@ getAllDrives() {
   }
 
   openPackageDialog() {
+debugger
     if(this.userSer.currentUser==undefined)
     {
-      this.login();
-      // this.router.navigate(['/travel-list']);
+      const dialogRef = this.dialog.open(ExistUserComponent,{ disableClose: true })
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+        const dialogRef2 = this.dialog.open(PackageComponent,{ disableClose: true })
+        dialogRef2.afterClosed().subscribe(result => {
+          console.log(`Dialog result: ${result}`);
+        });
+      });
+     
     }
-    debugger
-    console.log(this.userSer.currentUser);
-    if(this.userSer.currentUser!=undefined)
+    else if(this.userSer.currentUser)
     {
-    const dialogRef = this.dialog.open(PackageComponent,{ disableClose: true })
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+      const dialogRef = this.dialog.open(PackageComponent,{ disableClose: true })
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
     }
+
   }
 
   sendEmail(drive:Drive)
   {
-    if(this.userSer.currentUser==undefined)
-    {
-      this.login();
-      // this.router.navigate(['/travel-list']);
-    }
-    debugger
-    if(this.userSer.currentUser!=undefined){
-    this.getUserById(drive);
-    this.userSer.sendEmail(this.myUser.userMail,"בקשת משלוח",this.userSer.currentUser.userName+"  מעוניין בנסיעה שלך").
-    subscribe(data=>alert(data));
+    // if(this.userSer.currentUser==undefined)
+    //   this.login();
+    // debugger
+    // if(this.userSer.currentUser!=undefined){
+    // this.getUserById(drive);
+    // this.userSer.sendEmail(this.myUser.userMail,"בקשת משלוח",this.userSer.currentUser.userName+"  מעוניין בנסיעה שלך").
+    // subscribe(data=>alert(data));
+    // }
+    this.getUserById(drive)
+    const dialogRef = this.dialog.open(MyPackagesComponent,{ disableClose: true })
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    })
   }
-  }
-  driversToSearch: Drive[];
-  driversFound: Drive[];
 
-  searchDriver(date:Date,time:Time) {
-    debugger
-    this.searchSpesificDrives(date,time);
-    if(this.matchDrives)
-    this.driversFound=this.matchDrives;
-    this.driversToSearch = this.allDrives.map(x => Object.assign({}, x))
-    for (let x = 0; x < this.driversToSearch.length; x++) {
-      let distanceLocation = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(this.driversToSearch[x].toLocationLat, this.driversToSearch[x].toLocationLng), new google.maps.LatLng(this.toLat, this.toLng));
-      console.log(this.driversToSearch[x].toLocationLat+"  "+this.driversToSearch[x].toLocationLng+" "+distanceLocation)
-      if (distanceLocation <4000) {
-        let distance = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(this.driversToSearch[x].fromLocationLat, this.driversToSearch[x].fromLocationLng), new google.maps.LatLng(this.fromLat, this.fromLng));
-        if (distance <4000) {
-          // const index=this.serviceP.listPerson.indexOf(this.serviceP.listPerson[x]);
-          this.driversFound.push(this.driversToSearch[x]);
-          debugger
-        }
 
-      }
-    }
-    this.allDrives=this.driversFound;
+filterDrives(fromDate:string,toDate:string,from:Address,to:Address,time:string) {
+  debugger
+  this.driversFound=this.driveSer.allDrives;
+  if(fromDate)
+  {
+    this.driversFound=this.driversFound.filter(d=>new Date(d.travelDate)>= new Date(fromDate));
   }
+  if(toDate)
+  {
+    this.driversFound=this.driversFound.filter(d=>new Date(d.travelDate)<=new Date(toDate));
+
+  }
+  if(from)
+  {
+   let aa=new Address()
+   this.driveSer.from=from;
+    this.driversFound=  this.driversFound.filter(f=> 4000>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f.fromLocationLat, f.fromLocationLng), new google.maps.LatLng(this.fromLat, this.fromLng)))
+  }
+  if(to)
+  { 
+  // this.driveSer.get123().subscribe(mydate=>{this.driveSer.aa=mydate
+  //   console.log(this.driveSer.aa);
+  //   })
+    this.driveSer.to=to;
+    this.driversFound=  this.driversFound.filter(f=> 4000>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f. toLocationLat, f.toLocationLng), new google.maps.LatLng(this.toLat,this.toLng)))
+
+  }
+if(time)
+{
+ // let t=new timeStamp("10:30")
+ // alert(t);
+ let h=time.substring(0,2)
+ let m=time.substring(3,5)
+let t=new Date(1,1,2020,parseInt(h),parseInt(m),0,0)
+ 
+  this.driversFound=  this.driversFound.filter(f=> (new Date(f.timeInDate).getHours() > t.getHours()-1||
+   (new Date(f.timeInDate).getHours() == t.getHours() &&new Date(f.timeInDate).getMinutes()>=t.getMinutes()))
+  && (new Date(f.timeInDate).getHours()< t.getHours()+1||
+  (new Date(f.timeInDate).getHours() == t.getHours() &&new Date(f.timeInDate).getMinutes()>=t.getMinutes())))
+}
+this.len=this.driversFound.length;
+}
 
   
 public handleAddressFromChange(address: Address) {
-  debugger
-  this.from=address.formatted_address;
+debugger
+//console.log(address);
+
+this.from=address.formatted_address;
   this.fromLat=address.geometry.location.lat();
   this.fromLng=address.geometry.location.lng();
   console.log(address.formatted_address +" "+address.geometry.location.lat()+ " "+address.geometry.location.lng())
-// Do some stuff
+  // Do some stuff
 }
 public handleAddressToChange(address: Address) {
-debugger
+  debugger
+  console.log(address)
 this.to=address.formatted_address;
 this.toLat=address.geometry.location.lat();
 this.toLng=address.geometry.location.lng();
@@ -205,6 +212,28 @@ destination: { lat: 6.73906232, lng: 80.15640132 },
 renderOptions: { polylineOptions: { strokeColor: '#0f0' } },
 }];
 
+
+sortBy(value:any)
+{
+  debugger
+if(value=='from' && this.fromLat!=null &&this.fromLng!=null)
+{
+  this.driversFound.sort((a, b) => {
+    console.log("a",google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.fromLocationLat, a.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng) ))
+    console.log("b", google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.fromLocationLng, b.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng)))
+    console.log("a-b=" ,google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.fromLocationLat, a.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng) )-google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.fromLocationLat, b.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng)))
+    return  google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.fromLocationLat, a.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng) )-google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.fromLocationLat, b.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng))})
+}
+if(value=='to' && this.toLng!=null &&this.toLat!=null)
+{
+  this.driversFound.sort((a, b) => {
+   return  google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.toLocationLat, a.toLocationLng), new google.maps.LatLng(this.toLat,this.toLng) )-google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.toLocationLat, b.toLocationLng), new google.maps.LatLng(this.toLat,this.toLng))})
+}
+if(value=='time')
+{
+  
+}
+}
 }
 
 

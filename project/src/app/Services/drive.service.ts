@@ -4,30 +4,39 @@ import { Package } from '../Classes/package';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Time } from '@angular/common';
+import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DriveService {
   URL: string = "http://localhost:59587/api/Drive";
-  // id:string;
-  // name:string;
   listDrive:Array<Drive>=[];
-  id=12;
-  //משתנה שלפיו תוצג רשימה המתאימה לשליח ולמקום ממנו הוא נוסע ממילא:
-  fromPlace:string
-  toPlace:string
+  from:Address;
+  to:Address;
+  fromDate:Date;
+  toDate:Date;
+  allDrives: Array<Drive>;
+  date=new Date();
   constructor(private http: HttpClient) { }
+  //URL1:string="https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location="
+  URL1:string="https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location=35.21371,31.768319"
 
   //????????????
   // getIdFromUser(id:string):Observable<User>{
   //   return this.;
   // }
 
-
+aa:any;
   getDrivesList()
   {
     return this.listDrive;
+  }
+
+  get123():Observable<any>
+  {
+    debugger
+  return this.http.get<any>(this.URL1)
   }
 
 
@@ -43,24 +52,13 @@ export class DriveService {
 //     }
 // }
 
-  getDriveById(): Observable<Drive> {
-    debugger
-    return this.http.get<Drive>(this.URL + "/GetDriveById/" + this.id);
-  }
 
-  getDrives(): Observable<Array<Drive>> {
-    debugger
+  getAllDrives(): Observable<Array<Drive>> {
     return this.http.get<Array<Drive>>(this.URL + "/GetAllDrives");
-  }
-//הפונקציה הזאת 
-  getSpesificDrives(date:Date,time:Time):Observable<Array<Drive>> {
-    debugger
-    return this.http.get<Array<Drive>>(this.URL + "/GetSpesificDrives?date="+date+"&time="+time);
   }
 
   addDrive(drive:Drive): Observable<string> {
-    debugger
     console.log(drive);
-    return this.http.post<string>(this.URL + "/AddDrive",drive);
+      return this.http.post<string>(this.URL + "/AddDrive",drive);
   }
 }

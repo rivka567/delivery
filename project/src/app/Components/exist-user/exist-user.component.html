@@ -12,7 +12,7 @@
     </div>
       <div *ngIf="vis==true">
         <input  matInput placeholder="הזן כתובת מייל" #mail >
-        <button class="btn" mat-button (click)="sendMail(mail.value)" >שלח לי את הקוד</button>   
+        <button class="btn" mat-button  >שלח לי את הקוד</button>   
     </div>
       <div class="userDiv" *ngIf="user.userName" >
         <p> {{user.userCode}}</p>
@@ -20,6 +20,6 @@
         <p> {{user.userPhone}}</p>
         <p> {{user.userMail}}</p>
         <a mat-dialog-close class="btn" >המשך</a>
-        </div> 
-      </div>
+    </div> 
+  </div>
 </mat-dialog-content>

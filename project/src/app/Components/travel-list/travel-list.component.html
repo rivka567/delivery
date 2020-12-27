@@ -4,47 +4,61 @@
 <button class="btn" mat-button (click)="openPackageDialog()"> צור משלוח</button>
 <br><br>
 
-<div>
-  <input matInput  [min]="minDate" [matDatepicker]="picker" placeholder="תאריך" #date>
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> 
-  <mat-datepicker  [dateClass]="dateClass" #picker></mat-datepicker>
+<input [min]="minDate" matInput [matDatepicker]="picker" (click)="picker.open()"  placeholder="מתאריך" #fromDate >
+<mat-datepicker #picker></mat-datepicker>
+
+<input [min]="minDate" matInput [matDatepicker]="picker1" (click)="picker1.open()"  placeholder="עד תאריך" #toDate >
+<mat-datepicker #picker1 ></mat-datepicker>
 
   <input matInput type="text" placeholder="מוצא" ngx-google-places-autocomplete 
-   #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)" #fromL>
+   #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)" #fromL >
 
   <input matInput type="text" placeholder="יעד" ngx-google-places-autocomplete  
   #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)" #toL>
 
-  <input matInput type="time" placeholder="שעת יציאה" #time>
+  <input matInput type="time"  placeholder="שעת יציאה" #time >
+  
 
   <!-- <button mat-button (click)="searchSpesificDrives(date.value,fromL.value,toL.value,time.value)">חפש תוצאות</button> -->
-  <button mat-button (click)="searchDriver(date.value,time.value)">חפש תוצאות</button>
+  <button mat-button (click)="filterDrives(fromDate.value,toDate.value,fromL.value,toL.value,time.value)">חפש תוצאות</button>
 
-
-</div>
-
+  <!-- <form  [formGroup]="options">
+    <mat-form-field appearance="fill" [color]="colorControl.value">
+      <mat-label>Color</mat-label>
+      <mat-select [formControl]="colorControl">
+        <mat-option value="primary">Primary</mat-option>
+        <mat-option value="accent">Accent</mat-option>
+        <mat-option value="warn">Warn</mat-option>
+      </mat-select>
+    </mat-form-field>
+    </form>
+    <br><br> -->
+    <mat-label>מיין לפי:</mat-label>
+   <select (change)="sortBy($event.target.value)" >
+     <option value="time">שעה </option>
+     <option value="from" >מרחק מהמוצא</option>
+     <option value="to" >מרחק מהיעד</option>
+   </select>
+   
+<br>
+<p style="font-size:large;"> נמצאו {{len}} נסיעות מתאימות</p>
 <br>
 <table >
   <th> תאריך </th>
   <th> מוצא </th>
   <th> יעד </th>
   <th> שעת יציאה </th>
-  <th> מרחק </th>
   <th> <mat-icon >email</mat-icon> </th>
   <th></th>
-  <tr *ngFor="let drive of allDrives">
-<td> {{drive.travelDate.date}}</td>
+  <tr *ngFor="let drive of driversFound;let i=index">
+<td> {{drive.travelDate|  date:'dd-MM-yyyy' }} </td>
 <td> {{drive.fromLocationFormat}}</td>
 <td> {{drive.toLocationFormat}}</td>
 <td> {{drive.drivingTime}}</td>
-<td>מרחק</td>
-<td>
-  <button mat-button (click)="sendEmail(drive)" >שלח מייל</button>
-</td>
-<td><mat-icon (click)="showMore(drive)" >expand_more</mat-icon></td>
-<td >{{drive.driverCode}}</td>
-  </tr>
-   
+<td > <button (click)="hideme[i] = !hideme[i]"><mat-icon>expand_more</mat-icon> </button></td>
+<td> <button mat-button (click)="sendEmail(drive)" >שלח מייל</button></td> 
+<td  [hidden]="hideme[i]">{{drive.driverCode}}</td>
+</tr>
 </table>
 
 </div>

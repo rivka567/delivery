@@ -2,6 +2,7 @@ import { Component, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../Classes/user';
 import { Observable } from 'rxjs';
+import { Package } from '../Classes/package';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,13 @@ export class UserService {
   currentUser: User;
   delivery:User;
   currentComponent:Component;
-
+  myDriver:User;
   constructor(private http: HttpClient) { 
   
   }
 
   getUserById(id:string): Observable<User> {
-    debugger
+  
     return this.http.get<User>(this.URL + "/GetUserById/" + id);
   }
   getUsers(): Observable<Array<User>> {
@@ -30,7 +31,7 @@ export class UserService {
     return this.http.post<string>(this.URL+"/AddUser",user);
   }
 
-  sendEmail( contactAddress:string,subject:string,body:string): Observable<string> {
+  sendEmail( contactAddress:string,subject:string,body:Package): Observable<string> {
    debugger
     return this.http.get<string>(this.URL+"/SendEmail?contactAddress="+contactAddress+"&subject="+subject+"&body="+body);
   }

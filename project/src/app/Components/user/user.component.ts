@@ -19,7 +19,7 @@ export class UserComponent implements OnInit {
   hide=true;
   listUser:Array<User>=[];
   constructor(private dialog:MatDialog,private router:Router, private activatedRoute:ActivatedRoute, private formBuilder: FormBuilder,
-    public userSer: UserService,) { }
+   private userSer: UserService,) { }
 
   ngOnInit(): void {
     this.initForm();
