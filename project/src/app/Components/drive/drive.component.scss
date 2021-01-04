@@ -1,6 +1,56 @@
+section {
+  display: table;
+  margin: 8px;
+}
+
+.example-button-row {
+  display: table-cell;
+}
+
+.example-button-row button {
+  display: table-column;
+  margin-right: 8px;
+}
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
 .mat-typography {
-    height: 600px;
-    width: 450px;
-    background-color: white;
-    border-color: grey;
-  }
+  height: 600px;
+  width: 850px;
+  background-color: white;
+  border-color: grey;
+}
+
+.inp {
+  height: 30px;
+  background-color: white;
+  border-color: grey;
+}
+.example-custom-date-class {
+  background: orange;
+  border-radius: 100%;
+}
+
+mat-form-field {
+  margin-right: 12px;
+}
+.container {
+  display: flex;
+}
+.circle1{
+border-radius: 50%;
+height: 30px;
+
+}
+
+.accent{
+  background-color: hotpink;
+}
+example-button-container{  width: 100px !important;
+}
+.example-container{
+  width: 50%;
+  height: 100%;
+}

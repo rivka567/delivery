@@ -104,10 +104,13 @@ debugger
       const dialogRef = this.dialog.open(ExistUserComponent,{ disableClose: true })
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog result: ${result}`);
+        if(this.userSer.currentUser)
+        {
         const dialogRef2 = this.dialog.open(PackageComponent,{ disableClose: true })
         dialogRef2.afterClosed().subscribe(result => {
           console.log(`Dialog result: ${result}`);
         });
+        }
       });
      
     }
@@ -139,7 +142,7 @@ debugger
   }
 
 
-filterDrives(fromDate:string,toDate:string,from:Address,to:Address,time:string) {
+filterDrives(fromDate:string,toDate:string,from:Address,to:Address,time:string,trans:number) {
   debugger
   this.driversFound=this.driveSer.allDrives;
   if(fromDate)
@@ -173,12 +176,32 @@ if(time)
  let h=time.substring(0,2)
  let m=time.substring(3,5)
 let t=new Date(1,1,2020,parseInt(h),parseInt(m),0,0)
+ debugger
+  this.driversFound=  this.driversFound.filter
+  (f=>  (     
+          new Date(f.timeInDate).getHours() == t.getHours()||
+          (new Date(f.timeInDate).getHours() == t.getHours()-1 &&new Date(f.timeInDate).getMinutes()>=t.getMinutes())||
+          (new Date(f.timeInDate).getHours() == t.getHours()+1 &&new Date(f.timeInDate).getMinutes()<=t.getMinutes())  
+           )
+  )
+  // (new Date(f.timeInDate).getHours()>t.getHours()-1||
+  // (new Date(f.timeInDate).getHours() == t.getHours()-1 &&new Date(f.timeInDate).getMinutes()>=t.getMinutes())||
  
-  this.driversFound=  this.driversFound.filter(f=> (new Date(f.timeInDate).getHours() > t.getHours()-1||
-   (new Date(f.timeInDate).getHours() == t.getHours() &&new Date(f.timeInDate).getMinutes()>=t.getMinutes()))
-  && (new Date(f.timeInDate).getHours()< t.getHours()+1||
-  (new Date(f.timeInDate).getHours() == t.getHours() &&new Date(f.timeInDate).getMinutes()>=t.getMinutes())))
+  // &&
+  // ( (new Date(f.timeInDate).getHours()< t.getHours()+1||
+  // (new Date(f.timeInDate).getHours() == t.getHours()&& new Date(f.timeInDate).getMinutes()>=t.getMinutes()))||
+
 }
+if(trans)
+{
+  if(trans==0)
+  {
+    return this.driversFound;
+  }
+  else
+  this.driversFound=  this.driversFound.filter(f=>(f.transportation==trans) )
+}
+debugger
 this.len=this.driversFound.length;
 }
 
@@ -212,7 +235,6 @@ destination: { lat: 6.73906232, lng: 80.15640132 },
 renderOptions: { polylineOptions: { strokeColor: '#0f0' } },
 }];
 
-
 sortBy(value:any)
 {
   debugger
@@ -230,12 +252,22 @@ if(value=='to' && this.toLng!=null &&this.toLat!=null)
    return  google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.toLocationLat, a.toLocationLng), new google.maps.LatLng(this.toLat,this.toLng) )-google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.toLocationLat, b.toLocationLng), new google.maps.LatLng(this.toLat,this.toLng))})
 }
 if(value=='time')
-{
-  
-}
-}
-}
+  {
+   
 
+  }
+if(value=='date')
+  {
+  
+      this.driversFound.sort((a, b) => {
+        //  console.log("a.FromDate.getDate()"+new Date( a.FromDate).getTime())
+        return new Date(a.travelDate).getDate() - new Date(b.travelDate).getDate();
+  
+      });
+    
+  }
+}
+}
 
 
 

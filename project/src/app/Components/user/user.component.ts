@@ -17,6 +17,7 @@ export class UserComponent implements OnInit {
   submitted=false;
   newUser:User;
   hide=true;
+  delivery=false;
   listUser:Array<User>=[];
   constructor(private dialog:MatDialog,private router:Router, private activatedRoute:ActivatedRoute, private formBuilder: FormBuilder,
    private userSer: UserService,) { }
@@ -35,22 +36,23 @@ export class UserComponent implements OnInit {
 
   initForm() {
    this.form = this.formBuilder.group({
-    password:['',[Validators.required,Validators.minLength(3)]],
+      password:['',[Validators.required,Validators.minLength(3)]],
       name:['',[Validators.required,Validators.pattern("[א-ת-a-z-A-Z]*")]],
       telephone:['',[Validators.required,Validators.pattern("[0-9]*")]],
-      gmail:['',[Validators.required,Validators.email]]
+      gmail:['',[Validators.required,Validators.email]],
+      age:['',Validators.required],
+      mes:[''],
     })
   }
 
   addUser() {
     debugger
  this.submitted=true;
- this.newUser=new User(this.form.value.code,this.form.value.name,this.form.value.telephone,this.form.value.gmail)
+ this.newUser=new User(this.form.value.password,this.form.value.name,this.form.value.telephone,this.form.value.gmail,this.form.value.age,this.form.value.mes)
  this.userSer.addUser(this.newUser).subscribe(
   myData => { alert(myData);
     this.userSer.currentUser=this.newUser;
     console.log(this.newUser);
-this.router.navigate(['/home'])
 },
   myErr => { console.log(myErr.message);});
   }

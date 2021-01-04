@@ -28,7 +28,8 @@ export class PackageComponent implements OnInit {
   submitted=false;
   newPackage:Package;
   minDate: Date;
-  
+  add=false;
+  addsuccess=false;
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
   // size:FormControl;
@@ -58,8 +59,6 @@ export class PackageComponent implements OnInit {
     toLocation:[this.driveSer.to||'',Validators.required],
     drivingTime:['',Validators.required],
     travelDate:[new Date(),Validators.required],
-    describeHappiness:[''],
-    happinessLevel:[''],
     describePackage:[''],
     type:['',Validators.required],
     })
@@ -73,7 +72,7 @@ export class PackageComponent implements OnInit {
   {
     debugger
     this.newPackage=new Package(this.form.value.customerCode,null,this.from,this.fromLat,this.fromLng,this.to,this.toLat,this.toLng,
-      this.form.value.travelDate,this.form.value.drivingTime,false,this.form.value.happinessLevel,this.form.value.describeHappiness,
+      this.form.value.travelDate,this.form.value.drivingTime,false,false,
       this.form.value.type,this.form.value.describePackage,this.form.value.size);
       console.log(this.newPackage);
       this.packageSer.currentPackage=this.newPackage;
@@ -86,12 +85,14 @@ export class PackageComponent implements OnInit {
   debugger
   alert("add package function");
   this.newPackage=new Package(this.form.value.customerCode,null,this.from,this.fromLat,this.fromLng,this.to,this.toLat,this.toLng,
-    this.form.value.travelDate,this.form.value.drivingTime,false,this.form.value.happinessLevel,this.form.value.describeHappiness,
+    this.form.value.travelDate,this.form.value.drivingTime,false,false,
     this.form.value.type,this.form.value.describePackage,this.form.value.size);
   console.log(this.newPackage);
   this.packageSer.addPackage(this.newPackage).subscribe(
     myData => {console.log("from subscribe",this.newPackage);
-     console.log("add sucssesful");
+    alert("add sucssesful");
+    this.packageSer.currentPackage=this.newPackage;
+    this.addsuccess=true
     },
     myErr => {console.log("from subscribe",this.newPackage); 
     console.log(myErr.message);

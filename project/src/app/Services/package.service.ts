@@ -27,6 +27,7 @@ export class PackageService {
     return this.http.get<Array<Package>>(this.URL + "/GetPackagesByUserId/"+id);
   }
   addPackage(myPackage:Package): Observable<string> {
+    debugger
     console.log("from service:",myPackage);
     return this.http.post<string>(this.URL + "/AddPackage",myPackage);
   }

@@ -22,6 +22,9 @@ export class DriveComponent implements OnInit {
   newDrive:Drive;
   listDrive:Array<Drive>=[];
   static rand=1;
+  minDate:Date;
+  addsuccess=false;
+  
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
 
@@ -31,6 +34,7 @@ export class DriveComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    this.minDate=new Date();
     // this.activatedRoute.params.subscribe(
     //   myParams=>{
     //     this.driveSer.getDrives().subscribe(
@@ -52,29 +56,28 @@ export class DriveComponent implements OnInit {
     console.log("this.userSer.currentUser.userCode  "+this.userSer.currentUser.userCode);
     
     this.form = this.formBuilder.group({
+      trans:['',Validators.required],
       driverCode: [this.userSer.currentUser.userCode||''],
       driving:['',Validators.required],
       date:['',Validators.required],
       fromLocation:[''],
       toLocation:[''],
-      packageSizeCode:['',Validators.required],
-      reminder:[''],
-      transportation:[''],
       describeDrive:['']
-     // wasPerformed:['',Validators.required]
     })
    
   }
-a:boolean
   addDrive() {
     debugger
  this.submitted=true;
  this.newDrive=new Drive(this.form.value.driverCode,null,this.form.value.driving,this.form.value.date,
-  this.from,this.fromLat,this.fromLng,this.to,this.toLat,this.toLng,this.form.value.packageSizeCode,
-  this.form.value.reminder,this.form.value.describeDrive);
+  this.from,this.fromLat,this.fromLng,this.to,this.toLat,this.toLng,1,this.form.value.describeDrive,
+  false,false,this.form.value.trans);
  this.driveSer.addDrive(this.newDrive).subscribe(
-  myData => { console.log(myData);
+  myData => { 
+   alert(myData);
   this.driveSer.allDrives.push(this.newDrive);
+  this.addsuccess=true
+  debugger
 },
   myErr => { console.log(myErr.message); });
   // const dialogRef = this.dialog.open(TravelListForDeliveryComponent);

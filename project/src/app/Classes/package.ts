@@ -14,13 +14,12 @@ export class Package {
         public toLocationLng:number=0,
        public travelDate:Date=null,
        public drivingTime:Time=null,
+       public confirmationCustomer:boolean=false,
        public confirmationDelivery:boolean=false,
-       public happinesslevel:number=0,
-       public describeHappiness:string="",
        public packageType:number=0,
        public describePackage:string="",
        public packageSize:number=0
     )
-    
+ 
     {}
 }

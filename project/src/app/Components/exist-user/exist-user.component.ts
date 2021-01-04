@@ -13,7 +13,7 @@ import { UserComponent } from '../user/user.component';
 })
 export class ExistUserComponent implements OnInit {
 
-  user:User = new User();
+  user:User =new User();
 
   constructor(private UserSer: UserService,private dialog:MatDialog) { }
   vis=false;

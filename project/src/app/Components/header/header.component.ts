@@ -32,7 +32,6 @@ export class HeaderComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
-    this.router.navigate(['/main'])
   }
   else
   alert("עליך להתחבר או להירשם לפני השימוש באתר")
@@ -42,15 +41,14 @@ logOut()
   
   this.userSer.currentUser=undefined;
   console.log(this.userSer.currentUser);
-  this.router.navigate(['/']);
+ 
 }
 
   checkLogin()
   {
     if(this.userSer.currentUser==undefined)
     alert("עליך להירשם או להתחבר לפני השימוש באתר")
-    else
-    this.router.navigate(['/home'])
+  
   }
 
   }

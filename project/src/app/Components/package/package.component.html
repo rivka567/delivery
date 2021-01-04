@@ -1,8 +1,8 @@
-<div>
+
 <mat-dialog-content class="mat-typography">
 
-   <form [formGroup]="form" (ngSubmit)="addPackage()">
-    <div *ngIf="!submitted" class="example-container">
+   <form *ngIf="[form,newPackage]" [formGroup]="form" (ngSubmit)="addPackage()">
+    <div *ngIf="!addsuccess"  class="example-container">
       <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon>
       <br>
       <section>
@@ -88,33 +88,27 @@
       <input  type="radio" value="4"  id="4"  formControlName="type" name="type" >
       <label> אחר</label>
       <br>
-      <mat-form-field>
-        <input matInput type="number" placeholder="רמת שביעות רצון" class="inp" formControlName="happinessLevel" name="happinessLevel">
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <input matInput type="text" placeholder="תאור שביעות רצון" class="inp" formControlName="describeHappiness" name="describeHappiness">
-      </mat-form-field>
-      <br> -->
       <!-- <mat-form-field>
         <input matInput type="text" placeholder=" תאור נוסף או הערה" class="inp" formControlName="describePackage" name="describePackage">
       </mat-form-field>
       <br> 
 
-      <!-- TODO: לשנות שיראה כקישור -->
-    <button mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid" type="submit"
+       TODO: לשנות שיראה כקישור -->
+    <button mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid"
         (click)="submitted=true "> שלח</button>
       <br>
     </div>
-    <div *ngIf="submitted">
-      <h2>בקשתך נשלחה</h2>
-      <p>
-        להמשך מעקב, היכנס לאזור האישי/ צפה במייל
+
+    <div *ngIf="addsuccess">
+      <p >
+        בקשתך נקלטה במערכת ,
+        <br>
+        להמשך מעקב היכנס לאזור האישי
       </p>
-    <button mat-button mat-dialog-close > סגור</button>
     </div>
+
   </form> 
 
 </mat-dialog-content>
-</div>
+
 

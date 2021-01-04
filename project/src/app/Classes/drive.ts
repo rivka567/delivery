@@ -16,11 +16,10 @@ export class Drive {
             public toLocationLat:number=0,
             public toLocationLng:number=0,
             public packageSizeCode:number=0,
-            public howLongBeforeReminder:Time,
-            public transportation:string="",
             public describeDrive:string="",
             public confirmationCustomer:boolean=false,
+            public confirmationDelivery:boolean=false,
+            public transportation:number,
             public timeInDate?:Date
-
         ) { }
 }

@@ -33,7 +33,20 @@ export class UserService {
 
   sendEmail( contactAddress:string,subject:string,body:Package): Observable<string> {
    debugger
-    return this.http.get<string>(this.URL+"/SendEmail?contactAddress="+contactAddress+"&subject="+subject+"&body="+body);
+    const array={
+      'contactAddress':contactAddress,
+      'subject':subject,
+      'body':body
+    };
+
+    let formData=new FormData();
+
+
+    // formData.append('contactAddress',contactAddress);
+    // formData.append('subject',subject);
+    // formData.append('body',body);
+
+    return this.http.post<string>(this.URL+"/SendEmail",array);
   }
 
   // sendEmail(sender:string, contactAddress:string,subject:string,body:string): Observable<string> {
