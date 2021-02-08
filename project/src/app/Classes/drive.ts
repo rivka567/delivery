@@ -1,25 +1,29 @@
 import { Time } from '@angular/common';
+import { Package } from './package';
 
 export class Drive {
-        constructor(
-           
+        constructor( 
+            public driveCode:number,         
             public driverCode:string="",
             public customerCode:string="",
             public drivingTime:Time,
             public travelDate:Date,
-            // public fromLocatioId:number=0,
+             public fromLocationId:number=0,
             public fromLocationFormat:string="",
             public fromLocationLat:number=0,
             public fromLocationLng:number=0,
-            // public toLocatioId:number=0,
+            public toLocationId:number=0,
             public toLocationFormat:string="",
             public toLocationLat:number=0,
             public toLocationLng:number=0,
-            public packageSizeCode:number=0,
             public describeDrive:string="",
-            public confirmationCustomer:boolean=false,
-            public confirmationDelivery:boolean=false,
-            public transportation:number,
-            public timeInDate?:Date
+            public status:boolean=true,
+            public transportation:number=0,
+            public price:number,
+            public transportationType?:string,
+            public timeInDate?:Date,
+            public listWaiting?:Package[],
+            public driverName?:string
+           
         ) { }
 }

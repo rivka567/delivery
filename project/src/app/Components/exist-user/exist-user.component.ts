@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PackageComponent } from '../package/package.component';
 import { BuiltinType } from '@angular/compiler';
 import { UserComponent } from '../user/user.component';
+import { ValidatorFn } from '@angular/forms';
 
 @Component({
   selector: 'app-exist-user',
@@ -21,13 +22,8 @@ export class ExistUserComponent implements OnInit {
 
   ngOnInit(): void {
    console.log(this.vis);
-  }
 
-  // sendMail(mail:string)
-  // {
-  // this.UserSer.sendEmail( mail,"password","your password"+this.UserSer.currentUser.userCode);
-  // }
- 
+  }
 
   openDialog() {
     const dialogRef = this.dialog.open(UserComponent,{ disableClose: true })
@@ -52,6 +48,16 @@ export class ExistUserComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  sendCodeByEmail(mail:string)
+  {
+  debugger
+    this.UserSer.sendCodeByEmail(mail).subscribe(
+      myData=>{alert(myData)},
+      myErr=>{console.log(myErr)}
+      
+      );
   }
 
 }

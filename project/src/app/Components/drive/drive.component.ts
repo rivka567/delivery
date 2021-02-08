@@ -21,10 +21,9 @@ export class DriveComponent implements OnInit {
   submitted=false;
   newDrive:Drive;
   listDrive:Array<Drive>=[];
-  static rand=1;
+
   minDate:Date;
-  addsuccess=false;
-  
+
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
 
@@ -47,11 +46,6 @@ export class DriveComponent implements OnInit {
 
   }
 
-  randFunction()
-  {
-    return DriveComponent.rand=(DriveComponent.rand*1000)/20;
-  }
-  
   initForm() {
     console.log("this.userSer.currentUser.userCode  "+this.userSer.currentUser.userCode);
     
@@ -69,18 +63,17 @@ export class DriveComponent implements OnInit {
   addDrive() {
     debugger
  this.submitted=true;
- this.newDrive=new Drive(this.form.value.driverCode,null,this.form.value.driving,this.form.value.date,
-  this.from,this.fromLat,this.fromLng,this.to,this.toLat,this.toLng,1,this.form.value.describeDrive,
-  false,false,this.form.value.trans);
+ this.newDrive=new Drive(0,this.form.value.driverCode,null,this.form.value.driving,this.form.value.date,
+  0,this.from,this.fromLat,this.fromLng,0,this.to,this.toLat,this.toLng,this.form.value.describeDrive,
+  true,this.form.value.trans,0);
  this.driveSer.addDrive(this.newDrive).subscribe(
   myData => { 
-   alert(myData);
+  alert("add sucssesful");
+  this.driveSer.currentDrive=this.newDrive;
   this.driveSer.allDrives.push(this.newDrive);
-  this.addsuccess=true
   debugger
 },
   myErr => { console.log(myErr.message); });
-  // const dialogRef = this.dialog.open(TravelListForDeliveryComponent);
   }
 
     from="";

@@ -1,0 +1,12 @@
+<mat-dialog-content class="mat-typography">
+<div>
+    <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon><br><br>
+    <p>{{myUser.userCode}}<br>
+    <input matInput type="text" value="{{myUser.userName}}" #name><br>
+    <input matInput type="text" value="{{myUser.userPhone}}" #phone><br>
+    <input matInput type="text" value="{{myUser.userMail}}" #mail><br>
+    <input matInput type="number" value="{{myUser.userAge}}" #age><br>
+    <mat-checkbox  #mes >{{myUser.messages}} </mat-checkbox><br>
+    <button mat-button (click)="updateUser(myUser.userCode,name.value,phone.value,mail.value,age.value) " mat-dialog-close>שמור</button>
+</div>
+</mat-dialog-content>

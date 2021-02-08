@@ -1,0 +1,31 @@
+<div>
+  <button class="btn" mat-button (click)="openDriveDialog()">צור נסיעה</button>
+    <p>החבילות שלי:</p>
+    <p style="font-size:large;"> נמצאו {{len}} נסיעות מתאימות</p>
+    <br>
+    <table >
+      <th>קוד נסיעה</th>
+      <th>קוד לקוח</th>
+      <th> תאריך </th>
+      <th> מוצא </th>
+      <th> יעד </th>
+      <th> שעת יציאה </th>
+      <th>תחבורה</th>
+      <th></th>
+      <tr *ngFor="let drive of myListDrive;let i=index" >
+    <td>{{drive.driveCode}}</td>
+    <td>{{drive.driverCode}}</td>
+    <td> {{drive.travelDate|  date:'dd-MM-yyyy' }} </td>
+    <td> {{drive.fromLocationFormat}}</td>
+    <td> {{drive.toLocationFormat}}</td>
+    <td> {{drive.drivingTime}}</td>
+    <td>{{drive.transportationType}}</td>
+    <td (click)="OpenUpdateDrive(drive)"><mat-icon style="cursor:pointer">create</mat-icon></td>
+    <td (click)="deleteDrive(drive)"><mat-icon style="cursor:pointer">delete</mat-icon></td>
+
+    </tr>
+    
+    </table>
+
+
+    </div>

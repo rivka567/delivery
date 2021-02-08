@@ -1,7 +1,6 @@
 <mat-dialog-content  class="mat-typography">
   <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon>
     <form *ngIf="form,newDrive" [formGroup]="form" (ngSubmit)="addDrive()">
-      <div *ngIf="!addsuccess" class="example-container">
         <h1>פרטי נסיעה:</h1><br>
         <section>
           <div class="example-button-row">
@@ -91,7 +90,6 @@
           </mat-form-field>
           <br>
    -->
-  
           <mat-form-field >
             <input matInput placeholder="הערה" type="text" class="inp" formControlName="describeDrive" name="describeDrive">
           </mat-form-field>
@@ -100,17 +98,7 @@
             <!-- <a style="cursor: pointer;" (click)="openDialog()" mat-dialog-close>התחבר</a> -->
            
             <button mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid"
-            (click)="submitted=true" > שמור</button>
-          </div>
-            <div *ngIf="addsuccess">
-              <p >
-                בקשתך נקלטה במערכת ,
-                <br>
-                להמשך מעקב היכנס לאזור האישי
-              </p>
-            </div>
-     
-    </form>
-    
+            (click)="submitted=true" mat-dialog-close > שמור</button> 
+    </form>   
     </mat-dialog-content>
 

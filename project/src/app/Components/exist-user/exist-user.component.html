@@ -4,22 +4,23 @@
     <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon> 
     <div *ngIf="!user.userName&&vis==false">
       <br> 
-      <input  matInput placeholder="הקש סיסמא" #id >
+      <input  matInput placeholder="הקש סיסמא" #id type="mail">
       <button class="btn" mat-button (click)="getUserById(id.value)" >חפש</button>
       <br>
       <a  class="a-container" (click)="vis=true" >שחכתי סיסמא </a>
       <a mat-dialog-close class="b-container" (click)="openDialog()"> משתמש חדש</a>
     </div>
-      <div *ngIf="vis==true">
-        <input  matInput placeholder="הזן כתובת מייל" #mail >
-        <button class="btn" mat-button  >שלח לי את הקוד</button>   
+     <div *ngIf="vis==true">
+        <input type="text" matInput placeholder="הזן כתובת מייל" #mail >
+        <button class="btn" mat-button (click)="sendCodeByEmail(mail.value)"  >שלח לי את הקוד</button>   
     </div>
       <div class="userDiv" *ngIf="user.userName" >
         <p> {{user.userCode}}</p>
         <p> {{user.userName}}</p>
         <p> {{user.userPhone}}</p>
         <p> {{user.userMail}}</p>
-        <a mat-dialog-close class="btn" >המשך</a>
-    </div> 
+         <a mat-dialog-close class="btn" >המשך</a>
+    </div>
+   
   </div>
 </mat-dialog-content>

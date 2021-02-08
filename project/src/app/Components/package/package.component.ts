@@ -37,7 +37,7 @@ export class PackageComponent implements OnInit {
     private packageSer:PackageService, private driveSer:DriveService,private router:Router) { 
   
     }
-  
+
   ngOnInit(): void {
   this.minDate = new Date();
    this.initForm();
@@ -68,36 +68,23 @@ export class PackageComponent implements OnInit {
     alert(this.form.value.size)
   }
 
-  savePackageAtService()
-  {
-    debugger
-    this.newPackage=new Package(this.form.value.customerCode,null,this.from,this.fromLat,this.fromLng,this.to,this.toLat,this.toLng,
-      this.form.value.travelDate,this.form.value.drivingTime,false,false,
-      this.form.value.type,this.form.value.describePackage,this.form.value.size);
-      console.log(this.newPackage);
-      this.packageSer.currentPackage=this.newPackage;
-      debugger
-      console.log("from package component"+this.packageSer.currentPackage);
-  }
 
   addPackage()
   {
   debugger
-  alert("add package function");
-  this.newPackage=new Package(this.form.value.customerCode,null,this.from,this.fromLat,this.fromLng,this.to,this.toLat,this.toLng,
-    this.form.value.travelDate,this.form.value.drivingTime,false,false,
+  this.newPackage=new Package(0,this.form.value.customerCode,null,0,this.from,this.fromLat,this.fromLng,0,this.to,this.toLat,this.toLng,
+    this.form.value.travelDate,this.form.value.drivingTime,true,
     this.form.value.type,this.form.value.describePackage,this.form.value.size);
-  console.log(this.newPackage);
-  this.packageSer.addPackage(this.newPackage).subscribe(
+   this.packageSer.addPackage(this.newPackage).subscribe(
     myData => {console.log("from subscribe",this.newPackage);
     alert("add sucssesful");
     this.packageSer.currentPackage=this.newPackage;
+    this.packageSer.allPackages.push(this.newPackage);
     this.addsuccess=true
     },
     myErr => {console.log("from subscribe",this.newPackage); 
     console.log(myErr.message);
   });
-    this.packageSer.currentPackage=this.newPackage;
     debugger
     console.log("from package component"+this.packageSer.currentPackage);
   }

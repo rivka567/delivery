@@ -60,11 +60,11 @@ export class HomeComponent implements OnInit {
    }
   // travelListForDelivery  
 
-  SendMail(contactAddress:string,subject:string,body:Package)
-  {
-    debugger
-  this.userSer.sendEmail(contactAddress,subject,body).subscribe(data=>alert(data));
-  }
+  // SendMail(contactAddress:string,subject:string,body:Package)
+  // {
+  //   debugger
+  // this.userSer.sendEmail(contactAddress,subject,body).subscribe(data=>alert(data));
+  // }
  
 }
 

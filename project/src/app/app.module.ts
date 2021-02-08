@@ -34,6 +34,23 @@ import { DriveComponent } from './Components/drive/drive.component';
 import { LoginComponent } from './Components/login/login.component';
 import { TravelListComponent } from './Components/travel-list/travel-list.component';
 import {MyPackagesComponent} from './Components/my-packages/my-packages.component';
+import { PersonalDetailsComponent } from './Components/personal-details/personal-details.component';
+import { PersonalAreaComponent } from './Components/personal-area/personal-area.component';
+import { PersonalPackagesComponent } from './Components/personal-packages/personal-packages.component';
+import { PersonalDrivesComponent } from './Components/personal-drives/personal-drives.component';
+import { PackageListComponent } from './Components/package-list/package-list.component';
+import { MyDrivesComponent } from './Components/my-drives/my-drives.component';
+import { UpdatePersonalDetailsComponent } from './Components/update-personal-details/update-personal-details.component';
+import { PersonalMessagesComponent } from './Components/personal-messages/personal-messages.component';
+import { UpdatePackageComponent } from './Components/update-package/update-package.component';
+import { UpdateDriveComponent } from './Components/update-drive/update-drive.component';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatToolbarModule,} from '@angular/material/toolbar';
+import { MatTooltipModule,} from '@angular/material/tooltip';
+import { HappinessComponent } from './Components/happiness/happiness.component';
+import { ShowAllHappinessComponent } from './Components/show-all-happiness/show-all-happiness.component';
 
 const appRoutes: Routes =
 [
@@ -47,7 +64,17 @@ const appRoutes: Routes =
   {path:"about",component:AboutComponent},
   {path: "header", component: HeaderComponent},
   {path:"travel-list",component:TravelListComponent},
+  {path:"package-list",component:PackageListComponent},
   {path:"my-packages",component:MyPackagesComponent},
+  {path:"my-drives",component:MyDrivesComponent},
+  {path:"personal-area",component:PersonalAreaComponent,children:[
+   {path:"personal-details",component:PersonalDetailsComponent},
+   {path:"personal-packages",component:PersonalPackagesComponent},
+   {path:"personal-drives",component:PersonalDrivesComponent},
+  ]},
+  {path:"waiting-messages",component:PersonalMessagesComponent},
+{path:"hap",component:ShowAllHappinessComponent}
+
 ];
 const config = {
   apiKey: 'AIzaSyCxE2_heEzD9OmVoUK_MVDNKmHwLjs9ct0&sensor=true',
@@ -70,6 +97,19 @@ const config = {
     LoginComponent,
     TravelListComponent,
     MyPackagesComponent,
+    PersonalDetailsComponent,
+    PersonalAreaComponent,
+    PersonalPackagesComponent,
+    PersonalDrivesComponent,
+    PackageListComponent,
+    MyDrivesComponent,
+    UpdatePersonalDetailsComponent,
+    PersonalMessagesComponent,
+    UpdatePackageComponent,
+    UpdateDriveComponent,
+    HappinessComponent,
+    ShowAllHappinessComponent,
+    
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -94,7 +134,11 @@ const config = {
     GooglePlaceModule,
     GMapModule,
     FormsModule,
-    
+    MatExpansionModule,
+    MatPaginatorModule,
+    MatSnackBarModule,
+   MatToolbarModule,
+   MatTooltipModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCxE2_heEzD9OmVoUK_MVDNKmHwLjs9ct0&sensor=true',
       libraries:['places','geometry','drawing']

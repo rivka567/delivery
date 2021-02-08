@@ -1,0 +1,26 @@
+<mat-dialog-content class="mat-typography">
+
+<mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon>
+<br><br>
+
+<!-- <form *ngIf="form,myHappiness" [formGroup]="form" (ngSubmit)="addHappiness(name.value,happiness.value)"> -->
+<input type="text" placeholder="שם " class="inp"  #name>
+<br>
+<mat-star-rating [rating]="rating"  [starCount]="starCount" [color]="starColor" (ratingUpdated)="onRatingChanged($event)"></mat-star-rating>
+<button mat-icon-button [color]="color" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i" (click)="onClick(i+1)" [matTooltip]="ratingId+1" matTooltipPosition="above">
+    <mat-icon>
+      {{showIcon(i)}}
+    </mat-icon>
+  </button>
+  <mat-error *ngIf="starCount == null || starCount == 0">
+    Star count is <strong>required</strong> and cannot be zero
+  </mat-error>
+  <p class="body-2">
+      Your rated <span class="body-2">{{rating}}</span> / <span class="body-2">{{starCount}}</span>
+  </p>
+
+  <input type="text" matInput placeholder="הערה" class="inp"  #happiness>
+  <br><br>
+ <button mat-button style="cursor: pointer;" (click)="addHappiness(name.value,happiness.value)" mat-dialog-close > שמור</button>
+<!-- </form> -->
+</mat-dialog-content>

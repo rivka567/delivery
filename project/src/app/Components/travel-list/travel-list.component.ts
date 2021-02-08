@@ -20,6 +20,7 @@ import { ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { MyPackagesComponent } from 'src/app/Components/my-packages/my-packages.component';
+import { ShowAllHappinessComponent } from '../show-all-happiness/show-all-happiness.component';
 
 
 @Component({
@@ -48,17 +49,33 @@ export class TravelListComponent implements OnInit {
   panelOpenState = false;
   time1:any;
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
+  @ViewChild("searchTextField") searchTextField : any;
 
   constructor(private driveSer: DriveService, private packageSer: PackageService,private userSer:UserService,
   private dialog:MatDialog,private router:Router,private dateAdapter: DateAdapter<Date>) { 
    // this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
 
   }
+  initialize()
+  {
+  debugger
+    let input = document.getElementById('searchTextField');
+    var options = {
+types: ['(cities)'],
+componentRestrictions: {country: "il"}
+};
+var autocomplete = new google.maps.places.Autocomplete(this.searchTextField, options);
 
+  }
   ngOnInit(): void {
+ 
+ 
+ google.maps.event.addDomListener(window, 'load', this.initialize);
+ 
    this.minDate=new Date();
    this.getAllDrives();
   }
+
 
 dateClass = (d: Date): MatCalendarCellCssClasses => {
   const date = d.getDate();
@@ -66,18 +83,30 @@ dateClass = (d: Date): MatCalendarCellCssClasses => {
   return (date === 1 || date === 20) ? 'example-custom-date-class' : '';
 }
 
+openDialogHappiness(id:string)
+{
+  const dialogRef = this.dialog.open(ShowAllHappinessComponent,{ disableClose: true });
+  dialogRef.componentInstance.deliveryId=id;
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);})
+}
+
 getAllDrives() {
-  this.driveSer.getAllDrives().subscribe(
-    myData => {
-      this.driversFound=myData;
-      //תמיד נשאר כאן כל הנסיעות
-      this.driveSer.allDrives=myData;
-      this.len=this.driversFound.length;
-    },
-    myErr => {
-      console.log("from subscribe");
-      console.log(myErr.message);
-    });
+ debugger
+
+      this.driveSer.getAllDrives().subscribe(
+      myData => {
+        debugger
+        this.driversFound=myData;
+        //תמיד נשאר כאן כל הנסיעות
+        this.driveSer.allDrives=myData;
+        this.len=this.driversFound.length;
+
+      },
+      myErr => {
+        console.log("from subscribe");
+        console.log(myErr.message);
+      });
  
 }
 
@@ -96,55 +125,49 @@ getAllDrives() {
       });
 
   }
-
-  openPackageDialog() {
-debugger
+  
+  sendEmail(drive:Drive)
+  {
+    debugger
+    if(this.userSer.currentUser&&drive.driverCode==this.userSer.currentUser.userCode)
+    alert("זוהי נסיעה שלך")
+    else{
     if(this.userSer.currentUser==undefined)
-    {
+     {
       const dialogRef = this.dialog.open(ExistUserComponent,{ disableClose: true })
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog result: ${result}`);
-        if(this.userSer.currentUser)
+        if(this.userSer.currentUser&&drive.driverCode!=this.userSer.currentUser.userCode)
         {
-        const dialogRef2 = this.dialog.open(PackageComponent,{ disableClose: true })
-        dialogRef2.afterClosed().subscribe(result => {
-          console.log(`Dialog result: ${result}`);
-        });
-        }
+       this.getUserById(drive)
+       //הנסיעה שהשליח בחר
+       this.driveSer.currentDrive=drive;
+       const dialogRef = this.dialog.open(MyPackagesComponent,{ disableClose: true })
+       dialogRef.afterClosed().subscribe(result => {
+         console.log(`Dialog result: ${result}`);
+       });
+      }
       });
-     
-    }
-    else if(this.userSer.currentUser)
-    {
-      const dialogRef = this.dialog.open(PackageComponent,{ disableClose: true })
-      dialogRef.afterClosed().subscribe(result => {
-        console.log(`Dialog result: ${result}`);
-      });
-    }
 
-  }
-
-  sendEmail(drive:Drive)
-  {
-    // if(this.userSer.currentUser==undefined)
-    //   this.login();
-    // debugger
-    // if(this.userSer.currentUser!=undefined){
-    // this.getUserById(drive);
-    // this.userSer.sendEmail(this.myUser.userMail,"בקשת משלוח",this.userSer.currentUser.userName+"  מעוניין בנסיעה שלך").
-    // subscribe(data=>alert(data));
-    // }
+     }
+     if(this.userSer.currentUser)
+     {
     this.getUserById(drive)
+    this.driveSer.currentDrive=drive;
     const dialogRef = this.dialog.open(MyPackagesComponent,{ disableClose: true })
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     })
   }
+  }
+  }
 
 
 filterDrives(fromDate:string,toDate:string,from:Address,to:Address,time:string,trans:number) {
   debugger
+  
   this.driversFound=this.driveSer.allDrives;
+ 
   if(fromDate)
   {
     this.driversFound=this.driversFound.filter(d=>new Date(d.travelDate)>= new Date(fromDate));
@@ -238,7 +261,7 @@ renderOptions: { polylineOptions: { strokeColor: '#0f0' } },
 sortBy(value:any)
 {
   debugger
-if(value=='from' && this.fromLat!=null &&this.fromLng!=null)
+if(value=='from' && this.fromLat!=0 &&this.fromLng!=0)
 {
   this.driversFound.sort((a, b) => {
     console.log("a",google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.fromLocationLat, a.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng) ))
@@ -246,27 +269,28 @@ if(value=='from' && this.fromLat!=null &&this.fromLng!=null)
     console.log("a-b=" ,google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.fromLocationLat, a.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng) )-google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.fromLocationLat, b.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng)))
     return  google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.fromLocationLat, a.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng) )-google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.fromLocationLat, b.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng))})
 }
-if(value=='to' && this.toLng!=null &&this.toLat!=null)
+if(value=='to' && this.toLng!=0 &&this.toLat!=0)
 {
   this.driversFound.sort((a, b) => {
    return  google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.toLocationLat, a.toLocationLng), new google.maps.LatLng(this.toLat,this.toLng) )-google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.toLocationLat, b.toLocationLng), new google.maps.LatLng(this.toLat,this.toLng))})
 }
 if(value=='time')
   {
-   
 
+  
   }
 if(value=='date')
   {
-  
-      this.driversFound.sort((a, b) => {
-        //  console.log("a.FromDate.getDate()"+new Date( a.FromDate).getTime())
-        return new Date(a.travelDate).getDate() - new Date(b.travelDate).getDate();
-  
-      });
-    
+    this.driversFound.sort((a, b) => {
+      //  console.log("a.FromDate.getDate()"+new Date( a.FromDate).getTime())
+      return new Date(a.travelDate).getTime() - new Date(b.travelDate).getTime();
+
+    });
+
   }
 }
+ 
+
 }
 
 

@@ -17,6 +17,8 @@ export class DriveService {
   fromDate:Date;
   toDate:Date;
   allDrives: Array<Drive>;
+  currentDrive:Drive;
+  listDrivesByUserId:Array<Drive>;
   date=new Date();
   constructor(private http: HttpClient) { }
   //URL1:string="https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/reverseGeocode?f=pjson&featureTypes=&location="
@@ -39,6 +41,23 @@ aa:any;
   return this.http.get<any>(this.URL1)
   }
 
+  getDrivesByUserId(id:string):Observable<Drive[]>
+  {
+    return this.http.get<Array<Drive>>(this.URL + "/GetDrivesByUserId/"+id);
+  }
+
+  updateDrive(updateDrive:Drive): Observable<string> {
+    debugger
+    console.log("from service:",updateDrive);
+    return this.http.post<string>(this.URL + "/UpdateDrive",updateDrive);
+  }
+
+  deleteDrive(id:number,listWaiting:Package[]): Observable<Array<Drive>> 
+  {
+    debugger
+    return this.http.post<Array<Drive>>(this.URL + "/DeleteDrive/"+id,listWaiting);
+  }
+
 
 //   //אמור לקבל משתמש ולהוסיף אותו לרשימת השליחים 
 // addDriveToList(user)
@@ -54,6 +73,7 @@ aa:any;
 
 
   getAllDrives(): Observable<Array<Drive>> {
+    debugger
     return this.http.get<Array<Drive>>(this.URL + "/GetAllDrives");
   }
 

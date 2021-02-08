@@ -1,7 +1,6 @@
 
 <div> 
   <h1> נסיעות</h1>
-<button class="btn" mat-button (click)="openPackageDialog()"> צור משלוח</button>
 <br><br>
 
 <input [min]="minDate" matInput [matDatepicker]="picker" (click)="picker.open()"  placeholder="מתאריך" #fromDate >
@@ -18,6 +17,10 @@
 
   <input matInput type="time"  placeholder="שעת יציאה" #time >
 
+  <!-- <div class="md-form md-outline">
+    <label for="default-picker">שעת החזרה</label>
+    <input type="time" id="default-picker" class="form-control" [(ngModel)]="time" placeholder="שעת החזרה">
+</div>‏‏ -->
   <select #trans >
     <option value="0">כל רכב </option>
      <option value="1">רכב </option>
@@ -26,31 +29,11 @@
      <option value="4" >אוטובוס</option>
      <option value="5" >משאית</option>
    </select>
-   <!--חיפוש לפי עיר
-  <input id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on"> -->
+   <!--חיפוש לפי עיר-->
+  <input #searchTextField id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on"> 
 
-  <!-- <button mat-button (click)="searchSpesificDrives(date.value,fromL.value,toL.value,time.value)">חפש תוצאות</button> -->
   <button mat-button (click)="filterDrives(fromDate.value,toDate.value,fromL.value,toL.value,time.value,trans.value)">חפש תוצאות</button>
 
-  <!-- <form  [formGroup]="options">
-    <mat-form-field appearance="fill" [color]="colorControl.value">
-      <mat-label>Color</mat-label>
-      <mat-select [formControl]="colorControl">
-        <mat-option value="primary">Primary</mat-option>
-        <mat-option value="accent">Accent</mat-option>
-        <mat-option value="warn">Warn</mat-option>
-      </mat-select>
-    </mat-form-field>
-    </form>
-    <br><br> -->
-    <!-- <select (change)="GetDrivesByTrans($event.target.value)" >
-     <option value="0">כל רכב </option>
-      <option value="1">רכב </option>
-      <option value="2" >אופנוע</option>
-      <option value="3" >אופניים</option>
-      <option value="4" >אוטובוס</option>
-      <option value="5" >משאית</option>
-    </select> -->
     <br>
     <mat-label>מיין לפי:</mat-label>
    <select (change)="sortBy($event.target.value)" >
@@ -64,23 +47,27 @@
 <p style="font-size:large;"> נמצאו {{len}} נסיעות מתאימות</p>
 <br>
 <table >
+  <th> שם </th>
   <th> תאריך </th>
   <th> מוצא </th>
   <th> יעד </th>
   <th> שעת יציאה </th>
   <th> <mat-icon >email</mat-icon> </th>
   <th></th>
-  <tr *ngFor="let drive of driversFound;let i=index">
+  <tr *ngFor="let drive of driversFound;let i=index" >
+<td >{{drive.driverName}}</td>
 <td> {{drive.travelDate|  date:'dd-MM-yyyy' }} </td>
 <td> {{drive.fromLocationFormat}}</td>
 <td> {{drive.toLocationFormat}}</td>
 <td> {{drive.drivingTime}}</td>
 <td> <button mat-button (click)="sendEmail(drive)" >שלח מייל</button></td> 
-<td > <button (click)="hideme[i] = !hideme[i]"><mat-icon>expand_more</mat-icon> </button></td>
-<td  [hidden]="hideme[i]">{{drive.driverCode}}</td>
+<td>{{drive.transportationType}}</td>
+<td> {{drive.driveCode}}</td>
+<td (click)="openDialogHappiness(drive.driverCode)"><mat-icon>star_rate</mat-icon></td>
+<!-- <td > <button (click)="hideme[i] = !hideme[i]"><mat-icon>expand_more</mat-icon> </button></td> -->
 </tr>
 </table>
 
 </div>
-
+<router-outlet></router-outlet>
  

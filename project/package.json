@@ -23,14 +23,15 @@
     "@angular/platform-browser": "~9.1.7",
     "@angular/platform-browser-dynamic": "~9.1.7",
     "@angular/router": "~9.1.7",
-    "bootstrap": "^4.5.0",
+    "bootstrap": "^4.6.0",
+    "firebase": "^7.0.0 || ^8.0.0",
+    "ng-pick-datetime": "^7.0.0",
     "ngx-google-places-autocomplete": "^2.0.4",
     "primeicons": "file:node_modules/primeicons",
     "primeng": "^10.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2",
-    "firebase": "^7.0.0 || ^8.0.0"
+    "zone.js": "~0.10.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.6",

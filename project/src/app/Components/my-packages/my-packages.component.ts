@@ -6,6 +6,7 @@ import { PackageService } from '../../Services/package.service';
 import { UserService } from '../../Services/user.service';
 import { Drive } from 'src/app/Classes/drive';
 import { User } from 'src/app/Classes/user';
+import { DriveService } from 'src/app/Services/drive.service';
 
 @Component({
   selector: 'app-my-packages',
@@ -14,7 +15,7 @@ import { User } from 'src/app/Classes/user';
 })
 export class MyPackagesComponent implements OnInit {
 
-  constructor(private userSer: UserService,private packageSer:PackageService, private dialog:MatDialog) { }
+  constructor(private userSer: UserService,private packageSer:PackageService, private dialog:MatDialog,private driveSer:DriveService) { }
 
   myListPackage:Package[];
   len:number;
@@ -26,36 +27,30 @@ export class MyPackagesComponent implements OnInit {
   getPackagesByUserId()
   {
     debugger
-     this.packageSer.getPackagesByUserId(this.userSer.currentUser.userCode).subscribe(
-       myData=>{
-       this.myListPackage=myData;
-       this.len=this.myListPackage.length;
-       debugger
-       console.log( this.myListPackage);
-       
-       },
-       myErr=>{
-         console.log(myErr);
-       }
-     )
+      this.packageSer.getAllPackages().subscribe(
+      myData => {
+        this.myListPackage=myData;
+        //תמיד נשאר כאן כל הנסיעות
+        this.packageSer.allPackages=myData;
+        this.myListPackage= this.myListPackage.filter(p=>p.userCustomerCode==this.userSer.currentUser.userCode);
+        this.len=this.myListPackage.length;
+      },
+      myErr => {
+        console.log("from subscribe");
+        console.log(myErr.message);
+      });
   }
  
-  sendEmail(p:Package)
+  checkPackage(p:Package)
   {
     debugger
-    this.myPackage=p;
+    this.packageSer.currentPackage=p;
   }
   send()
   {
     debugger
-    this.userSer.sendEmail(this.userSer.myDriver.userMail,"בקשת משלוח",this.myPackage).subscribe(data=>alert(data));
+    this.userSer.sendPackageByEmail(this.driveSer.currentDrive.driveCode,this.userSer.myDriver.userMail,"בקשת משלוח",this.packageSer.currentPackage).subscribe(data=>alert(data));
   }
 
-  openPackageDialog()
-  {
-    const dialogRef = this.dialog.open(PackageComponent,{ disableClose: true })
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
+ 
 }
