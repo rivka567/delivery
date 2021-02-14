@@ -13,7 +13,7 @@ namespace DAL
         {
             using (DBDeliveriesEntities db = new DBDeliveriesEntities())
             {
-                db.Users.Add(user);
+                db.User.Add(user);
                 db.SaveChanges();
                 if(GetUserById(user.userCode) !=null)
                 return "add delivery";
@@ -25,7 +25,7 @@ namespace DAL
         {
             using (DBDeliveriesEntities db = new DBDeliveriesEntities())
             {
-                return db.Users.FirstOrDefault(u => u.userCode.Equals(id));
+                return db.User.FirstOrDefault(u => u.userCode.Equals(id));
             }
         }
        
@@ -33,7 +33,7 @@ namespace DAL
         {
             using (DBDeliveriesEntities db = new DBDeliveriesEntities())
             {
-                var q = db.Users.ToList();
+                var q = db.User.ToList();
                 return q;
             }
         }

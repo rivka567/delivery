@@ -25,12 +25,14 @@ namespace DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Drive> Drives { get; set; }
-        public virtual DbSet<packageDescription> packageDescriptions { get; set; }
-        public virtual DbSet<Package> Packages { get; set; }
-        public virtual DbSet<PackageSize> PackageSizes { get; set; }
-        public virtual DbSet<PackageType> PackageTypes { get; set; }
-        public virtual DbSet<RefusesPackage> RefusesPackages { get; set; }
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Drive> Drive { get; set; }
+        public virtual DbSet<Happiness> Happiness { get; set; }
+        public virtual DbSet<Loction> Loction { get; set; }
+        public virtual DbSet<Package> Package { get; set; }
+        public virtual DbSet<PackageSize> PackageSize { get; set; }
+        public virtual DbSet<PackageType> PackageType { get; set; }
+        public virtual DbSet<Transportation> Transportation { get; set; }
+        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<WaitingMessages> WaitingMessages { get; set; }
     }
 }

@@ -12,14 +12,14 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class RefusesPackage
+    public partial class WaitingMessages
     {
-        public int packageCode { get; set; }
-        public string userCode { get; set; }
-        public int packageTypeCode { get; set; }
-        public string value { get; set; }
+        public int id { get; set; }
+        public int packageId { get; set; }
+        public int driveId { get; set; }
+        public bool status { get; set; }
     
-        public virtual PackageType PackageType { get; set; }
-        public virtual User User { get; set; }
+        public virtual Drive Drive { get; set; }
+        public virtual Package Package { get; set; }
     }
 }

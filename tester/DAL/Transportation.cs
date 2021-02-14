@@ -12,14 +12,9 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class packageDescription
+    public partial class Transportation
     {
-        public int packageDescriptionCode { get; set; }
-        public string userCode { get; set; }
-        public int packageType { get; set; }
-        public string value { get; set; }
-    
-        public virtual PackageType PackageType1 { get; set; }
-        public virtual User User { get; set; }
+        public int transportationId { get; set; }
+        public string transportationType { get; set; }
     }
 }

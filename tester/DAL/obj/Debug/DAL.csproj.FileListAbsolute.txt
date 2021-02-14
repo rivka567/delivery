@@ -22,3 +22,7 @@ C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליח
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DAL\obj\Debug\DAL.csproj.CopyComplete
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DAL\obj\Debug\DAL.dll
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DAL\obj\Debug\DAL.pdb
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\DAL\obj\Debug\DAL.dll
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\DAL\obj\Debug\DAL.pdb

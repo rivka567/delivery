@@ -12,25 +12,20 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Loction
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Loction()
         {
-            this.Happiness = new HashSet<Happiness>();
             this.Package = new HashSet<Package>();
             this.Package1 = new HashSet<Package>();
         }
     
-        public string userCode { get; set; }
-        public string userName { get; set; }
-        public string userPhone { get; set; }
-        public string userMail { get; set; }
-        public int userAge { get; set; }
-        public Nullable<bool> messages { get; set; }
+        public int locationId { get; set; }
+        public string locationFormat { get; set; }
+        public Nullable<double> locationLat { get; set; }
+        public Nullable<double> locationLng { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Happiness> Happiness { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Package> Package { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

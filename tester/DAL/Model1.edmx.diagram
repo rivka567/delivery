@@ -4,23 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6ff140f6b2bd43da94702377444afb3b" Name="Diagram1">
-        <EntityTypeShape EntityType="DBDeliveriesModel.Drive" Width="1.5" PointX="3.625" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBDeliveriesModel.packageDescription" Width="1.5" PointX="5.5" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBDeliveriesModel.Package" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBDeliveriesModel.PackageSize" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBDeliveriesModel.PackageType" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBDeliveriesModel.RefusesPackage" Width="1.5" PointX="6" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBDeliveriesModel.User" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
-        <AssociationConnector Association="DBDeliveriesModel.FK_Drives_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="DBDeliveriesModel.FK_packageDescription_PackageType" ManuallyRouted="false" />
-        <AssociationConnector Association="DBDeliveriesModel.FK_packageDescription_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="DBDeliveriesModel.FK_Packages_PackageSize" ManuallyRouted="false" />
-        <AssociationConnector Association="DBDeliveriesModel.FK_Packages_PackageType" ManuallyRouted="false" />
-        <AssociationConnector Association="DBDeliveriesModel.FK_Packages_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="DBDeliveriesModel.FK_Packages_Users1" ManuallyRouted="false" />
-        <AssociationConnector Association="DBDeliveriesModel.FK_RefusesPackages_PackageType" ManuallyRouted="false" />
-        <AssociationConnector Association="DBDeliveriesModel.FK_RefusesPackages_Users" ManuallyRouted="false" />
+      <Diagram DiagramId="26787518a428459b88067666edc1e769" Name="Diagram1">
+        <EntityTypeShape EntityType="DBDeliveries2Model.Drive" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveries2Model.Happiness" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveries2Model.Loction" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveries2Model.Package" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveries2Model.PackageSize" Width="1.5" PointX="3.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveries2Model.PackageType" Width="1.5" PointX="3.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveries2Model.Transportation" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveries2Model.User" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveries2Model.WaitingMessages" Width="1.5" PointX="8.25" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="DBDeliveries2Model.FK_WaitingPackage_Drive" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries2Model.FK_Happiness_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries2Model.FK_Package_Loction" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries2Model.FK_Package_Loction1" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries2Model.FK_Package_PackageSize" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries2Model.FK_Package_PackageType" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries2Model.FK_Package_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries2Model.FK_Package_User1" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries2Model.FK_WaitingPackage_Package" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

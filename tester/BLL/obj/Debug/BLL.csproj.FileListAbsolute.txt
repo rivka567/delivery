@@ -25,3 +25,17 @@ C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליח
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\BLL\bin\Debug\EntityFramework.xml
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\BLL\obj\Debug\BLL.csproj.CopyComplete
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\BLL\bin\Debug\BLL.dll
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\BLL\bin\Debug\BLL.pdb
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\BLL\bin\Debug\DAL.dll
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\BLL\bin\Debug\DTO.dll
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\BLL\bin\Debug\EntityFramework.dll
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\BLL\bin\Debug\DAL.pdb
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\BLL\bin\Debug\DAL.dll.config
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\BLL\bin\Debug\DTO.pdb
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\BLL\bin\Debug\EntityFramework.xml
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\BLL\obj\Debug\BLL.dll
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\BLL\obj\Debug\BLL.pdb
