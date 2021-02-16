@@ -51,13 +51,16 @@ import { MatToolbarModule,} from '@angular/material/toolbar';
 import { MatTooltipModule,} from '@angular/material/tooltip';
 import { HappinessComponent } from './Components/happiness/happiness.component';
 import { ShowAllHappinessComponent } from './Components/show-all-happiness/show-all-happiness.component';
+import { UnderBarComponent } from './under-bar/under-bar.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatSelectModule} from '@angular/material/select';
 import { NewHomeComponent } from './Components/new-home/new-home.component';
 
 const appRoutes: Routes =
 [
-
   {path: "", component:LoginComponent},
-  {path:"home",component:HomeComponent},
+  {path:"home",component:NewHomeComponent},
   {path:"user",component:UserComponent},
   {path:"main",component:MainComponent},
   {path:"exist-user",component:ExistUserComponent},
@@ -72,9 +75,12 @@ const appRoutes: Routes =
    {path:"personal-details",component:PersonalDetailsComponent},
    {path:"personal-packages",component:PersonalPackagesComponent},
    {path:"personal-drives",component:PersonalDrivesComponent},
+
+
   ]},
   {path:"waiting-messages",component:PersonalMessagesComponent},
-{path:"hap",component:ShowAllHappinessComponent}
+{path:"hap",component:ShowAllHappinessComponent},
+{path:"personal-messages",component:PersonalMessagesComponent},
 
 ];
 const config = {
@@ -110,6 +116,7 @@ const config = {
     UpdateDriveComponent,
     HappinessComponent,
     ShowAllHappinessComponent,
+    UnderBarComponent,
     NewHomeComponent,
     
   ],
@@ -141,6 +148,11 @@ const config = {
     MatSnackBarModule,
    MatToolbarModule,
    MatTooltipModule,
+   MatTabsModule,
+   MatBottomSheetModule,
+   MatToolbarModule,
+MatMenuModule,
+MatSelectModule, 
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCxE2_heEzD9OmVoUK_MVDNKmHwLjs9ct0&sensor=true',
       libraries:['places','geometry','drawing']

@@ -1,0 +1,26 @@
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="ניהול הזמנות">
+        <ng-template mat-tab-label>
+            <!-- <mat-icon>playlist_add_check</mat-icon> -->
+            פרופיל אישי 
+        </ng-template>
+        <app-personal-drives></app-personal-drives>
+
+    </mat-tab>
+    <mat-tab label="הפרופיל שלי ">
+        <ng-template mat-tab-label>
+            <!-- <mat-icon>account_circle</mat-icon> -->
+          החבילות שלי 
+        </ng-template>
+ <app-personal-packages></app-personal-packages>
+    </mat-tab>
+    <mat-tab label=" הזמנות מיוחדות לטיפול ">
+        <ng-template mat-tab-label>
+            <!-- <mat-icon>content_paste</mat-icon> -->
+        הנסיעות שלי 
+        </ng-template>
+        <app-personal-drives></app-personal-drives>
+
+    </mat-tab>
+ 
+</mat-tab-group>

@@ -17,19 +17,27 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PackageType()
         {
+<<<<<<< HEAD
+            this.Package = new HashSet<Package>();
+=======
             this.Packages = new HashSet<Package>();
             this.PackageDescriptions = new HashSet<PackageDescription>();
             this.RefusesPackages = new HashSet<RefusesPackage>();
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         }
     
         public int packageTypeCode { get; set; }
         public string packageTypeName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+<<<<<<< HEAD
+        public virtual ICollection<Package> Package { get; set; }
+=======
         public virtual ICollection<Package> Packages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PackageDescription> PackageDescriptions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RefusesPackage> RefusesPackages { get; set; }
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
     }
 }

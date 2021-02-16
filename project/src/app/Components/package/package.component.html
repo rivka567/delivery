@@ -1,6 +1,8 @@
 
 <mat-dialog-content class="mat-typography">
-  <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon>
+  
+  <mat-icon style="cursor: pointer; float: left;margin-left: 3%;" mat-dialog-close >highlight_off </mat-icon>
+      <h1>פרטי חבילה :</h1><br>
    <form *ngIf="[form,newPackage]" [formGroup]="form" (ngSubmit)="addPackage()">
     <div *ngIf="!addsuccess"  class="example-container">
       <br>
@@ -94,7 +96,7 @@
 
        TODO: לשנות שיראה כקישור -->
     <button mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid"
-        (click)="submitted=true " mat-dialog-close> שמור</button>
+        (click)="submitted=true " class="btn" mat-dialog-close> שמור</button>
       <br>
     </div>
   </form> 

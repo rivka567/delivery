@@ -42,7 +42,11 @@ namespace WebAPI.Controllers
             return Ok(u);
         }
 
+<<<<<<< HEAD
+       
+=======
        [HttpGet]
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         [Route("SendEmail")]
         public IHttpActionResult SendEmail(string sender, string contactAddress, string subject, string body)
         {

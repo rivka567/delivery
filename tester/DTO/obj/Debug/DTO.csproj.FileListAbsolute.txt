@@ -9,9 +9,17 @@ C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליח
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DTO\obj\Debug\DTO.dll
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DTO\obj\Debug\DTO.pdb
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\פרוייקט שליחים חדש\tester\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+<<<<<<< HEAD
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\DTO\bin\Debug\DTO.dll
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\DTO\bin\Debug\DTO.pdb
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\DTO\obj\Debug\DTO.dll
+C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\DTO\obj\Debug\DTO.pdb
+=======
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\DTO\bin\Debug\DTO.dll
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\DTO\bin\Debug\DTO.pdb
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\DTO\obj\Debug\DTO.dll
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\DTO\obj\Debug\DTO.pdb
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01

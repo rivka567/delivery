@@ -13,7 +13,7 @@ namespace DAL
         {
             using (DBDeliveries1Entities db = new DBDeliveries1Entities())
             {
-                db.Users.Add(user);
+                db.User.Add(user);
                 db.SaveChanges();
                 if(GetUserById(user.userCode) !=null)
                 return "add delivery";
@@ -25,7 +25,7 @@ namespace DAL
         {
             using (DBDeliveries1Entities db = new DBDeliveries1Entities())
             {
-                return db.Users.FirstOrDefault(u => u.userCode.Equals(id));
+                return db.User.FirstOrDefault(u => u.userCode.Equals(id));
             }
         }
        
@@ -33,17 +33,31 @@ namespace DAL
         {
             using (DBDeliveries1Entities db = new DBDeliveries1Entities())
             {
-                var q = db.Users.ToList();
+                var q = db.User.ToList();
                 return q;
             }
         }
         public static string SendEmail(string sender, string contactAddress, string subject, string body)
         {
+<<<<<<< HEAD
+
+            string FromMail =sender;
+=======
             string FromMail = "travel4me1234@gmail.com";
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
             string emailTo = contactAddress;
             MailMessage mail = new MailMessage();
             mail.IsBodyHtml = true;
             SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com");
+<<<<<<< HEAD
+            mail.From = new MailAddress(FromMail, "מלא מקום");
+            mail.To.Add(emailTo);
+            mail.Subject = subject;
+            mail.Body = body;
+
+            SmtpServer.Port = 25;
+            SmtpServer.Credentials = new System.Net.NetworkCredential(contactAddress, "1234stst");
+=======
             mail.From = new MailAddress(FromMail, "הפרויקט שלנו!!!");
             mail.To.Add(emailTo);
             mail.Subject = subject;
@@ -51,10 +65,19 @@ namespace DAL
             SmtpServer.Port = 587;
             //מייל שממנו אני שולחת והסיסמא
             SmtpServer.Credentials = new System.Net.NetworkCredential("travel4me1234@gmail.com", "0548443141");
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
             SmtpServer.EnableSsl = true;
             try
             {
                 SmtpServer.Send(mail);
+<<<<<<< HEAD
+                return "has been sent successfully";
+            }
+            catch (Exception e)
+            {
+                return e.ToString();
+            }
+=======
 
                    return "has been sent successfully";
             }
@@ -89,6 +112,7 @@ namespace DAL
             //{
             //    return e.ToString();
             //}
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         }
 
 

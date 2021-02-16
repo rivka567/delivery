@@ -12,18 +12,31 @@ namespace BLL
     {
         public static DTO.PackageDTO GetPackageById(int id)
         {
+<<<<<<< HEAD
+            var d = DAL.PackageDal.GetPackageById(id);
+=======
             var d = DAL.PackageDAL.GetPackageById(id);
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
             return PackageConverter.convertToPackageDTO(d);
 
         }
 
         public static List<DTO.PackageDTO> GetAllPackages()
         {
+<<<<<<< HEAD
+            var d = DAL.PackageDal.GetAllPackages();
+=======
             var d = DAL.PackageDAL.GetAllPackages();
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
             return PackageConverter.convertToPackageDTOList(d);
 
         }
 
+<<<<<<< HEAD
+        public static string AddPackage(Package package)
+        {
+            return DAL.PackageDal.AddPackage(package); ;
+=======
         public static string AddPackage(DTO.PackageDTO package)
         {
             Loction fromL = new Loction()
@@ -46,6 +59,7 @@ namespace BLL
             p.toLocation = ToLo.locationId;
 
             return DAL.PackageDAL.AddPackage(p);
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
 
         }
 

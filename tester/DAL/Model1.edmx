@@ -4,7 +4,11 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
+<<<<<<< HEAD
+      <Schema Namespace="DBDeliveries2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+=======
       <Schema Namespace="DBDeliveries1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         <EntityType Name="Drive">
           <Key>
             <PropertyRef Name="driveCode" />
@@ -16,6 +20,32 @@
           <Property Name="travelDate" Type="date" Nullable="false" />
           <Property Name="fromLocation" Type="int" Nullable="false" />
           <Property Name="toLocation" Type="int" Nullable="false" />
+<<<<<<< HEAD
+          <Property Name="describeDrive" Type="nvarchar" MaxLength="50" />
+          <Property Name="status" Type="bit" />
+          <Property Name="transportation" Type="int" Nullable="false" />
+          <Property Name="price" Type="int" />
+        </EntityType>
+        <EntityType Name="Happiness">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="deliveryId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="customerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="happinessLevel" Type="int" Nullable="false" />
+          <Property Name="describeHappiness" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Loction">
+          <Key>
+            <PropertyRef Name="locationId" />
+          </Key>
+          <Property Name="locationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="locationFormat" Type="nvarchar" MaxLength="50" />
+          <Property Name="locationLat" Type="float" />
+          <Property Name="locationLng" Type="float" />
+        </EntityType>
+=======
           <Property Name="packageSizeCode" Type="int" Nullable="false" />
           <Property Name="howLongBeforeReminder" Type="time" Precision="7" />
           <Property Name="transportation" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -31,6 +61,7 @@
           <Property Name="locationLat" Type="float" />
           <Property Name="locationLng" Type="float" />
         </EntityType>
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         <EntityType Name="Package">
           <Key>
             <PropertyRef Name="packageCode" />
@@ -42,9 +73,13 @@
           <Property Name="toLocation" Type="int" Nullable="false" />
           <Property Name="travelDate" Type="date" Nullable="false" />
           <Property Name="drivingTime" Type="time" Precision="7" Nullable="false" />
+<<<<<<< HEAD
+          <Property Name="status" Type="bit" />
+=======
           <Property Name="confirmationDelivery" Type="bit" Nullable="false" />
           <Property Name="happinesslevel" Type="int" Nullable="false" />
           <Property Name="describeHappiness" Type="nvarchar" MaxLength="50" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
           <Property Name="packageType" Type="int" Nullable="false" />
           <Property Name="describePackage" Type="nvarchar" MaxLength="50" />
           <Property Name="packageSize" Type="int" Nullable="false" />
@@ -72,15 +107,19 @@
           <Property Name="packageTypeCode" Type="int" Nullable="false" />
           <Property Name="packageTypeName" Type="nvarchar(max)" />
         </EntityType>
+<<<<<<< HEAD
+        <EntityType Name="Transportation">
+=======
         <EntityType Name="RefusesPackage">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
           <Key>
-            <PropertyRef Name="packageCode" />
+            <PropertyRef Name="transportationId" />
           </Key>
-          <Property Name="packageCode" Type="int" Nullable="false" />
-          <Property Name="userCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="packageTypeCode" Type="int" Nullable="false" />
-          <Property Name="value" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="transportationId" Type="int" Nullable="false" />
+          <Property Name="transportationType" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+<<<<<<< HEAD
+=======
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -91,6 +130,7 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="userCode" />
@@ -98,8 +138,36 @@
           <Property Name="userCode" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="userName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="userPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="userMail" Type="nvarchar" MaxLength="50" />
+          <Property Name="userMail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="userAge" Type="int" Nullable="false" />
+          <Property Name="messages" Type="bit" />
         </EntityType>
+        <EntityType Name="WaitingMessages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="packageId" Type="int" Nullable="false" />
+          <Property Name="driveId" Type="int" Nullable="false" />
+          <Property Name="status" Type="bit" Nullable="false" />
+        </EntityType>
+<<<<<<< HEAD
+        <Association Name="FK_Happiness_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Happiness" Type="Self.Happiness" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userCode" />
+            </Principal>
+            <Dependent Role="Happiness">
+              <PropertyRef Name="deliveryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Package_Loction">
+          <End Role="Loction" Type="Self.Loction" Multiplicity="1" />
+          <End Role="Package" Type="Self.Package" Multiplicity="*" />
+=======
         <Association Name="FK_Drive_Loction">
           <End Role="Loction" Type="Self.Loction" Multiplicity="1" />
           <End Role="Drive" Type="Self.Drive" Multiplicity="*" />
@@ -175,10 +243,27 @@
         <Association Name="FK_packageDescription_PackageType">
           <End Role="PackageType" Type="Self.PackageType" Multiplicity="1" />
           <End Role="PackageDescription" Type="Self.PackageDescription" Multiplicity="*" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
           <ReferentialConstraint>
-            <Principal Role="PackageType">
-              <PropertyRef Name="packageTypeCode" />
+            <Principal Role="Loction">
+              <PropertyRef Name="locationId" />
             </Principal>
+<<<<<<< HEAD
+            <Dependent Role="Package">
+              <PropertyRef Name="fromLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Package_Loction1">
+          <End Role="Loction" Type="Self.Loction" Multiplicity="1" />
+          <End Role="Package" Type="Self.Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loction">
+              <PropertyRef Name="locationId" />
+            </Principal>
+            <Dependent Role="Package">
+              <PropertyRef Name="toLocation" />
+=======
             <Dependent Role="PackageDescription">
               <PropertyRef Name="packageType" />
             </Dependent>
@@ -193,10 +278,11 @@
             </Principal>
             <Dependent Role="PackageDescription">
               <PropertyRef Name="userCode" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Packages_PackageSize">
+        <Association Name="FK_Package_PackageSize">
           <End Role="PackageSize" Type="Self.PackageSize" Multiplicity="1" />
           <End Role="Package" Type="Self.Package" Multiplicity="*" />
           <ReferentialConstraint>
@@ -208,7 +294,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Packages_PackageType">
+        <Association Name="FK_Package_PackageType">
           <End Role="PackageType" Type="Self.PackageType" Multiplicity="1" />
           <End Role="Package" Type="Self.Package" Multiplicity="*" />
           <ReferentialConstraint>
@@ -220,7 +306,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
+        <Association Name="FK_Package_User">
+=======
         <Association Name="FK_Packages_Users">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Package" Type="Self.Package" Multiplicity="*" />
           <ReferentialConstraint>
@@ -232,7 +322,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
+        <Association Name="FK_Package_User1">
+=======
         <Association Name="FK_Packages_Users1">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Package" Type="Self.Package" Multiplicity="*" />
           <ReferentialConstraint>
@@ -244,13 +338,59 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
+        <Association Name="FK_WaitingPackage_Drive">
+          <End Role="Drive" Type="Self.Drive" Multiplicity="1" />
+          <End Role="WaitingMessages" Type="Self.WaitingMessages" Multiplicity="*" />
+=======
         <Association Name="FK_RefusesPackages_PackageType">
           <End Role="PackageType" Type="Self.PackageType" Multiplicity="1" />
           <End Role="RefusesPackage" Type="Self.RefusesPackage" Multiplicity="*" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
           <ReferentialConstraint>
-            <Principal Role="PackageType">
-              <PropertyRef Name="packageTypeCode" />
+            <Principal Role="Drive">
+              <PropertyRef Name="driveCode" />
             </Principal>
+<<<<<<< HEAD
+            <Dependent Role="WaitingMessages">
+              <PropertyRef Name="driveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WaitingPackage_Package">
+          <End Role="Package" Type="Self.Package" Multiplicity="1" />
+          <End Role="WaitingMessages" Type="Self.WaitingMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="packageCode" />
+            </Principal>
+            <Dependent Role="WaitingMessages">
+              <PropertyRef Name="packageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBDeliveries2ModelStoreContainer">
+          <EntitySet Name="Drive" EntityType="Self.Drive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Happiness" EntityType="Self.Happiness" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Loction" EntityType="Self.Loction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Package" EntityType="Self.Package" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PackageSize" EntityType="Self.PackageSize" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PackageType" EntityType="Self.PackageType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transportation" EntityType="Self.Transportation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WaitingMessages" EntityType="Self.WaitingMessages" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Happiness_User" Association="Self.FK_Happiness_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Happiness" EntitySet="Happiness" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_Loction" Association="Self.FK_Package_Loction">
+            <End Role="Loction" EntitySet="Loction" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_Loction1" Association="Self.FK_Package_Loction1">
+            <End Role="Loction" EntitySet="Loction" />
+            <End Role="Package" EntitySet="Package" />
+=======
             <Dependent Role="RefusesPackage">
               <PropertyRef Name="packageTypeCode" />
             </Dependent>
@@ -309,15 +449,33 @@
           <AssociationSet Name="FK_packageDescription_Users" Association="Self.FK_packageDescription_Users">
             <End Role="User" EntitySet="User" />
             <End Role="PackageDescription" EntitySet="PackageDescription" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
           </AssociationSet>
-          <AssociationSet Name="FK_Packages_PackageSize" Association="Self.FK_Packages_PackageSize">
+          <AssociationSet Name="FK_Package_PackageSize" Association="Self.FK_Package_PackageSize">
             <End Role="PackageSize" EntitySet="PackageSize" />
             <End Role="Package" EntitySet="Package" />
           </AssociationSet>
-          <AssociationSet Name="FK_Packages_PackageType" Association="Self.FK_Packages_PackageType">
+          <AssociationSet Name="FK_Package_PackageType" Association="Self.FK_Package_PackageType">
             <End Role="PackageType" EntitySet="PackageType" />
             <End Role="Package" EntitySet="Package" />
           </AssociationSet>
+<<<<<<< HEAD
+          <AssociationSet Name="FK_Package_User" Association="Self.FK_Package_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_User1" Association="Self.FK_Package_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaitingPackage_Drive" Association="Self.FK_WaitingPackage_Drive">
+            <End Role="Drive" EntitySet="Drive" />
+            <End Role="WaitingMessages" EntitySet="WaitingMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaitingPackage_Package" Association="Self.FK_WaitingPackage_Package">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="WaitingMessages" EntitySet="WaitingMessages" />
+=======
           <AssociationSet Name="FK_Packages_Users" Association="Self.FK_Packages_Users">
             <End Role="User" EntitySet="User" />
             <End Role="Package" EntitySet="Package" />
@@ -333,13 +491,18 @@
           <AssociationSet Name="FK_RefusesPackages_Users" Association="Self.FK_RefusesPackages_Users">
             <End Role="User" EntitySet="User" />
             <End Role="RefusesPackage" EntitySet="RefusesPackage" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
           </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
+<<<<<<< HEAD
+      <Schema Namespace="DBDeliveries2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+=======
       <Schema Namespace="DBDeliveries1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         <EntityType Name="Drive">
           <Key>
             <PropertyRef Name="driveCode" />
@@ -351,6 +514,29 @@
           <Property Name="travelDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="fromLocation" Type="Int32" Nullable="false" />
           <Property Name="toLocation" Type="Int32" Nullable="false" />
+<<<<<<< HEAD
+          <Property Name="describeDrive" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="Boolean" />
+          <Property Name="transportation" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Int32" />
+          <NavigationProperty Name="WaitingMessages" Relationship="Self.FK_WaitingPackage_Drive" FromRole="Drive" ToRole="WaitingMessages" />
+        </EntityType>
+        <EntityType Name="Happiness">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="deliveryId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="customerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="happinessLevel" Type="Int32" Nullable="false" />
+          <Property Name="describeHappiness" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Happiness_User" FromRole="Happiness" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Loction">
+          <Key>
+            <PropertyRef Name="locationId" />
+          </Key>
+=======
           <Property Name="packageSizeCode" Type="Int32" Nullable="false" />
           <Property Name="howLongBeforeReminder" Type="Time" Precision="7" />
           <Property Name="transportation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -365,14 +551,20 @@
           <Key>
             <PropertyRef Name="locationId" />
           </Key>
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
           <Property Name="locationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="locationFormat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="locationLat" Type="Double" />
           <Property Name="locationLng" Type="Double" />
+<<<<<<< HEAD
+          <NavigationProperty Name="Package" Relationship="Self.FK_Package_Loction" FromRole="Loction" ToRole="Package" />
+          <NavigationProperty Name="Package1" Relationship="Self.FK_Package_Loction1" FromRole="Loction" ToRole="Package" />
+=======
           <NavigationProperty Name="Drives" Relationship="Self.FK_Drive_Loction" FromRole="Loction" ToRole="Drive" />
           <NavigationProperty Name="Drives1" Relationship="Self.FK_Drive_Loction1" FromRole="Loction" ToRole="Drive" />
           <NavigationProperty Name="Packages" Relationship="Self.FK_Package_Loction" FromRole="Loction" ToRole="Package" />
           <NavigationProperty Name="Packages1" Relationship="Self.FK_Package_Loction1" FromRole="Loction" ToRole="Package" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         </EntityType>
         <EntityType Name="Package">
           <Key>
@@ -385,14 +577,25 @@
           <Property Name="toLocation" Type="Int32" Nullable="false" />
           <Property Name="travelDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="drivingTime" Type="Time" Nullable="false" Precision="7" />
+<<<<<<< HEAD
+          <Property Name="status" Type="Boolean" />
+=======
           <Property Name="confirmationDelivery" Type="Boolean" Nullable="false" />
           <Property Name="happinesslevel" Type="Int32" Nullable="false" />
           <Property Name="describeHappiness" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
           <Property Name="packageType" Type="Int32" Nullable="false" />
           <Property Name="describePackage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="packageSize" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Loction" Relationship="Self.FK_Package_Loction" FromRole="Package" ToRole="Loction" />
           <NavigationProperty Name="Loction1" Relationship="Self.FK_Package_Loction1" FromRole="Package" ToRole="Loction" />
+<<<<<<< HEAD
+          <NavigationProperty Name="PackageSize1" Relationship="Self.FK_Package_PackageSize" FromRole="Package" ToRole="PackageSize" />
+          <NavigationProperty Name="PackageType1" Relationship="Self.FK_Package_PackageType" FromRole="Package" ToRole="PackageType" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Package_User" FromRole="Package" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Package_User1" FromRole="Package" ToRole="User" />
+          <NavigationProperty Name="WaitingMessages" Relationship="Self.FK_WaitingPackage_Package" FromRole="Package" ToRole="WaitingMessages" />
+=======
           <NavigationProperty Name="PackageSize1" Relationship="Self.FK_Packages_PackageSize" FromRole="Package" ToRole="PackageSize" />
           <NavigationProperty Name="PackageType1" Relationship="Self.FK_Packages_PackageType" FromRole="Package" ToRole="PackageType" />
           <NavigationProperty Name="User" Relationship="Self.FK_Packages_Users" FromRole="Package" ToRole="User" />
@@ -408,6 +611,7 @@
           <Property Name="value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PackageType1" Relationship="Self.FK_packageDescription_PackageType" FromRole="PackageDescription" ToRole="PackageType" />
           <NavigationProperty Name="User" Relationship="Self.FK_packageDescription_Users" FromRole="PackageDescription" ToRole="User" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         </EntityType>
         <EntityType Name="PackageSize">
           <Key>
@@ -415,7 +619,11 @@
           </Key>
           <Property Name="packageSizeCode" Type="Int32" Nullable="false" />
           <Property Name="packageSizeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+<<<<<<< HEAD
+          <NavigationProperty Name="Package" Relationship="Self.FK_Package_PackageSize" FromRole="PackageSize" ToRole="Package" />
+=======
           <NavigationProperty Name="Packages" Relationship="Self.FK_Packages_PackageSize" FromRole="PackageSize" ToRole="Package" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         </EntityType>
         <EntityType Name="PackageType">
           <Key>
@@ -423,14 +631,22 @@
           </Key>
           <Property Name="packageTypeCode" Type="Int32" Nullable="false" />
           <Property Name="packageTypeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+<<<<<<< HEAD
+          <NavigationProperty Name="Package" Relationship="Self.FK_Package_PackageType" FromRole="PackageType" ToRole="Package" />
+=======
           <NavigationProperty Name="Packages" Relationship="Self.FK_Packages_PackageType" FromRole="PackageType" ToRole="Package" />
           <NavigationProperty Name="PackageDescriptions" Relationship="Self.FK_packageDescription_PackageType" FromRole="PackageType" ToRole="PackageDescription" />
           <NavigationProperty Name="RefusesPackages" Relationship="Self.FK_RefusesPackages_PackageType" FromRole="PackageType" ToRole="RefusesPackage" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         </EntityType>
-        <EntityType Name="RefusesPackage">
+        <EntityType Name="Transportation">
           <Key>
-            <PropertyRef Name="packageCode" />
+            <PropertyRef Name="transportationId" />
           </Key>
+<<<<<<< HEAD
+          <Property Name="transportationId" Type="Int32" Nullable="false" />
+          <Property Name="transportationType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+=======
           <Property Name="packageCode" Type="Int32" Nullable="false" />
           <Property Name="userCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="packageTypeCode" Type="Int32" Nullable="false" />
@@ -447,6 +663,7 @@
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -455,6 +672,53 @@
           <Property Name="userCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="userPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+<<<<<<< HEAD
+          <Property Name="userMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="userAge" Type="Int32" Nullable="false" />
+          <Property Name="messages" Type="Boolean" />
+          <NavigationProperty Name="Happiness" Relationship="Self.FK_Happiness_User" FromRole="User" ToRole="Happiness" />
+          <NavigationProperty Name="Package" Relationship="Self.FK_Package_User" FromRole="User" ToRole="Package" />
+          <NavigationProperty Name="Package1" Relationship="Self.FK_Package_User1" FromRole="User" ToRole="Package" />
+        </EntityType>
+        <EntityType Name="WaitingMessages">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="packageId" Type="Int32" Nullable="false" />
+          <Property Name="driveId" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Drive" Relationship="Self.FK_WaitingPackage_Drive" FromRole="WaitingMessages" ToRole="Drive" />
+          <NavigationProperty Name="Package" Relationship="Self.FK_WaitingPackage_Package" FromRole="WaitingMessages" ToRole="Package" />
+        </EntityType>
+        <Association Name="FK_WaitingPackage_Drive">
+          <End Role="Drive" Type="Self.Drive" Multiplicity="1" />
+          <End Role="WaitingMessages" Type="Self.WaitingMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Drive">
+              <PropertyRef Name="driveCode" />
+            </Principal>
+            <Dependent Role="WaitingMessages">
+              <PropertyRef Name="driveId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Happiness_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Happiness" Type="Self.Happiness" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="userCode" />
+            </Principal>
+            <Dependent Role="Happiness">
+              <PropertyRef Name="deliveryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Package_Loction">
+          <End Role="Loction" Type="Self.Loction" Multiplicity="1" />
+          <End Role="Package" Type="Self.Package" Multiplicity="*" />
+=======
           <Property Name="userMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Drives" Relationship="Self.FK_Drive_User" FromRole="User" ToRole="Drive" />
           <NavigationProperty Name="Drives1" Relationship="Self.FK_Drives_Users" FromRole="User" ToRole="Drive" />
@@ -478,10 +742,25 @@
         <Association Name="FK_Drive_Loction1">
           <End Role="Loction" Type="Self.Loction" Multiplicity="1" />
           <End Role="Drive" Type="Self.Drive" Multiplicity="*" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
           <ReferentialConstraint>
             <Principal Role="Loction">
               <PropertyRef Name="locationId" />
             </Principal>
+<<<<<<< HEAD
+            <Dependent Role="Package">
+              <PropertyRef Name="fromLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Package_Loction1">
+          <End Role="Loction" Type="Self.Loction" Multiplicity="1" />
+          <End Role="Package" Type="Self.Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Loction">
+              <PropertyRef Name="locationId" />
+            </Principal>
+=======
             <Dependent Role="Drive">
               <PropertyRef Name="toLocation" />
             </Dependent>
@@ -530,12 +809,13 @@
             <Principal Role="Loction">
               <PropertyRef Name="locationId" />
             </Principal>
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
             <Dependent Role="Package">
               <PropertyRef Name="toLocation" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Packages_PackageSize">
+        <Association Name="FK_Package_PackageSize">
           <End Role="PackageSize" Type="Self.PackageSize" Multiplicity="1" />
           <End Role="Package" Type="Self.Package" Multiplicity="*" />
           <ReferentialConstraint>
@@ -547,7 +827,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Packages_PackageType">
+        <Association Name="FK_Package_PackageType">
           <End Role="PackageType" Type="Self.PackageType" Multiplicity="1" />
           <End Role="Package" Type="Self.Package" Multiplicity="*" />
           <ReferentialConstraint>
@@ -559,7 +839,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
+        <Association Name="FK_Package_User">
+=======
         <Association Name="FK_Packages_Users">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Package" Type="Self.Package" Multiplicity="*" />
           <ReferentialConstraint>
@@ -571,7 +855,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
+        <Association Name="FK_Package_User1">
+=======
         <Association Name="FK_Packages_Users1">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
           <End Role="User" Type="Self.User" Multiplicity="0..1" />
           <End Role="Package" Type="Self.Package" Multiplicity="*" />
           <ReferentialConstraint>
@@ -583,6 +871,65 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
+        <Association Name="FK_WaitingPackage_Package">
+          <End Role="Package" Type="Self.Package" Multiplicity="1" />
+          <End Role="WaitingMessages" Type="Self.WaitingMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Package">
+              <PropertyRef Name="packageCode" />
+            </Principal>
+            <Dependent Role="WaitingMessages">
+              <PropertyRef Name="packageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBDeliveriesEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Drive" EntityType="Self.Drive" />
+          <EntitySet Name="Happiness" EntityType="Self.Happiness" />
+          <EntitySet Name="Loction" EntityType="Self.Loction" />
+          <EntitySet Name="Package" EntityType="Self.Package" />
+          <EntitySet Name="PackageSize" EntityType="Self.PackageSize" />
+          <EntitySet Name="PackageType" EntityType="Self.PackageType" />
+          <EntitySet Name="Transportation" EntityType="Self.Transportation" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="WaitingMessages" EntityType="Self.WaitingMessages" />
+          <AssociationSet Name="FK_WaitingPackage_Drive" Association="Self.FK_WaitingPackage_Drive">
+            <End Role="Drive" EntitySet="Drive" />
+            <End Role="WaitingMessages" EntitySet="WaitingMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Happiness_User" Association="Self.FK_Happiness_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Happiness" EntitySet="Happiness" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_Loction" Association="Self.FK_Package_Loction">
+            <End Role="Loction" EntitySet="Loction" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_Loction1" Association="Self.FK_Package_Loction1">
+            <End Role="Loction" EntitySet="Loction" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_PackageSize" Association="Self.FK_Package_PackageSize">
+            <End Role="PackageSize" EntitySet="PackageSize" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_PackageType" Association="Self.FK_Package_PackageType">
+            <End Role="PackageType" EntitySet="PackageType" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_User" Association="Self.FK_Package_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Package_User1" Association="Self.FK_Package_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Package" EntitySet="Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WaitingPackage_Package" Association="Self.FK_WaitingPackage_Package">
+            <End Role="Package" EntitySet="Package" />
+            <End Role="WaitingMessages" EntitySet="WaitingMessages" />
+=======
         <Association Name="FK_packageDescription_PackageType">
           <End Role="PackageType" Type="Self.PackageType" Multiplicity="1" />
           <End Role="PackageDescription" Type="Self.PackageDescription" Multiplicity="*" />
@@ -696,6 +1043,7 @@
           <AssociationSet Name="FK_RefusesPackages_Users" Association="Self.FK_RefusesPackages_Users">
             <End Role="User" EntitySet="Users" />
             <End Role="RefusesPackage" EntitySet="RefusesPackages" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -703,9 +1051,15 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+<<<<<<< HEAD
+        <EntityContainerMapping StorageEntityContainer="DBDeliveries2ModelStoreContainer" CdmEntityContainer="DBDeliveriesEntities">
+          <EntitySetMapping Name="Drive">
+            <EntityTypeMapping TypeName="DBDeliveries2Model.Drive">
+=======
         <EntityContainerMapping StorageEntityContainer="DBDeliveries1ModelStoreContainer" CdmEntityContainer="DBDeliveries1Entities">
           <EntitySetMapping Name="Drives">
             <EntityTypeMapping TypeName="DBDeliveries1Model.Drive">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
               <MappingFragment StoreEntitySet="Drive">
                 <ScalarProperty Name="driveCode" ColumnName="driveCode" />
                 <ScalarProperty Name="driverCode" ColumnName="driverCode" />
@@ -714,6 +1068,38 @@
                 <ScalarProperty Name="travelDate" ColumnName="travelDate" />
                 <ScalarProperty Name="fromLocation" ColumnName="fromLocation" />
                 <ScalarProperty Name="toLocation" ColumnName="toLocation" />
+<<<<<<< HEAD
+                <ScalarProperty Name="describeDrive" ColumnName="describeDrive" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="transportation" ColumnName="transportation" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Happiness">
+            <EntityTypeMapping TypeName="DBDeliveries2Model.Happiness">
+              <MappingFragment StoreEntitySet="Happiness">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="deliveryId" ColumnName="deliveryId" />
+                <ScalarProperty Name="customerName" ColumnName="customerName" />
+                <ScalarProperty Name="happinessLevel" ColumnName="happinessLevel" />
+                <ScalarProperty Name="describeHappiness" ColumnName="describeHappiness" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Loction">
+            <EntityTypeMapping TypeName="DBDeliveries2Model.Loction">
+              <MappingFragment StoreEntitySet="Loction">
+                <ScalarProperty Name="locationId" ColumnName="locationId" />
+                <ScalarProperty Name="locationFormat" ColumnName="locationFormat" />
+                <ScalarProperty Name="locationLat" ColumnName="locationLat" />
+                <ScalarProperty Name="locationLng" ColumnName="locationLng" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Package">
+            <EntityTypeMapping TypeName="DBDeliveries2Model.Package">
+=======
                 <ScalarProperty Name="packageSizeCode" ColumnName="packageSizeCode" />
                 <ScalarProperty Name="howLongBeforeReminder" ColumnName="howLongBeforeReminder" />
                 <ScalarProperty Name="transportation" ColumnName="transportation" />
@@ -734,6 +1120,7 @@
           </EntitySetMapping>
           <EntitySetMapping Name="Packages">
             <EntityTypeMapping TypeName="DBDeliveries1Model.Package">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
               <MappingFragment StoreEntitySet="Package">
                 <ScalarProperty Name="packageCode" ColumnName="packageCode" />
                 <ScalarProperty Name="userCustomerCode" ColumnName="userCustomerCode" />
@@ -742,15 +1129,23 @@
                 <ScalarProperty Name="toLocation" ColumnName="toLocation" />
                 <ScalarProperty Name="travelDate" ColumnName="travelDate" />
                 <ScalarProperty Name="drivingTime" ColumnName="drivingTime" />
+<<<<<<< HEAD
+                <ScalarProperty Name="status" ColumnName="status" />
+=======
                 <ScalarProperty Name="confirmationDelivery" ColumnName="confirmationDelivery" />
                 <ScalarProperty Name="happinesslevel" ColumnName="happinesslevel" />
                 <ScalarProperty Name="describeHappiness" ColumnName="describeHappiness" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
                 <ScalarProperty Name="packageType" ColumnName="packageType" />
                 <ScalarProperty Name="describePackage" ColumnName="describePackage" />
                 <ScalarProperty Name="packageSize" ColumnName="packageSize" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+<<<<<<< HEAD
+          <EntitySetMapping Name="PackageSize">
+            <EntityTypeMapping TypeName="DBDeliveries2Model.PackageSize">
+=======
           <EntitySetMapping Name="PackageDescriptions">
             <EntityTypeMapping TypeName="DBDeliveries1Model.PackageDescription">
               <MappingFragment StoreEntitySet="PackageDescription">
@@ -763,20 +1158,38 @@
           </EntitySetMapping>
           <EntitySetMapping Name="PackageSizes">
             <EntityTypeMapping TypeName="DBDeliveries1Model.PackageSize">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
               <MappingFragment StoreEntitySet="PackageSize">
                 <ScalarProperty Name="packageSizeCode" ColumnName="packageSizeCode" />
                 <ScalarProperty Name="packageSizeName" ColumnName="packageSizeName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+<<<<<<< HEAD
+          <EntitySetMapping Name="PackageType">
+            <EntityTypeMapping TypeName="DBDeliveries2Model.PackageType">
+=======
           <EntitySetMapping Name="PackageTypes">
             <EntityTypeMapping TypeName="DBDeliveries1Model.PackageType">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
               <MappingFragment StoreEntitySet="PackageType">
                 <ScalarProperty Name="packageTypeCode" ColumnName="packageTypeCode" />
                 <ScalarProperty Name="packageTypeName" ColumnName="packageTypeName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+<<<<<<< HEAD
+          <EntitySetMapping Name="Transportation">
+            <EntityTypeMapping TypeName="DBDeliveries2Model.Transportation">
+              <MappingFragment StoreEntitySet="Transportation">
+                <ScalarProperty Name="transportationId" ColumnName="transportationId" />
+                <ScalarProperty Name="transportationType" ColumnName="transportationType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="DBDeliveries2Model.User">
+=======
           <EntitySetMapping Name="RefusesPackages">
             <EntityTypeMapping TypeName="DBDeliveries1Model.RefusesPackage">
               <MappingFragment StoreEntitySet="RefusesPackage">
@@ -800,11 +1213,24 @@
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="DBDeliveries1Model.User">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="userCode" ColumnName="userCode" />
                 <ScalarProperty Name="userName" ColumnName="userName" />
                 <ScalarProperty Name="userPhone" ColumnName="userPhone" />
                 <ScalarProperty Name="userMail" ColumnName="userMail" />
+                <ScalarProperty Name="userAge" ColumnName="userAge" />
+                <ScalarProperty Name="messages" ColumnName="messages" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WaitingMessages">
+            <EntityTypeMapping TypeName="DBDeliveries2Model.WaitingMessages">
+              <MappingFragment StoreEntitySet="WaitingMessages">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="packageId" ColumnName="packageId" />
+                <ScalarProperty Name="driveId" ColumnName="driveId" />
+                <ScalarProperty Name="status" ColumnName="status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -822,7 +1248,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

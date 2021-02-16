@@ -1,5 +1,6 @@
 
 <div>
+  <h3>ההודעות שלי </h3>
     <ul>
         <p class="header">קוד חבילה </p>
         <p class="header">תאריך </p>
@@ -10,6 +11,7 @@
         <p class="header"> גודל</p>
        <br>
        <p>החבילות שלי:</p>
+       <hr>
         <li  *ngFor="let p of listPackages;let i = index;">
             <div *ngIf="p.listWaiting.length>0">
             <p>{{p.packageCode}}</p>
@@ -55,8 +57,9 @@
       <p class="header">יעד </p>
       <p class="header">שעה </p>
       <p class="header">תחבורה </p>
-     <br>
+    <br>
      <p>הנסיעות שלי:</p>
+     <hr>
       <li  *ngFor="let d of listDrives;let i = index;">
           <div *ngIf="d.listWaiting.length>0">
             <p>{{d.driveCode}}</p>

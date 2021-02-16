@@ -1,10 +1,9 @@
-
+<div class="Rectangle">
 <button routerLink="/" style="text-underline-position: inherit;" mat-button >tenDrive</button>
-
-
 <button *ngIf="userSer.currentUser==undefined" (click)="openUserDialog()" mat-button  class="btn">התחבר
   <mat-icon>account_circle</mat-icon>
   </button>
+  <label for="">|</label>
 <div style="float: left;" *ngIf="userSer.currentUser">
   <button mat-button [matMenuTriggerFor]="beforeMenu">שלום {{userSer.currentUser.userName}}</button> 
    <mat-menu #beforeMenu="matMenu" xPosition="before">
@@ -15,10 +14,14 @@
 <button mat-button class="btn" *ngIf="userSer.currentUser" routerLink="waiting-messages">
   <mat-icon>message</mat-icon>
 </button>
-  <button mat-button routerLink="/about" class="btn" >אודות</button>
- 
+  <button mat-button routerLink="/about" class="btn" ><i class="	fa fa-comment"></i></button>
+  <button mat-button routerLink="/home" class="btn" ><i class="	  fa fa-home"></i></button>
+
+
+</div>
   <br>
 
+<app-under-bar></app-under-bar>
 
 
- 
+<button (click)="alertWithSuccess()">buttin  </button>

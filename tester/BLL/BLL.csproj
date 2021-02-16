@@ -46,10 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+    <Compile Include="converters\PackageConverter.cs" />
+    <Compile Include="converters\UserConverter.cs" />
+=======
     <Compile Include="converters\DriveConverter.cs" />
     <Compile Include="converters\PackageConverter.cs" />
     <Compile Include="converters\UserConverter.cs" />
     <Compile Include="DriveBLL.cs" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
     <Compile Include="PackageBLL.cs" />
     <Compile Include="UserBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

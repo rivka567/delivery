@@ -17,10 +17,15 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Loction()
         {
+<<<<<<< HEAD
+            this.Package = new HashSet<Package>();
+            this.Package1 = new HashSet<Package>();
+=======
             this.Drives = new HashSet<Drive>();
             this.Drives1 = new HashSet<Drive>();
             this.Packages = new HashSet<Package>();
             this.Packages1 = new HashSet<Package>();
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         }
     
         public int locationId { get; set; }
@@ -29,6 +34,11 @@ namespace DAL
         public Nullable<double> locationLng { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+<<<<<<< HEAD
+        public virtual ICollection<Package> Package { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Package> Package1 { get; set; }
+=======
         public virtual ICollection<Drive> Drives { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Drive> Drives1 { get; set; }
@@ -36,5 +46,6 @@ namespace DAL
         public virtual ICollection<Package> Packages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Package> Packages1 { get; set; }
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
     }
 }

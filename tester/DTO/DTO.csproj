@@ -40,7 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
+=======
     <Compile Include="DriveDTO.cs" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
     <Compile Include="PackageDTO.cs" />
     <Compile Include="UserDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

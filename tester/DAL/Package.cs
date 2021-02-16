@@ -14,6 +14,12 @@ namespace DAL
     
     public partial class Package
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Package()
+        {
+            this.WaitingMessages = new HashSet<WaitingMessages>();
+        }
+    
         public int packageCode { get; set; }
         public string userCustomerCode { get; set; }
         public string userDeliveryCode { get; set; }
@@ -21,9 +27,13 @@ namespace DAL
         public int toLocation { get; set; }
         public System.DateTime travelDate { get; set; }
         public System.TimeSpan drivingTime { get; set; }
+<<<<<<< HEAD
+        public Nullable<bool> status { get; set; }
+=======
         public bool confirmationDelivery { get; set; }
         public int happinesslevel { get; set; }
         public string describeHappiness { get; set; }
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         public int packageType { get; set; }
         public string describePackage { get; set; }
         public int packageSize { get; set; }
@@ -34,5 +44,7 @@ namespace DAL
         public virtual PackageType PackageType1 { get; set; }
         public virtual User User { get; set; }
         public virtual User User1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<WaitingMessages> WaitingMessages { get; set; }
     }
 }

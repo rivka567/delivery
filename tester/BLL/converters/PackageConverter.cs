@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+<<<<<<< HEAD
+=======
 using DAL;
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
 
 namespace BLL.converters
 {
@@ -13,6 +16,16 @@ namespace BLL.converters
         {
             if (package == null)
                 return null;
+<<<<<<< HEAD
+            DTO.PackageDTO newPackage = new DTO.PackageDTO()
+            {
+                packageCode = package.packageCode,
+                userCustomerCode=package.userCustomerCode,
+                userDeliveryCode=package.userDeliveryCode,
+                fromLocation=package.fromLocation,
+                toLocation=package.toLocation,
+                travelDate=package.travelDate,
+=======
 
             Loction fromL = LocationDAL.GetLocationById(package.fromLocation);
             Loction toL = LocationDAL.GetLocationById(package.toLocation);
@@ -31,10 +44,20 @@ namespace BLL.converters
                 //fromLocation=package.fromLocation,
                 //toLocation=package.toLocation,
                 travelDate =package.travelDate,
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
                 drivingTime=package.drivingTime,
                 packageSize=package.packageSize,
                 packageType=package.packageType,
                 confirmationDelivery=package.confirmationDelivery,
+<<<<<<< HEAD
+                watingTimeForConfirmation=package.watingTimeForConfirmation,
+                happinesslevel=package.happinesslevel,
+                describeHappiness=package.describeHappiness,
+                describePackage=package.describePackage,
+                redinessForChanges=package.redinessForChanges
+
+            };
+=======
                 happinesslevel=package.happinesslevel,
                 describeHappiness=package.describeHappiness,
                 describePackage=package.describePackage,
@@ -42,6 +65,7 @@ namespace BLL.converters
             };
            
        
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
             return newPackage;
         }
         public static List<DTO.PackageDTO> convertToPackageDTOList(List<DAL.Package> packages)
@@ -51,6 +75,8 @@ namespace BLL.converters
             return listPackage;
         }
 
+<<<<<<< HEAD
+=======
         public static DAL.Package convertDtoToDALPackage(DTO.PackageDTO packageDTO)
         {
             DAL.Package p = new DAL.Package()
@@ -74,5 +100,6 @@ namespace BLL.converters
             return p;
         }
 
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
     }
 }

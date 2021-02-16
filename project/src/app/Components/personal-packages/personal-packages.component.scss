@@ -4,8 +4,17 @@ select{
 
 }
 th{
-   width: 13%;
-   text-align: right;
+  width: 37px;
+  height: 16px;
+  margin: 0 0 0 112px;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #6f6f6f;
 }
 
 td{
@@ -17,14 +26,25 @@ table{
 }
 
 button.btn{
+font-size: 18px;
+font-weight: normal;
+font-stretch: normal;
+font-style: normal;
+line-height: normal;
+letter-spacing: -0.43px;
+text-align: center;
+color: #ffffff;
   float: left;
-  color: white;
-  background-color: black;
-  width: 200px;
-  height: 50px;
   display: inline;
   margin-left:10px;
   margin-top: 10px;
+  width: 153px;
+  height: 36px;
+  margin: 16px 1px 18px 246px;
+  padding: 8px 39px 8px 40px;
+  border-radius: 18px;
+  border: solid 1px #d81e2d;
+  background-color: #d81e2d;
 }
 
 h1{
@@ -38,4 +58,10 @@ input{
 }
 label{
   margin: 0 10px
+}
+hr{
+  width: 940px;
+  height: 1px;
+  margin: 9px 0 0;
+  border: solid 1px #b9b9b9;
 }

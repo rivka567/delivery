@@ -25,6 +25,17 @@ namespace DAL
             throw new UnintentionalCodeFirstException();
         }
     
+<<<<<<< HEAD
+        public virtual DbSet<Drive> Drive { get; set; }
+        public virtual DbSet<Happiness> Happiness { get; set; }
+        public virtual DbSet<Loction> Loction { get; set; }
+        public virtual DbSet<Package> Package { get; set; }
+        public virtual DbSet<PackageSize> PackageSize { get; set; }
+        public virtual DbSet<PackageType> PackageType { get; set; }
+        public virtual DbSet<Transportation> Transportation { get; set; }
+        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<WaitingMessages> WaitingMessages { get; set; }
+=======
         public virtual DbSet<Drive> Drives { get; set; }
         public virtual DbSet<Loction> Loctions { get; set; }
         public virtual DbSet<Package> Packages { get; set; }
@@ -34,5 +45,6 @@ namespace DAL
         public virtual DbSet<RefusesPackage> RefusesPackages { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
     }
 }

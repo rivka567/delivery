@@ -13,61 +13,60 @@
 </head>
       
 <div class="jumbotron text-center">
-  <img src="../../../assets/pic.jpg" alt="logo">
+  <img src="../../../assets/2-1.jpg" alt="logo">
 </div>
 <div  id="services" class="container-fluid text-center" >
     <br>
+  
     <div class="row" >
-      <div class="col-sm-4" >
-        <span class="glyphicon glyphicon-gift logo-small"></span>
-        <h4>מתנות מעוצבות</h4>
-        <p>מתנות מעוצבות ויפהפיות ללא צורך בעיצוב עצמי</p>
+      <div class="col-sm-4" routerLink="/travel-list" >
+        <span class="	fa fa-bus logo-small"></span>
+        <h4>נסיעות </h4>
+        <!-- <p>מתנות מעוצבות ויפהפיות ללא צורך בעיצוב עצמי</p> -->
+      </div>
+      <div class="col-sm-4" routerLink="/package-list">
+        <span class="	fa fa-shopping-bag logo-small"></span>
+        <h4>חבילות </h4>
+        <!-- <p>מתנות מקוריות ומרשימות ממגון חנויות ולכל מטרה</p> -->
       </div>
       <div class="col-sm-4">
-        <span class="glyphicon glyphicon-heart logo-small"></span>
-        <h4>מתנות</h4>
-        <p>מתנות מקוריות ומרשימות ממגון חנויות ולכל מטרה</p>
-      </div>
-      <div class="col-sm-4">
-        <span class="glyphicon glyphicon-lock logo-small"></span>
-        <h4>מוצרי אריזה </h4>
-        <p>כל מוצרי האריזה תחת קורת גג אחת</p>
+        <span class="	fa fa-user-circle-o logo-small"></span>
+        <h4>אזור אישי </h4>
+        <!-- <p>כל מוצרי האריזה תחת קורת גג אחת</p> -->
       </div>
     </div>
     <br><br>
   </div>
 
   <!-- Container (Portfolio Section) -->
-<div id="portfolio" class="container-fluid text-center bg-grey">
-    <h2>המומלצים שלנו</h2><br>
+  <div id="portfolio" class="container-fluid text-center bg-grey">
+    <h2>למה דווקא אנחנו??</h2><br>
     <!-- <h4></h4> -->
     <div class="row text-center">
       <div class="col-sm-4">
           <!-- צריך להכניס תמונה לפי דירוג גבוה -->
         <div class="thumbnail">
-          <img src="1.jpg" alt="Paris" width="400" height="300">
-          <p><strong>שם מתנה</strong></p>
-          <p>כאן צריך להיות שם חנות</p>
+          <img src="../../../assets/fast-delivery-2.png" alt="Paris" width="400" height="300">
+          <h2><strong>בגלל השירות!! </strong></h2>
+
         </div>
       </div>
       <div class="col-sm-4">
         <div class="thumbnail">
-          <img src="2.jpg" alt="New York" width="400" height="300">
-          <p><strong>שם מתנה</strong></p>
-          <p>כאן צריך חהיות שם חנות</p>
+          <img src="../../../assets/איכות.jpg" alt="New York" width="400" height="300">
+          <h2><strong>בגלל האיכות!!</strong></h2>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="thumbnail">
-          <img src="3.jpg" alt="San Francisco" width="400" height="300">
-          <p><strong>שם מתנה</strong></p>
-          <p>כאן צריך חהיות שם חנות</p>
+          <img src="../../../assets/speeding-2019.jpg" alt="San Francisco" width="400" height="300">
+          <h2><strong>בגלל המהירות !!</strong></h2>
         </div>
       </div>
     </div>
 
 
-  <h2>מה באמת חושבים עלינו</h2>
+  <h2>??מה באמת חושבים עלינו</h2>
   <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -78,13 +77,18 @@
     <!-- Wrapper for slides -->
     <div  class="carousel-inner" role="listbox">
       <div class="item active">
-        <h4>"האתר הנוח ביותר למצוא מתנות!! מומלץ"<br><span>חדוה מזוז</span></h4>
+         <i class="	fa fa-comments-o" style="font-size:48px;color:#d81e2d"></i>
+
+        <h4>"מאז שהכרתי את האתר אני לא מפסיקה להיות במטבח!!!"<br><span>חדוה מזוז</span></h4>
       </div>
       <div class="item">
-        <h4>"וואו! איך לא חשבו על זה עד עכשיו?"<br><span>שם לקוח</span></h4>
+          <i class="	fa fa-comments-o" style="font-size:48px;color:#d81e2d"></i>
+        <h4>"קולע בדיוק לטעם !!! תנסו גם "<br><span>מיכל, חיפה </span></h4>
       </div>
       <div class="item">
-        <h4>"עושה את החיים קלים ונוחים יותר"<br><span>שם לקוח</span></h4>
+     <i class="	fa fa-comments-o" style="font-size:48px;color:#d81e2d"></i>
+
+        <h4>"אני התחברתי למדור של  הקינוחים , תודה רב!!!!!"<br><span>אבי , רכסים</span></h4>
       </div>
     </div>
     <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -103,10 +107,12 @@
 <div id="about" class="container-fluid" dir="rtl">
     <div class="row">
       <div class="col-sm-8">
-        <h2>קצת עלינו</h2><br>
-        <h4>חיפוש מתנה מאז ומתמיד היה מורכב ביותר. מהמציאת רעיון ועד לסיום ועטיפת המתנה-יש להתרוצץ ולהתאמץ בשביל לקבל את התוצאה המושלמת עבור היקר לכם ביותר. </h4><br>      
-        <h3>בשביל זה אנחנו כאן!!</h3>
-        <p>בשביל זה -אנחנו כאן! אתר הכולל בתוכו את כל שלבי מציאת המתנה למי שהכי חשוב לכם . כאן תמצאו רעיונות מגניבים מתנותיוקרתיות עטיפות מדהימות והכל- בלחיצת כפתור. אז למה אתם מחכים? בחרו לכם את המתנה המושלמת עבורכם</p>
+      <p> ״תפוז שליחויות״ הינה חברת שילוח, הפצה ולוגיסטיקה ייחודית הפועלת משנת 1995 ומתמחה בשליחויות איקומרס ״Door to Door״ עבור אתרי מסחר אלקטרוני בישראל.
+        אנו נעזרים בטכנולוגיה מתקדמת בשילוב לוגיסטיקה מתוחכמת כדי לשפר ולהעצים את חוויית הרכישה של הלקוחות שלכם ולהגיע לכל יעד בישראל במהירות, באמינות ובמקצועיות.
+        מצוינות היא המוטו שלנו – צוותי ״תפוז שליחויות״ במוקד שירות הלקוחות, במחלקת המיון ובמחלקת ההפצה, משרתים נאמנה את חנויות האונליין המצליחות ביותר ברשת האינטרנט ואת המותגים המובילים בישראל. אנו שואפים לשיפור מתמיד בכל התהליכים בחברה ולצורך כך, מטמיעים נהלים חדשניים לצד סטנדרטים בינלאומיים.</p> 
+        
+      <h2> תפוז״ שותפה לצמיחה ולהצלחה שלכם,
+        נשמח לגדול אתכם!</h2> 
         <!-- <button class="btn btn-default btn-lg">Get in Touch</button> -->
       </div>
       <div class="col-sm-4">
