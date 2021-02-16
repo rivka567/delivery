@@ -51,6 +51,7 @@ import { MatToolbarModule,} from '@angular/material/toolbar';
 import { MatTooltipModule,} from '@angular/material/tooltip';
 import { HappinessComponent } from './Components/happiness/happiness.component';
 import { ShowAllHappinessComponent } from './Components/show-all-happiness/show-all-happiness.component';
+import { NewHomeComponent } from './Components/new-home/new-home.component';
 
 const appRoutes: Routes =
 [
@@ -109,6 +110,7 @@ const config = {
     UpdateDriveComponent,
     HappinessComponent,
     ShowAllHappinessComponent,
+    NewHomeComponent,
     
   ],
   imports: [
