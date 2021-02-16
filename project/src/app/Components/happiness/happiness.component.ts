@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Happiness } from 'src/app/Classes/happiness';
 import { HappinessService } from 'src/app/Services/happiness.service';
@@ -22,29 +22,39 @@ export class HappinessComponent implements OnInit {
   idDelivery:string;
   form:FormGroup;
   myHappiness:Happiness;
+  customerName:string;
   submitted=false;
 
   starColor:StarRatingColor = StarRatingColor.accent;
   starColorP:StarRatingColor = StarRatingColor.primary;
   starColorW:StarRatingColor = StarRatingColor.warn;
 
-  constructor(private snackBar: MatSnackBar,private happinSer:HappinessService) {
+  constructor(private snackBar: MatSnackBar,private happinSer:HappinessService,private formBuilder: FormBuilder)
+   {
   }
 
 
   ngOnInit() {
+ // this.initForm();
     console.log("a "+this.starCount)
     for (let index = 0; index < this.starCount; index++) {
       this.ratingArr.push(index);
     }
     
   }
-
-  addHappiness(name:string, happiness:string)
+  initForm() {
+    
+    this.form = this.formBuilder.group({
+      name:['',Validators.required],
+      describe:['']
+    })
+   
+  }
+  addHappiness(happiness:string)
   {
     debugger
-this.myHappiness=new Happiness(0,this.idDelivery,name,this.rating,happiness)
-this.happinSer.addHappiness(this.myHappiness).subscribe(
+  this.myHappiness=new Happiness(0,this.idDelivery,this.customerName,this.rating,happiness)
+  this.happinSer.addHappiness(this.myHappiness).subscribe(
   myData=>{alert("succsess")},
   myErr=>{alert("error!!"); }); 
   

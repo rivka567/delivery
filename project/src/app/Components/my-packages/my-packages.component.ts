@@ -7,6 +7,8 @@ import { UserService } from '../../Services/user.service';
 import { Drive } from 'src/app/Classes/drive';
 import { User } from 'src/app/Classes/user';
 import { DriveService } from 'src/app/Services/drive.service';
+import { Time } from '@angular/common';
+import { Address } from 'ngx-google-places-autocomplete/objects/address';
 
 @Component({
   selector: 'app-my-packages',
@@ -16,6 +18,12 @@ import { DriveService } from 'src/app/Services/drive.service';
 export class MyPackagesComponent implements OnInit {
 
   constructor(private userSer: UserService,private packageSer:PackageService, private dialog:MatDialog,private driveSer:DriveService) { }
+
+  fromDate:string;
+  toDate:string;
+  time:string;
+  fromL:Address;
+  toL:Address;
 
   myListPackage:Package[];
   len:number;
@@ -27,13 +35,17 @@ export class MyPackagesComponent implements OnInit {
   getPackagesByUserId()
   {
     debugger
-      this.packageSer.getAllPackages().subscribe(
+      this.packageSer.getPackagesByUserId(this.userSer.currentUser.userCode).subscribe(
       myData => {
         this.myListPackage=myData;
-        //תמיד נשאר כאן כל הנסיעות
-        this.packageSer.allPackages=myData;
-        this.myListPackage= this.myListPackage.filter(p=>p.userCustomerCode==this.userSer.currentUser.userCode);
         this.len=this.myListPackage.length;
+        if(this.fromDate)
+        this.myListPackage=this.myListPackage.filter(p=>new Date(p.travelDate)>= new Date(this.fromDate));
+        if(this.toDate)
+        this.myListPackage=this.myListPackage.filter(p=>new Date(p.travelDate)>= new Date(this.toDate));
+        if(!this.fromDate&&!this.toDate)
+        this.myListPackage=this.myListPackage.filter(p=>new Date(p.travelDate)== new Date(this.driveSer.currentDrive.travelDate))
+        // this.myListPackage=this.myListPackage.filter(p=>p.drivingTime)
       },
       myErr => {
         console.log("from subscribe");

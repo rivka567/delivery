@@ -39,23 +39,24 @@ any:Array<Drive>=[];
   }
   GetAllHappiness()
   {
-    // debugger
-    // this.HappiSer.GetAllHappiness().subscribe(
-    //   myData=>
-    //{this.listHappinessByDeliveryId=myData;
-    //     console.log(myData);
-    //  },
-    //   myErr=>{console.log(myErr)} );
+    debugger
+    this.HappiSer.GetAllHappiness().subscribe(
+      myData=>
+     {
+        console.log(myData);
+     },
+      myErr=>{console.log(myErr)} 
+      );
 
-    this.driveSer.getAllDrives().subscribe(
-      myData => {
-        debugger;
-        this.any=myData;
-       console.log(myData)
-      },
-      myErr => {
-       alert("erorrrrr")
-      });
+    // this.driveSer.getAllDrives().subscribe(
+    //   myData => {
+    //     debugger;
+    //     this.any=myData;
+    //    console.log(myData)
+    //   },
+    //   myErr => {
+    //    alert("erorrrrr")
+    //   });
   }
 
   getHappinessByDeliveryId()

@@ -30,7 +30,7 @@
      <option value="5" >משאית</option>
    </select>
    <!--חיפוש לפי עיר-->
-  <input #searchTextField id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on"> 
+  <!-- <input #searchTextField id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on">  -->
 
   <button mat-button (click)="filterDrives(fromDate.value,toDate.value,fromL.value,toL.value,time.value,trans.value)">חפש תוצאות</button>
 
@@ -60,7 +60,7 @@
 <td> {{drive.fromLocationFormat}}</td>
 <td> {{drive.toLocationFormat}}</td>
 <td> {{drive.drivingTime}}</td>
-<td> <button mat-button (click)="sendEmail(drive)" >שלח מייל</button></td> 
+<td> <button mat-button (click)="sendEmail(drive,fromDate.value,toDate.value,fromL.value,toL.value,time.value,trans.value)" >שלח מייל</button></td> 
 <td>{{drive.transportationType}}</td>
 <td> {{drive.driveCode}}</td>
 <td (click)="openDialogHappiness(drive.driverCode)"><mat-icon>star_rate</mat-icon></td>

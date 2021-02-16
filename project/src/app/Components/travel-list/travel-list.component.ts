@@ -56,21 +56,21 @@ export class TravelListComponent implements OnInit {
    // this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
 
   }
-  initialize()
-  {
-  debugger
-    let input = document.getElementById('searchTextField');
-    var options = {
-types: ['(cities)'],
-componentRestrictions: {country: "il"}
-};
-var autocomplete = new google.maps.places.Autocomplete(this.searchTextField, options);
+//   initialize()
+//   {
+//   debugger
+//     let input = document.getElementById('searchTextField');
+//     var options = {
+// types: ['(cities)'],
+// componentRestrictions: {country: "il"}
+// };
+// var autocomplete = new google.maps.places.Autocomplete(this.searchTextField, options);
 
-  }
+//   }
   ngOnInit(): void {
  
  
- google.maps.event.addDomListener(window, 'load', this.initialize);
+// google.maps.event.addDomListener(window, 'load', this.initialize);
  
    this.minDate=new Date();
    this.getAllDrives();
@@ -126,7 +126,7 @@ getAllDrives() {
 
   }
   
-  sendEmail(drive:Drive)
+  sendEmail(drive:Drive,fromDate:string,toDate:string,from:Address,to:Address,time:string,trans:number)
   {
     debugger
     if(this.userSer.currentUser&&drive.driverCode==this.userSer.currentUser.userCode)
@@ -143,6 +143,11 @@ getAllDrives() {
        //הנסיעה שהשליח בחר
        this.driveSer.currentDrive=drive;
        const dialogRef = this.dialog.open(MyPackagesComponent,{ disableClose: true })
+       dialogRef.componentInstance.fromDate=fromDate;
+       dialogRef.componentInstance.toDate=toDate;
+       dialogRef.componentInstance.time=time;
+       dialogRef.componentInstance.fromL=from;
+       dialogRef.componentInstance.toL=to;
        dialogRef.afterClosed().subscribe(result => {
          console.log(`Dialog result: ${result}`);
        });
