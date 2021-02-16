@@ -1,12 +1,10 @@
-<!-- 
-       public confirmationDelivery:boolean=false,
-       public watingTimeForConfirmation:Time=null,
-       -->
 
 <mat-dialog-content class="mat-typography">
-  <form [formGroup]="form" (ngSubmit)="addPackage()">
-    <div class="example-container">
-      <mat-icon style="cursor: pointer;" mat-dialog-close>highlight_off </mat-icon>
+  
+  <mat-icon style="cursor: pointer; float: left;margin-left: 3%;" mat-dialog-close >highlight_off </mat-icon>
+      <h1>פרטי חבילה :</h1><br>
+   <form *ngIf="[form,newPackage]" [formGroup]="form" (ngSubmit)="addPackage()">
+    <div *ngIf="!addsuccess"  class="example-container">
       <br>
       <section>
           <div class="example-button-row">
@@ -51,36 +49,30 @@
         <input type="radio" value="4" style="visibility: hidden;"  id="4" #4  formControlName="size" name="size"  >
       <br>
 
-        <button type="button" (click)="checkSize()">check size</button>
-     <!-- <mat-form-field>
-        <input matInput type="password" placeholder="קוד חבילה" class="inp" formControlName="packageCode" name="packageCode" >
-      </mat-form-field>
-      <br> --> 
+        <button type="button" (click)="checkSize()">check size</button><br>
       <mat-form-field>
-        <input matInput type="text" placeholder="קוד לקוח" class="inp" disabled formControlName="customerCode" name="customerCode">
+        <input matInput type="text" placeholder="קוד לקוח" class="inp" readonly formControlName="customerCode" name="customerCode">
       </mat-form-field>
       <br> 
-      <!-- <mat-form-field>
-          <input matInput type="text" placeholder="קוד שליח" class="inp"  formControlName="deliveryCode" >
-        </mat-form-field>
-        <br>  -->
-      <mat-form-field>
-        <input matInput type="text" placeholder="כתובת איסוף" class="inp" formControlName="fromLocation" name="fromLocation">
+      <mat-form-field >
+        <input matInput placeholder=" מוצא" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)"
+        formControlName="fromLocation" name="fromLocation"/>
       </mat-form-field>
       <br>
-      <mat-form-field>
-        <input matInput type="text" placeholder="כתובת יעד" class="inp" formControlName="toLocation" name="toLocation">
+      <mat-form-field >
+        <input matInput placeholder=" יעד" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)"
+        formControlName="toLocation" name="toLocation"/>
       </mat-form-field>
       <br>
       <mat-form-field class="example-full-width">
         <mat-label>Choose a date</mat-label>
-        <input matInput [matDatepicker]="picker" formControlName="travelDate">
+        <input matInput  [min]="minDate" [matDatepicker]="picker" formControlName="travelDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+        <mat-datepicker  [dateClass]="dateClass" #picker></mat-datepicker>
       </mat-form-field>
       <br>
       <mat-form-field>
-        <input matInput type="time" placeholder="שעת נסיעה" class="inp" formControlName="drivingTime" name="drivingTime">
+        <input  matInput type="time" placeholder="שעת הגעה" class="inp" formControlName="drivingTime" name="drivingTime">
       </mat-form-field>
         <br>
       <label>סוג חבילה:</label>
@@ -97,33 +89,18 @@
       <input  type="radio" value="4"  id="4"  formControlName="type" name="type" >
       <label> אחר</label>
       <br>
-      <mat-form-field>
-        <input matInput type="number" placeholder="רמת שביעות רצון" class="inp" formControlName="happinessLevel" name="happinessLevel">
+      <!-- <mat-form-field>
+        <input matInput type="text" placeholder=" תאור נוסף או הערה" class="inp" formControlName="describePackage" name="describePackage">
       </mat-form-field>
-      <br>
-      <mat-form-field>
-        <input matInput type="text" placeholder="תאור שביעות רצון" class="inp" formControlName="describeHappiness" name="describeHappiness">
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <input matInput type="time" placeholder="כמה זמן מוכן לחכות לשינוי" class="inp" formControlName="waitForConfirmation" name="waitForConfirmation">
-      </mat-form-field>
-     <br>
-      <mat-form-field>
-        <input matInput type="text" placeholder="מוכנות לשינויים" class="inp" formControlName="readiness" name="readiness">
-      </mat-form-field>
-      <br>
-      <mat-form-field>
-        <input matInput type="text" placeholder="תאור נוסף" class="inp" formControlName="describePackage" name="describePackage">
-      </mat-form-field>
-      <br>
+      <br> 
 
-      <!-- TODO: לשנות שיראה כקישור -->
-      <button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid" type="submit"
-        (click)="submitted=true"> המשך </button>
+       TODO: לשנות שיראה כקישור -->
+    <button mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid"
+        (click)="submitted=true " class="btn" mat-dialog-close> שמור</button>
       <br>
     </div>
-  </form>
+  </form> 
+
 </mat-dialog-content>
 
 

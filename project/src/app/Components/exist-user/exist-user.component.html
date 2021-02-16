@@ -1,17 +1,30 @@
-<mat-dialog-content>
-    <div class="example-container">
-      <br>
-    <div>
-      <input matInput placeholder="הקש סיסמא" #id >
-    
-      <button class="btn" mat-button (click)="getUserById(id.value)" >חפש</button>
+
+<mat-dialog-content class="mat-typography">
+  <div > 
+    <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon> 
+    <div *ngIf="!user.userName&&vis==false">
+      <form >
+      <mat-form-field appearance="outline">
+        <mat-label>הקש סיסמא: </mat-label>
+        <input  matInput #id type="password">
+        <mat-icon matSuffix>account_circle</mat-icon>
+    </mat-form-field> 
+    <button class="btn" mat-button (click)="getUserById(id.value)" >חפש</button>
+  </form>
+      <a  class="a-container" (click)="vis=true" >שחכתי סיסמא </a> <br>
+      <a mat-dialog-close class="b-container" (click)="openDialog()"> משתמש חדש</a>
     </div>
-      <div *ngIf="user" >
+     <div *ngIf="vis==true">
+        <input type="text" matInput placeholder="הזן כתובת מייל" #mail >
+        <button class="btn" mat-button (click)="sendCodeByEmail(mail.value)"  >שלח לי את הקוד</button>   
+    </div>
+      <div class="userDiv" *ngIf="user.userName" >
         <p> {{user.userCode}}</p>
         <p> {{user.userName}}</p>
         <p> {{user.userPhone}}</p>
         <p> {{user.userMail}}</p>
-        <a class="btn" (click)="openDialogPackage()" mat-dialog-close>המשך</a>
-        </div> 
+         <a mat-dialog-close class="btn" >המשך</a>
     </div>
-    </mat-dialog-content>
+
+  </div>
+</mat-dialog-content>

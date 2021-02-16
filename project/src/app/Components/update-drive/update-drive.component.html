@@ -1,0 +1,101 @@
+<mat-dialog-content  class="mat-typography">
+    <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon>
+      <form *ngIf="form,newDrive" [formGroup]="form" (ngSubmit)="updateDrive()">           
+        <br>
+        <mat-form-field >
+          <input matInput placeholder="driverCode" type="text" class="inp" readonly formControlName="driverCode" name="driverCode" >
+        </mat-form-field>
+        <br>
+          <section>
+            <div class="example-button-row">
+              <div class="example-flex-container container">
+              <div class="example-button-container">
+                <button type="button" mat-mini-fab color="accent">
+                <label  for="1">
+               <mat-icon> directions_car</mat-icon> 
+                </label>
+              </button>
+  
+              </div>
+                <div class="example-button-container">
+                  <button type="button" mat-mini-fab color="warn">
+                  <label for="2">
+                    <mat-icon>two_wheeler</mat-icon>
+                  </label>
+                  </button>
+  
+                </div>
+                <div class="example-button-container">
+                  <button type="button" mat-mini-fab color="primary">
+                  <label for="3">
+                    <mat-icon>pedal_bike</mat-icon>
+                  </label>
+                  </button>
+                </div>
+                <div class="example-button-container">
+                  <button type="button" mat-mini-fab color="white">
+                  <label for="4">
+                    <mat-icon>directions_bus</mat-icon>
+                  </label>
+                </button>
+              </div>
+              <div class="example-button-container">
+                <button type="button" mat-mini-fab color="white">
+                <label for="5">
+                  <mat-icon>local_shipping</mat-icon>
+                </label>
+              </button>
+            </div>
+              </div>
+            </div>
+        </section>
+        <br>
+          <input type="radio" value="1" style="visibility: hidden;"  id="1" #1  formControlName="trans" name="trans"  >
+          <input type="radio" value="2" style="visibility: hidden;"  id="2" #2  formControlName="trans" name="trans"  >
+          <input type="radio" value="3" style="visibility: hidden;"  id="3" #3  formControlName="trans" name="trans"  >
+          <input type="radio" value="4" style="visibility: hidden;"  id="4" #4  formControlName="trans" name="trans"  >
+          <input type="radio" value="5" style="visibility: hidden;"  id="5" #5  formControlName="trans" name="trans"  >
+        <br>
+          <mat-form-field >
+              <input type="time" matInput placeholder="שעת נסיעה" class="inp" formControlName="driving" name="driving"> 
+            </mat-form-field>
+            <br> 
+    
+            <mat-form-field >
+              <mat-label>Choose a date</mat-label>
+              <input matInput [min]="minDate" [matDatepicker]="picker" placeholder="date" class="inp" formControlName="date" name="date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+           <br>
+    
+           <!-- קישור לגוגל מאפ -->
+          <mat-form-field >
+            <input matInput ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)"
+            placeholder="מקום מוצא" formControlName="fromLocation" name="fromLocation"/>
+          </mat-form-field>
+           <br>
+    
+            <!-- קישור לגוגל מאפ -->
+            <mat-form-field >
+              <input matInput ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)"
+              placeholder="מקום יעד" formControlName="toLocation"  name="toLocation"/>
+            </mat-form-field>
+            <br>
+    
+           <!-- <mat-form-field >
+              <input matInput placeholder="קוד גודל חבילה" class="inp" formControlName="packageSizeCode" name="packageSizeCode">
+            </mat-form-field>
+            <br>
+     -->
+            <mat-form-field >
+              <input matInput placeholder="הערה" type="text" class="inp" formControlName="describeDrive" name="describeDrive">
+            </mat-form-field>
+            <br>  
+              <!-- TODO: לשנות שיראה כקישור -->
+              <!-- <a style="cursor: pointer;" (click)="openDialog()" mat-dialog-close>התחבר</a> -->
+             
+              <button mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid"
+              (click)="submitted=true" mat-dialog-close > שמור</button> 
+      </form>   
+      </mat-dialog-content>

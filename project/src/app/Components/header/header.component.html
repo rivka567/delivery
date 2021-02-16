@@ -1,45 +1,24 @@
-<!-- <section>
-  <div class="example-label">
-    <div class="example-button-row">
-      <div class="example-flex-container">
-        <div class="example-button-container">
-          <button mat-fab color="primary" class="btn">
-            <a routerLink="/deliverymenu">הירשם כשליח</a>
-          </button>
-          <button mat-fab color="primary" class="btn">
-            <a routerLink="/customermenu">הזמן משלוח</a>
-          </button>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-</section> -->
-<!-- <div>
-  <button mat-button [matMenuTriggerFor]="menu">Menu</button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>Item 1</button>
-    <button mat-menu-item>Item 2</button>
-  </mat-menu>
-</div> -->
 <div class="Rectangle">
-<button   mat-button routerLink="/">ראשי</button>
-
-<button mat-button routerLink="/about">אודות</button>
-
-<button mat-button  routerLink="main" >הצטרף כשליח</button>
-  
-  <button mat-button [matMenuTriggerFor]="beforeMenu">בצע שליחות</button>
-  <mat-menu #beforeMenu="matMenu" xPosition="before">
-    <button mat-menu-item>Item 1</button>
-    <button mat-menu-item>Item 2</button>
-  </mat-menu>
-  
-  
-  <button *ngIf="userSer.currentUser==undefined" mat-button  >התחבר
-  <mat-icon >account_circle</mat-icon>
+<button routerLink="/" style="text-underline-position: inherit;" mat-button >tenDrive</button>
+<button *ngIf="userSer.currentUser==undefined" (click)="openUserDialog()" mat-button  class="btn">התחבר
+  <mat-icon>account_circle</mat-icon>
   </button>
-  <label *ngIf="userSer.currentUser">{{userSer.currentUser.userName}}</label>
+  <label for="">|</label>
+<div style="float: left;" *ngIf="userSer.currentUser">
+  <button mat-button [matMenuTriggerFor]="beforeMenu">שלום {{userSer.currentUser.userName}}</button> 
+   <mat-menu #beforeMenu="matMenu" xPosition="before">
+    <button mat-menu-item routerLink="personal-area">כניסה לאזור האישי</button>
+    <button mat-menu-item routerLink="/" (click)="userSer.currentUser=undefined" >התנתק</button>
+  </mat-menu> 
 </div>
+<button mat-button class="btn" *ngIf="userSer.currentUser" routerLink="waiting-messages">
+  <mat-icon>message</mat-icon>
+</button>
+  <button mat-button routerLink="/about" class="btn" ><i class="	fa fa-comment"></i></button>
+</div>
+  <br>
+
+<app-under-bar></app-under-bar>
+
+
+<button (click)="alertWithSuccess()">buttin  </button>

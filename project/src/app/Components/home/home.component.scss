@@ -41,6 +41,8 @@ section {
    border-radius: 30px;
    text-align: center;
    cursor: pointer;
+   position: relative;
+   top:70px;
 }
 .lbl
 {
@@ -54,4 +56,24 @@ cursor: pointer;
   font-size: 50px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   text-align: center;
+  position: relative;
+  top:40px;
+}
+// travelListDelivery
+.example-action-buttons {
+  padding-bottom: 20px;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
 }

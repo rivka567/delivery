@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿// T4 code generation is enabled for model 'C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\DAL\Model1.edmx'. 
+=======
+﻿// T4 code generation is enabled for model 'C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\DAL\Model1.edmx'. 
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

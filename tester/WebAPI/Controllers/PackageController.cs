@@ -1,4 +1,8 @@
 ﻿using DAL;
+<<<<<<< HEAD
+=======
+using DTO;
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +37,11 @@ namespace WebAPI.Controllers
 
         [HttpPost]
         [Route("AddPackage")]
+<<<<<<< HEAD
         public IHttpActionResult AddPackage(Package package)
+=======
+        public IHttpActionResult AddPackage(PackageDTO package)
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         {
             var p = BLL.PackageBLL.AddPackage(package);
 

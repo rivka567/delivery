@@ -12,7 +12,11 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
+<<<<<<< HEAD:tester/DAL/WaitingMessages.cs
     public partial class WaitingMessages
+=======
+    public partial class PackageDescription
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01:tester/DAL/packageDescription.cs
     {
         public int id { get; set; }
         public int packageId { get; set; }

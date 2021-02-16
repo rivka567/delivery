@@ -16,6 +16,7 @@ C:\Users\This_User\Desktop\shira\tester\tester1\obj\Debug\tester1.csproj.CoreCom
 C:\Users\This_User\Desktop\shira\tester\tester1\obj\Debug\tester1.csproj.CopyComplete
 C:\Users\This_User\Desktop\shira\tester\tester1\obj\Debug\tester1.exe
 C:\Users\This_User\Desktop\shira\tester\tester1\obj\Debug\tester1.pdb
+<<<<<<< HEAD
 C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\tester1\obj\Debug\tester1.csprojAssemblyReference.cache
 C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\tester1\obj\Debug\tester1.Form1.resources
 C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\tester1\obj\Debug\tester1.Properties.Resources.resources
@@ -23,3 +24,12 @@ C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\tester1\obj\Debug\t
 C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\tester1\obj\Debug\tester1.csproj.CoreCompileInputs.cache
 C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\tester1\obj\Debug\tester1.exe
 C:\Users\Shira\Desktop\שירה אליקים\delivery\tester\tester1\obj\Debug\tester1.pdb
+=======
+C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\tester1\obj\Debug\tester1.csprojAssemblyReference.cache
+C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\tester1\obj\Debug\tester1.Form1.resources
+C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\tester1\obj\Debug\tester1.Properties.Resources.resources
+C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\tester1\obj\Debug\tester1.csproj.GenerateResource.cache
+C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\tester1\obj\Debug\tester1.csproj.CoreCompileInputs.cache
+C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\tester1\obj\Debug\tester1.exe
+C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\tester1\obj\Debug\tester1.pdb
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01

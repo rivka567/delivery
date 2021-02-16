@@ -1,0 +1,98 @@
+
+<div > 
+  <h3> חפש את הנסיעה המתאימה לך </h3>
+<br>
+<div class="sortBox">
+  <form class="form-inline" action="/action_page.php">
+    <input [min]="minDate"  matInput [matDatepicker]="picker" (click)="picker.open()"  placeholder="מתאריך" #fromDate >
+<mat-datepicker #picker></mat-datepicker>
+
+<input [min]="minDate" matInput [matDatepicker]="picker1" (click)="picker1.open()"  placeholder="עד תאריך" #toDate >
+<mat-datepicker #picker1 ></mat-datepicker>
+
+  <input matInput type="text" placeholder="מוצא" ngx-google-places-autocomplete 
+   #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)" #fromL >
+<br><br>
+  <input matInput type="text" placeholder="יעד" ngx-google-places-autocomplete  
+  #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)" #toL>
+
+  <input matInput type="time"  placeholder="שעת יציאה" #time >
+
+  <!-- <div class="md-form md-outline">
+    <label for="default-picker">שעת החזרה</label>
+    <input type="time" id="default-picker" class="form-control" [(ngModel)]="time" placeholder="שעת החזרה">
+</div>‏‏ -->
+  <select #trans >
+    <option value="0">כל רכב </option>
+     <option value="1">רכב </option>
+     <option value="2" >אופנוע</option>
+     <option value="3" >אופניים</option>
+     <option value="4" >אוטובוס</option>
+     <option value="5" >משאית</option>
+   </select>
+   <!--חיפוש לפי עיר-->
+  <input #searchTextField id="searchTextField" type="text"  placeholder="Enter a location" autocomplete="on"> 
+
+  <button mat-button (click)="filterDrives(fromDate.value,toDate.value,fromL.value,toL.value,time.value,trans.value)"><i class="fa fa-search"></i></button>
+</form>
+</div>
+    <br>
+
+
+    <div  class="select">
+      <div class="d-flex bd-highlight">
+        <div class="p-2 w-100 bd-highlight">  <mat-label>מיין לפי:</mat-label></div>
+        <div class="p-2 flex-shrink-1 bd-highlight">
+          <select (change)="sortBy($event.target.value)" >
+          <option value="date">תאריך </option>
+           <option value="time">שעה </option>
+           <option value="from" >מרחק מהמוצא</option>
+           <option value="to" >מרחק מהיעד</option>
+         </select></div>
+      </div>
+  
+
+
+  
+   
+
+
+   <!-- <h4>מיין לפי:</h4> -->
+<!-- <mat-form-field appearance="fill">
+  <mat-label>Cars</mat-label>
+  <select matNativeControl required>
+    <mat-option value="date">תאריך </mat-option>
+    <mat-option value="time">שעה </mat-option>
+    <mat-option value="from" >מרחק מהמוצא</mat-option>
+    <mat-option value="to" >מרחק מהיעד</mat-option>
+  </select>
+</mat-form-field> -->
+  </div>
+<br>
+<p > נמצאו {{len}} נסיעות מתאימות</p>
+<br>
+<table >
+  <th> שם </th>
+  <th> תאריך </th>
+  <th> מוצא </th>
+  <th> יעד </th>
+  <th> שעת יציאה </th>
+  <th>רכב </th>
+  <th></th>
+  <tr *ngFor="let drive of driversFound;let i=index" >
+<td >{{drive.driverName}}</td>
+<td> {{drive.travelDate|  date:'dd-MM-yyyy' }} </td>
+<td> {{drive.fromLocationFormat}}</td>
+<td> {{drive.toLocationFormat}}</td>
+<td> {{drive.drivingTime}}</td>
+<td> <button mat-button (click)="sendEmail(drive)" >שלח מייל</button></td> 
+<td>{{drive.transportationType}}</td>
+<td> {{drive.driveCode}}</td>
+<td (click)="openDialogHappiness(drive.driverCode)"><mat-icon>star_rate</mat-icon></td>
+<!-- <td > <button (click)="hideme[i] = !hideme[i]"><mat-icon>expand_more</mat-icon> </button></td> -->
+</tr>
+</table>
+
+</div>
+<router-outlet></router-outlet>
+ 

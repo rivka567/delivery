@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+<<<<<<< HEAD
   <EntityContainerMapping StorageEntityContainer="DBDeliveries2ModelStoreContainer" CdmEntityContainer="DBDeliveriesEntities">
     <EntitySetMapping Name="Drive">
       <EntityTypeMapping TypeName="DBDeliveries2Model.Drive">
+=======
+  <EntityContainerMapping StorageEntityContainer="DBDeliveries1ModelStoreContainer" CdmEntityContainer="DBDeliveries1Entities">
+    <EntitySetMapping Name="Drives">
+      <EntityTypeMapping TypeName="DBDeliveries1Model.Drive">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         <MappingFragment StoreEntitySet="Drive">
           <ScalarProperty Name="driveCode" ColumnName="driveCode" />
           <ScalarProperty Name="driverCode" ColumnName="driverCode" />
@@ -11,6 +17,7 @@
           <ScalarProperty Name="travelDate" ColumnName="travelDate" />
           <ScalarProperty Name="fromLocation" ColumnName="fromLocation" />
           <ScalarProperty Name="toLocation" ColumnName="toLocation" />
+<<<<<<< HEAD
           <ScalarProperty Name="describeDrive" ColumnName="describeDrive" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="transportation" ColumnName="transportation" />
@@ -31,6 +38,18 @@
     </EntitySetMapping>
     <EntitySetMapping Name="Loction">
       <EntityTypeMapping TypeName="DBDeliveries2Model.Loction">
+=======
+          <ScalarProperty Name="packageSizeCode" ColumnName="packageSizeCode" />
+          <ScalarProperty Name="howLongBeforeReminder" ColumnName="howLongBeforeReminder" />
+          <ScalarProperty Name="transportation" ColumnName="transportation" />
+          <ScalarProperty Name="describeDrive" ColumnName="describeDrive" />
+          <ScalarProperty Name="confirmationCustomer" ColumnName="confirmationCustomer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Loctions">
+      <EntityTypeMapping TypeName="DBDeliveries1Model.Loction">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         <MappingFragment StoreEntitySet="Loction">
           <ScalarProperty Name="locationId" ColumnName="locationId" />
           <ScalarProperty Name="locationFormat" ColumnName="locationFormat" />
@@ -39,8 +58,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+<<<<<<< HEAD
     <EntitySetMapping Name="Package">
       <EntityTypeMapping TypeName="DBDeliveries2Model.Package">
+=======
+    <EntitySetMapping Name="Packages">
+      <EntityTypeMapping TypeName="DBDeliveries1Model.Package">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         <MappingFragment StoreEntitySet="Package">
           <ScalarProperty Name="packageCode" ColumnName="packageCode" />
           <ScalarProperty Name="userCustomerCode" ColumnName="userCustomerCode" />
@@ -49,29 +73,56 @@
           <ScalarProperty Name="toLocation" ColumnName="toLocation" />
           <ScalarProperty Name="travelDate" ColumnName="travelDate" />
           <ScalarProperty Name="drivingTime" ColumnName="drivingTime" />
+<<<<<<< HEAD
           <ScalarProperty Name="status" ColumnName="status" />
+=======
+          <ScalarProperty Name="confirmationDelivery" ColumnName="confirmationDelivery" />
+          <ScalarProperty Name="happinesslevel" ColumnName="happinesslevel" />
+          <ScalarProperty Name="describeHappiness" ColumnName="describeHappiness" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
           <ScalarProperty Name="packageType" ColumnName="packageType" />
           <ScalarProperty Name="describePackage" ColumnName="describePackage" />
           <ScalarProperty Name="packageSize" ColumnName="packageSize" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+<<<<<<< HEAD
     <EntitySetMapping Name="PackageSize">
       <EntityTypeMapping TypeName="DBDeliveries2Model.PackageSize">
+=======
+    <EntitySetMapping Name="PackageDescriptions">
+      <EntityTypeMapping TypeName="DBDeliveries1Model.PackageDescription">
+        <MappingFragment StoreEntitySet="PackageDescription">
+          <ScalarProperty Name="packageDescriptionCode" ColumnName="packageDescriptionCode" />
+          <ScalarProperty Name="userCode" ColumnName="userCode" />
+          <ScalarProperty Name="packageType" ColumnName="packageType" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PackageSizes">
+      <EntityTypeMapping TypeName="DBDeliveries1Model.PackageSize">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         <MappingFragment StoreEntitySet="PackageSize">
           <ScalarProperty Name="packageSizeCode" ColumnName="packageSizeCode" />
           <ScalarProperty Name="packageSizeName" ColumnName="packageSizeName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+<<<<<<< HEAD
     <EntitySetMapping Name="PackageType">
       <EntityTypeMapping TypeName="DBDeliveries2Model.PackageType">
+=======
+    <EntitySetMapping Name="PackageTypes">
+      <EntityTypeMapping TypeName="DBDeliveries1Model.PackageType">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         <MappingFragment StoreEntitySet="PackageType">
           <ScalarProperty Name="packageTypeCode" ColumnName="packageTypeCode" />
           <ScalarProperty Name="packageTypeName" ColumnName="packageTypeName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+<<<<<<< HEAD
     <EntitySetMapping Name="Transportation">
       <EntityTypeMapping TypeName="DBDeliveries2Model.Transportation">
         <MappingFragment StoreEntitySet="Transportation">
@@ -82,6 +133,31 @@
     </EntitySetMapping>
     <EntitySetMapping Name="User">
       <EntityTypeMapping TypeName="DBDeliveries2Model.User">
+=======
+    <EntitySetMapping Name="RefusesPackages">
+      <EntityTypeMapping TypeName="DBDeliveries1Model.RefusesPackage">
+        <MappingFragment StoreEntitySet="RefusesPackage">
+          <ScalarProperty Name="packageCode" ColumnName="packageCode" />
+          <ScalarProperty Name="userCode" ColumnName="userCode" />
+          <ScalarProperty Name="packageTypeCode" ColumnName="packageTypeCode" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DBDeliveries1Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DBDeliveries1Model.User">
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         <MappingFragment StoreEntitySet="User">
           <ScalarProperty Name="userCode" ColumnName="userCode" />
           <ScalarProperty Name="userName" ColumnName="userName" />

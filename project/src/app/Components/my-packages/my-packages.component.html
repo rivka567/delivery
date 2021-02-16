@@ -1,0 +1,22 @@
+<mat-dialog-content class="mat-typography">
+  <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon><br><br>
+<label id="example-radio-group-label">נמצאו {{len}} חבילות מותאמות</label><br>
+<label id="example-radio-group-label">תבחר את החבילה אותה תרצה לשלוח:</label>
+<mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+(ngModelChange)="checkPackage($event)">
+  <mat-radio-button class="example-radio-button" *ngFor="let package of myListPackage" [value]="package"
+  (click)="checkPackage(package)">
+  <span> {{package.packageCode}}</span> <span>    </span>
+<span> {{package.customerName}}</span> <span>    </span>
+<span> {{package.travelDate|  date:'dd-MM-yyyy' }} </span> <span>    </span>
+<span> {{package.fromLocationFormat}}</span> <span>    </span>
+<span> {{package.toLocationFormat}}</span> <span>    </span>
+<span> {{package.drivingTime}}</span> <span>    </span> 
+<span> {{package.packageType}}</span> <span>    </span> 
+  </mat-radio-button>
+</mat-radio-group>
+<button (click)="send()">שלח!!</button>
+<mat-paginator [length]="myListPackage.length"
+[pageSize]="10">
+</mat-paginator>
+</mat-dialog-content>

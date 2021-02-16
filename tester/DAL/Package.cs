@@ -27,7 +27,13 @@ namespace DAL
         public int toLocation { get; set; }
         public System.DateTime travelDate { get; set; }
         public System.TimeSpan drivingTime { get; set; }
+<<<<<<< HEAD
         public Nullable<bool> status { get; set; }
+=======
+        public bool confirmationDelivery { get; set; }
+        public int happinesslevel { get; set; }
+        public string describeHappiness { get; set; }
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         public int packageType { get; set; }
         public string describePackage { get; set; }
         public int packageSize { get; set; }

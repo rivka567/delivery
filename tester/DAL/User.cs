@@ -17,9 +17,18 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
+<<<<<<< HEAD
             this.Happiness = new HashSet<Happiness>();
             this.Package = new HashSet<Package>();
             this.Package1 = new HashSet<Package>();
+=======
+            this.Drives = new HashSet<Drive>();
+            this.Drives1 = new HashSet<Drive>();
+            this.Packages = new HashSet<Package>();
+            this.Packages1 = new HashSet<Package>();
+            this.PackageDescriptions = new HashSet<PackageDescription>();
+            this.RefusesPackages = new HashSet<RefusesPackage>();
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
         }
     
         public string userCode { get; set; }
@@ -32,8 +41,20 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Happiness> Happiness { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+<<<<<<< HEAD
         public virtual ICollection<Package> Package { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Package> Package1 { get; set; }
+=======
+        public virtual ICollection<Drive> Drives1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Package> Packages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Package> Packages1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PackageDescription> PackageDescriptions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RefusesPackage> RefusesPackages { get; set; }
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
     }
 }

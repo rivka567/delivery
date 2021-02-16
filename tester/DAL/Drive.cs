@@ -27,6 +27,7 @@ namespace DAL
         public System.DateTime travelDate { get; set; }
         public int fromLocation { get; set; }
         public int toLocation { get; set; }
+<<<<<<< HEAD
         public string describeDrive { get; set; }
         public Nullable<bool> status { get; set; }
         public int transportation { get; set; }
@@ -34,5 +35,17 @@ namespace DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WaitingMessages> WaitingMessages { get; set; }
+=======
+        public int packageSizeCode { get; set; }
+        public Nullable<System.TimeSpan> howLongBeforeReminder { get; set; }
+        public string transportation { get; set; }
+        public string describeDrive { get; set; }
+        public bool confirmationCustomer { get; set; }
+    
+        public virtual Loction Loction { get; set; }
+        public virtual Loction Loction1 { get; set; }
+        public virtual User User { get; set; }
+        public virtual User User1 { get; set; }
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
     }
 }

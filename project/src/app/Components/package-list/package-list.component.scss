@@ -1,0 +1,101 @@
+.select{
+  height: 25px;
+  width: 110px;
+float: left;
+margin-left: 5%;
+}
+th{
+  width: 65px;
+  height: 16px;
+  margin: 0 205px 0 0;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #6f6f6f;
+}
+
+td{
+  width: 13%;
+  
+}
+table{
+  width:80%;
+  height: 50%;
+}
+
+button.btn{
+  float: left;
+  color: white;
+  background-color: black;
+  width: 200px;
+  height: 50px;
+  display: inline;
+  margin-left:10px;
+  margin-top: 10px;
+}
+
+h1{
+  display: inline;
+}
+
+input{
+  display: inline;
+    // width: 147px;
+    margin: 0 15px 0 4px;
+    padding: 5px 11px 7px 106px;
+    border-radius: 4px;
+    background-color: #ffffff;
+
+}
+.sortBox{
+  width: 90%;
+  height: 50px;
+  margin: auto;
+  padding: 6px 8px 6px 11px;
+  border-radius: 4px;
+  background-color: rgba(22, 168, 226, 0.19);
+}
+
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+.form-inline {  
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.form-inline label {
+  margin: 5px 10px 5px 0;
+}
+
+.form-inline input {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+.form-inline select {
+  vertical-align: middle;
+  margin: 5px 10px 5px 0;
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+
+@media (max-width: 800px) {
+  .form-inline input {
+    margin: 10px 0;
+  }
+  
+  .form-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

@@ -4,6 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
+<<<<<<< HEAD
       <Diagram DiagramId="26787518a428459b88067666edc1e769" Name="Diagram1">
         <EntityTypeShape EntityType="DBDeliveries2Model.Drive" Width="1.5" PointX="6" PointY="9.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DBDeliveries2Model.Happiness" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
@@ -23,6 +24,32 @@
         <AssociationConnector Association="DBDeliveries2Model.FK_Package_User" ManuallyRouted="false" />
         <AssociationConnector Association="DBDeliveries2Model.FK_Package_User1" ManuallyRouted="false" />
         <AssociationConnector Association="DBDeliveries2Model.FK_WaitingPackage_Package" ManuallyRouted="false" />
+=======
+      <Diagram DiagramId="2565f17602f14929abffdedeccd6f6e3" Name="Diagram1">
+        <EntityTypeShape EntityType="DBDeliveries1Model.Drive" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveries1Model.Loction" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveries1Model.Package" Width="1.5" PointX="6" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveries1Model.PackageDescription" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveries1Model.PackageSize" Width="1.5" PointX="3.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveries1Model.PackageType" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveries1Model.RefusesPackage" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveries1Model.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBDeliveries1Model.User" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="DBDeliveries1Model.FK_Drive_Loction" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries1Model.FK_Drive_Loction1" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries1Model.FK_Drive_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries1Model.FK_Drives_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries1Model.FK_Package_Loction" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries1Model.FK_Package_Loction1" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries1Model.FK_Packages_PackageSize" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries1Model.FK_Packages_PackageType" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries1Model.FK_Packages_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries1Model.FK_Packages_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries1Model.FK_packageDescription_PackageType" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries1Model.FK_packageDescription_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries1Model.FK_RefusesPackages_PackageType" ManuallyRouted="false" />
+        <AssociationConnector Association="DBDeliveries1Model.FK_RefusesPackages_Users" ManuallyRouted="false" />
+>>>>>>> 707e59e777cf3c9a9d6fbbd95c355d6f8e4f4e01
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
