@@ -1,6 +1,6 @@
 <mat-dialog-content  class="mat-typography">
-  <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon>
-    <form *ngIf="form,newDrive" [formGroup]="form" (ngSubmit)="addDrive()">
+  <mat-icon style="cursor: pointer; float: left;margin-left: 3%;" mat-dialog-close >highlight_off </mat-icon>
+    <form  [formGroup]="form" (ngSubmit)="addDrive()">
         <h1>פרטי נסיעה:</h1><br>
         <section>
           <div class="example-button-row">
@@ -98,7 +98,7 @@
             <!-- <a style="cursor: pointer;" (click)="openDialog()" mat-dialog-close>התחבר</a> -->
            
             <button mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid"
-            (click)="submitted=true" mat-dialog-close > שמור</button> 
+            (click)="submitted=true" mat-dialog-close class="btn" > שמור</button> 
     </form>   
     </mat-dialog-content>
 

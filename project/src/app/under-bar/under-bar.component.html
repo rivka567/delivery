@@ -1,15 +1,10 @@
-<!-- <section>
-    <button routerLink="personal-details" >פרופיל אישי </button>
-    <button routerLink="personal-packages">החבילות שלי</button>
-    <button routerLink="personal-drives">הנסיעות שלי</button>
-</section> -->
 <mat-tab-group mat-align-tabs="center">
     <mat-tab label="ניהול הזמנות">
         <ng-template mat-tab-label>
             <!-- <mat-icon>playlist_add_check</mat-icon> -->
             פרופיל אישי 
         </ng-template>
-        <app-personal-details></app-personal-details>
+        <app-personal-drives></app-personal-drives>
 
     </mat-tab>
     <mat-tab label="הפרופיל שלי ">
@@ -29,4 +24,3 @@
     </mat-tab>
  
 </mat-tab-group>
-<!-- <router-outlet></router-outlet> -->

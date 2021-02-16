@@ -1,7 +1,8 @@
 
 <div> 
-    <h1> חבילות</h1>  <br><br>
-  
+  <h3> חפש את חבילות  המתאימות לך  </h3>  <br><br>
+  <div class="sortBox">
+    <form class="form-inline" action="/action_page.php">
   <input [min]="minDate" matInput [matDatepicker]="picker" (click)="picker.open()"  placeholder="מתאריך" #fromDate >
   <mat-datepicker #picker></mat-datepicker>
   
@@ -26,16 +27,26 @@
      <!--חיפוש לפי עיר
     <input id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on"> -->
   
-    <button mat-button (click)="filterPackages(fromDate.value,toDate.value,fromL.value,toL.value,time.value,size.value)">חפש תוצאות</button>
-     
-      <br>
-      <mat-label>מיין לפי:</mat-label>
+    <button mat-button (click)="filterPackages(fromDate.value,toDate.value,fromL.value,toL.value,time.value,size.value)"><i class="fa fa-search"></i></button>
+     </form>
+     </div> 
+ <br>
+     <div  class="select">
+  <mat-label>מיין לפי:</mat-label>
+  <select (change)="sortBy($event.target.value)" >
+    <option value="date">תאריך </option>
+     <option value="time">שעה </option>
+     <option value="from" >מרחק מהמוצא</option>
+     <option value="to" >מרחק מהיעד</option>
+   </select> 
+      </div>
+      <!-- <mat-label>מיין לפי:</mat-label>
      <select (change)="sortBy($event.target.value)" >
       <option value="date">תאריך </option>
        <option value="time">שעה </option>
        <option value="from" >מרחק מהמוצא</option>
        <option value="to" >מרחק מהיעד</option>
-     </select>
+     </select> -->
      
   <br>
   <p style="font-size:large;"> נמצאו {{len}} חבילות מתאימות</p>

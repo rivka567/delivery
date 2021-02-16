@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/Services/user.service';
+import Swal from 'sweetalert2';
+
 import { DriveComponent } from '../drive/drive.component';
 import { ExistUserComponent } from '../exist-user/exist-user.component';
 
@@ -50,5 +52,8 @@ logOut()
     alert("עליך להירשם או להתחבר לפני השימוש באתר")
   
   }
-
+  alertWithSuccess(){
+    console.log("akert ")
+    Swal.fire('Thank you...', 'You submitted succesfully!', 'success')
+  }
   }
