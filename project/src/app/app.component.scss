@@ -1,20 +1,28 @@
-
 header {
-    height:10%;
-    width: 100%;
-    background-color:gray;
-    position: fixed;
-    top: 0px;
+    height: 52px;
+    padding: 6px 250px 7px;
+    background-color: #16a8e2;
+  }
+body, button, form, main, span, .container, h1, h2, h3, p, span, a {
+
+    font-family: Arimo;
+}
+// forms//
+
+input {
+
+margin-left: 3px;
+
 }
 
 main {
-    height:90%;
-    width: 100%;
-    background-color:rgb(252, 249, 245);
-    border: black;
-    float: right;
-    position: relative;
-    top: 10%;
+    // height:90%;
+    // width: 100%;
+    // background-color:rgb(255, 255, 255);
+    // border: black;
+    // float: right;
+    // position: relative;
+    // top: 10%;
 }
 
 footer {

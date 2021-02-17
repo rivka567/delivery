@@ -1,18 +1,33 @@
 
 <mat-dialog-content class="mat-typography">
   <div > 
+
     <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon> 
+    <h1>התחבר / הירשם</h1>
+
     <div *ngIf="!user.userName&&vis==false">
-      <br> 
-      <input  matInput placeholder="הקש סיסמא" #id type="mail">
-      <button class="btn" mat-button (click)="getUserById(id.value)" >חפש</button>
-      <br>
+
+      <form>
+        <div class="mb-3">
+      <input  class="form-control"  matInput placeholder="הקש סיסמא" #id type="mail">
+      <div class="form-text">שדה חובה</div>
+
+    </div>
+    <div class="mb-3">
+      <button class="btn btn-primary" mat-button (click)="getUserById(id.value)" >היכנס</button>
+    </div>
+    </form>
       <a  class="a-container" (click)="vis=true" >שחכתי סיסמא </a>
+      <br>
       <a mat-dialog-close class="b-container" (click)="openDialog()"> משתמש חדש</a>
     </div>
+
+    <form>
      <div *ngIf="vis==true">
-        <input type="text" matInput placeholder="הזן כתובת מייל" #mail >
-        <button class="btn" mat-button (click)="sendCodeByEmail(mail.value)"  >שלח לי את הקוד</button>   
+      <div class="mb-3">
+        <input class="form-control" type="email" matInput placeholder="הזן כתובת מייל" #mail >
+      </div>
+        <button class="btn btn-primary" mat-button (click)="sendCodeByEmail(mail.value)"  >שלח לי את הקוד</button>   
     </div>
       <div class="userDiv" *ngIf="user.userName" >
         <p> {{user.userCode}}</p>
@@ -21,6 +36,8 @@
         <p> {{user.userMail}}</p>
          <a mat-dialog-close class="btn" >המשך</a>
     </div>
-   
+  </form>
+  
   </div>
 </mat-dialog-content>
+
