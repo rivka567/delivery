@@ -34,8 +34,8 @@
                 <p> {{wp.drivingTime}}</p>
                 <p> {{wp.transportationType}}</p>  
                 <button mat-button (click)="sendMessageFromCustomer(p,wp)">שלח הודעה</button> 
-                <button mat-button *ngIf="p.status==true" (click)="deleteAllWaitingMessage(p.packageCode,wp.driveCode,p.listWaiting)">סגרתי נסיעה</button> 
-                <button mat-button *ngIf="p.status==true" (click)="deleteWaitingMessage(p.packageCode,wp.driveCode,'p')">הסר</button> 
+                <button mat-button *ngIf="p.status==true" (click)="deleteAllWaitingMessage(p.packageCode,wp.driveCode,p.listWaiting)"> אשר שליח</button> 
+                <button mat-button  (click)="deleteWaitingMessage(p.packageCode,wp.driveCode,'p')">הסר</button> 
                 <button mat-button (click)="finishPackage(wp.driverCode,p.customerName)">חוות דעת</button> 
             </div> 
         </li>

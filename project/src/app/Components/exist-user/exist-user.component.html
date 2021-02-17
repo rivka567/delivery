@@ -3,14 +3,10 @@
   <div > 
     <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon> 
     <div *ngIf="!user.userName&&vis==false">
-      <form >
-      <mat-form-field appearance="outline">
         <mat-label>הקש סיסמא: </mat-label>
         <input  matInput #id type="password">
         <mat-icon matSuffix>account_circle</mat-icon>
-    </mat-form-field> 
     <button class="btn" mat-button (click)="getUserById(id.value)" >חפש</button>
-  </form>
       <a  class="a-container" (click)="vis=true" >שחכתי סיסמא </a> <br>
       <a mat-dialog-close class="b-container" (click)="openDialog()"> משתמש חדש</a>
     </div>

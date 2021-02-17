@@ -8,7 +8,7 @@ export class Drive {
             public customerCode:string="",
             public drivingTime:Time,
             public travelDate:Date,
-             public fromLocationId:number=0,
+            public fromLocationId:number=0,
             public fromLocationFormat:string="",
             public fromLocationLat:number=0,
             public fromLocationLng:number=0,
