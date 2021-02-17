@@ -41,6 +41,8 @@ export class PersonalPackagesComponent implements OnInit {
 
   deletePackage(p:Package)
   {
+      console.log("akert ")
+     // Swal.fire('Thank you...', 'You submitted succesfully!', 'success')
     debugger
       this.packageSer.deletePackage(p.packageCode,p.listWaiting).subscribe(
       myData => {

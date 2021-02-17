@@ -10,7 +10,6 @@
             </mat-form-field> -->
            
             <br>
-            <mat-form-field>
               <mat-label>Enter your password</mat-label>
               <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" name="password">
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
@@ -19,28 +18,27 @@
             <!-- <input style="display:inline;" matInput class="inp" placeholder="password" [type]="hide ? 'password' : 'text'" formControlName="password" name="password">
             <mat-icon style="display:inline;" (mouseover)="hide=!hide" (mouseout)="hide=!hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             <mat-hint *ngIf="!passwordInput.value">Enter your password</mat-hint> -->
-            </mat-form-field>
             <br>            
-            <mat-form-field>
+         
               <input matInput type="text" placeholder="שם " class="inp"  formControlName="name"  name="name">
-            </mat-form-field>
+      
             <br> 
     
-            <mat-form-field >
+          
               <input type="number" matInput placeholder="טלפון " class="inp" formControlName="telephone" name="telephone">
-            </mat-form-field>
+          
             <br> 
     
-              <mat-form-field>
+            
                 <input type="text" matInput placeholder="gmail" class="inp" formControlName="gmail" name="gmail" >
-              </mat-form-field>
+           
             <br> 
           
-            <mat-form-field>
+           
               <input type="number" matInput placeholder="age" class="inp" formControlName="age" name="age" >
-            </mat-form-field>
+           
           <br>
-            <mat-checkbox matInput formControlName="mes" name="mes" (ngModel)="checked" >jjjj</mat-checkbox>       
+            <input type="checkbox"  formControlName="mes" name="mes" (ngModel)="checked" />
           <br>
           
             <button  style="cursor: pointer;" type="submit" mat-button  [disabled]="!form.valid" (click)="submitted=true" >

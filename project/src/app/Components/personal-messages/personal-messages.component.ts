@@ -9,6 +9,8 @@ import { WaitingMessagesService } from 'src/app/Services/waiting-messages.servic
 import { HappinessComponent } from '../happiness/happiness.component';
 import { MatDialog } from '@angular/material/dialog';
 import { identifierModuleUrl } from '@angular/compiler';
+import { SendMessageComponent } from '../send-message/send-message.component';
+import { matDatepickerAnimations } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-personal-messages',
@@ -63,25 +65,55 @@ export class PersonalMessagesComponent implements OnInit {
         console.log(myErr.message);
       });
   }
-  finishPackage(id:string)
+  finishPackage(id:string,name:string)
   {
     const dialogRef = this.dialog.open(HappinessComponent,{ disableClose: true })
     dialogRef.componentInstance.idDelivery =id;
+    // dialogRef.componentInstance.customerName =name;
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
-  deleteWaitingMessage(idP:number,idD:number,type:string)
-  {
-  this.wait.deleteMessage(idP,idD,type).subscribe(myData=>{alert(myData)})
-  }
-  changeStatus(status:boolean,newStatus:boolean)
-  {
-    if(status==false&&newStatus==true)
-    {
 
-    }
-    this.wait.changeStatus(newStatus).subscribe(myData=>{alert(myData)});
+  changeStatusToClose(id:number)
+  {
+    this.driveSer.changeStatusToClose(id,false).subscribe(
+      myData=>(alert(myData)),
+      myErr=>(alert("error"))     
+    );
+  }
+
+  deleteAllWaitingMessage(idP:number,idD:number,listToDelete:Drive[])
+  {
+    debugger
+   listToDelete= listToDelete.filter(d=>d.driveCode!=idD);
+    this.wait.deleteAllWaitingMessage(idP,idD,listToDelete).subscribe(
+      myData=>{alert(myData)},
+      myErr=>{alert(myErr)}
+    );
+  }
+  deleteWaitingMessage(idP:number,idD:number)
+  {
+  this.wait.deleteMessage(idP,idD).subscribe(myData=>{alert(myData)})
+  }
+  sendMessageFromCustomer(p:Package,d:Drive)
+  {
+    const dialogRef = this.dialog.open(SendMessageComponent,{ disableClose: true })
+  dialogRef.componentInstance.package=p;
+  dialogRef.componentInstance.waitingD=d;
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    }); 
+  }
+
+  sendMessageFromDelivery(d:Drive,p:Package)
+  {
+    const dialogRef = this.dialog.open(SendMessageComponent,{ disableClose: true })
+  dialogRef.componentInstance.drive=d;
+  dialogRef.componentInstance.waitingP=p;
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    }); 
   }
 
   showBtn=-1;

@@ -57,7 +57,10 @@ aa:any;
     debugger
     return this.http.post<Array<Drive>>(this.URL + "/DeleteDrive/"+id,listWaiting);
   }
-
+  changeStatusToClose(id:number, status:boolean):Observable<any>
+  {
+     return this.http.post<any>(this.URL+"/ChangeStatusToClose/"+id,status);
+  }
 
 //   //אמור לקבל משתמש ולהוסיף אותו לרשימת השליחים 
 // addDriveToList(user)

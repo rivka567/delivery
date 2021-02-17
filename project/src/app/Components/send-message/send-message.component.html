@@ -1,0 +1,8 @@
+  
+<mat-dialog-content>
+    <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon>
+    <h2>הודעה:</h2>
+    <input matInput type="text" #body>
+    <br><br>
+    <button (click)="sendMessage(body.value)">שלח הודעה</button>
+ </mat-dialog-content>
