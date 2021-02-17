@@ -1,27 +1,39 @@
 
 <div> 
-  <h1> נסיעות</h1>
-<br><br>
+  <h1 class="title_list"> חפש את הנסיעה שמתאימה לך</h1>
 
-<input [min]="minDate" matInput [matDatepicker]="picker" (click)="picker.open()"  placeholder="מתאריך" #fromDate >
+  <form class="search">
+  <div class="row">
+
+<div class="col-3 pb-4">
+
+<input class="form-control form-control-sm date" [min]="minDate" matInput [matDatepicker]="picker" (click)="picker.open()"  placeholder="מתאריך" #fromDate >
 <mat-datepicker #picker></mat-datepicker>
 
-<input [min]="minDate" matInput [matDatepicker]="picker1" (click)="picker1.open()"  placeholder="עד תאריך" #toDate >
+<input class="form-control form-control-sm date" [min]="minDate" matInput [matDatepicker]="picker1" (click)="picker1.open()"  placeholder="עד תאריך" #toDate >
 <mat-datepicker #picker1 ></mat-datepicker>
+</div>
 
-  <input matInput type="text" placeholder="מוצא" ngx-google-places-autocomplete 
+<div class="col-2">
+  <input class="form-control form-control-sm" matInput type="text" placeholder="מוצא" ngx-google-places-autocomplete 
    #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)" #fromL >
+</div>
 
-  <input matInput type="text" placeholder="יעד" ngx-google-places-autocomplete  
+  <div class="col-2">
+  <input class="form-control form-control-sm" matInput type="text" placeholder="יעד" ngx-google-places-autocomplete  
   #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)" #toL>
+   </div>
 
-  <input matInput type="time"  placeholder="שעת יציאה" #time >
-
+   <div class="col-2">
+  <input class="form-control form-control-sm" matInput type="time"  placeholder="שעת יציאה" #time >
+   </div>
+   
   <!-- <div class="md-form md-outline">
     <label for="default-picker">שעת החזרה</label>
     <input type="time" id="default-picker" class="form-control" [(ngModel)]="time" placeholder="שעת החזרה">
 </div>‏‏ -->
-  <select #trans >
+<div class="col-2">
+  <select class="form-control form-control-sm" #trans >
     <option value="0">כל רכב </option>
      <option value="1">רכב </option>
      <option value="2" >אופנוע</option>
@@ -29,23 +41,48 @@
      <option value="4" >אוטובוס</option>
      <option value="5" >משאית</option>
    </select>
+  </div>
+
+</div>
+
+<div class="row">
    <!--חיפוש לפי עיר-->
-  <input #searchTextField id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on"> 
+   <div class="col-3">
+<input #searchTextField id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on"> 
+   </div>
+<div class="col-1">
+  <button mat-button (click)="filterDrives(fromDate.value,toDate.value,fromL.value,toL.value,time.value,trans.value)"><i width="52" height="52" class="bi bi-search"></i></button>
+</div>
 
-  <button mat-button (click)="filterDrives(fromDate.value,toDate.value,fromL.value,toL.value,time.value,trans.value)">חפש תוצאות</button>
+</div>
 
-    <br>
-    <mat-label>מיין לפי:</mat-label>
-   <select (change)="sortBy($event.target.value)" >
+</form>
+   
+
+<section class="sort">
+
+  <div class="row">
+   
+ <div class="col-9">
+  <p style="font-size:large;"> נמצאו {{len}} חבילות מתאימות</p>
+</div>
+
+
+<div class="col-3">
+    <mat-label><span class="float-end">מיין לפי</span></mat-label>
+   <select class="form-selec form-control-sm pl4 float-start" (change)="sortBy($event.target.value)" >
     <option value="date">תאריך </option>
      <option value="time">שעה </option>
      <option value="from" >מרחק מהמוצא</option>
      <option value="to" >מרחק מהיעד</option>
    </select>
-   
-<br>
-<p style="font-size:large;"> נמצאו {{len}} נסיעות מתאימות</p>
-<br>
+  </div>
+
+  </div> 
+
+  
+</section>
+
 <table >
   <th> שם </th>
   <th> תאריך </th>

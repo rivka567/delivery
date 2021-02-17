@@ -16,6 +16,7 @@
     
   // }
   
+
   .example-button-row button {
     display: table-cell;
     margin-right: 70px;
@@ -38,16 +39,27 @@ button{
       width:100px;
       height:40px;
       top: 0px;
-     
+      border: 1px solid #ffffff;
+      font-family: Arimo;
+      margin-right: 10px;
+      counter-reset: #ffffff;
+      color: #ffffff;
       }
 
+button.logo {
+ border: none;
+ padding: 0px;
+ margin: 0px;
+}
+
+button.logo img{
+  height: 80%;
+ }
+
 button:hover{
-  background-color:lightgrey;
-  text-decoration-line: underline;
-  text-decoration-style: solid;
+
 }
 button.btn {
-    background-color: lavender;
     float: left;
     display: inline;
     
