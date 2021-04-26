@@ -38,25 +38,32 @@ export class UserComponent implements OnInit {
 
   initForm() {
    this.form = this.formBuilder.group({
-      password:['',[Validators.required,Validators.minLength(3),Validators.pattern("[a-z-A-Z-0-9]*")]],
+ //work 
+    password:['',[Validators.required,Validators.minLength(7),Validators.pattern("[0-9-a-z-A-Z]*")]],
+ //work  
       name:['',[Validators.required,Validators.pattern("[א-ת-a-z-A-Z]*")]],
-      telephone:['',[Validators.required,Validators.pattern("[0-9]*")]],
-      gmail:['',[Validators.required,Validators.email]],
-      age:['',Validators.required],
-      mes:[''||false],
+ //work
+  //    phone:['',[Validators.required,Validators.pattern("0[0-9]*"),Validators.maxLength(10),Validators.minLength(10)]],
+ //work 
+ //
+      gmail:['',[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+ //work
+  //    age:['',Validators.required],
+   //   mes:[''||false],
     })
   }
 
   addUser() {
     debugger
  this.submitted=true;
- this.newUser=new User(this.form.value.password,this.form.value.name,this.form.value.telephone,this.form.value.gmail,this.form.value.age,this.form.value.mes)
+ this.newUser=new User(this.form.value.password,this.form.value.name,this.form.value.gmail)
  this.userSer.addUser(this.newUser).subscribe(
   myData => { 
+    console.log("from myData",myData)
     this.dialogRef.close();
-    alert("succses")
-    this.userSer.currentUser=this.newUser;
+    alert("נוסף בהצלחה")
+    this.userSer.currentUser=myData;
 },
-  myErr => { alert("error");});
+  myErr => { console.log("from myErr",myErr)});
   }
 }

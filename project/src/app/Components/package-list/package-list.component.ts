@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { DateAdapter } from '@angular/material/core';
 import { MatCalendarCellCssClasses } from '@angular/material/datepicker';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 import { Package } from 'src/app/Classes/package';
 import { User } from 'src/app/Classes/user';
@@ -14,6 +14,7 @@ import { ExistUserComponent } from '../exist-user/exist-user.component';
 import { MyPackagesComponent } from '../my-packages/my-packages.component';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { MyDrivesComponent } from '../my-drives/my-drives.component';
+import { url } from 'inspector';
 
 @Component({
   selector: 'app-package-list',
@@ -38,13 +39,23 @@ export class PackageListComponent implements OnInit {
   panelOpenState = false;
   time1:any;
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
-  constructor( private packageSer: PackageService,private userSer:UserService,
+
+  constructor(private route:ActivatedRoute, private packageSer: PackageService,private userSer:UserService,
     private dialog:MatDialog,private router:Router,private dateAdapter: DateAdapter<Date>) { }
 
     ngOnInit(): void {
+      
       this.minDate=new Date();
       this.getAllPackages();
-     }
+      // const id= this.route.snapshot.params['id'];
+      // alert(id)
+      // if(id!=undefined)
+      //   {
+      //     alert("!!!!")
+      //     this.packagesFound=null
+      //   }   
+ }
+
    
    dateClass = (d: Date): MatCalendarCellCssClasses => {
      const date = d.getDate();
@@ -57,10 +68,8 @@ getAllPackages() {
       this.packageSer.getAllPackages().subscribe(
       myData => {
         this.packagesFound=myData;
-        //תמיד נשאר כאן כל הנסיעות
         this.packageSer.allPackages=myData;
         this.len=this.packagesFound.length;
-
       },
       myErr => {
         console.log("from subscribe");
@@ -98,10 +107,11 @@ sendEmail(p:Package)
       {
       //מחפשת את הלקוח שהחבילה שייכת אליו, כדי למצוא את  המייל של הלקוח
       this.getUserById(p);
-      console.log("!!",p);
+     // console.log("!!",p);
       //החבילה שהשליח בחר בה
       this.packageSer.currentPackage=p;
-      const dialogRef = this.dialog.open(MyDrivesComponent,{ disableClose: true ,data:p.packageCode })
+      const dialogRef = this.dialog.open(MyDrivesComponent,{ disableClose: true  })
+     // dialogRef.componentInstance.currentPackage=p;
       dialogRef.afterClosed().subscribe(result => {
         console.log(`Dialog result: ${result}`);
       });
@@ -113,7 +123,8 @@ sendEmail(p:Package)
     {
   this.getUserById(p)
   this.packageSer.currentPackage=p;
-  const dialogRef = this.dialog.open(MyDrivesComponent,{ disableClose: true,data:p.packageCode })
+  const dialogRef = this.dialog.open(MyDrivesComponent,{ disableClose: true})
+ // dialogRef.componentInstance.currentPackage=p;
   dialogRef.afterClosed().subscribe(result => {
     console.log(`Dialog result: ${result}`);
   })
@@ -125,10 +136,10 @@ filterPackages(fromDate:string,toDate:string,from:Address,to:Address,time:string
     debugger
     this.packagesFound=this.packageSer.allPackages;
     if(fromDate)
-      this.packagesFound=this.packagesFound.filter(d=>new Date(d.travelDate)>= new Date(fromDate));
+      this.packagesFound=this.packagesFound.filter(d=>new Date(d.toDate)>= new Date(fromDate));
 
     if(toDate)
-      this.packagesFound=this.packagesFound.filter(d=>new Date(d.travelDate)<=new Date(toDate));
+      this.packagesFound=this.packagesFound.filter(d=>new Date(d.toDate)<=new Date(toDate));
   
     if(from)
     {
@@ -140,25 +151,23 @@ filterPackages(fromDate:string,toDate:string,from:Address,to:Address,time:string
     // this.packageSer.get123().subscribe(mydate=>{this.packageSer.aa=mydate
     //   console.log(this.packageSer.aa);
     //   })
-      this.packageSer.to=to;
       this.packagesFound=  this.packagesFound.filter(f=> 4000>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f. toLocationLat, f.toLocationLng), new google.maps.LatLng(this.toLat,this.toLng)))
-  
-    }
-  if(time)
-  {
-    // let t=new timeStamp("10:30")
-    // alert(t);
-    let h=time.substring(0,2)
-    let m=time.substring(3,5)
-  let t=new Date(1,1,2020,parseInt(h),parseInt(m),0,0)
-    debugger
-    this.packagesFound=  this.packagesFound.filter
-    (f=>  (     
-            new Date(f.timeInDate).getHours() == t.getHours()||
-            (new Date(f.timeInDate).getHours() == t.getHours()-1 &&new Date(f.timeInDate).getMinutes()>=t.getMinutes())||
-            (new Date(f.timeInDate).getHours() == t.getHours()+1 &&new Date(f.timeInDate).getMinutes()<=t.getMinutes())  
-          )
-    )
+   }
+  // if(time)
+  // {
+  //   // let t=new timeStamp("10:30")
+  //   // alert(t);
+  //   let h=time.substring(0,2)
+  //   let m=time.substring(3,5)
+  // let t=new Date(1,1,2020,parseInt(h),parseInt(m),0,0)
+  //   debugger
+  //   this.packagesFound=  this.packagesFound.filter
+  //   (f=>  (     
+  //           new Date(f.timeInDate).getHours() == t.getHours()||
+  //           (new Date(f.timeInDate).getHours() == t.getHours()-1 &&new Date(f.timeInDate).getMinutes()>=t.getMinutes())||
+  //           (new Date(f.timeInDate).getHours() == t.getHours()+1 &&new Date(f.timeInDate).getMinutes()<=t.getMinutes())  
+  //         )
+  //   )
     // (new Date(f.timeInDate).getHours()>t.getHours()-1||
     // (new Date(f.timeInDate).getHours() == t.getHours()-1 &&new Date(f.timeInDate).getMinutes()>=t.getMinutes())||
     
@@ -166,7 +175,7 @@ filterPackages(fromDate:string,toDate:string,from:Address,to:Address,time:string
     // ( (new Date(f.timeInDate).getHours()< t.getHours()+1||
     // (new Date(f.timeInDate).getHours() == t.getHours()&& new Date(f.timeInDate).getMinutes()>=t.getMinutes()))||
   
-  }
+ // }
   if(size)
   {
     debugger
@@ -228,20 +237,20 @@ if(value=='to' && this.toLng!=0 &&this.toLat!=0)
   this.packagesFound.sort((a, b) => {
     return  google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.toLocationLat, a.toLocationLng), new google.maps.LatLng(this.toLat,this.toLng) )-google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.toLocationLat, b.toLocationLng), new google.maps.LatLng(this.toLat,this.toLng))})
 }
-if(value=='time')
-  {
-    this.packagesFound.sort((a, b) => {
-      //  console.log("a.FromDate.getDate()"+new Date( a.FromDate).getTime())
-      return a.drivingTime.hours- b.drivingTime.hours;
+// if(value=='time')
+//   {
+//     this.packagesFound.sort((a, b) => {
+//       //  console.log("a.FromDate.getDate()"+new Date( a.FromDate).getTime())
+//       return a.drivingTime.hours- b.drivingTime.hours;
 
-    });
-  }
+//     });
+//   }
 if(value=='date')
   {
   debugger
       this.packagesFound.sort((a, b) => {
         //  console.log("a.FromDate.getDate()"+new Date( a.FromDate).getTime())
-        return new Date(a.travelDate).getDate().valueOf() - new Date(b.travelDate).getDate().valueOf();
+        return new Date(a.fromDate).getDate().valueOf() - new Date(b.toDate).getDate().valueOf();
   
       });
     

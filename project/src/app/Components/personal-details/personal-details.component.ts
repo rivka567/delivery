@@ -26,18 +26,19 @@ export class PersonalDetailsComponent implements OnInit {
       this.myUser=this.userSer.currentUser;
     });
   }
-  updateUser(code:string,name:string,phone:string,mail:string,age:number)
-  {
+
+  // updateUser(code:string,name:string,mail:string)
+  // {
     
-    debugger
-    this.myUser=new User(code,name,phone,mail,age,false);
-    this.userSer.updateUser(this.myUser).subscribe(
-      myData=>{
-        this.myUser=myData
-      },
-      myErr=>{
-        console.log(myErr)
-      }
-    )
-  }
+  //   debugger
+  //   this.myUser=new User(code,name,mail);
+  //   this.userSer.updateUser(this.myUser).subscribe(
+  //     myData=>{
+  //       this.myUser=myData
+  //     },
+  //     myErr=>{
+  //       console.log(myErr)
+  //     }
+  //   )
+  // }
 }

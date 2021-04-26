@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-login',
@@ -11,5 +12,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }

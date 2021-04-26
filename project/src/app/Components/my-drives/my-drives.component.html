@@ -6,7 +6,7 @@
   <label id="example-radio-group-label">תבחר את הנסיעה אותה תרצה לשלוח:</label>
   <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
   (ngModelChange)="checkDrive($event)">
-    <mat-radio-button class="example-radio-button" *ngFor="let drive of myListDrive" [value]="drive"
+    <mat-radio-button class="example-radio-button" *ngFor="let drive of myFilterDrives" [value]="drive"
     (click)="checkDrive(drive)"> 
   <span> {{drive.driveCode}}</span>  <span>    </span>
   <span> {{drive.driverName}}</span>  <span>    </span>
@@ -16,10 +16,13 @@
   <span> {{drive.drivingTime}}</span>  <span>    </span>
     </mat-radio-button>
   </mat-radio-group>
-  <button (click)="send()">שלח!!</button>
-  <mat-paginator [length]="myListDrive.length"
+  <button (click)="sendEmail()">שלח!!</button>
+  <br>
+  <!-- <mat-paginator [length]="myListDrive.length"
 [pageSize]="10">
-</mat-paginator>  
+</mat-paginator>   -->
+<a style="color: red;" mat-dialog-close (click)="showDriveDialog()">צור נסיעה חדשה</a><br>
+<a style="color: red;" (click)="showAllDrives()">הצגת כל הנסיעות</a>
   </mat-dialog-content>
 
 

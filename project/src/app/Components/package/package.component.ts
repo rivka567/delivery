@@ -17,6 +17,8 @@ import { cpuUsage } from 'process';
 import { type } from 'os';
 import { types } from 'util';
 import { DriveService } from 'src/app/Services/drive.service';
+import { EmailManagementService } from 'src/app/Services/email-management.service';
+import { validateVerticalPosition } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-package',
@@ -28,12 +30,11 @@ export class PackageComponent implements OnInit {
   submitted=false;
   newPackage:Package;
   minDate: Date;
-  add=false;
-  addsuccess=false;
+  isPackage=false;
+
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
-  // size:FormControl;
-  constructor(private userSer:UserService,private activatedRoute:ActivatedRoute, private formBuilder: FormBuilder,private dialog:MatDialog, 
+  constructor(private emailSer:EmailManagementService, private userSer:UserService,private activatedRoute:ActivatedRoute, private formBuilder: FormBuilder,private dialog:MatDialog, 
     private packageSer:PackageService, private driveSer:DriveService,private router:Router) { 
   
     }
@@ -57,10 +58,14 @@ export class PackageComponent implements OnInit {
     customerCode:[this.userSer.currentUser.userCode||'',Validators.required],
     fromLocation:[this.driveSer.from||'',Validators.required],
     toLocation:[this.driveSer.to||'',Validators.required],
-    drivingTime:['',Validators.required],
-    travelDate:[new Date(),Validators.required],
+    fromDate:[new Date(),Validators.required],
+    toDate:[Validators.required],
+    fromTime:['',Validators.required],
+    toTime:['',Validators.required],
     describePackage:[''],
     type:['',Validators.required],
+    mes:[''||false,Validators.required],
+    distance:['']
     })
   }
   
@@ -73,20 +78,35 @@ export class PackageComponent implements OnInit {
   {
   debugger
   this.newPackage=new Package(0,this.form.value.customerCode,null,0,this.from,this.fromLat,this.fromLng,0,this.to,this.toLat,this.toLng,
-    this.form.value.travelDate,this.form.value.drivingTime,true,
-    this.form.value.type,this.form.value.describePackage,this.form.value.size);
+    this.form.value.fromDate,this.form.value.toDate,this.form.value.fromTime,this.form.value.toTime,true,
+    this.form.value.type,this.form.value.describePackage,this.form.value.size,this.form.value.mes,this.form.value.distance||0);
    this.packageSer.addPackage(this.newPackage).subscribe(
-    myData => {console.log("from subscribe",this.newPackage);
+    myData => {
+    console.log("from subscribe",this.newPackage);
     alert("add sucssesful");
-    this.packageSer.currentPackage=this.newPackage;
-    this.packageSer.allPackages.push(this.newPackage);
-    this.addsuccess=true
+  //  console.log("myData=",myData)
+    this.packageSer.currentPackage=myData;
+  //  console.log("new package=",this.packageSer.currentPackage)
+    debugger
+    if(this.isPackage)
+    {
+      debugger 
+      let distance= google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(this.packageSer.currentPackage.toLocationLat,this.packageSer.currentPackage.toLocationLng), new google.maps.LatLng(this.packageSer.currentPackage.fromLocationLat,this.packageSer.currentPackage.fromLocationLng)); 
+      let price=((distance/1000)*this.driveSer.currentDrive.price)
+
+      this.emailSer.sendPackageByEmail(this.driveSer.currentDrive,this.userSer.myDriver.userMail,this.userSer.currentUser.userName+" "+"מעוניין/ת במשלוח",this.packageSer.currentPackage,price).
+      subscribe(
+          myData=>{alert(myData)},
+          myErr=>{alert("error")}
+      );
+    }
+
     },
     myErr => {console.log("from subscribe",this.newPackage); 
     console.log(myErr.message);
   });
-    debugger
-    console.log("from package component"+this.packageSer.currentPackage);
+
+ 
   }
 
 

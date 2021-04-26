@@ -84,7 +84,11 @@
             placeholder="מקום יעד" formControlName="toLocation"  name="toLocation"/>
           </mat-form-field>
           <br>
-  
+          <mat-form-field >
+            <label>מחיר לק"מ:</label>
+            <input matInput type="number" formControlName="price"  name="price" />
+          </mat-form-field>
+          <br>
          <!-- <mat-form-field >
             <input matInput placeholder="קוד גודל חבילה" class="inp" formControlName="packageSizeCode" name="packageSizeCode">
           </mat-form-field>
@@ -97,8 +101,10 @@
             <!-- TODO: לשנות שיראה כקישור -->
             <!-- <a style="cursor: pointer;" (click)="openDialog()" mat-dialog-close>התחבר</a> -->
            
-            <button mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid"
+            <button *ngIf="!isDrive" mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid"
             (click)="submitted=true" mat-dialog-close > שמור</button> 
+            <button *ngIf="isDrive" mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid"
+            (click)="submitted=true" mat-dialog-close > שלח</button> 
     </form>   
     </mat-dialog-content>
 

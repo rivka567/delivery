@@ -1,7 +1,6 @@
 
 <div class="title_list row">
 
-
     <h1>חפש את המשלוח שמתאים לך</h1>  
 
   <div class="row align-items-center">
@@ -47,8 +46,7 @@
 
   <button  mat-button (click)="filterPackages(fromDate.value,toDate.value,fromL.value,toL.value,time.value,size.value)"><i width="52" height="52" class="bi bi-search"></i></button> 
   </div>  
-
-</div>   
+  </div>   
   </form>
 
   <section class="sort">
@@ -81,29 +79,32 @@
 
   <table >
     <th>שם</th>
-    <th> תאריך </th>
+    <th> מתאריך </th>
+    <th>בשעה</th>
+    <th> עד תאריך </th>
+    <th>בשעה</th>
     <th> מוצא </th>
     <th> יעד </th>
-    <th> שעת הגעה </th>
     <th> <mat-icon >email</mat-icon> </th>
     <th></th>
-    <tr *ngFor="let package of packagesFound;let i=index" >
+    <tr [ngModel]="packagesFound" *ngFor="let package of packagesFound;let i=index" >
   <td>{{package.customerName}}</td>
-  <td> {{package.travelDate|  date:'dd-MM-yyyy' }} </td>
+  <td> {{package.fromDate|  date:'dd-MM-yyyy' }} </td>
+  <td> {{package.fromTime }} </td>
+  <td> {{package.toDate|  date:'dd-MM-yyyy' }}</td>
+  <td> {{package.toTime }} </td>
   <td> {{package.fromLocationFormat}}</td>
   <td> {{package.toLocationFormat}}</td>
-  <td> {{package.drivingTime}}</td>
+  <td> <button mat-button (click)="sendEmail(package)" >שלח בקשה במייל</button></td> 
   <td> {{package.packageType}}</td>
   <td> {{package.packageSize}}</td>
-  <td> <button mat-button (click)="sendEmail(package)" >שלח מייל</button></td> 
   <td> {{package.packageCode}}</td>
   <!-- <td > <button (click)="hideme[i] = !hideme[i]"><mat-icon>expand_more</mat-icon> </button></td> -->
   </tr>
   </table>
-</section
->
-  <mat-paginator [length]="packagesFound.length"
+</section>
+  <!-- <mat-paginator [length]="packagesFound.length"
               [pageSize]="10">
-</mat-paginator>
+</mat-paginator> -->
   </div>
   

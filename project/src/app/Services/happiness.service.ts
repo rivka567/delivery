@@ -20,7 +20,7 @@ export class HappinessService {
  
   getHappinessByDeliveryId(id:string):Observable<Happiness[]>
   {
-    return this.http.get<Happiness[]>(this.URL+"/getHappinessByDeliveryId/"+id);
+    return this.http.get<Happiness[]>(this.URL+"/GetHappinessByDeliveryId/"+id);
   }
 
   GetAllHappiness():Observable<Happiness[]>

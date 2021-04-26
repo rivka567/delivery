@@ -27,46 +27,18 @@ export class UserService {
   getUsers(): Observable<Array<User>> {
     return this.http.get<Array<User>>(this.URL + "/GetAllUsers");
   }
-  addUser(user:User): Observable<string> {
+  addUser(user:User): Observable<any> {
     debugger
     console.log("user service")
-    return this.http.post<string>(this.URL+"/AddUser",user);
+    let u= this.http.post<any>(this.URL+"/AddUser",user);
+    console.log("after server",u);
+    return u;
   }
   updateUser(user:User): Observable<User>
   {
     debugger
     return this.http.post<User>(this.URL+"/UpdateUser",user);
   }
-  sendPackageByEmail(idD:number,contactAddress:string,subject:string,body:Package): Observable<string> {
-   debugger
-    const array={
-      'idDrive':idD,
-      'contactAddress':contactAddress,
-      'subject':subject,
-      'body':body
-    };
-    return this.http.post<string>(this.URL+"/SendPackageByEmail",array);
-  }
-  
 
-  sendDriveByEmail(idP:number,contactAddress:string,subject:string,body:Drive): Observable<string> {
-    debugger
-     const array={
-      'idPackage':idP,
-       'contactAddress':contactAddress,
-       'subject':subject,
-       'body':body
-     };
-     return this.http.post<string>(this.URL+"/SendDriveByEmail",array);
-   }
-
-   sendCodeByEmail(mail:string):Observable<string>
-   {
-     debugger
-     return this.http.get<string>(this.URL+"/SendCodeByEmail?mail="+mail);
-   }
-  // sendEmail(sender:string, contactAddress:string,subject:string,body:string): Observable<string> {
-  //   debugger
-  //   return this.http.get<string>(this.URL+"/SendEmail?sender="+sender+"&contactAddress="+contactAddress+"&subject="+subject+"&body="+body);
-  // }
+ 
 }

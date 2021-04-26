@@ -4,19 +4,24 @@
 <label id="example-radio-group-label">תבחר את החבילה אותה תרצה לשלוח:</label>
 <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
 (ngModelChange)="checkPackage($event)">
-  <mat-radio-button class="example-radio-button" *ngFor="let package of myListPackage" [value]="package"
+  <mat-radio-button class="example-radio-button" *ngFor="let package of myFilterPackages" [value]="package"
   (click)="checkPackage(package)">
   <span> {{package.packageCode}}</span> <span>    </span>
 <span> {{package.customerName}}</span> <span>    </span>
-<span> {{package.travelDate|  date:'dd-MM-yyyy' }} </span> <span>    </span>
+<span> {{package.fromDate|  date:'dd-MM-yyyy' }} </span> <span>    </span> 
+<span> {{package.toDate|  date:'dd-MM-yyyy' }} </span> <span>    </span> 
 <span> {{package.fromLocationFormat}}</span> <span>    </span>
 <span> {{package.toLocationFormat}}</span> <span>    </span>
-<span> {{package.drivingTime}}</span> <span>    </span> 
+<!-- <span> {{package.drivingTime}}</span> <span>    </span>  -->
 <span> {{package.packageType}}</span> <span>    </span> 
   </mat-radio-button>
 </mat-radio-group>
-<button (click)="send()">שלח!!</button>
-<mat-paginator [length]="myListPackage.length"
+<button (click)="sendEmail()">שלח!!</button>
+<!-- <mat-paginator [length]="myListPackage.length"
 [pageSize]="10">
-</mat-paginator>
+</mat-paginator> -->
+<br><br>
+<a style="color: red;" mat-dialog-close (click)="showPackaeDialog()">צור חבילה חדשה</a><br>
+<a style="color: red;" (click)="showAllPackages()">הצגת כל החבילות</a>
+
 </mat-dialog-content>

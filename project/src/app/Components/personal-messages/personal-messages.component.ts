@@ -28,7 +28,8 @@ export class PersonalMessagesComponent implements OnInit {
   lenlistDrives:number;
   panelOpenState = false;
   @ViewChild(MatAccordion) accordion: MatAccordion;
-
+  public showPackages=true;
+  public showDrives=false;
 
   ngOnInit(): void {
     this.getPackagesByUserId()
@@ -65,6 +66,7 @@ export class PersonalMessagesComponent implements OnInit {
         console.log(myErr.message);
       });
   }
+  
   finishPackage(id:string,name:string)
   {
     const dialogRef = this.dialog.open(HappinessComponent,{ disableClose: true })
@@ -78,23 +80,29 @@ export class PersonalMessagesComponent implements OnInit {
   changeStatusToClose(id:number)
   {
     this.driveSer.changeStatusToClose(id,false).subscribe(
-      myData=>(alert(myData)),
-      myErr=>(alert("error"))     
+      myData=>{alert(myData)},
+      myErr=>{alert(myErr)}    
     );
   }
 
-  deleteAllWaitingMessage(idP:number,idD:number,listToDelete:Drive[])
+  confirmDrive(p:Package,confirmDrive:Drive,listToDelete:Drive[])
   {
     debugger
-   listToDelete= listToDelete.filter(d=>d.driveCode!=idD);
-    this.wait.deleteAllWaitingMessage(idP,idD,listToDelete).subscribe(
+   listToDelete= listToDelete.filter(d=>d.driveCode!=confirmDrive.driveCode);
+    this.driveSer.confirmDrive(p,confirmDrive,listToDelete).subscribe(
       myData=>{alert(myData)},
       myErr=>{alert(myErr)}
     );
   }
-  deleteWaitingMessage(idP:number,idD:number)
+  //לקוח מוחק נסיעה מרשימת השליחים המעוניינים בנסיעה שלו
+  deleteWaitingMessageFromCustomer(p:Package,driveToDelete:Drive)
   {
-  this.wait.deleteMessage(idP,idD).subscribe(myData=>{alert(myData)})
+  this.wait.deleteWaitingMessageFromCustomer(p,driveToDelete).subscribe(myData=>{alert(myData)})
+  }
+//שליח מוחק חבילה משימת הלקוחות המעוניינים בנסיעה שלו
+  deleteWaitingMessageFromDelivery(d:Drive,packageToDelete:Package)
+  {
+    this.wait.deleteWaitingMessageFromDelivery(d,packageToDelete).subscribe(myData=>{alert(myData)})
   }
   sendMessageFromCustomer(p:Package,d:Drive)
   {

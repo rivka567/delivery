@@ -1,12 +1,23 @@
 <mat-dialog-content class="mat-typography">
-    <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon>
+
+<mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon>
+<h2 *ngIf="listHappinessByDeliveryId.length==0">לא נמצאו חוות דעת עבור שליח זה </h2>
+<h2 *ngIf="listHappinessByDeliveryId.length>0">  נמצאו {{len}} חוות דעת עבור שליח זה:</h2>
+<div *ngFor="let h of listHappinessByDeliveryId">
+    <label style="font-size: large;">{{h.customerName}}</label> <span>----</span>
+    <label>{{h.happinessLevel}}</label>
     <br>
-<!-- <ul>
- <mat-star-rating [rating]="h.happinessLevel"  [starCount]="starCount" [color]="starColor" ></mat-star-rating>
-<button mat-icon-button [color]="color" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i" [matTooltip]="ratingId+1" matTooltipPosition="above"></button> 
-<li  *ngFor="let h of listHappinessByDeliveryId">{{h.happinessLevel}}</li>
-</ul> -->
-<ul>
-    <li *ngFor="let h of any">{{h.driverCode}}</li>
-</ul>
+    <label>
+      {{h.date| date:'dd-MM-yyyy' }}
+    </label>
+    <br>
+    <button mat-icon-button [color]="color" *ngFor="let ratingId of ratingArr;index as i"   matTooltipPosition="above">
+        <mat-icon>
+          {{showIcon(i,h.happinessLevel)}}
+        </mat-icon>
+      </button>
+      <span>    </span>  <label>{{h.describeHappiness}}</label>
+      <br>
+</div>
+
 </mat-dialog-content>
