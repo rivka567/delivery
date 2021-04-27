@@ -64,18 +64,18 @@
       <br>
       <mat-form-field class="example-full-width">
         <mat-label>מתאריך</mat-label>
-        <input matInput  [min]="minDate" [matDatepicker]="picker" formControlName="fromDate">
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker  [dateClass]="dateClass" #picker></mat-datepicker>
+        <input matInput   [matDatepicker]="picker" formControlName="fromDate" [min]="minDateFromDate" [max]="maxDateFromDate" #fromDate>
+        <mat-datepicker-toggle matSuffix [for]="picker"  ></mat-datepicker-toggle>
+        <mat-datepicker  [dateClass]="dateClass" #picker (closed)="updateMinDateToDate(fromDate.value)"></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
         <input  matInput type="time" placeholder="משעה" class="inp" formControlName="fromTime" name="fromTime">
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>עד תאריך</mat-label>
-        <input matInput  [min]="minDate" [matDatepicker]="picker1" formControlName="toDate">
+        <input matInput  [matDatepicker]="picker1" formControlName="toDate" [min]="minDateToDate" #toDate>
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker  [dateClass]="dateClass" #picker1></mat-datepicker>
+        <mat-datepicker  [dateClass]="dateClass" #picker1 (closed)="updatemaxDateFromDate(toDate.value)"></mat-datepicker>
       </mat-form-field>
       <mat-form-field>
         <input  matInput type="time" placeholder="עד שעה" class="inp" formControlName="toTime" name="toTime">

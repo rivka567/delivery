@@ -5,13 +5,13 @@
     <br>
     <table >
       <th>קוד נסיעה</th>
-      <th>קוד לקוח</th>
-      <th> תאריך </th>
+      <th> תאריך נסיעה </th>
+      <th>שעת נסיעה </th>
       <th> מוצא </th>
       <th> יעד </th>
-      <th> שעת יציאה </th>
-      <th>תחבורה</th>
-      <th></th>
+      <th>כלי רכב</th>
+      <th>מחיר</th>
+      <th>הערה</th>
       <tr *ngFor="let drive of myListDrive;let i=index" >
     <td>{{drive.driveCode}}</td>
     <td> {{drive.travelDate|  date:'dd-MM-yyyy' }} </td>

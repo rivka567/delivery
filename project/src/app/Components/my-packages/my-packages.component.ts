@@ -46,21 +46,27 @@ export class MyPackagesComponent implements OnInit {
         debugger
         this.myFilterPackages=myData;
        // סינון לפי תאריך נסיעה
-       this.myFilterPackages= this.myFilterPackages.filter(p=>new Date(this.driveSer.currentDrive.travelDate)>= new Date(p.fromDate)&&new Date(this.driveSer.currentDrive.travelDate)<= new Date(p.toDate));
-        //סינון לפי מוצא
-        debugger
-        console.log(this.currentDrive)
+  if(this.myFilterPackages)
+  {  
+    this.myFilterPackages= this.myFilterPackages.filter(p=>new Date(this.driveSer.currentDrive.travelDate)>= new Date(p.fromDate)&&new Date(this.driveSer.currentDrive.travelDate)<= new Date(p.toDate));
+  }
+    //סינון לפי מוצא    
   //    this.myFilterPackages=  this.myFilterPackages.filter(f=> 
   //      5000>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f.fromLocationLat, f.fromLocationLng), new google.maps.LatLng(this.fromLlat,this.fromLlng)));
-      this.myFilterPackages=  this.myFilterPackages.filter(f=> 
+  if(this.myFilterPackages) 
+  {  this.myFilterPackages=  this.myFilterPackages.filter(f=> 
       5000>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f.fromLocationLat, f.fromLocationLng), new google.maps.LatLng(this.driveSer.currentDrive.fromLocationLat,this.driveSer.currentDrive.fromLocationLng)));
-    //סינון לפי יעד
+  }
+      //סינון לפי יעד
     //   this.myFilterPackages=  this.myFilterPackages.filter(f=>
     //    5000>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f. toLocationLat, f.toLocationLng), new google.maps.LatLng(this.toLlat,this.toLlng)));
-     this.myFilterPackages=  this.myFilterPackages.filter(f=>
+    if(this.myFilterPackages) 
+     { this.myFilterPackages=  this.myFilterPackages.filter(f=>
         5000>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f. toLocationLat, f.toLocationLng), new google.maps.LatLng(this.driveSer.currentDrive.toLocationLat,this.driveSer.currentDrive.toLocationLng))); 
-      // //סינון לפי שעה
+      }  
+     //סינון לפי שעה
      
+
         this.len=this.myFilterPackages.length;
       },
       myErr => {
@@ -69,7 +75,7 @@ export class MyPackagesComponent implements OnInit {
       });
   }
  
-  showPackaeDialog()
+  openPackaeDialog()
   {
     const dialogRef = this.dialog.open(PackageComponent,{ disableClose: true })
     dialogRef.componentInstance.isPackage=true;
@@ -82,6 +88,7 @@ export class MyPackagesComponent implements OnInit {
     this.myFilterPackages=this.myListPackage;
     this.len=this.myFilterPackages.length;
   }
+
   checkPackage(p:Package)
   {
     this.packageSer.currentPackage=p;
@@ -94,7 +101,7 @@ export class MyPackagesComponent implements OnInit {
   {
   //this.showPrice()
     debugger
-    this.emailSer.sendPackageByEmail(this.driveSer.currentDrive,this.userSer.myDriver.userMail,this.userSer.currentUser.userName+" "+"מעוניין/ת במשלוח",this.packageSer.currentPackage,this.price).subscribe(data=>alert(data));
+    this.emailSer.sendPackageToDelivery(this.driveSer.currentDrive,this.userSer.myDriver.userMail,this.userSer.currentUser.userName+" "+"מעוניין/ת במשלוח",this.packageSer.currentPackage,this.price).subscribe(data=>alert(data));
   }
 
   showPrice()

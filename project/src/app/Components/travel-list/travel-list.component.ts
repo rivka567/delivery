@@ -62,7 +62,6 @@ export class TravelListComponent implements OnInit {
   }
 
   ngOnInit(): void {
- //google.maps.event.addDomListener(window, 'load', this.initialize);
    this.getAllDrives();
   }
 
@@ -78,11 +77,9 @@ updateMinDateToDate(minDate:Date)
 {
  debugger
  this.minDateToDate=new Date(minDate)
- alert("!!!")
 if(new Date(this.minDateToDate).getDate()==new Date().getDate())
 {
 this.minTime=new Date().getTime();
-alert("todayy")
 }
 }
 
@@ -183,16 +180,11 @@ filterDrives(fromDate:string,toDate:string,from:Address,to:Address,time:string,t
   }
   if(from)
   {
-  //  let aa=new Address()
-  //  this.driveSer.from=from;
     this.driversFound=  this.driversFound.filter(f=> 4000>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f.fromLocationLat, f.fromLocationLng), new google.maps.LatLng(this.fromLat, this.fromLng)))
   }
   if(to)
   { 
-  // this.driveSer.get123().subscribe(mydate=>{this.driveSer.aa=mydate
-  //   console.log(this.driveSer.aa);
-  //   })
-    // this.driveSer.to=to;
+
     this.driversFound=  this.driversFound.filter(f=> 4000>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f. toLocationLat, f.toLocationLng), new google.maps.LatLng(this.toLat,this.toLng)))
 
   }
@@ -317,20 +309,9 @@ if(value=='date')
     }); 
   }
 }
- 
+
 
 }
 
 
 
-//initialize()
-//   {
-//   debugger
-//     let input = document.getElementById('searchTextField');
-//     var options = {
-// types: ['(cities)'],
-// componentRestrictions: {country: "il"}
-// };
-// var autocomplete = new google.maps.places.Autocomplete(this.searchTextField, options);
-
-//   }

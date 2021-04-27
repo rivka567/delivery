@@ -1,7 +1,6 @@
 
 <div> 
   <h1 class="title_list"> חפש את הנסיעה שמתאימה לך</h1>
-
   <form class="search">
   <div class="row">
 
@@ -27,14 +26,10 @@
    <div class="col-2">
   <input class="form-control form-control-sm" matInput type="time" [min]="minTime" placeholder="שעת יציאה" #time > 
    </div>
-   
-  <!-- <div class="md-form md-outline">
-    <label for="default-picker">שעת החזרה</label>
-    <input type="time" id="default-picker" class="form-control" [(ngModel)]="time" placeholder="שעת החזרה">
-</div>‏‏ -->
+
 <div class="col-2">
   <select class="form-control form-control-sm" #trans >
-    <option value="0">כל רכב </option>
+    <option value="0"> כל רכב </option>
      <option value="1">רכב </option>
      <option value="2" >אופנוע</option>
      <option value="3" >אופניים</option>
@@ -43,18 +38,13 @@
    </select>
   </div>
 
-</div>
 
-<div class="row">
-   <!--חיפוש לפי עיר-->
-   <!-- <div class="col-3">
-<input #searchTextField id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on"> 
-   </div> -->
-<div class="col-1">
-  <button mat-button (click)="filterDrives(fromDate.value,toDate.value,fromL.value,toL.value,time.value,trans.value)"><i width="52" height="52" class="bi bi-search"></i></button>
-</div>
+  <div class="col-1">
+    <button mat-button (click)="filterDrives(fromDate.value,toDate.value,fromL.value,toL.value,time.value,trans.value)"><i width="52" height="52" class="bi bi-search"></i></button>
+  </div>
 
 </div>
+
 
 </form>
    
@@ -88,13 +78,13 @@
 
 <div class="row table_title">
   <div class="col-2">שם השליח</div>
-  <div class="col-2">תאריך נסיעה </div>
-  <div class="col-3"> שעת נסיעה </div>
-  <div class="col-3"> מוצא </div>
-  <div class="col-1">  יעד </div>
+  <div class="col-1">תאריך נסיעה </div>
+  <div class="col-1"> שעת נסיעה </div>
+  <div class="col-2"> מוצא </div>
+  <div class="col-2">  יעד </div>
   <div class="col-1">  כלי רכב </div>
   <div class="col-1">  מחיר  </div>
-  <div class="col-1">  הערה </div>
+ <!-- <div class="col-1">  הערה </div> -->
   <div class="col-1">
     
     <i class="bi bi-envelope-fill"></i> 
@@ -104,17 +94,15 @@
 
 <div class="row table_list" *ngFor="let drive of driversFound;let i=index" >
   <div class="col-2">{{drive.driverName}}</div>
-  <div class="col-2"> {{drive.travelDate|  date:'dd-MM-yyyy' }} </div>
-  <div class="col-2">{{drive.drivingTime}}</div>
+  <div class="col-1"> {{drive.travelDate|  date:'dd-MM-yyyy' }} </div>
+  <div class="col-1">{{drive.drivingTime}}</div>
   <div class="col-2"> {{drive.fromLocationFormat}}</div>
   <div class="col-2">{{drive.toLocationFormat}}</div>
   <div class="col-1">{{drive.transportationType}}</div>
   <div class="col-1">{{drive.price}}</div>
-  <div class="col-1">{{drive.describeDrive}</div>
-  <div class="col-1"> <button mat-button (click)="openMyPackagesDialog(drive)" >שלח בקשה במייל</button></div> 
-  <div> {{drive.driveCode}}</div>
-  <!-- <td (click)="openDialogHappiness(drive.driverCode)"><mat-icon>star_rate</mat-icon></td> -->
-  <td (click)="openDialogHappiness(drive.driverCode)">חוות דעת</td>
+ <!-- <div class="col-1">{{drive.describeDrive}}</div> -->
+  <div class="col-1"> <button mat-button (click)="openMyPackagesDialog(drive)" ><i class="bi bi-envelope-fill"></i> </button></div> 
+  <div class="col-1" (click)="openDialogHappiness(drive.driverCode)"><i class="bi bi-star-fill"></i></div>
 
 </div>
 

@@ -1,26 +1,40 @@
 <mat-dialog-content class="mat-typography">
   <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon><br><br>
-<label id="example-radio-group-label">נמצאו {{len}} חבילות מותאמות</label><br>
-<label id="example-radio-group-label">תבחר את החבילה אותה תרצה לשלוח:</label>
+<h2 id="example-radio-group-label" >נמצאו {{len}} חבילות מתאימות לנסיעה זו </h2>
+<h3 id="example-radio-group-label" *ngIf="myFilterPackages">תבחר/י את החבילה אותה אתה מעוניין לשלוח:</h3>
+<div class="row">
+  <div class="col-2">מתאריך</div>
+  <div class="col-1">בשעה</div>
+  <div class="col-2">עד תאריך</div>
+  <div class="col-1">עד שעה </div>
+  <div class="col-2">מוצא</div>
+  <div class="col-2">יעד</div>
+  <div class="col-1">סוג חבילה</div>
+  <div class="col-1">גודל חבילה</div>
+  <!-- <div class="col-2">{{package.describePackage}}</div> -->
+</div>
+
 <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
 (ngModelChange)="checkPackage($event)">
   <mat-radio-button class="example-radio-button" *ngFor="let package of myFilterPackages" [value]="package"
   (click)="checkPackage(package)">
-    <div class="col-2">{{package.customerName}}</div>
+  
+  <div class="row">
     <div class="col-2">{{package.fromDate|  date:'dd-MM-yyyy' }} </div>
-    <div class="col-2">{{package.fromTime}} </div>
+    <div class="col-1">{{package.fromTime}} </div>
     <div class="col-2">{{package.toDate|  date:'dd-MM-yyyy' }} </div>
-    <div class="col-2">{{package.toTime}} </div>
+    <div class="col-1">{{package.toTime}} </div>
     <div class="col-2">{{package.fromLocationFormat}}</div>
     <div class="col-2">{{package.toLocationFormat}}</div>
-    <div class="col-2">{{package.packageType}}</div>
-    <div class="col-2">{{package.packageSize}}</div>
-    <div class="col-2">{{package.describePackage}}</div>
+    <div class="col-1">{{package.packageType}}</div>
+    <div class="col-1">{{package.packageSize}}</div>
+    <!-- <div class="col-2">{{package.describePackage}}</div> -->
+  </div>
   </mat-radio-button>
 </mat-radio-group>
 <button (click)="sendEmail()">שלח</button>
 <br><br>
-<a style="color: red;" mat-dialog-close (click)="showPackaeDialog()">צור חבילה חדשה</a><br>
-<a style="color: red;" (click)="showAllPackages()">הצגת כל החבילות</a>
+<a style="color: red;" mat-dialog-close (click)="openPackaeDialog()">צור חבילה חדשה</a><br>
+<a style="color: red;" (click)="showAllPackages()">הצג את כל החבילות שלי</a>
 
 </mat-dialog-content>

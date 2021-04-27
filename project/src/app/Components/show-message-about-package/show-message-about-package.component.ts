@@ -41,7 +41,7 @@ export class ShowMessageAboutPackageComponent implements OnInit {
     let distance= google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(this.package.toLocationLat,this.package.toLocationLng), new google.maps.LatLng(this.package.fromLocationLat,this.package.fromLocationLng)); 
     let price=((distance/1000)*this.drive.price)
  
-   this.emailSer.sendPackageByEmail(this.drive,user.userMail,this.userSer.currentUser.userName+" "+"מעוניין לקחת חבילה שלך",this.package,price)
+   //this.emailSer.sendPackageByEmail(this.drive,user.userMail,this.userSer.currentUser.userName+" "+"מעוניין לקחת חבילה שלך",this.package,price)
   
   }
 

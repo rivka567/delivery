@@ -41,7 +41,7 @@ showPackageDetails=false;
    let distance= google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(this.package.toLocationLat,this.package.toLocationLng), new google.maps.LatLng(this.package.fromLocationLat,this.package.fromLocationLng)); 
    let price=((distance/1000)*this.drive.price)
 
-  this.emailSer.sendPackageByEmail(this.drive,user.userMail,this.userSer.currentUser.userName+" "+"מעוניין/ת במשלוח",this.package,price)
+  this.emailSer.sendPackageToDelivery(this.drive,user.userMail,this.userSer.currentUser.userName+" "+"מעוניין/ת במשלוח",this.package,price)
   }
   getPackageById(id:number)
   {

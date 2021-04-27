@@ -82,19 +82,12 @@
               placeholder="מקום יעד" formControlName="toLocation"  name="toLocation"/>
             </mat-form-field>
             <br>
-    
-           <!-- <mat-form-field >
-              <input matInput placeholder="קוד גודל חבילה" class="inp" formControlName="packageSizeCode" name="packageSizeCode">
-            </mat-form-field>
-            <br>
-     -->
+
             <mat-form-field >
               <input matInput placeholder="הערה" type="text" class="inp" formControlName="describeDrive" name="describeDrive">
             </mat-form-field>
             <br>  
-              <!-- TODO: לשנות שיראה כקישור -->
-              <!-- <a style="cursor: pointer;" (click)="openDialog()" mat-dialog-close>התחבר</a> -->
-             
+           
               <button mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid"
               (click)="submitted=true" mat-dialog-close > שמור</button> 
       </form>   

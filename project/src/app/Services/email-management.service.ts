@@ -13,7 +13,7 @@ export class EmailManagementService {
 
   constructor(private http:HttpClient ) {}
   
-  sendPackageByEmail(drive:Drive,contactAddress:string,subject:string,body:Package,totalPrice): Observable<string> {
+  sendPackageToDelivery(drive:Drive,contactAddress:string,subject:string,body:Package,totalPrice): Observable<string> {
     debugger
      const array={
        'drive':drive,

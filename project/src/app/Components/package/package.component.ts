@@ -30,10 +30,12 @@ export class PackageComponent implements OnInit {
   form: FormGroup;
   submitted=false;
   newPackage:Package;
-  minDate: Date;
   isPackage=false;
   myFilterDrives:Drive[];
-
+  minDateToDate=new Date();
+  minDateFromDate=new Date();
+  maxDateFromDate:Date;
+  minTime:any
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
   constructor(private emailSer:EmailManagementService, private userSer:UserService,private activatedRoute:ActivatedRoute, private formBuilder: FormBuilder,private dialog:MatDialog, 
@@ -42,11 +44,23 @@ export class PackageComponent implements OnInit {
     }
 
   ngOnInit(): void {
-  this.minDate = new Date();
    this.initForm();
   }
 
- 
+  updateMinDateToDate(minDate:Date)
+  {
+   debugger
+   this.minDateToDate=new Date(minDate)
+  if(new Date(this.minDateToDate).getDate()==new Date().getDate())
+  {
+  this.minTime=new Date().getTime();
+  }
+  }
+  
+  updatemaxDateFromDate(maxDate:Date)
+  {
+    this.maxDateFromDate=new Date(maxDate);
+  }
   dateClass = (d: Date): MatCalendarCellCssClasses => {
     const date = d.getDate();
     // Highlight the 1st and 20th day of each month.
@@ -95,7 +109,7 @@ export class PackageComponent implements OnInit {
       let distance= google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(this.packageSer.currentPackage.toLocationLat,this.packageSer.currentPackage.toLocationLng), new google.maps.LatLng(this.packageSer.currentPackage.fromLocationLat,this.packageSer.currentPackage.fromLocationLng)); 
       let price=((distance/1000)*this.driveSer.currentDrive.price)
 
-      this.emailSer.sendPackageByEmail(this.driveSer.currentDrive,this.userSer.myDriver.userMail,this.userSer.currentUser.userName+" "+"מעוניין/ת במשלוח",this.packageSer.currentPackage,price).
+      this.emailSer.sendPackageToDelivery(this.driveSer.currentDrive,this.userSer.myDriver.userMail,this.userSer.currentUser.userName+" "+"מעוניין/ת במשלוח",this.packageSer.currentPackage,price).
       subscribe(
           myData=>{alert(myData)},
           myErr=>{alert("error")}

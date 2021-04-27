@@ -1,33 +1,42 @@
 <div>
-  <button class="btn" mat-button (click)="openPackageDialog()"> צור חבילה</button>
 
-<p>החבילות שלי:</p>
+  <div class="row">
+
+<div class="col"><h1>החבילות שלי:</h1></div>
+<div class="col"><button type="submit" class="btn btn-primary float-left"  mat-button (click)="openPackageDialog()"> צור חבילה</button></div>
+
+
+</div>
 <p style="font-size:large;"> נמצאו {{len}} חבילות מתאימות</p>
 <br>
-<table >
-  <th>קוד חבילה</th> 
-  <th>קוד לקוח</th> 
-  <th> מתאריך </th>
-  <th> עד תאריך </th>
-  <th> מוצא </th>
-  <th> יעד </th>
-  <!-- <th> שעת יציאה </th> -->
+<div class="row">
+  <div class="col">קוד חבילה</div> 
+    <div class="col">מתאריך</div> 
+      <div class="col"> בשעה </div>
+        <div class="col"> עד תאריך </div>
+          <div class="col"> בשעה </div>
+          <div class="col">מוצא</div>
+          <div class="col"> יעד </div>
+  <div class="col"> גודל חבילה </div>
+  <div class="col"> סוג חבילה </div>
+  <!-- <th> הערה </th> -->
+</div>
 
-  <tr *ngFor="let package of myListPackage;let i=index" >
-<td>{{package.packageCode}}</td>
-<td> {{package.fromDate|  date:'dd-MM-yyyy' }} </td>
-<td> {{package.fromTime}}</td>
-<td> {{package.toDate|  date:'dd-MM-yyyy' }} </td>
-<td> {{package.toTime}}</td>
-<td> {{package.fromLocationFormat}}</td>
-<td> {{package.toLocationFormat}}</td>
-<td> {{package.packageSize}}</td>
-<td> {{package.packageType}}</td>
-<td>{{package.describePackage}}</td>
-<td (click)="OpenUpdatePackage(package)"><mat-icon style="cursor:pointer">create</mat-icon></td>
-<td (click)="deletePackage(package)"><mat-icon style="cursor:pointer">delete</mat-icon></td>
+  <div class="row" *ngFor="let package of myListPackage;let i=index" >
+    <div class="col">{{package.packageCode}}</div>
+      <div class="col"> {{package.fromDate|  date:'dd-MM-yyyy' }} </div>
+        <div class="col"> {{package.fromTime}}</div>
+          <div class="col"> {{package.toDate|  date:'dd-MM-yyyy' }} </div>
+            <div class="col"> {{package.toTime}}</div>
+              <div class="col"> {{package.fromLocationFormat}}</div>
+                <div class="col"> {{package.toLocationFormat}}</div>
+                  <div class="col"> {{package.packageSize}}</div>
+                    <div class="col"> {{package.packageType}}</div>
+                      <div class="col">{{package.describePackage}}</div>
+                        <div class="col" (click)="OpenUpdatePackage(package)"><mat-icon style="cursor:pointer">create</mat-icon></div>
+                          <div class="col" (click)="deletePackage(package)"><mat-icon style="cursor:pointer">delete</mat-icon></div>
 
-</tr>
-</table>
+  </div>
+
 
 </div>
