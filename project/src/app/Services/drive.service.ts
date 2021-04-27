@@ -80,8 +80,19 @@ aa:any;
     return this.http.get<Array<Drive>>(this.URL + "/GetAllDrives");
   }
 
-  addDrive(drive:Drive): Observable<string> {
+  addDrive(drive:Drive): Observable<Drive> {
     console.log(drive);
-      return this.http.post<string>(this.URL + "/AddDrive",drive);
+      return this.http.post<Drive>(this.URL + "/AddDrive",drive);
   }
+
+confirmDrive(p:Package,confirmDrive:Drive,listToDelete:Drive[]):Observable<any>
+{
+  const array={
+    'package':p,
+     'confirmDrive':confirmDrive,
+     'listToDelete':listToDelete
+   };
+  debugger
+  return this.http.post<any>(this.URL+"/ConfirmDrive",array);
+}
 }

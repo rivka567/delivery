@@ -43,7 +43,7 @@ export class HappinessComponent implements OnInit {
   addHappiness(name:string, happiness:string)
   {
     debugger
-this.myHappiness=new Happiness(0,this.idDelivery,name,this.rating,happiness)
+this.myHappiness=new Happiness(0,this.idDelivery,name,new Date(),this.rating,happiness)
 this.happinSer.addHappiness(this.myHappiness).subscribe(
   myData=>{alert("succsess")},
   myErr=>{alert("error!!"); }); 

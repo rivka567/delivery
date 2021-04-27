@@ -7,18 +7,20 @@
 <table >
   <th>קוד חבילה</th> 
   <th>קוד לקוח</th> 
-  <th> תאריך </th>
+  <th> מתאריך </th>
+  <th> עד תאריך </th>
   <th> מוצא </th>
   <th> יעד </th>
-  <th> שעת יציאה </th>
+  <!-- <th> שעת יציאה </th> -->
 
   <tr *ngFor="let package of myListPackage;let i=index" >
 <td>{{package.packageCode}}</td>
 <td>{{package.userCustomerCode}}</td>
-<td> {{package.travelDate|  date:'dd-MM-yyyy' }} </td>
+<td> {{package.fromDate|  date:'dd-MM-yyyy' }} </td>
+<td> {{package.toDate|  date:'dd-MM-yyyy' }} </td>
 <td> {{package.fromLocationFormat}}</td>
 <td> {{package.toLocationFormat}}</td>
-<td> {{package.drivingTime}}</td>
+<!-- <td> {{package.drivingTime}}</td> -->
 <td> {{package.packageSize}}</td>
 <td> {{package.packageType}}</td>
 <td>{{package.status}}</td>

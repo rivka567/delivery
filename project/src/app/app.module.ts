@@ -57,14 +57,16 @@ const appRoutes: Routes =
 [
 
   {path: "", component:LoginComponent},
-  {path:"home",component:HomeComponent},
+  {path:"home/:id",component:HomeComponent},
   {path:"user",component:UserComponent},
   {path:"main",component:MainComponent},
   {path:"exist-user",component:ExistUserComponent},
   {path:"drive",component:DriveComponent},
+  {path:"package",component:PackageComponent},
   {path:"about",component:AboutComponent},
   {path: "header", component: HeaderComponent},
   {path:"travel-list",component:TravelListComponent},
+  {path:"package-list/:id",component:PackageListComponent},
   {path:"package-list",component:PackageListComponent},
   {path:"my-packages",component:MyPackagesComponent},
   {path:"my-drives",component:MyDrivesComponent},

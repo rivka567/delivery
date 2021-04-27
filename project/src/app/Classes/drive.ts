@@ -20,10 +20,11 @@ export class Drive {
             public status:boolean=true,
             public transportation:number=0,
             public price:number,
+            public message:boolean=false,
+            public distance:number,
             public transportationType?:string,
             public timeInDate?:Date,
             public listWaiting?:Package[],
-            public driverName?:string
-           
+            public driverName?:string,
         ) { }
 }

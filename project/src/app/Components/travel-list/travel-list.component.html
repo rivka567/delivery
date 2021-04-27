@@ -7,25 +7,25 @@
 
 <div class="col-3 pb-4">
 
-<input class="form-control form-control-sm date" [min]="minDate" matInput [matDatepicker]="picker" (click)="picker.open()"  placeholder="מתאריך" #fromDate >
-<mat-datepicker #picker></mat-datepicker>
+<input class="form-control form-control-sm date" [min]="minDateFromDate" [max]="maxDateFromDate" matInput [matDatepicker]="picker" (click)="picker.open()"  placeholder="מתאריך" #fromDate >
+<mat-datepicker #picker (closed)="updateMinDateToDate(fromDate.value)"></mat-datepicker>
 
-<input class="form-control form-control-sm date" [min]="minDate" matInput [matDatepicker]="picker1" (click)="picker1.open()"  placeholder="עד תאריך" #toDate >
-<mat-datepicker #picker1 ></mat-datepicker>
+<input class="form-control form-control-sm date" [min]="minDateToDate" matInput [matDatepicker]="picker1" (click)="picker1.open()"  placeholder="עד תאריך" #toDate >
+<mat-datepicker #picker1 (closed)="updatemaxDateFromDate(toDate.value)"></mat-datepicker>
 </div>
 
 <div class="col-2">
-  <input class="form-control form-control-sm" matInput type="text" placeholder="מוצא" ngx-google-places-autocomplete 
+  <input class="form-control form-control-sm" matInput type="text" placeholder="מוצא, מרחק של 5 קמ" ngx-google-places-autocomplete 
    #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)" #fromL >
 </div>
 
   <div class="col-2">
-  <input class="form-control form-control-sm" matInput type="text" placeholder="יעד" ngx-google-places-autocomplete  
+  <input class="form-control form-control-sm" matInput type="text" placeholder="יעד, מרחק של 5 קמ" ngx-google-places-autocomplete  
   #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)" #toL>
    </div>
 
    <div class="col-2">
-  <input class="form-control form-control-sm" matInput type="time"  placeholder="שעת יציאה" #time >
+  <input class="form-control form-control-sm" matInput type="time" [min]="minTime" placeholder="שעת יציאה" #time > 
    </div>
    
   <!-- <div class="md-form md-outline">
@@ -47,10 +47,9 @@
 
 <div class="row">
    <!--חיפוש לפי עיר-->
-  <!-- <input #searchTextField id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on">  -->
-   <div class="col-3">
+   <!-- <div class="col-3">
 <input #searchTextField id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on"> 
-   </div>
+   </div> -->
 <div class="col-1">
   <button mat-button (click)="filterDrives(fromDate.value,toDate.value,fromL.value,toL.value,time.value,trans.value)"><i width="52" height="52" class="bi bi-search"></i></button>
 </div>
@@ -65,17 +64,18 @@
   <div class="row">
    
  <div class="col-9">
-  <p style="font-size:large;"> נמצאו {{len}} חבילות מתאימות</p>
+  <p style="font-size:large;"> נמצאו {{len}} נסיעות מתאימות</p>
 </div>
 
 
 <div class="col-3">
     <mat-label><span class="float-end">מיין לפי</span></mat-label>
-   <select class="form-selec form-control-sm pl4 float-start" (change)="sortBy($event.target.value)" >
+   <select class="form-selec form-control-sm pl4 float-start" (change)="sortBy($event.target.value,fromL.value,toL.value)" >
     <option value="date">תאריך </option>
      <option value="time">שעה </option>
      <option value="from" >מרחק מהמוצא</option>
      <option value="to" >מרחק מהיעד</option>
+     <option value="price" >מחיר מהנמוך לגבוה</option>
    </select>
   </div>
 
@@ -118,4 +118,3 @@
 
 </div>
 <router-outlet></router-outlet>
- 

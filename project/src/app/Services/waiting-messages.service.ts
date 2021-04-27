@@ -12,16 +12,35 @@ export class WaitingMessagesService {
   URL: string = "http://localhost:59587/api/WaitingMessage";
 
   constructor(private http: HttpClient) { }
-deleteMessage(idP:number,idD:number):Observable<string>
+  deleteWaitingMessageFromCustomer(p:Package,d:Drive):Observable<any>
 {
   debugger
-  return this.http.delete<string>(this.URL+"/DeleteWaitingMessage/"+idP+"/"+idD);
+  const array={
+    'package':p,
+     'drive':d
+   };
+  return this.http.post<any>(this.URL+"/DeleteWaitingMessageFromCustomer",array);
 }
-deleteAllWaitingMessage(idP:number,idD:number,listToDelete:Drive[]):Observable<any>
+
+deleteWaitingMessageFromDelivery(d:Drive,p:Package):Observable<any>
 {
   debugger
-  return this.http.post<any>(this.URL+"/deleteAllWaitingMessage/"+idP+"/"+idD,listToDelete);
+  const array={
+    'package':p,
+     'drive':d
+   };
+  return this.http.post<any>(this.URL+"/DeleteWaitingMessageFromDelivery",array);
 }
+// deleteAllWaitingMessage(p:Package,confirmDrive:Drive,listToDelete:Drive[]):Observable<any>
+// {
+//   const array={
+//     'package':p,
+//      'confirmDrive':confirmDrive,
+//      'listToDelete':listToDelete
+//    };
+//   debugger
+//   return this.http.post<any>(this.URL+"/deleteAllWaitingMessage",array);
+// }
 changeStatus(status:boolean)
 {
   return this.http.post<string>(this.URL+"/ChangeStatus",status);

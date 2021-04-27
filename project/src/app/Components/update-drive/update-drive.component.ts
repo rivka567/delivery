@@ -54,19 +54,19 @@ export class UpdateDriveComponent implements OnInit {
     //במידה ושינה את 2 הכתובות
     if(this.from&&this.to)
     this.newDrive=new Drive(this.drive.driveCode,this.userSer.currentUser.userCode,null,this.form.value.driving,this.form.value.date,
-      0,this.from,this.fromLat,this.fromLng,0,this.to,this.toLat,this.toLng,this.form.value.describeDrive,true,this.form.value.trans,0);
+      0,this.from,this.fromLat,this.fromLng,0,this.to,this.toLat,this.toLng,this.form.value.describeDrive,true,this.form.value.trans,0,false,0);
       //במידה ושינה רק את המוצא
     else if(this.from&&!this.to)
     this.newDrive=new Drive(this.drive.driveCode,this.userSer.currentUser.userCode,null,this.form.value.driving,this.form.value.date,
-      0,this.from,this.fromLat,this.fromLng,this.drive.toLocationId,null,0,0,this.form.value.describeDrive,true,this.form.value.trans,0 );
+      0,this.from,this.fromLat,this.fromLng,this.drive.toLocationId,null,0,0,this.form.value.describeDrive,true,this.form.value.trans,0,false,0 );
       //במידה ושינה רק את היעד
     else if(!this.from&&this.to)
     this.newDrive=new Drive(this.drive.driveCode,this.userSer.currentUser.userCode,null,this.form.value.driving,this.form.value.date,
-    this.drive.fromLocationId,null,0,0,0,this.to,this.toLat,this.toLng,this.form.value.describeDrive,true,this.form.value.trans,0);
+    this.drive.fromLocationId,null,0,0,0,this.to,this.toLat,this.toLng,this.form.value.describeDrive,true,this.form.value.trans,0,false,0);
      //במידה ולא שינה כלום
      else if(!this.from&&!this.to)
      this.newDrive=new Drive(this.drive.driveCode,this.userSer.currentUser.userCode,null,this.form.value.driving,this.form.value.date,
-      this.drive.fromLocationId,null,0,0,this.drive.toLocationId,null,0,0,this.form.value.describeDrive,true,this.form.value.trans,0);    
+      this.drive.fromLocationId,null,0,0,this.drive.toLocationId,null,0,0,this.form.value.describeDrive,true,this.form.value.trans,0,false,0);    
       debugger
       console.log("new package",this.newDrive);
      this.driveSer.updateDrive(this.newDrive).subscribe(

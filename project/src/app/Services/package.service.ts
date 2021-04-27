@@ -37,16 +37,21 @@ export class PackageService {
     debugger
     return this.http.post<Array<Package>>(this.URL + "/DeletePackage/"+id,listWaiting);
   }
-  addPackage(myPackage:Package): Observable<string> {
+  addPackage(myPackage:Package): Observable<Package> {
     debugger
     console.log("from service:",myPackage);
-    return this.http.post<string>(this.URL + "/AddPackage",myPackage);
+    return this.http.post<Package>(this.URL + "/AddPackage",myPackage);
   }
 
-  updatePackage(updatePackage:Package): Observable<string> {
+  updatePackage(updatePackage:Package,listWaiting:Drive[]): Observable<string> {
     debugger
     console.log("from service:",updatePackage);
-    return this.http.post<string>(this.URL + "/UpdatePackage",updatePackage);
+    const array={
+      'updatePackage':updatePackage,
+       'listWaiting':listWaiting,
+       
+     };
+    return this.http.post<string>(this.URL + "/UpdatePackage",array);
   }
 
 }

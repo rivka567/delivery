@@ -5,7 +5,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { PackageComponent } from '../package/package.component';
 import { BuiltinType } from '@angular/compiler';
 import { UserComponent } from '../user/user.component';
-import { ValidatorFn } from '@angular/forms';
+import { FormBuilder, FormGroup, ValidatorFn } from '@angular/forms';
+import { EmailManagementService } from 'src/app/Services/email-management.service';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-exist-user',
@@ -15,14 +17,21 @@ import { ValidatorFn } from '@angular/forms';
 export class ExistUserComponent implements OnInit {
 
   user:User =new User();
-
-  constructor(private UserSer: UserService,private dialog:MatDialog) { }
-  vis=false;
- 
+  hide=true;
+  
+  constructor(private formBuilder:FormBuilder, private emailSer:EmailManagementService, private UserSer: UserService,private dialog:MatDialog) { }
+  showEmailInput=false;
+  form:FormGroup;
+  submitted=false;
 
   ngOnInit(): void {
-   console.log(this.vis);
+  this.initForm();
+  }
 
+initForm(){
+  this.form = this.formBuilder.group({
+    password:['',[Validators.required,Validators.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}")]],
+  })
   }
 
   openDialog() {
@@ -33,14 +42,22 @@ export class ExistUserComponent implements OnInit {
   
   }
 
-  getUserById(id:string) {   
+  getUserById(id:string)
+  { 
+    debugger    
+    if(id)
+    {
         this.UserSer.getUserById(id).subscribe(
         myData => { this.user = myData; 
         this.UserSer.currentUser=myData;
-        },
-        myErr => { alert(myErr.message); });
-     
+       },
+        myErr => { alert("לקוח זה לא קיים במערכת"); });
+      }
+        else
+        alert("לא הוקש סיסמא")
   }
+    
+
 
   openDialogPackage() {
     const dialogRef = this.dialog.open(PackageComponent);
@@ -53,11 +70,14 @@ export class ExistUserComponent implements OnInit {
   sendCodeByEmail(mail:string)
   {
   debugger
-    this.UserSer.sendCodeByEmail(mail).subscribe(
+  if(!mail)
+  alert("הקש כתובת מייל")
+  else{
+    this.emailSer.sendCodeByEmail(mail).subscribe(
       myData=>{alert(myData)},
-      myErr=>{console.log(myErr)}
-      
+      myErr=>{console.log(myErr)}    
       );
+    }
   }
 
 }

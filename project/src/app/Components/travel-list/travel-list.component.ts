@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
@@ -35,7 +35,6 @@ export class TravelListComponent implements OnInit {
   moreDetails=false;
   len:number;
   myUser:User;
-  minDate:Date;
   driversToSearch: Drive[];
   driversFound: Drive[] = new Array();
   from="";
@@ -50,6 +49,11 @@ export class TravelListComponent implements OnInit {
   time1:any;
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
   @ViewChild("searchTextField") searchTextField : any;
+  newDate: any;
+  minDateToDate=new Date();
+  minDateFromDate=new Date();
+  maxDateFromDate:Date;
+  minTime:any;
 
   constructor(private driveSer: DriveService, private packageSer: PackageService,private userSer:UserService,
   private dialog:MatDialog,private router:Router,private dateAdapter: DateAdapter<Date>) { 
@@ -68,11 +72,7 @@ var autocomplete = new google.maps.places.Autocomplete(this.searchTextField, opt
 
   }
   ngOnInit(): void {
- 
- 
- google.maps.event.addDomListener(window, 'load', this.initialize);
- 
-   this.minDate=new Date();
+ //google.maps.event.addDomListener(window, 'load', this.initialize);
    this.getAllDrives();
   }
 
@@ -81,6 +81,24 @@ dateClass = (d: Date): MatCalendarCellCssClasses => {
   const date = d.getDate();
   // Highlight the 1st and 20th day of each month.
   return (date === 1 || date === 20) ? 'example-custom-date-class' : '';
+}
+
+
+updateMinDateToDate(minDate:Date)
+{
+ debugger
+ this.minDateToDate=new Date(minDate)
+ alert("!!!")
+if(new Date(this.minDateToDate).getDate()==new Date().getDate())
+{
+this.minTime=new Date().getTime();
+alert("todayy")
+}
+}
+
+updatemaxDateFromDate(maxDate:Date)
+{
+  this.maxDateFromDate=new Date(maxDate);
 }
 
 openDialogHappiness(id:string)
@@ -98,21 +116,17 @@ getAllDrives() {
       myData => {
         debugger
         this.driversFound=myData;
-        //תמיד נשאר כאן כל הנסיעות
         this.driveSer.allDrives=myData;
         this.len=this.driversFound.length;
-
       },
       myErr => {
         console.log("from subscribe");
         console.log(myErr.message);
-      });
- 
+      }); 
 }
 
  getUserById(drive:Drive)
  { 
-
     console.log(drive);
     this.userSer.getUserById(drive.driverCode).subscribe(
       myData => {
@@ -126,7 +140,7 @@ getAllDrives() {
 
   }
   
-  sendEmail(drive:Drive)
+  openMyPackagesDialog(drive:Drive)
   {
     debugger
     if(this.userSer.currentUser&&drive.driverCode==this.userSer.currentUser.userCode)
@@ -140,8 +154,8 @@ getAllDrives() {
         if(this.userSer.currentUser&&drive.driverCode!=this.userSer.currentUser.userCode)
         {
        this.getUserById(drive)
-       //הנסיעה שהשליח בחר
-       this.driveSer.currentDrive=drive;
+       //הנסיעה שהלקוח בחר
+      this.driveSer.currentDrive=drive;
        const dialogRef = this.dialog.open(MyPackagesComponent,{ disableClose: true })
        dialogRef.afterClosed().subscribe(result => {
          console.log(`Dialog result: ${result}`);
@@ -155,6 +169,7 @@ getAllDrives() {
     this.getUserById(drive)
     this.driveSer.currentDrive=drive;
     const dialogRef = this.dialog.open(MyPackagesComponent,{ disableClose: true })
+    dialogRef.componentInstance.currentDrive=drive;
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     })
@@ -165,9 +180,8 @@ getAllDrives() {
 
 filterDrives(fromDate:string,toDate:string,from:Address,to:Address,time:string,trans:number) {
   debugger
-  
   this.driversFound=this.driveSer.allDrives;
- 
+
   if(fromDate)
   {
     this.driversFound=this.driversFound.filter(d=>new Date(d.travelDate)>= new Date(fromDate));
@@ -179,8 +193,8 @@ filterDrives(fromDate:string,toDate:string,from:Address,to:Address,time:string,t
   }
   if(from)
   {
-   let aa=new Address()
-   this.driveSer.from=from;
+  //  let aa=new Address()
+  //  this.driveSer.from=from;
     this.driversFound=  this.driversFound.filter(f=> 4000>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f.fromLocationLat, f.fromLocationLng), new google.maps.LatLng(this.fromLat, this.fromLng)))
   }
   if(to)
@@ -188,12 +202,19 @@ filterDrives(fromDate:string,toDate:string,from:Address,to:Address,time:string,t
   // this.driveSer.get123().subscribe(mydate=>{this.driveSer.aa=mydate
   //   console.log(this.driveSer.aa);
   //   })
-    this.driveSer.to=to;
+    // this.driveSer.to=to;
     this.driversFound=  this.driversFound.filter(f=> 4000>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f. toLocationLat, f.toLocationLng), new google.maps.LatLng(this.toLat,this.toLng)))
 
   }
 if(time)
 {
+    // var time1=new Date();
+    // var time2=new Date();
+    // time1.setHours(this.newDate.hours,this.newDate.minutes);
+    // this.driversFound = this.driversFound.filter(p =>  p.drivingTime > this.newDate && p.drivingTime <= this.newDate1);
+    // this.QueseList1 = this.QueseList.filter(p => p.RideId == id);
+
+
  // let t=new timeStamp("10:30")
  // alert(t);
  let h=time.substring(0,2)
@@ -258,27 +279,36 @@ destination: { lat: 6.73906232, lng: 80.15640132 },
 renderOptions: { polylineOptions: { strokeColor: '#0f0' } },
 }];
 
-sortBy(value:any)
+
+sortBy(value:any,from:string,to:string)
 {
+  
+function compare(a,b) {
+  var time1 = parseFloat(a.drivingTime.replace(':','.').replace(/[^\d.-]/g, ''));
+  var time2 = parseFloat(b.drivingTime.replace(':','.').replace(/[^\d.-]/g, ''));
+  if(a.drivingTime.match(/.*pm/)) time1 += 12; if(b.drivingTime.match(/.*pm/)) time2 += 12;
+  if (time1 < time2) return -1;
+  if (time1 > time2) return 1;
+  return 0;
+ }
   debugger
-if(value=='from' && this.fromLat!=0 &&this.fromLng!=0)
+if(value=='from' &&from)
 {
   this.driversFound.sort((a, b) => {
-    console.log("a",google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.fromLocationLat, a.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng) ))
-    console.log("b", google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.fromLocationLng, b.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng)))
-    console.log("a-b=" ,google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.fromLocationLat, a.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng) )-google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.fromLocationLat, b.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng)))
+    // console.log("a",google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.fromLocationLat, a.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng) ))
+    // console.log("b", google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.fromLocationLng, b.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng)))
+    // console.log("a-b=" ,google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.fromLocationLat, a.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng) )-google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.fromLocationLat, b.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng)))
     return  google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.fromLocationLat, a.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng) )-google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.fromLocationLat, b.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng))})
 }
-if(value=='to' && this.toLng!=0 &&this.toLat!=0)
+if(value=='to' && to)
 {
   this.driversFound.sort((a, b) => {
    return  google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.toLocationLat, a.toLocationLng), new google.maps.LatLng(this.toLat,this.toLng) )-google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.toLocationLat, b.toLocationLng), new google.maps.LatLng(this.toLat,this.toLng))})
 }
-if(value=='time')
-  {
-
-  
-  }
+if(value=='time') 
+{
+   this.driversFound.sort(compare)
+}
 if(value=='date')
   {
     this.driversFound.sort((a, b) => {
@@ -287,6 +317,14 @@ if(value=='date')
 
     });
 
+  }
+
+  if(value=='price')
+  {
+    this.driversFound.sort((a, b) => {
+      return a.price - b.price;
+
+    }); 
   }
 }
  

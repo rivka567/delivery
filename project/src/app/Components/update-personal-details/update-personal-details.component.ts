@@ -15,11 +15,12 @@ export class UpdatePersonalDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.myUser=this.userSer.currentUser;
   }
-  updateUser(code:string,name:string,phone:string,mail:string,age:number)
+  
+  updateUser(code:string,name:string,mail:string)
   {
     
     debugger
-    this.myUser=new User(code,name,phone,mail,age,false);
+    this.myUser=new User(code,name,mail);
     this.userSer.updateUser(this.myUser).subscribe(
       myData=>{
         this.userSer.currentUser=myData

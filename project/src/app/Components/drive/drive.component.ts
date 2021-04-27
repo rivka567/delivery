@@ -9,6 +9,8 @@ import { ExistUserComponent } from '../exist-user/exist-user.component';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete/ngx-google-places-autocomplete.directive';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { isNullOrUndefined } from 'util';
+import { PackageService } from 'src/app/Services/package.service';
+import { EmailManagementService } from 'src/app/Services/email-management.service';
 
 
 @Component({
@@ -21,13 +23,12 @@ export class DriveComponent implements OnInit {
   submitted=false;
   newDrive:Drive;
   listDrive:Array<Drive>=[];
-
   minDate:Date;
-
+  isDrive:boolean;
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
 
-  constructor(private dialog:MatDialog, private activatedRoute:ActivatedRoute,
+  constructor(private emailSer:EmailManagementService, private dialog:MatDialog, private activatedRoute:ActivatedRoute,private packageSer:PackageService,
      private formBuilder: FormBuilder,private driveSer: DriveService, private userSer:UserService) { }
      
 
@@ -56,6 +57,7 @@ export class DriveComponent implements OnInit {
       date:['',Validators.required],
       fromLocation:[''],
       toLocation:[''],
+      price:[''],
       describeDrive:['']
     })
    
@@ -65,15 +67,26 @@ export class DriveComponent implements OnInit {
  this.submitted=true;
  this.newDrive=new Drive(0,this.form.value.driverCode,null,this.form.value.driving,this.form.value.date,
   0,this.from,this.fromLat,this.fromLng,0,this.to,this.toLat,this.toLng,this.form.value.describeDrive,
-  true,this.form.value.trans,0);
+  true,this.form.value.trans,this.form.value.price,false,500);
  this.driveSer.addDrive(this.newDrive).subscribe(
   myData => { 
   alert("add sucssesful");
-  this.driveSer.currentDrive=this.newDrive;
-  this.driveSer.allDrives.push(this.newDrive);
+  this.driveSer.currentDrive=myData;
   debugger
+  if(this.isDrive)
+  {
+    debugger
+
+    this.emailSer.sendDriveByEmail(this.packageSer.currentPackage, this.userSer.myCustomer.userMail,this.userSer.currentUser.userName+" "+"מעוניין לקחת חבילה שלך",this.driveSer.currentDrive)
+    .subscribe(
+        myData=>{alert(myData)},
+        myErr=>{alert("error")}
+    );
+  }
 },
   myErr => { console.log(myErr.message); });
+
+
   }
 
     from="";

@@ -43,10 +43,13 @@ export class UpdatePackageComponent implements OnInit {
     //  customerCode:[this.userSer.currentUser.userCode||'',Validators.required],
       fromLocation:[this.package.fromLocationFormat||'',Validators.required],
       toLocation:[this.package.toLocationFormat||'',Validators.required],
-      drivingTime:[this.package.drivingTime||'',Validators.required],
-      travelDate:[this.package.travelDate||'',Validators.required],
+      fromDate:[this.package.fromDate||'',Validators.required],
+      toDate:[this.package.toDate||'',Validators.required],
+      fromTime:[this.package.fromTime||'',Validators.required],
+      toTime:[this.package.toTime||'',Validators.required],
       describePackage:[this.package.describePackage||''],
       type:[this.package.packageTypeCode||'',Validators.required],
+
       })
     }
 
@@ -57,28 +60,28 @@ updatePackage()
   //במידה ושינה את 2 הכתובות
   if(this.from&&this.to)
   this.newPackage=new Package(this.form.value.packageCode,this.userSer.currentUser.userCode,null,0,this.from,this.fromLat,this.fromLng,0,this.to,this.toLat,this.toLng,
-    this.form.value.travelDate,this.form.value.drivingTime,true,
-    this.form.value.type,this.form.value.describePackage,this.form.value.size);
+    this.form.value.fromDate,this.form.value.toDate,this.form.value.fromTime,this.form.value.toTime,true,
+    this.form.value.type,this.form.value.describePackage,this.form.value.size,false,0);
     //במידה ושינה רק את המוצא
   else if(this.from&&!this.to)
   this.newPackage=new Package(this.form.value.packageCode,this.userSer.currentUser.userCode,null,0,this.from,this.fromLat,this.fromLng,this.package.toLocationId,this.package.toLocationFormat,this.package.toLocationLat,this.package.toLocationLng,
-    this.form.value.travelDate,this.form.value.drivingTime,true,
-    this.form.value.type,this.form.value.describePackage,this.form.value.size);
+    this.form.value.fromDate, this.form.value.toDate,this.form.value.fromTime,this.form.value.toTime,true,
+    this.form.value.type,this.form.value.describePackage,this.form.value.size,false,0);
     //במידה ושינה רק את היעד
   else if(!this.from&&this.to)
   this.newPackage=new Package(this.form.value.packageCode,this.userSer.currentUser.userCode,null,this.package.fromLocationId,this.package.fromLocationFormat,this.package.fromLocationLat,this.package.fromLocationLng,0,this.to,this.toLat,this.toLng,
-    this.form.value.travelDate,this.form.value.drivingTime,true,
-    this.form.value.type,this.form.value.describePackage,this.form.value.size);
+    this.form.value.FromDate,this.form.value.toDate,this.form.value.fromTime,this.form.value.toTime,true,
+    this.form.value.type,this.form.value.describePackage,this.form.value.size,false,0);
    //במידה ולא שינה כלום
    else if(!this.from&&!this.to)
    this.newPackage=new Package(this.form.value.packageCode,this.userSer.currentUser.userCode,null,this.package.fromLocationId,this.package.fromLocationFormat,this.package.fromLocationLat,this.package.fromLocationLng,this.package.toLocationId,this.package.toLocationFormat,this.package.toLocationLat,this.package.toLocationLng,
-     this.form.value.travelDate,this.form.value.drivingTime,true,
-     this.form.value.type,this.form.value.describePackage,this.form.value.size);
+     this.form.value.fromDate,this.form.value.toDate,this.form.value.fromTime,this.form.value.toTime,true,
+     this.form.value.type,this.form.value.describePackage,this.form.value.size,false,0);
    
    
     debugger
     console.log("new package",this.newPackage);
-   this.packageSer.updatePackage(this.newPackage).subscribe(
+   this.packageSer.updatePackage(this.newPackage,this.package.listWaiting).subscribe(
     myData => {console.log("from subscribe",this.newPackage);
     alert("add sucssesful");
   

@@ -62,16 +62,25 @@
         </mat-form-field>
         <br>
         <mat-form-field class="example-full-width">
-          <mat-label>Choose a date</mat-label>
-          <input matInput  [min]="minDate" [matDatepicker]="picker" formControlName="travelDate">
+          <mat-label>מתאריך</mat-label>
+          <input matInput  [min]="minDate" [matDatepicker]="picker" formControlName="fromDate">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker  [dateClass]="dateClass" #picker></mat-datepicker>
         </mat-form-field>
-        <br>
         <mat-form-field>
-          <input  matInput type="time" placeholder="שעת הגעה" class="inp" formControlName="drivingTime" name="drivingTime">
+          <input  matInput type="time" placeholder="שעת הגעה" class="inp" formControlName="fromTime" name="fromTime">
         </mat-form-field>
           <br>
+        <mat-form-field class="example-full-width">
+          <mat-label>עד תאריך </mat-label>
+          <input matInput  [min]="minDate" [matDatepicker]="picker1" formControlName="toDate">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker  [dateClass]="dateClass" #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input  matInput type="time" placeholder="שעת הגעה" class="inp" formControlName="toTime" name="toTime">
+        </mat-form-field>
+        <br>
         <label>סוג חבילה:</label>
         <br>
         <input  type="radio" value="1 "  id="1"  formControlName="type" name="type" >
