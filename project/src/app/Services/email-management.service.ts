@@ -26,6 +26,15 @@ export class EmailManagementService {
      return this.http.post<string>(this.URL+"/SendPackageByEmail",array);
    }
    
+   sendEmailToMatchDrives(matchDrives:Drive[],p:Package,url:string)
+   {
+     const array={
+       'matchDrives':matchDrives,
+       'package':p,
+       'url':url
+     }
+     return this.http.post<string>(this.URL+"/SendEmailToMatchDrivers",array);
+   }
  
    sendDriveByEmail(p:Package,contactAddress:string,subject:string,body:Drive): Observable<string> {
      debugger

@@ -52,6 +52,8 @@ import { MatTooltipModule,} from '@angular/material/tooltip';
 import { HappinessComponent } from './Components/happiness/happiness.component';
 import { ShowAllHappinessComponent } from './Components/show-all-happiness/show-all-happiness.component';
 import { SendMessageComponent } from './Components/send-message/send-message.component';
+import { ShowMessageAboutPackageComponent } from './Components/show-message-about-package/show-message-about-package.component';
+import { ShowMessageAboutDriveComponent } from './Components/show-message-about-drive/show-message-about-drive.component';
 
 const appRoutes: Routes =
 [
@@ -76,7 +78,9 @@ const appRoutes: Routes =
    {path:"personal-drives",component:PersonalDrivesComponent},
   ]},
   {path:"waiting-messages",component:PersonalMessagesComponent},
-{path:"hap",component:ShowAllHappinessComponent}
+  {path:"hap",component:ShowAllHappinessComponent},
+  {path:"show-message-p/:packageId/:driveId",component:ShowMessageAboutPackageComponent},
+  {path:"show-message-d/:packageId/:driveId",component:ShowMessageAboutDriveComponent}
 
 ];
 const config = {
@@ -113,6 +117,8 @@ const config = {
     HappinessComponent,
     ShowAllHappinessComponent,
     SendMessageComponent,
+    ShowMessageAboutPackageComponent,
+    ShowMessageAboutDriveComponent,
     
   ],
   imports: [

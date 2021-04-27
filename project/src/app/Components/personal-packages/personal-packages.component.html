@@ -15,15 +15,15 @@
 
   <tr *ngFor="let package of myListPackage;let i=index" >
 <td>{{package.packageCode}}</td>
-<td>{{package.userCustomerCode}}</td>
 <td> {{package.fromDate|  date:'dd-MM-yyyy' }} </td>
+<td> {{package.fromTime}}</td>
 <td> {{package.toDate|  date:'dd-MM-yyyy' }} </td>
+<td> {{package.toTime}}</td>
 <td> {{package.fromLocationFormat}}</td>
 <td> {{package.toLocationFormat}}</td>
-<!-- <td> {{package.drivingTime}}</td> -->
 <td> {{package.packageSize}}</td>
 <td> {{package.packageType}}</td>
-<td>{{package.status}}</td>
+<td>{{package.describePackage}}</td>
 <td (click)="OpenUpdatePackage(package)"><mat-icon style="cursor:pointer">create</mat-icon></td>
 <td (click)="deletePackage(package)"><mat-icon style="cursor:pointer">delete</mat-icon></td>
 
@@ -31,5 +31,3 @@
 </table>
 
 </div>
-
- 

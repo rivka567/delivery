@@ -60,17 +60,7 @@ export class TravelListComponent implements OnInit {
    // this.dateAdapter.setLocale('en-GB'); //dd/MM/yyyy
 
   }
-  initialize()
-  {
-  debugger
-    let input = document.getElementById('searchTextField');
-    var options = {
-types: ['(cities)'],
-componentRestrictions: {country: "il"}
-};
-var autocomplete = new google.maps.places.Autocomplete(this.searchTextField, options);
 
-  }
   ngOnInit(): void {
  //google.maps.event.addDomListener(window, 'load', this.initialize);
    this.getAllDrives();
@@ -333,3 +323,14 @@ if(value=='date')
 
 
 
+//initialize()
+//   {
+//   debugger
+//     let input = document.getElementById('searchTextField');
+//     var options = {
+// types: ['(cities)'],
+// componentRestrictions: {country: "il"}
+// };
+// var autocomplete = new google.maps.places.Autocomplete(this.searchTextField, options);
+
+//   }

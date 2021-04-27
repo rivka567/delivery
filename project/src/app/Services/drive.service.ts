@@ -30,6 +30,11 @@ export class DriveService {
   // }
 
 aa:any;
+
+getDriveById(id:number)
+{
+  return this.http.get<Drive>(this.URL+"/getDriveById/"+id);
+}
   getDrivesList()
   {
     return this.listDrive;

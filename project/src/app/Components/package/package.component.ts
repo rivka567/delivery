@@ -19,6 +19,7 @@ import { types } from 'util';
 import { DriveService } from 'src/app/Services/drive.service';
 import { EmailManagementService } from 'src/app/Services/email-management.service';
 import { validateVerticalPosition } from '@angular/cdk/overlay';
+import { Drive } from 'src/app/Classes/drive';
 
 @Component({
   selector: 'app-package',
@@ -31,6 +32,7 @@ export class PackageComponent implements OnInit {
   newPackage:Package;
   minDate: Date;
   isPackage=false;
+  myFilterDrives:Drive[];
 
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
@@ -84,10 +86,9 @@ export class PackageComponent implements OnInit {
     myData => {
     console.log("from subscribe",this.newPackage);
     alert("add sucssesful");
-  //  console.log("myData=",myData)
     this.packageSer.currentPackage=myData;
-  //  console.log("new package=",this.packageSer.currentPackage)
     debugger
+    //אם יצר חבילה חדשה לשליחת מייל
     if(this.isPackage)
     {
       debugger 
@@ -100,15 +101,53 @@ export class PackageComponent implements OnInit {
           myErr=>{alert("error")}
       );
     }
-
+    //מביא את כל הנסיעות שמעוניינים לקבל התראה על חבילה תואמת
+   this.driveSer.getAllDrives().subscribe(
+   myData=>{
+    this.myFilterDrives=myData
+    this.sendEmailToMatchDrives()
+   },
+   myErr=>{}
+   )
     },
-    myErr => {console.log("from subscribe",this.newPackage); 
+    myErr => {
+    console.log("from subscribe",this.newPackage); 
     console.log(myErr.message);
   });
 
- 
   }
 
+  sendEmailToMatchDrives()
+  {
+
+//בודק מי נרשם לקבלת התראה
+  this.myFilterDrives= this.myFilterDrives.filter(d=>d.message==true)
+// סינון לפי תאריך נסיעה
+if(this.myFilterDrives)
+  {
+   this.myFilterDrives= this.myFilterDrives.filter(d=>(new Date(d.travelDate)>=new Date(this.packageSer.currentPackage.fromDate)&&new Date(d.travelDate)<= new Date(this.packageSer.currentPackage.toDate)));
+  } 
+   //סינון לפי מוצא
+   if(this.myFilterDrives)
+  {
+   this.myFilterDrives=  this.myFilterDrives.filter(f=> 
+    f.distance>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f.fromLocationLat, f.fromLocationLng), new google.maps.LatLng(this.packageSer.currentPackage.fromLocationLat,this.packageSer.currentPackage.fromLocationLng)));
+   }
+  //סינון לפי יעד
+  if(this.myFilterDrives)
+  {
+   this.myFilterDrives=  this.myFilterDrives.filter(f=>
+   f.distance>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f. toLocationLat, f.toLocationLng), new google.maps.LatLng(this.packageSer.currentPackage.toLocationLat,this.packageSer.currentPackage.toLocationLng)));  
+   //סינון לפי שעה
+   }
+
+
+   if(this.myFilterDrives)
+   {
+     this.emailSer.sendEmailToMatchDrives(this.myFilterDrives,this.packageSer.currentPackage,'http://localhost:4200/show-message-p');
+   }
+
+  }
 
   from="";
   fromLat=0;

@@ -44,7 +44,7 @@ deleteDrive(d:Drive)
   debugger
     this.driveSer.deleteDrive(d.driveCode,d.listWaiting).subscribe(
     myData => {
-  this.myListDrive=myData;
+    this.myListDrive=myData;
     },
     myErr => {
       console.log(myErr.message);

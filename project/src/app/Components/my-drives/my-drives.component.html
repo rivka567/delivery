@@ -8,12 +8,14 @@
   (ngModelChange)="checkDrive($event)">
     <mat-radio-button class="example-radio-button" *ngFor="let drive of myFilterDrives" [value]="drive"
     (click)="checkDrive(drive)"> 
-  <span> {{drive.driveCode}}</span>  <span>    </span>
-  <span> {{drive.driverName}}</span>  <span>    </span>
-  <span> {{drive.travelDate|  date:'dd-MM-yyyy' }} </span> <span>    </span>
-  <span> {{drive.fromLocationFormat}}</span> <span>    </span>
-  <span> {{drive.toLocationFormat}}</span> <span>    </span>
-  <span> {{drive.drivingTime}}</span>  <span>    </span>
+    <div class="col-2">{{drive.driverName}}</div>
+  <div class="col-2"> {{drive.travelDate|  date:'dd-MM-yyyy' }} </div>
+  <div class="col-2">{{drive.drivingTime}}</div>
+  <div class="col-2"> {{drive.fromLocationFormat}}</div>
+  <div class="col-2">{{drive.toLocationFormat}}</div>
+  <div class="col-1">{{drive.transportationType}}</div>
+  <div class="col-1">{{drive.price}}</div>
+  <div class="col-1">{{drive.describeDrive}</div>
     </mat-radio-button>
   </mat-radio-group>
   <button (click)="sendEmail()">שלח!!</button>

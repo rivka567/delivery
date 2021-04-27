@@ -1,0 +1,21 @@
+<p>show-message-about-package works!</p>
+<div *ngIf="package!=undefined">
+<p>{{package.fromLocationFormat}}</p>
+<p>{{package.toLocationFormat}}</p>
+<p>{{package.fromDate}}</p>
+<p>{{package.toDate}}</p>
+
+<button (click)="showDriveDetails=true">שלח מייל</button>
+</div>
+
+<div *ngIf="showDriveDetails">
+    <mat-dialog-content>
+        <p>{{drive.driverName}}</p>
+        <p>{{drive.fromLocationFormat}}</p>
+        <p>{{drive.toLocationFormat}}</p>
+        <p>{{drive.transportationType}}</p>
+        <p>{{drive.travelDate}}</p>
+        <p>{{drive.drivingTime}</p>
+<button (click)="sendEmailToCustomer()">שלח מייל</button>
+    </mat-dialog-content>
+</div>

@@ -76,35 +76,38 @@
 
 
   <div class="row table_title">
-    <div class="col-2">שם</div>
-    <div class="col-2"> תאריך </div>
+    <div class="col-2">שם הלקוח</div>
+    <div class="col-2"> מתאריך </div>
+    <div class="col-2"> בשעה </div>
+    <div class="col-2"> עד תאריך </div>
+    <div class="col-2"> בשעה </div>
     <div class="col-3"> מוצא </div>
     <div class="col-3"> יעד </div>
-    <div class="col-1">  הגעה </div>
+    <div class="col-1">  סוג חבילה </div>
+    <div class="col-1">  גודל חבילה</div>
+    <div class="col-1"> הערה </div>
+
     <div class="col-1">
       
     <i class="bi bi-envelope-fill"></i> 
   
   </div>
   </div>
-
   <div class="row table_list" *ngFor="let package of packagesFound;let i=index" >
   <div class="col-2">{{package.customerName}}</div>
-  <div class="col-2">{{package.travelDate|  date:'dd-MM-yyyy' }} </div>
+  <div class="col-2">{{package.fromDate|  date:'dd-MM-yyyy' }} </div>
+  <div class="col-2">{{package.fromTime}} </div>
+  <div class="col-2">{{package.toDate|  date:'dd-MM-yyyy' }} </div>
+  <div class="col-2">{{package.toTime}} </div>
   <div class="col-2">{{package.fromLocationFormat}}</div>
   <div class="col-2">{{package.toLocationFormat}}</div>
-  <div class="col-2">{{package.drivingTime}}</div>
   <div class="col-2">{{package.packageType}}</div>
   <div class="col-2">{{package.packageSize}}</div>
+  <div class="col-2">{{package.describePackage}}</div>
   <div class="col-2"><button mat-button (click)="sendEmail(package)" >שלח מייל</button></div>
-  <div> {{package.packageCode}}</div>
-  <!-- <td > <button (click)="hideme[i] = !hideme[i]"><mat-icon>expand_more</mat-icon> </button></td> -->
   </div>
 </div>
 
 
-  <mat-paginator [length]="packagesFound.length"
-              [pageSize]="10">
-</mat-paginator> -->
   </div>
   

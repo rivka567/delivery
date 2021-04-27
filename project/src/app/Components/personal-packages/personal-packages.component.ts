@@ -46,7 +46,7 @@ export class PersonalPackagesComponent implements OnInit {
     debugger
       this.packageSer.deletePackage(p.packageCode,p.listWaiting).subscribe(
       myData => {
-    this.myListPackage=myData;
+       this.myListPackage=myData;
       },
       myErr => {
         console.log(myErr.message);
