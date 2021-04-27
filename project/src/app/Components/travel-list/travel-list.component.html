@@ -84,27 +84,37 @@
   
 </section>
 
-<table >
-  <th> שם </th>
-  <th> תאריך </th>
-  <th> מוצא </th>
-  <th> יעד </th>
-  <th> שעת יציאה </th>
-  <th> <mat-icon >email</mat-icon> </th>
-  <th></th>
-  <tr *ngFor="let drive of driversFound;let i=index" >
-<td >{{drive.driverName}}</td>
-<td> {{drive.travelDate|  date:'dd-MM-yyyy' }} </td>
-<td> {{drive.fromLocationFormat}}</td>
-<td> {{drive.toLocationFormat}}</td>
-<td> {{drive.drivingTime}}</td>
-<td> <button mat-button (click)="sendEmail(drive)" >שלח מייל</button></td> 
-<td>{{drive.transportationType}}</td>
-<td> {{drive.driveCode}}</td>
-<td (click)="openDialogHappiness(drive.driverCode)"><mat-icon>star_rate</mat-icon></td>
+<section>
+
+<div class="row table_title">
+  <div class="col-2">שם</div>
+  <div class="col-2"> תאריך </div>
+  <div class="col-3"> מוצא </div>
+  <div class="col-3"> יעד </div>
+  <div class="col-1">  יציאה </div>
+  <div class="col-1">
+    
+    <i class="bi bi-envelope-fill"></i> 
+
+</div>
+</div>
+
+
+
+<div class="row table_list" *ngFor="let drive of driversFound;let i=index" >
+  <div class="col-2">{{drive.driverName}}</div>
+  <div class="col-2"> {{drive.travelDate|  date:'dd-MM-yyyy' }} </div>
+  <div class="col-2"> {{drive.fromLocationFormat}}</div>
+  <div class="col-2">{{drive.toLocationFormat}}</div>
+  <div class="col-2">{{drive.drivingTime}}</div>
+  <div class="col-1"> <button mat-button (click)="sendEmail(drive)" >שלח מייל</button></div> 
+  <div class="col-1">{{drive.transportationType}}</div>
+  <div> {{drive.driveCode}}</div>
+  <td (click)="openDialogHappiness(drive.driverCode)"><mat-icon>star_rate</mat-icon></td>
 <!-- <td > <button (click)="hideme[i] = !hideme[i]"><mat-icon>expand_more</mat-icon> </button></td> -->
-</tr>
-</table>
+</div>
+
+</section>
 
 </div>
 <router-outlet></router-outlet>
