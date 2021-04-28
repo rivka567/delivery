@@ -93,6 +93,7 @@
 </div>
 
 <div class="row table_list" *ngFor="let drive of driversFound;let i=index" >
+  <div class="col-1">{{drive.driveCode}}</div>
   <div class="col-2">{{drive.driverName}}</div>
   <div class="col-1"> {{drive.travelDate|  date:'dd-MM-yyyy' }} </div>
   <div class="col-1">{{drive.drivingTime}}</div>

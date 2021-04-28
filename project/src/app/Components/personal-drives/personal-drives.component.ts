@@ -3,7 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { Drive } from 'src/app/Classes/drive';
 import { DriveService } from 'src/app/Services/drive.service';
 import { UserService } from 'src/app/Services/user.service';
+import swal from 'sweetalert';
 import { DriveComponent } from '../drive/drive.component';
+import { ShowAllHappinessComponent } from '../show-all-happiness/show-all-happiness.component';
 import { UpdateDriveComponent } from '../update-drive/update-drive.component';
 
 @Component({
@@ -39,15 +41,43 @@ export class PersonalDrivesComponent implements OnInit {
   
 }
 
-deleteDrive(d:Drive)
+checkListWaitingForDrive(d:Drive)
 {
   debugger
-    this.driveSer.deleteDrive(d.driveCode,d.listWaiting).subscribe(
+  if(d.listWaiting.length!=0)
+  {
+  let filterDrives=d.listWaiting;
+  //בדיקה האם החבילה הזו נסגרה עם לקוחות
+  filterDrives=filterDrives.filter(d=>d.status==false)
+  if(filterDrives.length!=0)
+  alert("נסיעה זו נסגרה עם "+filterDrives.length+" לקוחות")
+  else
+  alert("נסיעה זו מקושרת לחבילות אחרות")
+  }
+else
+alert("נסיעה זו לא מקושרת לשום חבילה")
+this.deleteDrive(d)
+}
+
+
+deleteDrive(d:Drive)
+{
+  this.driveSer.deleteDrive(d,d.listWaiting).subscribe(
     myData => {
     this.myListDrive=myData;
+    swal({
+      title: "נמחק בהצלחה",
+      icon: "success",     
+      
+    })
     },
     myErr => {
       console.log(myErr.message);
+      swal({
+        title: "שגיאה",
+        icon: "error",     
+        
+      })
     });
 }
 

@@ -8,6 +8,7 @@ import { UserComponent } from '../user/user.component';
 import { FormBuilder, FormGroup, ValidatorFn } from '@angular/forms';
 import { EmailManagementService } from 'src/app/Services/email-management.service';
 import { Validators } from '@angular/forms';
+import swal from 'sweetalert'
 
 @Component({
   selector: 'app-exist-user',
@@ -51,10 +52,10 @@ initForm(){
         myData => { this.user = myData; 
         this.UserSer.currentUser=myData;
        },
-        myErr => { alert("לקוח זה לא קיים במערכת"); });
+        myErr => { swal({title:"לקוח זה לא קיים במערכת",text:"נסה שנית ",icon:"error"}); });
       }
         else
-        alert("לא הוקש סיסמא")
+        swal("לא הוקש סיסמא")
   }
     
 

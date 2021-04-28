@@ -21,7 +21,7 @@ import { FormGroup } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { MyPackagesComponent } from 'src/app/Components/my-packages/my-packages.component';
 import { ShowAllHappinessComponent } from '../show-all-happiness/show-all-happiness.component';
-
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-travel-list',

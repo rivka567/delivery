@@ -10,6 +10,8 @@ import { DriveService } from 'src/app/Services/drive.service';
 import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { Time } from '@angular/common';
 import { EmailManagementService } from 'src/app/Services/email-management.service';
+import swal from 'sweetalert';
+import { title } from 'process';
 
 @Component({
   selector: 'app-my-packages',
@@ -96,12 +98,26 @@ export class MyPackagesComponent implements OnInit {
     let distance= google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(this.packageSer.currentPackage.toLocationLat,this.packageSer.currentPackage.toLocationLng), new google.maps.LatLng(this.packageSer.currentPackage.fromLocationLat,this.packageSer.currentPackage.fromLocationLng)); 
     this.price=((distance/1000)*this.driveSer.currentDrive.price)
     alert(distance/1000+"*"+this.driveSer.currentDrive.price+"="+this.price)
+    swal("עלות המשלוח "+this.price,"-מרחק של כ"+distance/1000+" קילומטר")
   }
   sendEmail()
   {
-  //this.showPrice()
+ 
     debugger
-    this.emailSer.sendPackageToDelivery(this.driveSer.currentDrive,this.userSer.myDriver.userMail,this.userSer.currentUser.userName+" "+"מעוניין/ת במשלוח",this.packageSer.currentPackage,this.price).subscribe(data=>alert(data));
+    if(this.driveSer.currentDrive.listWaiting.length==0)
+    this.emailSer.sendPackageToDelivery(this.driveSer.currentDrive,this.userSer.myDriver.userMail,this.userSer.currentUser.userName+" "+"מעוניין/ת במשלוח",this.packageSer.currentPackage,this.price).subscribe(data=>
+    {   swal({title:"הבקשה נשלחה בהצלחה",icon:'success'}) } ,
+    err=>{ swal({title:"שגיאה!",icon:'error'}) } );
+    else{
+      let packageInListWaiting=this.driveSer.currentDrive.listWaiting.find(p=>p.packageCode==this.packageSer.currentPackage.packageCode)
+         if(packageInListWaiting)
+           swal({title:"בקשה זו בוצעה בעבר",text:"לצפייה בפרטי הבקשה היכנס לאזור ההודעות ",icon:"error"})
+        else
+        this.emailSer.sendPackageToDelivery(this.driveSer.currentDrive,this.userSer.myDriver.userMail,this.userSer.currentUser.userName+" "+"מעוניין/ת במשלוח",this.packageSer.currentPackage,this.price).subscribe(data=>
+          {   swal({title:"הבקשה נשלחה בהצלחה",icon:'success'}) } ,
+          err=>{ swal({title:"שגיאה!",icon:'error'}) } );
+         
+    }
   }
 
   showPrice()

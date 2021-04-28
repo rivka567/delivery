@@ -20,6 +20,7 @@
   (click)="checkPackage(package)">
   
   <div class="row">
+    <div class="col-1">{{package.packageCode}} </div>
     <div class="col-2">{{package.fromDate|  date:'dd-MM-yyyy' }} </div>
     <div class="col-1">{{package.fromTime}} </div>
     <div class="col-2">{{package.toDate|  date:'dd-MM-yyyy' }} </div>
@@ -32,7 +33,7 @@
   </div>
   </mat-radio-button>
 </mat-radio-group>
-<button (click)="sendEmail()">שלח</button>
+<button (click)="sendEmail()">שלח בקשה במייל</button>
 <br><br>
 <a style="color: red;" mat-dialog-close (click)="openPackaeDialog()">צור חבילה חדשה</a><br>
 <a style="color: red;" (click)="showAllPackages()">הצג את כל החבילות שלי</a>

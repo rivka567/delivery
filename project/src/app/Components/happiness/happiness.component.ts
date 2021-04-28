@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute } from '@angular/router';
 import { Happiness } from 'src/app/Classes/happiness';
 import { HappinessService } from 'src/app/Services/happiness.service';
-
+import swal from 'sweetalert'
 
 @Component({
   selector: 'app-happiness',
@@ -20,6 +21,7 @@ export class HappinessComponent implements OnInit {
   public snackBarDuration: number = 2000;
   public ratingArr = [];
   idDelivery:string;
+  idDeliveryFromURL:string;
   form:FormGroup;
   myHappiness:Happiness;
   submitted=false;
@@ -28,7 +30,7 @@ export class HappinessComponent implements OnInit {
   starColorP:StarRatingColor = StarRatingColor.primary;
   starColorW:StarRatingColor = StarRatingColor.warn;
 
-  constructor(private snackBar: MatSnackBar,private happinSer:HappinessService) {
+  constructor(private snackBar: MatSnackBar,private happinSer:HappinessService,private route:ActivatedRoute) {
   }
 
 
@@ -37,16 +39,20 @@ export class HappinessComponent implements OnInit {
     for (let index = 0; index < this.starCount; index++) {
       this.ratingArr.push(index);
     }
-    
+  this.idDeliveryFromURL= this.route.snapshot.params['idDelivery'];
   }
 
   addHappiness(name:string, happiness:string)
   {
     debugger
-this.myHappiness=new Happiness(0,this.idDelivery,name,new Date(),this.rating,happiness)
-this.happinSer.addHappiness(this.myHappiness).subscribe(
-  myData=>{alert("succsess")},
-  myErr=>{alert("error!!"); }); 
+    if(this.idDelivery)
+ this.myHappiness=new Happiness(0,this.idDelivery,name,new Date(),this.rating,happiness)
+ else
+ this.myHappiness=new Happiness(0,this.idDeliveryFromURL,name,new Date(),this.rating,happiness)
+
+ this.happinSer.addHappiness(this.myHappiness).subscribe(
+  myData=>{swal({title:"תודה רבה על חוות דעתך!",text:"נוסף בהצלחה",icon:"success"})},
+  myErr=>{swal({title:"שגיאה!",text:"חוות דעתך לא נקלטה במערכת , נסה שוב",icon:"error"}) }); 
   
   }
   onRatingChanged(rating){

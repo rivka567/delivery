@@ -81,7 +81,8 @@ const appRoutes: Routes =
   {path:"waiting-messages",component:PersonalMessagesComponent},
   {path:"hap",component:ShowAllHappinessComponent},
   {path:"show-message-p/:packageId/:driveId",component:ShowMessageAboutPackageComponent},
-  {path:"show-message-d/:packageId/:driveId",component:ShowMessageAboutDriveComponent}
+  {path:"show-message-d/:packageId/:driveId",component:ShowMessageAboutDriveComponent},
+  {path:"add-happiness/:idDelivery",component:HappinessComponent}
 
 ];
 const config = {

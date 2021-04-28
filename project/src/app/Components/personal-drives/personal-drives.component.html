@@ -1,6 +1,11 @@
-<div>
-  <button class="btn" mat-button (click)="openDriveDialog()">צור נסיעה</button>
-    <p>החבילות שלי:</p>
+<div class="row">
+
+  <div class="col"><h1>הנסיעות שלי:</h1></div>
+
+<div class="col"><button type="submit" class="btn btn-primary float-left"  mat-button (click)="openDriveDialog()"> צור נסיעה</button></div>
+
+
+</div>
     <p style="font-size:large;"> נמצאו {{len}} נסיעות מתאימות</p>
     <br>
     <table >
@@ -23,11 +28,10 @@
     <td>{{drive.describeDrive}}</td>
 
     <td (click)="OpenUpdateDrive(drive)"><mat-icon style="cursor:pointer">create</mat-icon></td>
-    <td (click)="deleteDrive(drive)"><mat-icon style="cursor:pointer">delete</mat-icon></td>
-
+    <td (click)="checkListWaitingForDrive(drive)"><mat-icon style="cursor:pointer">delete</mat-icon></td>
+    <!-- <button (click)="deleted()">בדיקה על swal</button> -->
     </tr>
     
     </table>
 
 
-    </div>

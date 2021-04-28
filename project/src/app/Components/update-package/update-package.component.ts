@@ -7,6 +7,7 @@ import { Address } from 'ngx-google-places-autocomplete/objects/address';
 import { Package } from 'src/app/Classes/package';
 import { PackageService } from 'src/app/Services/package.service';
 import { UserService } from 'src/app/Services/user.service';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-update-package',
@@ -34,26 +35,6 @@ export class UpdatePackageComponent implements OnInit {
       // Highlight the 1st and 20th day of each month.
       return (date === 1 || date === 20) ? 'example-custom-date-class' : '';
     }
-    // public packageCode:number,
-  
-    // public fromLocationFormat:string,
-    
-    //  public toLocationFormat:string,
-    
-    // public fromDate:Date=null,
-    // public toDate:Date=null,
-    // public fromTime:Time=null,
-    // public toTime:Time=null,
-  
-    // public packageTypeCode:number,
-    // public describePackage:string="",
-    // public packageSizeCode:number=0,
-    // public message:boolean,
-    // public distance:number,
-    // public packageSize?:string,
-    // public packageType?:string,
-  
-    // public customerName?:string
   
     initForm() {
      this.form = this.formBuilder.group({
@@ -102,11 +83,10 @@ updatePackage()
     console.log("new package",this.newPackage);
    this.packageSer.updatePackage(this.newPackage,this.package.listWaiting).subscribe(
     myData => {console.log("from subscribe",this.newPackage);
-    alert("add sucssesful");
-  
-    },
+    swal({title:"עודכן בהצלחה!",icon:"success"})
+  },
     myErr => {console.log("from subscribe",this.newPackage); 
-    console.log(myErr.message);
+    swal({title:"שגיאה!",text:"נסה שנית ",icon:"error"})
   });
 
 }

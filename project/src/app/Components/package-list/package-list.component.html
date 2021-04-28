@@ -76,16 +76,17 @@
 
 
   <div class="row table_title">
-    <div class="col-2">שם הלקוח</div>
-    <div class="col-2"> מתאריך </div>
-    <div class="col-2"> בשעה </div>
-    <div class="col-2"> עד תאריך </div>
-    <div class="col-2"> בשעה </div>
-    <div class="col-3"> מוצא </div>
-    <div class="col-3"> יעד </div>
+    
+    <div class="col-1">שם הלקוח</div>
+    <div class="col-1"> מתאריך </div>
+    <div class="col-1"> בשעה </div>
+    <div class="col-1"> עד תאריך </div>
+    <div class="col-1"> בשעה </div>
+    <div class="col-2"> מוצא </div>
+    <div class="col-2"> יעד </div>
     <div class="col-1">  סוג חבילה </div>
     <div class="col-1">  גודל חבילה</div>
-    <div class="col-1"> הערה </div>
+    <!-- <div class="col-1"> הערה </div> -->
 
     <div class="col-1">
       
@@ -94,17 +95,19 @@
   </div>
   </div>
   <div class="row table_list" *ngFor="let package of packagesFound;let i=index" >
-  <div class="col-2">{{package.customerName}}</div>
-  <div class="col-2">{{package.fromDate|  date:'dd-MM-yyyy' }} </div>
-  <div class="col-2">{{package.fromTime}} </div>
-  <div class="col-2">{{package.toDate|  date:'dd-MM-yyyy' }} </div>
-  <div class="col-2">{{package.toTime}} </div>
+    <div class="col-1">{{package.packageCode}}</div>
+  <div class="col-1">{{package.customerName}}</div>
+  <div class="col-1">{{package.fromDate|  date:'dd-MM-yyyy' }} </div>
+  <div class="col-1">{{package.fromTime}} </div>
+  <div class="col-1">{{package.toDate|  date:'dd-MM-yyyy' }} </div>
+  <div class="col-1">{{package.toTime}} </div>
   <div class="col-2">{{package.fromLocationFormat}}</div>
   <div class="col-2">{{package.toLocationFormat}}</div>
-  <div class="col-2">{{package.packageType}}</div>
-  <div class="col-2">{{package.packageSize}}</div>
-  <div class="col-2">{{package.describePackage}}</div>
-  <div class="col-2"><button mat-button (click)="sendEmail(package)" >שלח מייל</button></div>
+  <div class="col-1">{{package.packageType}}</div>
+  <div class="col-1">{{package.packageSize}}</div>
+  <!-- <div class="col-2">{{package.describePackage}}</div> -->
+  <div class="col-1"><button mat-button (click)="sendEmail(package)" >    <i class="bi bi-envelope-fill"></i> 
+  </button></div>
   </div>
 </div>
 

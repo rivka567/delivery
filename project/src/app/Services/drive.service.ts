@@ -57,10 +57,16 @@ getDriveById(id:number)
     return this.http.post<string>(this.URL + "/UpdateDrive",updateDrive);
   }
 
-  deleteDrive(id:number,listWaiting:Package[]): Observable<Array<Drive>> 
+  deleteDrive(drive:Drive,listWaiting:Package[]): Observable<Array<Drive>> 
   {
     debugger
-    return this.http.post<Array<Drive>>(this.URL + "/DeleteDrive/"+id,listWaiting);
+    const array={
+      'drive':drive,
+    'listWaiting':listWaiting,
+    'url':'http://localhost:4200/add-happiness/'+drive.driverCode 
+    }
+    console.log(array)
+    return this.http.post<Array<Drive>>(this.URL + "/DeleteDrive",array);
   }
   changeStatusToClose(id:number, status:boolean):Observable<any>
   {

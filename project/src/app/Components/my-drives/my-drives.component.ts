@@ -6,6 +6,7 @@ import { DriveService } from 'src/app/Services/drive.service';
 import { EmailManagementService } from 'src/app/Services/email-management.service';
 import { PackageService } from 'src/app/Services/package.service';
 import { UserService } from 'src/app/Services/user.service';
+import swal from 'sweetalert';
 import { DriveComponent } from '../drive/drive.component';
 
 @Component({
@@ -69,9 +70,23 @@ console.log("data");
   }
   sendEmail()
   {
+  if(this.packageSer.currentPackage.listWaiting.length==0)
+  {
    debugger 
    this.emailSer.sendDriveByEmail(this.packageSer.currentPackage, this.userSer.myCustomer.userMail,this.userSer.currentUser.userName+" "+"מעוניין לקחת חבילה שלך",this.driveSer.currentDrive)
-   .subscribe(data=>alert(data));
+   .subscribe(data=> {swal({title:"הבקשה נשלחה בהצלחה",icon:'success'})} ,
+  err=>{swal({title:"שגיאה!",icon:'error'})});
+  }
+  else{
+    //בודק האם בעבר נשלחה בקשה לנסיעה זו
+    let driveInListWaiting=this.packageSer.currentPackage.listWaiting.find(d=>d.driveCode=this.driveSer.currentDrive.driveCode)
+     if(driveInListWaiting)
+         swal({title:"בקשה זו בוצעה בעבר",text:"לצפייה בפרטי הבקשה היכנס לאזור ההודעות ",icon:"error"})
+    else
+    this.emailSer.sendDriveByEmail(this.packageSer.currentPackage, this.userSer.myCustomer.userMail,this.userSer.currentUser.userName+" "+"מעוניין לקחת חבילה שלך",this.driveSer.currentDrive)
+    .subscribe(data=> { swal({title:"הבקשה נשלחה בהצלחה",icon:'success'})} ,
+    err=>{ swal({title:"שגיאה!",icon:'error'}) });
+  }
   }
 
   showDriveDialog()

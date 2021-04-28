@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Package } from 'src/app/Classes/package';
 import { PackageService } from 'src/app/Services/package.service';
 import { UserService } from 'src/app/Services/user.service';
+import swal from 'sweetalert';
 import { PackageComponent } from '../package/package.component';
 import { UpdatePackageComponent } from '../update-package/update-package.component';
 
@@ -41,9 +42,10 @@ export class PersonalPackagesComponent implements OnInit {
 
   deletePackage(p:Package)
   {
-      console.log("akert ")
-     // Swal.fire('Thank you...', 'You submitted succesfully!', 'success')
+    swal("האם אתה בטוח שברצונך למחוק חבילה זו?")
     debugger
+    if(p.listWaiting.length!=0)
+     alert("יש לך רשימת ממתינים")
       this.packageSer.deletePackage(p.packageCode,p.listWaiting).subscribe(
       myData => {
        this.myListPackage=myData;

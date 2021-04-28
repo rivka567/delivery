@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { title } from 'process';
 import { User } from 'src/app/Classes/user';
 import { UserService } from 'src/app/Services/user.service';
+import swal from 'sweetalert';
 
 @Component({
   selector: 'app-update-personal-details',
@@ -24,7 +26,7 @@ export class UpdatePersonalDetailsComponent implements OnInit {
     this.userSer.updateUser(this.myUser).subscribe(
       myData=>{
         this.userSer.currentUser=myData
-        alert("update")
+        swal({title:"עודכן בהצלחה!",icon:"success"})
       },
       myErr=>{
         console.log(myErr)
