@@ -16,9 +16,17 @@ section {
   justify-content: center;
   width: 120px;
 }
+.ng-invalid.ng-touched.ng-dirty:not(form) {
+  border: 1px solid red;
+}
+
+.is-invalid {
+  border: 2px solid red;
+}
+
 .mat-typography {
-  height: 600px;
-  width: 850px;
+  height:600px;
+  width: 800px;
   background-color: white;
   border-color: grey;
 }

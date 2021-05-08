@@ -34,6 +34,7 @@ export class UserService {
     console.log("after server",u);
     return u;
   }
+  
   updateUser(user:User): Observable<User>
   {
     debugger

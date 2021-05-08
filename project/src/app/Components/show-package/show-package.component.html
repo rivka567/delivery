@@ -1,0 +1,22 @@
+<mat-dialog-content class="mat-typography">
+    <div><mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon></div>
+
+<div class="card-body">
+    
+    <h3 >פרטי החבילה:</h3>
+    <p class="card-text">{{package.packageCode}}</p>
+    <p class="card-text">{{package.customerName}}</p>
+    <p class="card-text">{{package.fromDate}}</p>
+    <p class="card-text">{{package.fromTime}}</p>
+    <p class="card-text">{{package.toDate}}</p>
+    <p class="card-text">{{package.toTime}}</p>
+    <p class="card-text">{{package.fromLocationFormat}}</p>
+    <p class="card-text">{{package.toLocationFormat}}</p>
+    <p class="card-text">{{package.packageSize}}</p>
+    <p class="card-text">{{package.packageType}}</p>
+    <p class="card-text" *ngIf="package.describePackage">{{package.describePackage}}</p>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" #message></textarea>
+    <button type="button" class="btn btn-primary mb-2" (click)="sendMessageFromDelivery(message.value)">שלח הודעה</button>
+
+  </div>
+</mat-dialog-content> 

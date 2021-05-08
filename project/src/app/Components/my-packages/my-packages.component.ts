@@ -41,12 +41,22 @@ export class MyPackagesComponent implements OnInit {
 
   getPackagesByUserId()
   {
-    debugger
       this.packageSer.getPackagesByUserId(this.userSer.currentUser.userCode).subscribe(
       myData => {
-        this.myListPackage=myData;
         debugger
-        this.myFilterPackages=myData;
+        this.myListPackage=myData;
+        this.myListPackage=this.myListPackage.filter(p=>p.status==true)
+        if(this.driveSer.currentDrive.listWaiting.length>0)
+        {
+          debugger
+          this.driveSer.currentDrive.listWaiting.forEach(p => {
+            let packageInListWaiting=this.myListPackage.find(p1=>p1.packageCode==p.packageCode)
+            if(packageInListWaiting)
+           this.myListPackage= this.myListPackage.filter(p2=>p2.packageCode!=p.packageCode)
+          });
+        }
+        debugger
+        this.myFilterPackages=this.myListPackage;
        // סינון לפי תאריך נסיעה
   if(this.myFilterPackages)
   {  
@@ -98,26 +108,28 @@ export class MyPackagesComponent implements OnInit {
     let distance= google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(this.packageSer.currentPackage.toLocationLat,this.packageSer.currentPackage.toLocationLng), new google.maps.LatLng(this.packageSer.currentPackage.fromLocationLat,this.packageSer.currentPackage.fromLocationLng)); 
     this.price=((distance/1000)*this.driveSer.currentDrive.price)
     alert(distance/1000+"*"+this.driveSer.currentDrive.price+"="+this.price)
-    swal("עלות המשלוח "+this.price,"-מרחק של כ"+distance/1000+" קילומטר")
+    // swal("עלות המשלוח "+this.price,"-מרחק של כ"+distance/1000+" קילומטר")
+    swal("עלות המשלוח "+this.price,"-מרחק של כ"+distance/1000%1000+" קילומטר")
+
   }
   sendEmail()
   {
  
     debugger
-    if(this.driveSer.currentDrive.listWaiting.length==0)
+    // if(this.driveSer.currentDrive.listWaiting.length==0)
     this.emailSer.sendPackageToDelivery(this.driveSer.currentDrive,this.userSer.myDriver.userMail,this.userSer.currentUser.userName+" "+"מעוניין/ת במשלוח",this.packageSer.currentPackage,this.price).subscribe(data=>
     {   swal({title:"הבקשה נשלחה בהצלחה",icon:'success'}) } ,
-    err=>{ swal({title:"שגיאה!",icon:'error'}) } );
-    else{
-      let packageInListWaiting=this.driveSer.currentDrive.listWaiting.find(p=>p.packageCode==this.packageSer.currentPackage.packageCode)
-         if(packageInListWaiting)
-           swal({title:"בקשה זו בוצעה בעבר",text:"לצפייה בפרטי הבקשה היכנס לאזור ההודעות ",icon:"error"})
-        else
-        this.emailSer.sendPackageToDelivery(this.driveSer.currentDrive,this.userSer.myDriver.userMail,this.userSer.currentUser.userName+" "+"מעוניין/ת במשלוח",this.packageSer.currentPackage,this.price).subscribe(data=>
-          {   swal({title:"הבקשה נשלחה בהצלחה",icon:'success'}) } ,
-          err=>{ swal({title:"שגיאה!",icon:'error'}) } );
+    err=>{ swal({title:"בקשה לא נשלחה",text:"נסה שנית",icon:'error'}) } );
+    // else{
+    //   let packageInListWaiting=this.driveSer.currentDrive.listWaiting.find(p=>p.packageCode==this.packageSer.currentPackage.packageCode)
+    //      if(packageInListWaiting)
+    //        swal({title:"בקשה זו בוצעה בעבר",text:"לצפייה בפרטי הבקשה היכנס לאזור ההודעות ",icon:"error"})
+    //     else
+    //     this.emailSer.sendPackageToDelivery(this.driveSer.currentDrive,this.userSer.myDriver.userMail,this.userSer.currentUser.userName+" "+"מעוניין/ת במשלוח",this.packageSer.currentPackage,this.price).subscribe(data=>
+    //       {   swal({title:"הבקשה נשלחה בהצלחה",icon:'success'}) } ,
+    //       err=>{ swal({title:"שגיאה!",icon:'error'}) } );
          
-    }
+    // }
   }
 
   showPrice()

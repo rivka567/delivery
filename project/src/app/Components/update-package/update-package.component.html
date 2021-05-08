@@ -1,13 +1,12 @@
 
 <mat-dialog-content class="mat-typography">
     <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon>
-     <form *ngIf="[form,package]" [formGroup]="form" (ngSubmit)="updatePackage()">
-        <br>
-          
-        <mat-form-field>
-            <input matInput type="text" placeholder="קוד חבילה" class="inp" readonly formControlName="packageCode" name="customerCode">
-          </mat-form-field>
-          <br> 
+     <form *ngIf="form,newPackage" [formGroup]="form" (ngSubmit)="updatePackage()">
+       
+      <div class="mb-3">
+            <input class="form-control" type="text" placeholder="קוד חבילה"  readonly formControlName="packageCode" name="packageCode">
+      </div>
+      <div class="mb-3">
         <section>
             <div class="example-button-row">
               <div class="example-flex-container container">
@@ -44,43 +43,49 @@
               </div>
             </div>
         </section>
-        <br>
+      </div>
+
+        <div>
           <input type="radio" value="1" style="visibility: hidden;"  id="1" #1  formControlName="size" name="size"  >
           <input type="radio" value="2" style="visibility: hidden;"  id="2" #2  formControlName="size" name="size"  >
           <input type="radio" value="3" style="visibility: hidden;"  id="3" #3  formControlName="size" name="size"  >
           <input type="radio" value="4" style="visibility: hidden;"  id="4" #4  formControlName="size" name="size"  >
-        <br>
+         </div>
 
-        <mat-form-field >
-          <input matInput placeholder=" מוצא" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)"
-          formControlName="fromLocation" name="fromLocation"/>
-        </mat-form-field>
-        <br>
-        <mat-form-field >
-          <input matInput placeholder=" יעד" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)"
-          formControlName="toLocation" name="toLocation"/>
-        </mat-form-field>
-        <br>
+
+          <div class="mb-3">
+          <input class="form-control" placeholder=" מוצא" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)"
+          formControlName="fromLocation" name="fromLocation" [ngClass]="{ 'is-invalid': submitted && f.fromLocation.errors }" />
+          </div>
+
+          <div class="mb-3">
+          <input class="form-control" placeholder=" יעד" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)"
+          formControlName="toLocation" name="toLocation" [ngClass]="{ 'is-invalid': submitted && f.toLocation.errors }" />
+          </div>
+
+          <div class="mb-3">
         <mat-form-field class="example-full-width">
           <mat-label>מתאריך</mat-label>
-          <input matInput  [min]="minDate" [matDatepicker]="picker" formControlName="fromDate">
+          <input class="form-control"  [min]="minDate" [matDatepicker]="picker" [min]="minDateFromDate" [max]="maxDateFromDate" formControlName="fromDate" name="fromDate" #fromDate [ngClass]="{ 'is-invalid': submitted && f.fromDate.errors }" >
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker  [dateClass]="dateClass" #picker></mat-datepicker>
+          <mat-datepicker  [dateClass]="dateClass" #picker (closed)="updateMinDateToDate(fromDate.value)"></mat-datepicker>
         </mat-form-field>
-        <mat-form-field>
-          <input  matInput type="time" placeholder="שעת הגעה" class="inp" formControlName="fromTime" name="fromTime">
-        </mat-form-field>
-          <br>
+        </div>
+        <div class="mb-3">
+          <input class="form-control" type="time" placeholder="שעת הגעה"  formControlName="fromTime" name="fromTime" [ngClass]="{ 'is-invalid': submitted && f.fromTime.errors }" >
+        </div>
+          <div class="mb-3">
         <mat-form-field class="example-full-width">
           <mat-label>עד תאריך </mat-label>
-          <input matInput  [min]="minDate" [matDatepicker]="picker1" formControlName="toDate">
+          <input  class="form-control" [min]="minDate" [matDatepicker]="picker1" [min]="minDateToDate" formControlName="toDate" name="toDate" #toDate [ngClass]="{ 'is-invalid': submitted && f.toDate.errors }" >
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-          <mat-datepicker  [dateClass]="dateClass" #picker1></mat-datepicker>
+          <mat-datepicker  [dateClass]="dateClass" #picker1 (closed)="updatemaxDateFromDate(toDate.value)"></mat-datepicker>
         </mat-form-field>
-        <mat-form-field>
-          <input  matInput type="time" placeholder="שעת הגעה" class="inp" formControlName="toTime" name="toTime">
-        </mat-form-field>
-        <br>
+        </div>
+
+         <div class="mb-3">
+          <input  class="form-control" type="time" placeholder="שעת הגעה"  formControlName="toTime" name="toTime" [ngClass]="{ 'is-invalid': submitted && f.toTime.errors }" >
+         </div>
         <label>סוג חבילה:</label>
         <br>
         <input  type="radio" value="1 "  id="1"  formControlName="type" name="type" >
@@ -95,15 +100,16 @@
         <input  type="radio" value="4"  id="4"  formControlName="type" name="type" >
         <label> אחר</label>
         <br>
-        <!-- <mat-form-field>
+         <!-- <mat-form-field>
           <input matInput type="text" placeholder=" תאור נוסף או הערה" class="inp" formControlName="describePackage" name="describePackage">
         </mat-form-field>
-        <br> 
+        <br>  -->
   
-         TODO: לשנות שיראה כקישור -->
-      <button mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid"
-          (click)="submitted=true " mat-dialog-close> שמור</button>
-        <br>
+      <!--  TODO: לשנות שיראה כקישור -->
+      <div class="mb-3">
+      <button class="btn btn-primary" style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid"
+          (click)="submitted=true" > עדכן</button>
+      </div>
     </form> 
   
   </mat-dialog-content>

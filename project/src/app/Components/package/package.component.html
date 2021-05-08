@@ -1,9 +1,10 @@
 
 <mat-dialog-content class="mat-typography">
   <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon>
+  <h2>הכנס פרטי חבילה</h2>
    <form *ngIf="[form,newPackage]" [formGroup]="form" (ngSubmit)="addPackage()">
-    <div class="example-container">
-      <br>
+    <!-- <div class="example-container"> -->
+     <div class="form-group row">
       <section>
           <div class="example-button-row">
             <div class="example-flex-container container">
@@ -40,47 +41,62 @@
             </div>
           </div>
       </section>
-      <br>
+      </div>
+      <div class="form-group ">
         <input type="radio" value="1" style="visibility: hidden;"  id="1" #1  formControlName="size" name="size"  >
         <input type="radio" value="2" style="visibility: hidden;"  id="2" #2  formControlName="size" name="size"  >
         <input type="radio" value="3" style="visibility: hidden;"  id="3" #3  formControlName="size" name="size"  >
         <input type="radio" value="4" style="visibility: hidden;"  id="4" #4  formControlName="size" name="size"  >
-      <br>
+      </div>
 
-        <button type="button" (click)="checkSize()">check size</button><br>
-      <mat-form-field>
-        <input matInput type="text" placeholder="קוד לקוח" class="inp" readonly formControlName="customerCode" name="customerCode">
-      </mat-form-field>
-      <br> 
-      <mat-form-field >
-        <input matInput placeholder=" מוצא" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)"
+ <div class="row">
+    <div class="col-md-4">
+        <label for="inputFrom" >מוצא</label>
+        <input class="form-control" id="inputFrom" placeholder=" מוצא" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)"
         formControlName="fromLocation" name="fromLocation"/>
-      </mat-form-field>
-      <br>
-      <mat-form-field >
-        <input matInput placeholder=" יעד" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)"
+    </div>
+
+    <div class=" col-md-4">     
+        <label for="inputTo" >יעד</label>
+        <input class="form-control" id="inputTo" placeholder=" יעד" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)"
         formControlName="toLocation" name="toLocation"/>
-      </mat-form-field>
-      <br>
-      <mat-form-field class="example-full-width">
-        <mat-label>מתאריך</mat-label>
-        <input matInput   [matDatepicker]="picker" formControlName="fromDate" [min]="minDateFromDate" [max]="maxDateFromDate" #fromDate>
-        <mat-datepicker-toggle matSuffix [for]="picker"  ></mat-datepicker-toggle>
-        <mat-datepicker  [dateClass]="dateClass" #picker (closed)="updateMinDateToDate(fromDate.value)"></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field>
-        <input  matInput type="time" placeholder="משעה" class="inp" formControlName="fromTime" name="fromTime">
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <mat-label>עד תאריך</mat-label>
-        <input matInput  [matDatepicker]="picker1" formControlName="toDate" [min]="minDateToDate" #toDate>
+    </div>
+  </div> 
+<br>
+  <div class="row">
+    <div class=" col-md-4">
+      <!-- <mat-form-field class="example-full-width"> -->
+        <label for="inputFromDate" class="form-label">מתאריך</label>
+        <input class="form-control" id="inputFromDate"  [matDatepicker]="picker" formControlName="fromDate" [min]="minDateFromDate" [max]="maxDateFromDate" #fromDate>
+        <mat-datepicker-toggle for="inputFromDate"  [for]="picker"  ></mat-datepicker-toggle>
+        <mat-datepicker for="inputFromDate" [dateClass]="dateClass" #picker (closed)="updateMinDateToDate(fromDate.value)"></mat-datepicker>
+      <!-- </mat-form-field> -->
+      </div>
+
+      <div class="col-md-4">
+        <label for="inputFromTime" class="form-label">בשעה</label>
+        <input  class="form-control" id="inputFromTime" type="time" placeholder="בשעה"  formControlName="fromTime" name="fromTime">
+      </div>
+    </div>
+<br>
+    <div class="row">
+      <div class=" col-md-4">
+      <!-- <mat-form-field class="example-full-width"> -->
+        <label for="inputToDate" class="form-label">עד תאריך</label>
+        <input class="form-control" id="inputToDate" [matDatepicker]="picker1" formControlName="toDate" [min]="minDateToDate" #toDate>
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker  [dateClass]="dateClass" #picker1 (closed)="updatemaxDateFromDate(toDate.value)"></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field>
-        <input  matInput type="time" placeholder="עד שעה" class="inp" formControlName="toTime" name="toTime">
-      </mat-form-field>
-        <br>
+      <!-- </mat-form-field> -->
+      </div>
+
+      <div class="col-md-4">
+        <label for="inputToTime">עד שעה</label>
+        <input  class="form-control" id="inputToTime" type="time" placeholder="עד שעה"  formControlName="toTime" name="toTime">
+      </div>
+    </div>
+
+
+    <div class="form-group ">
       <label>סוג חבילה:</label>
       <br>
       <input  type="radio" value="1 "  id="1"  formControlName="type" name="type" >
@@ -94,31 +110,88 @@
       <br>
       <input  type="radio" value="4"  id="4"  formControlName="type" name="type" >
       <label> אחר</label>
-      <br>
-     <br>
-       
-        <mat-form-field>        
-        <input matInput type="text" placeholder=" תאור נוסף או הערה" class="inp" formControlName="describePackage" name="describePackage">
-      </mat-form-field>
-      <br> 
-      <mat-checkbox formControlName="mes" name="mes" #message>מעוניין לקבל התראות על חבילה זו?</mat-checkbox>
-        
-      <mat-form-field [ngStyle]="{'visibility': message.checked ? 'visible' : 'hidden'}">
-        <label> מרחק:</label>        
-        <input matInput type="number"  class="inp" formControlName="distance" name="distance">
-      </mat-form-field>
-      <br>
+      </div>
+<br>
+    <!-- <div class="row">
+      <div class="form-group col-md-6">
+        <label for="inputDescribe" class="form-label">הערה </label>
+        <input class="form-control" id="inputDescribe" type="text" placeholder=" תאור נוסף או הערה"  formControlName="describePackage" name="describePackage">
+      </div>
+    </div> -->
 
-   <!--    TODO: לשנות שיראה כקישור -->
-    <button *ngIf="!isPackage" mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid"
+    <div >
+      <!-- <div class="form-group"> -->
+        <!-- <div class="form-check"> -->
+          <input  type="checkbox" id="checkMes" formControlName="mes" name="mes" #message>
+          <label  for="checkMes">מעוניין לקבל התראות למייל על נסיעות שיתאימו לחבילה זו?</label>
+        <!-- </div> -->
+       <!-- </div> -->
+      </div> 
+<br>
+<div class="row">
+     <div class="col-md-4" [ngStyle]="{'visibility': message.checked ? 'visible' : 'hidden'}"> 
+        <label for="inputDis"> מרחק:</label>        
+        <input class="form-control" type="number" id="inputDis" formControlName="distance" name="distance">
+    </div>
+  </div>
+  <br>
+  
+    <button *ngIf="!isPackage"  class="btn btn-primary " style="cursor: pointer;" type="submit"  [disabled]="!form.valid"
         (click)="submitted=true " mat-dialog-close> שמור</button>
 
-        <button *ngIf="isPackage" mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid"
+        <button *ngIf="isPackage" class="btn btn-primary " style="cursor: pointer;" type="submit"  [disabled]="!form.valid"
         (click)="submitted=true " mat-dialog-close> שלח</button>
-      <br>
-    </div>
+      
+
+    <!-- </div> -->
   </form> 
 
 </mat-dialog-content>
 
 
+<!-- <form>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputPassword4">Password</label>
+      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputAddress">Address</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Sign in</button>
+</form> -->

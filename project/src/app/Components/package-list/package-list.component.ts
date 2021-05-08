@@ -38,6 +38,11 @@ export class PackageListComponent implements OnInit {
   hideme=[];
   panelOpenState = false;
   time1:any;
+  minDateToDate=new Date();
+  minDateFromDate=new Date();
+  maxDateFromDate:Date;
+  minTime:any;
+
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
   constructor(private route:ActivatedRoute, private packageSer: PackageService,private userSer:UserService,
@@ -45,18 +50,24 @@ export class PackageListComponent implements OnInit {
 
     ngOnInit(): void {
       
-      this.minDate=new Date();
       this.getAllPackages();
-      // const id= this.route.snapshot.params['id'];
-      // alert(id)
-      // if(id!=undefined)
-      //   {
-      //     alert("!!!!")
-      //     this.packagesFound=null
-      //   }   
+     
  }
 
-   
+ updateMinDateToDate(minDate:Date)
+ {
+  debugger
+  this.minDateToDate=new Date(minDate)
+ if(new Date(this.minDateToDate).getDate()==new Date().getDate())
+ {
+ this.minTime=new Date().getTime();
+ }
+ }
+ 
+ updatemaxDateFromDate(maxDate:Date)
+ {
+   this.maxDateFromDate=new Date(maxDate);
+ } 
    dateClass = (d: Date): MatCalendarCellCssClasses => {
      const date = d.getDate();
      // Highlight the 1st and 20th day of each month.
@@ -139,7 +150,7 @@ filterPackages(fromDate:string,toDate:string,from:Address,to:Address,time:string
       this.packagesFound=this.packagesFound.filter(d=>new Date(d.toDate)>= new Date(fromDate));
 
     if(toDate)
-      this.packagesFound=this.packagesFound.filter(d=>new Date(d.toDate)<=new Date(toDate));
+      this.packagesFound=this.packagesFound.filter(d=>new Date(d.fromDate)<=new Date(toDate));
   
     if(from)
     {
@@ -179,12 +190,10 @@ filterPackages(fromDate:string,toDate:string,from:Address,to:Address,time:string
   if(size)
   {
     debugger
-    if(size==0)
+    if(size!=0)
     {
-      return this.packagesFound;
+      this.packagesFound=  this.packagesFound.filter(f=>(f.packageSizeCode==size) )
     }
-    else
-    this.packagesFound=  this.packagesFound.filter(f=>(f.packageSizeCode==size) )
   }
   debugger
   this.len=this.packagesFound.length;
@@ -221,10 +230,18 @@ filterPackages(fromDate:string,toDate:string,from:Address,to:Address,time:string
     }];
 
     
-sortBy(value:any)
+sortBy(value:any,from:string,to:string)
 {
+  function compare(a,b) {
+    var time1 = parseFloat(a.fromTime.replace(':','.').replace(/[^\d.-]/g, ''));
+    var time2 = parseFloat(b.fromTime.replace(':','.').replace(/[^\d.-]/g, ''));
+    if(a.fromTime.match(/.*pm/)) time1 += 12; if(b.fromTime.match(/.*pm/)) time2 += 12;
+    if (time1 < time2) return -1;
+    if (time1 > time2) return 1;
+    return 0;
+   }
   debugger
-if(value=='from' && this.fromLat!=0 &&this.fromLng!=0)
+if(value=='from' && from)
 {
   this.packagesFound.sort((a, b) => {
     console.log("a",google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.fromLocationLat, a.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng) ))
@@ -232,27 +249,21 @@ if(value=='from' && this.fromLat!=0 &&this.fromLng!=0)
     console.log("a-b=" ,google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.fromLocationLat, a.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng) )-google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.fromLocationLat, b.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng)))
     return  google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.fromLocationLat, a.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng) )-google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.fromLocationLat, b.fromLocationLng), new google.maps.LatLng(this.fromLat,this.fromLng))})
 }
-if(value=='to' && this.toLng!=0 &&this.toLat!=0)
+if(value=='to' && to)
 {
   this.packagesFound.sort((a, b) => {
     return  google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(a.toLocationLat, a.toLocationLng), new google.maps.LatLng(this.toLat,this.toLng) )-google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(b.toLocationLat, b.toLocationLng), new google.maps.LatLng(this.toLat,this.toLng))})
 }
-// if(value=='time')
-//   {
-//     this.packagesFound.sort((a, b) => {
-//       //  console.log("a.FromDate.getDate()"+new Date( a.FromDate).getTime())
-//       return a.drivingTime.hours- b.drivingTime.hours;
-
-//     });
-//   }
+if(value=='time')
+  {
+    this.packagesFound.sort(compare)
+  }
 if(value=='date')
   {
-  debugger
-      this.packagesFound.sort((a, b) => {
-        //  console.log("a.FromDate.getDate()"+new Date( a.FromDate).getTime())
-        return new Date(a.fromDate).getDate().valueOf() - new Date(b.toDate).getDate().valueOf();
-  
-      });
+  this.packagesFound.sort((a, b) => {
+    return new Date(a.fromDate).getTime() - new Date(b.fromDate).getTime();
+
+  });
     
   }
 

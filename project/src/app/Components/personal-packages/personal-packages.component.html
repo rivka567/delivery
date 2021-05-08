@@ -2,40 +2,40 @@
 
   <div class="row">
 
-<div class="col"><h1>החבילות שלי:</h1></div>
+<div class="col"><h3>החבילות שלי:</h3></div>
 
 <div class="col"><button type="submit" class="btn btn-primary float-left"  mat-button (click)="openPackageDialog()"> צור חבילה</button></div>
 
 
 </div>
-<p style="font-size:large;"> נמצאו {{len}} חבילות מתאימות</p>
+<p style="font-size:large;"> נמצאו {{len}} חבילות </p>
 <br>
-<div class="row">
-  <div class="col">קוד חבילה</div> 
-    <div class="col">מתאריך</div> 
-      <div class="col"> בשעה </div>
-        <div class="col"> עד תאריך </div>
-          <div class="col"> בשעה </div>
-          <div class="col">מוצא</div>
-          <div class="col"> יעד </div>
-  <div class="col"> גודל חבילה </div>
-  <div class="col"> סוג חבילה </div>
+<div class="row table_title">
+  <div class="col-1">קוד חבילה</div> 
+    <div class="col-1">מתאריך</div> 
+      <div class="col-1"> בשעה </div>
+        <div class="col-1"> עד תאריך </div>
+          <div class="col-1"> בשעה </div>
+          <div class="col-2">מוצא</div>
+          <div class="col-2"> יעד </div>
+  <div class="col-1"> גודל חבילה </div>
+  <div class="col-1"> סוג חבילה </div>
   <!-- <th> הערה </th> -->
 </div>
 
-  <div class="row" *ngFor="let package of myListPackage;let i=index" >
-    <div class="col">{{package.packageCode}}</div>
-      <div class="col"> {{package.fromDate|  date:'dd-MM-yyyy' }} </div>
-        <div class="col"> {{package.fromTime}}</div>
-          <div class="col"> {{package.toDate|  date:'dd-MM-yyyy' }} </div>
-            <div class="col"> {{package.toTime}}</div>
-              <div class="col"> {{package.fromLocationFormat}}</div>
-                <div class="col"> {{package.toLocationFormat}}</div>
-                  <div class="col"> {{package.packageSize}}</div>
-                    <div class="col"> {{package.packageType}}</div>
-                      <div class="col">{{package.describePackage}}</div>
-                        <div class="col" (click)="OpenUpdatePackage(package)"><mat-icon style="cursor:pointer">create</mat-icon></div>
-                          <div class="col" (click)="deletePackage(package)"><mat-icon style="cursor:pointer">delete</mat-icon></div>
+  <div class="row table_list" *ngFor="let package of myListPackage;let i=index" >
+    <div class="col-1">{{package.packageCode}}</div>
+      <div class="col-1"> {{package.fromDate|  date:'dd-MM-yyyy' }} </div>
+        <div class="col-1"> {{package.fromTime}}</div>
+          <div class="col-1"> {{package.toDate|  date:'dd-MM-yyyy' }} </div>
+            <div class="col-1"> {{package.toTime}}</div>
+              <div class="col-2"> {{package.fromLocationFormat}}</div>
+                <div class="col-2"> {{package.toLocationFormat}}</div>
+                  <div class="col-1"> {{package.packageSize}}</div>
+                    <div class="col-1"> {{package.packageType}}</div>
+                      <!-- <div class="col">{{package.describePackage}}</div> -->
+                        <div  class="col-1" ><mat-icon style="cursor:pointer" (click)="OpenUpdatePackage(package)">create</mat-icon>
+                        <mat-icon style="cursor:pointer" (click)="deletePackage(package)">delete</mat-icon></div>
 
   </div>
 

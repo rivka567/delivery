@@ -6,6 +6,13 @@ section {
   .example-button-row {
     display: table-cell;
   }
+  .ng-invalid.ng-touched.ng-dirty:not(form) {
+    border: 1px solid red;
+  }
+  
+  .is-invalid {
+    border: 2px solid red;
+  }
   
   .example-button-row button {
     display: table-column;

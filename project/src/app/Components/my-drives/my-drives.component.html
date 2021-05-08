@@ -2,30 +2,40 @@
 
 <mat-dialog-content class="mat-typography">
     <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon><br><br>
-  <label id="example-radio-group-label">נמצאו {{len}} נסיעות מותאמות</label><br>
-  <label id="example-radio-group-label">תבחר את הנסיעה אותה תרצה לשלוח:</label>
+    <h1 id="example-radio-group-label" >נמצאו {{len}} נסיעות מתאימות לחבילה שנבחרה </h1>
+    <h2  *ngIf="myFilterDrives.length>0" id="example-radio-group-label">בחר בנסיעה המתאימה  :</h2>
+    <div class="row table_title" *ngIf="myFilterDrives.length>0">
+    <div class="col-1">קוד נסיעה</div>
+    <div class="col-2">תאריך נסיעה </div>
+    <div class="col-1"> שעת נסיעה </div>
+    <div class="col-2"> מוצא </div>
+    <div class="col-2">  יעד </div>
+    <div class="col-1">  כלי רכב </div>
+    <div class="col-1">  מחיר לק"מ  </div>
+   <!-- <div class="col-1">  חוות דעת </div> -->
+  </div>
   <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-  (ngModelChange)="checkDrive($event)">
+  (ngModelChange)="checkDrive($event)" *ngIf="myFilterDrives.length>0">
     <mat-radio-button class="example-radio-button" *ngFor="let drive of myFilterDrives" [value]="drive"
     (click)="checkDrive(drive)"> 
-    <div class="col-1">{{drive.driveCode}}</div>
-    <div class="col-2">{{drive.driverName}}</div>
-  <div class="col-2"> {{drive.travelDate|  date:'dd-MM-yyyy' }} </div>
-  <div class="col-2">{{drive.drivingTime}}</div>
-  <div class="col-2"> {{drive.fromLocationFormat}}</div>
-  <div class="col-2">{{drive.toLocationFormat}}</div>
-  <div class="col-1">{{drive.transportationType}}</div>
-  <div class="col-1">{{drive.price}}</div>
-  <div class="col-1">{{drive.describeDrive}</div>
+    <label>{{drive.driveCode}}    </label>
+    <!-- <label >{{drive.driverName}}    </label> -->
+  <label > {{drive.travelDate|  date:'dd-MM-yyyy' }}    </label>
+  <label >{{drive.drivingTime}}    </label>
+  <label > {{drive.fromLocationFormat}}    </label>
+  <label >{{drive.toLocationFormat}}    </label>
+  <label >{{drive.transportationType}}    </label>
+  <label >{{drive.price}}    </label>
+  <!-- <div class="col-1">{{drive.describeDrive}}</div> -->
     </mat-radio-button>
   </mat-radio-group>
-  <button (click)="sendEmail()">שלח!!</button>
+  <button class="btn btn-primary" *ngIf="myFilterDrives.length>0" (click)="sendEmail()">שלח בקשה ללקוח</button>
   <br>
   <!-- <mat-paginator [length]="myListDrive.length"
 [pageSize]="10">
 </mat-paginator>   -->
 <a style="color: red;" mat-dialog-close (click)="showDriveDialog()">צור נסיעה חדשה</a><br>
-<a style="color: red;" (click)="showAllDrives()">הצגת כל הנסיעות</a>
+<a style="color: red;" (click)="showAllDrives()">הצג את כל הנסיעות שלי</a>
   </mat-dialog-content>
 
 

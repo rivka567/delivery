@@ -7,13 +7,19 @@
 //     background-color:lightgrey;
 //     border: none;
 // }
-// section{
-//     width: 100%;
-//     height: 15%;
-//     background-color:lightgrey;
-// }
+section{
+    position: relative;
+    top:6px;
+}
+button{
+    background-color:white;
+    border: none;
+    color: rgb(156, 12, 12);
+}
 button:hover{
     text-decoration-line: underline;
     text-decoration-style: solid;
     cursor: pointer;
+    color: rgb(53, 48, 48);
+
   }

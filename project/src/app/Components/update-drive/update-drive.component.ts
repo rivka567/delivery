@@ -57,22 +57,22 @@ export class UpdateDriveComponent implements OnInit {
     //במידה ושינה את 2 הכתובות
     if(this.from&&this.to)
     this.newDrive=new Drive(this.drive.driveCode,this.userSer.currentUser.userCode,null,this.form.value.driving,this.form.value.date,
-      0,this.from,this.fromLat,this.fromLng,0,this.to,this.toLat,this.toLng,this.form.value.describeDrive,true,this.form.value.trans,this.form.value.price,false,0);
+      0,this.from,this.fromLat,this.fromLng,0,this.to,this.toLat,this.toLng,this.form.value.describeDrive,true,this.form.value.trans,this.form.value.price,this.drive.message,this.drive.distance,this.drive.transportationType,new Date(),this.drive.listWaiting,this.drive.driverName);
       //במידה ושינה רק את המוצא
     else if(this.from&&!this.to)
     this.newDrive=new Drive(this.drive.driveCode,this.userSer.currentUser.userCode,null,this.form.value.driving,this.form.value.date,
-      0,this.from,this.fromLat,this.fromLng,this.drive.toLocationId,null,0,0,this.form.value.describeDrive,true,this.form.value.trans,this.form.value.price,false,0 );
+      0,this.from,this.fromLat,this.fromLng,this.drive.toLocationId,null,0,0,this.form.value.describeDrive,true,this.form.value.trans,this.form.value.price,this.drive.message,this.drive.distance,this.drive.transportationType,new Date(),this.drive.listWaiting,this.drive.driverName );
       //במידה ושינה רק את היעד
     else if(!this.from&&this.to)
     this.newDrive=new Drive(this.drive.driveCode,this.userSer.currentUser.userCode,null,this.form.value.driving,this.form.value.date,
-    this.drive.fromLocationId,null,0,0,0,this.to,this.toLat,this.toLng,this.form.value.describeDrive,true,this.form.value.trans,this.form.value.price,false,0);
+    this.drive.fromLocationId,null,0,0,0,this.to,this.toLat,this.toLng,this.form.value.describeDrive,true,this.form.value.trans,this.form.value.price,this.drive.message,this.drive.distance,this.drive.transportationType,new Date(),this.drive.listWaiting,this.drive.driverName);
      //במידה ולא שינה כלום
      else if(!this.from&&!this.to)
      this.newDrive=new Drive(this.drive.driveCode,this.userSer.currentUser.userCode,null,this.form.value.driving,this.form.value.date,
-      this.drive.fromLocationId,null,0,0,this.drive.toLocationId,null,0,0,this.form.value.describeDrive,true,this.form.value.trans,this.form.value.price,false,0);    
+      this.drive.fromLocationId,null,0,0,this.drive.toLocationId,null,0,0,this.form.value.describeDrive,true,this.form.value.trans,this.form.value.price,this.drive.message,this.drive.distance,this.drive.transportationType,new Date(),this.drive.listWaiting,this.drive.driverName);    
       debugger
       console.log("new package",this.newDrive);
-     this.driveSer.updateDrive(this.newDrive).subscribe(
+     this.driveSer.updateDrive(this.newDrive,this.drive.listWaiting).subscribe(
       myData => {console.log("from subscribe",this.newDrive);
       swal({title:"עודכן בהצלחה!",icon:"success"})
       },

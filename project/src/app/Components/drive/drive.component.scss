@@ -2,6 +2,14 @@ section {
   display: table;
   margin: 8px;
 }
+.ng-invalid.ng-touched.ng-dirty:not(form) {
+  border: 1px solid red;
+}
+
+.is-invalid {
+  border: 2px solid red;
+}
+
 
 .example-button-row {
   display: table-cell;

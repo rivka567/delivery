@@ -15,7 +15,7 @@ export class HappinessComponent implements OnInit {
 
   @Input('rating') public rating: number = 3;
   @Input('starCount') public starCount: number = 5;
-  @Input('color') public color: string = 'accent';
+  @Input('color') public color: string = 'primary';
   @Output() public ratingUpdated = new EventEmitter();
 
   public snackBarDuration: number = 2000;
@@ -26,9 +26,9 @@ export class HappinessComponent implements OnInit {
   myHappiness:Happiness;
   submitted=false;
 
-  starColor:StarRatingColor = StarRatingColor.accent;
-  starColorP:StarRatingColor = StarRatingColor.primary;
-  starColorW:StarRatingColor = StarRatingColor.warn;
+  starColor:StarRatingColor = StarRatingColor.primary;
+  // starColorP:StarRatingColor = StarRatingColor.primary;
+  // starColorW:StarRatingColor = StarRatingColor.warn;
 
   constructor(private snackBar: MatSnackBar,private happinSer:HappinessService,private route:ActivatedRoute) {
   }
@@ -81,8 +81,8 @@ export class HappinessComponent implements OnInit {
 }
 export enum StarRatingColor {
   primary = "primary",
-  accent = "accent",
-  warn = "warn"
+  // accent = "accent",
+  // warn = "warn"
 }
 
 

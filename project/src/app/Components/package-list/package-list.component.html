@@ -1,18 +1,18 @@
 
 <div class="title_list row">
 
-    <h1>חפש את המשלוח שמתאים לך</h1>  
+    <h1>חפש את החבילה שמתאים לך</h1>  
 
   <div class="row align-items-center">
 
   <form class="search">
 <div class="row">
   <div class="col-3">
-  <input class="form-control form-control-sm date"  [min]="minDate" matInput [matDatepicker]="picker" (click)="picker.open()"  placeholder="מתאריך" #fromDate >
-  <mat-datepicker #picker></mat-datepicker>
+  <input class="form-control form-control-sm date" [min]="minDateFromDate" [max]="maxDateFromDate"  matInput [matDatepicker]="picker" (click)="picker.open()"  placeholder="מתאריך" #fromDate >
+  <mat-datepicker #picker (closed)="updateMinDateToDate(fromDate.value)"></mat-datepicker>
   
-  <input class="form-control form-control-sm date"  [min]="minDate" matInput [matDatepicker]="picker1" (click)="picker1.open()"  placeholder="עד" #toDate >
-  <mat-datepicker #picker1 ></mat-datepicker>
+  <input class="form-control form-control-sm date" [min]="minDateToDate"  matInput [matDatepicker]="picker1" (click)="picker1.open()"  placeholder="עד" #toDate >
+  <mat-datepicker #picker1 (closed)="updatemaxDateFromDate(toDate.value)"></mat-datepicker>
   </div>
   
   <div class="col-2">
@@ -59,7 +59,7 @@
   <div class="col-3">
   <form>
     <mat-label><span class="float-end">מיין לפי</span></mat-label>
-    <select class="form-selec form-control-sm pl4 float-start"  (change)="sortBy($event.target.value)" >
+    <select class="form-selec form-control-sm pl4 float-start"  (change)="sortBy($event.target.value,fromL.value,toL.value)" >
      <option value="date">תאריך </option>
       <option value="time">שעה </option>
       <option value="from" >מרחק מהמוצא</option>
@@ -78,10 +78,10 @@
   <div class="row table_title">
     
     <div class="col-1">שם הלקוח</div>
-    <div class="col-1"> מתאריך </div>
-    <div class="col-1"> בשעה </div>
+    <div class="col-1"> איסוף מתאריך </div>
+    <div class="col-1"> משעה </div>
     <div class="col-1"> עד תאריך </div>
-    <div class="col-1"> בשעה </div>
+    <div class="col-1"> עד שעה </div>
     <div class="col-2"> מוצא </div>
     <div class="col-2"> יעד </div>
     <div class="col-1">  סוג חבילה </div>
@@ -95,7 +95,7 @@
   </div>
   </div>
   <div class="row table_list" *ngFor="let package of packagesFound;let i=index" >
-    <div class="col-1">{{package.packageCode}}</div>
+    <!-- <div class="col-1">{{package.packageCode}}</div> -->
   <div class="col-1">{{package.customerName}}</div>
   <div class="col-1">{{package.fromDate|  date:'dd-MM-yyyy' }} </div>
   <div class="col-1">{{package.fromTime}} </div>

@@ -1,91 +1,88 @@
 
 <div>
-    <h3>ההודעות שלי </h3>
-    <section style="background-color: gray;">
-      <button (click)="showPackages=true;showDrives=false" >החבילות שלי</button>
-      <button (click)="showPackages=false;showDrives=true" >הנסיעות שלי</button>
-  </section>
+  <div class="row" >
+    <div class="col-2" >  <button class="btn" (click)="showPackages=true;showDrives=false" >החבילות שלי</button></div>
+    <div class="col-2" >  <button class="btn" (click)="showPackages=false;showDrives=true" >הנסיעות שלי</button></div>
+     </div>
+ 
+    <h2>ההודעות שלי </h2>
+   
  <div *ngIf="showPackages">
-      <ul>
-          <p class="header">קוד חבילה </p>
-          <p class="header">מתאריך </p>
-          <p class="header">עד תאריך </p>
-          <p class="header"> מוצא</p>
-          <p class="header">יעד </p>
-          <p class="header">סוג </p>
-          <p class="header"> גודל</p>
-         <br>
-         <p>החבילות שלי:</p>
-         <hr>
-          <li  *ngFor="let p of listPackages;let i = index;">
-              <div *ngIf="p.listWaiting.length>0">
-              <p style="color: red;">{{p.packageCode}}</p>
-              <p style="color: red;"> {{p.fromDate|date:'dd-MM-yyyy' }}--{{p.fromTime}}</p>
-              <p style="color: red;"> {{p.toDate|date:'dd-MM-yyyy' }}--{{p.toTime}}</p>
-              <p style="color: red;"> {{p.fromLocationFormat}}</p>
-              <p style="color: red;"> {{p.toLocationFormat}}</p>
-              <p style="color: red;"> {{p.packageType}}</p>    
-              <p style="color: red;"> {{p.packageSize}}</p>
-              <p style="color: red;" *ngIf="p.status==false">סגור</p>
-              <p style="color: red;" *ngIf="p.status==true">פתוח</p>
-            <button (click)="showUndoBtn(i)"  ><mat-icon>expand_more</mat-icon></button>
-              </div>
-              <div *ngFor="let wp of p.listWaiting" attr.id="{{i}}" [hidden]="showBtn!=i">
-                  <p>{{wp.driveCode}}</p>
-                  <p>{{wp.driverName}}</p>
-                  <p> {{wp.travelDate|  date:'dd-MM-yyyy' }}</p>
-                  <p> {{wp.fromLocationFormat}}</p>
-                  <p> {{wp.toLocationFormat}}</p>
-                  <p> {{wp.drivingTime}}</p>
-                  <p> {{wp.transportationType}}</p>  
-                  <button mat-button (click)="sendMessageFromCustomer(p,wp)">שלח הודעה</button> 
-                  <button mat-button *ngIf="p.status==true" (click)="confirmDrive(p,wp,p.listWaiting)"> אשר שליח</button> 
-                  <button mat-button  (click)="deleteWaitingMessageFromCustomer(p,wp)">הסר</button> 
-                  <button mat-button (click)="finishPackage(wp.driverCode,p.customerName)">חוות דעת</button> 
-              </div> 
-          </li>
-      </ul>
+  <!-- <div class="row>"><h3>החבילות :</h3></div> -->
+  <div class="row table_title" >
+    <div class="col-1">קוד חבילה </div>
+    <div class="col-1">מתאריך </div>
+    <div class="col-1">עד תאריך </div>
+    <div class="col-2"> מוצא</div>
+    <div class="col-2">יעד </div>
+    <div class="col-1">סוג חבילה </div>
+    <div class="col-1"> גודל חבילה</div>
+    <div class="col-1"> סטטוס </div>
+  </div>
+  <div  *ngFor="let p of listPackages;let i = index;">
+    <div class="row table_list" style="color: blue;" *ngIf="p.listWaiting.length>0">
+      <div class="col-1">{{p.packageCode}}</div>
+        <div class="col-1">{{p.fromDate|date:'dd-MM-yyyy' }}</div>
+          <div class="col-1"> {{p.toDate|date:'dd-MM-yyyy' }}</div>
+            <div class="col-2"> {{p.fromLocationFormat}}</div>
+              <div class="col-2"> {{p.toLocationFormat}}</div>
+                <div class="col-1"> {{p.packageType}}</div>    
+                  <div class="col-1"> {{p.packageSize}}</div>
+                    <div class="col-1" *ngIf="p.status==false">סגור</div>
+                      <div class="col-1" *ngIf="p.status==true">פתוח</div>
+ <div class="col-1"> <i class="bi bi-caret-down" (click)="showUndoBtn(i)"></i></div>
+ <br>
+    </div>
+
+  <div class="row" style="color: red;" *ngFor="let wp of p.listWaiting" attr.id="{{i}}" [hidden]="showBtn!=i">
+    <div class="col-1">{{wp.driverName}}</div>  
+    <div class="col-1"> <button mat-button *ngIf="p.status==true" (click)="confirmDrive(p,wp,p.listWaiting)"> אשר שליח</button> </div>
+    <div class="col-1"><button mat-button  (click)="deleteWaitingMessageFromCustomer(p,wp)">הסר</button> </div>
+    <div class="col-1"> <button mat-button (click)="finishPackage(wp.driverCode,p.customerName)">חוות דעת</button> </div>
+   <div class="col-1"> <i class="bi bi-three-dots-vertical" (click)="openShowDriveDialog(wp,p)"></i></div>
+  </div>
+
   </div>
 </div>
+
+
+
+
+
 <div *ngIf="showDrives"> 
+  <!-- <div><h2>הנסיעות שלי </h2></div> -->
+
   <div>
-    <ul>
-        <p class="header">קוד נסיעה </p>
-        <p class="header">תאריך </p>
-        <p class="header"> מוצא</p>
-        <p class="header">יעד </p>
-        <p class="header">שעה </p>
-        <p class="header">תחבורה </p>
-      <br>
-       <p>הנסיעות שלי:</p>
-       <hr>
-        <li  *ngFor="let d of listDrives;let i = index;">
-            <div *ngIf="d.listWaiting.length>0">
-              <p style="color: red;">{{d.driveCode}}</p>
-              <p style="color: red;"> {{d.travelDate|  date:'dd-MM-yyyy' }}</p>
-              <p style="color: red;"> {{d.fromLocationFormat}}</p>
-              <p style="color: red;"> {{d.toLocationFormat}}</p>
-              <p style="color: red;"> {{d.drivingTime}}</p>
-              <p style="color: red;"> {{d.transportationType}}</p> 
-              <p *ngIf="d.status==false" style="color: red;"> נסיעה סגורה</p>
-        <button mat-button *ngIf="d.status==true" (click)="changeStatusToClose(d.driveCode)"> לסגור נסיעה </button> 
-        <button (click)="showUndoBtn(i)"  ><mat-icon>expand_more</mat-icon></button>
-            </div>
-            <div *ngFor="let wd of d.listWaiting" attr.id="{{i}}" [hidden]="showBtn!=i">
-              <p>{{wd.packageCode}}</p>
-              <p>{{wd.customerName}}</p>
-              <p> {{wd.fromDate|  date:'dd-MM-yyyy' }}--{{wd.fromTime}}</p>
-              <p> {{wd.toDate|  date:'dd-MM-yyyy' }}--{{wd.toTime}}</p>
-              <p> {{wd.fromLocationFormat}}</p>
-              <p> {{wd.toLocationFormat}}</p>
-              <p> {{wd.packageType}}</p>    
-              <p> {{wd.packageSize}}</p> 
-              <p *ngIf="wd.status==false">אושרה ע"י הלקוח</p>
-              <p *ngIf="wd.status==true">פתוח</p>
-              <button mat-button (click)="sendMessageFromDelivery(d,wd)">שלח הודעה</button> 
-              <button *ngIf="wd.status==true" mat-button (click)="deleteWaitingMessageFromDelivery(d,wd)">הסר</button> 
+    <div class="row table_title" >
+        <div class="col-1">קוד נסיעה </div>
+        <div class="col-2">תאריך </div>
+        <div class="col-2"> מוצא</div>
+        <div class="col-2">יעד </div>
+        <div class="col-1">שעה </div>
+        <div class="col-1">כלי רכב </div>
+        <br>
+   </div>
+        <div  style="color: blue;" *ngFor="let d of listDrives;let i = index;">
+            <div class="row table_list" *ngIf="d.listWaiting.length>0">
+              <div class="col-1">{{d.driveCode}}</div>
+              <div class="col-2"> {{d.travelDate|  date:'dd-MM-yyyy' }}</div>
+              <div class="col-2"> {{d.fromLocationFormat}}</div>
+              <div class="col-2"> {{d.toLocationFormat}}</div>
+              <div class="col-1"> {{d.drivingTime}}</div>
+              <div class="col-1"> {{d.transportationType}}</div> 
+              <div class="col-1" ><p *ngIf="d.status==false"> נסיעה סגורה</p>
+ <button mat-button *ngIf="d.status==true" (click)="changeStatusToClose(d.driveCode)"> סגור נסיעה </button></div>     
+  <div class="col-1"> <i class="bi bi-caret-down" (click)="showUndoBtn(i)"></i></div>
+  <br>
+
+</div>
+            <div class="row" style="color: red;" *ngFor="let wd of d.listWaiting" attr.id="{{i}}" [hidden]="showBtn!=i">
+              <div class="col-1">{{wd.customerName}}</div>
+              <div class="col-1"> <p *ngIf="wd.status==false">בקשה אושרה</p>
+              <p *ngIf="wd.status==true">פתוח</p> </div>  
+              <div class="col-1"><button  mat-button (click)="deleteWaitingMessageFromDelivery(d,wd)">הסר</button> </div>
+              <div class="col-1"> <i class="bi bi-three-dots-vertical" (click)="openShowPackageDialog(wd,d)"></i></div>
             </div> 
-        </li>
-    </ul>
+        </div>
   </div>
 </div>

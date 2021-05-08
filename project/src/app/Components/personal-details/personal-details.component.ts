@@ -1,3 +1,4 @@
+import { componentFactoryName } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { User } from 'src/app/Classes/user';
@@ -21,6 +22,7 @@ export class PersonalDetailsComponent implements OnInit {
   openDialog()
   {
     const dialogRef = this.dialog.open(UpdatePersonalDetailsComponent,{ disableClose: true })
+    dialogRef.componentInstance.myUser=this.userSer.currentUser;
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       this.myUser=this.userSer.currentUser;

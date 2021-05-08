@@ -17,7 +17,7 @@ export class ShowAllHappinessComponent implements OnInit {
 
   listHappinessByDeliveryId:Happiness[]=[];
   deliveryId:string;
-  @Input('color') public color: string = 'accent';
+  @Input('color') public color: string = 'primary';
   @Output() public ratingUpdated = new EventEmitter();
 
   public snackBarDuration: number = 2000;
@@ -26,9 +26,11 @@ export class ShowAllHappinessComponent implements OnInit {
   public starCount: number = 5;
   public len:number;
 
-  starColor:StarRatingColor = StarRatingColor.accent;
-  starColorP:StarRatingColor = StarRatingColor.primary;
-  starColorW:StarRatingColor = StarRatingColor.warn;
+   starColor:StarRatingColor = StarRatingColor.lightskyblue;
+
+  // starColor:StarRatingColor = StarRatingColor.accent;
+  // starColorP:StarRatingColor = StarRatingColor.primary;
+  // starColorW:StarRatingColor = StarRatingColor.warn;
 
   ngOnInit(): void {
     console.log("a "+this.starCount)
@@ -63,7 +65,7 @@ export class ShowAllHappinessComponent implements OnInit {
 }
 
 export enum StarRatingColor {
-  primary = "primary",
-  accent = "accent",
-  warn = "warn"
+  lightskyblue = "lightskyblue",
+  // accent = "accent",
+  // warn = "warn"
 }

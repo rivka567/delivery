@@ -37,8 +37,18 @@ console.log("data");
       this.driveSer.getDrivesByUserId(this.userSer.currentUser.userCode).subscribe(
       myData => {
         this.myListDrive=myData;
+        this.myListDrive=this.myListDrive.filter(d=>d.status==true)
         debugger
-        this.myFilterDrives=myData;
+        if(this.packageSer.currentPackage.listWaiting.length>0)
+        {
+          this.packageSer.currentPackage.listWaiting.forEach(d => {
+            let driveInListWaiting=this.myListDrive.find(d1=>d1.driveCode==d.driveCode)
+            if(driveInListWaiting)
+           this.myListDrive= this.myListDrive.filter(d2=>d2.driveCode!=d.driveCode)
+          });
+        }
+
+        this.myFilterDrives=this.myListDrive;
        // סינון לפי תאריך נסיעה
        this.myFilterDrives= this.myFilterDrives.filter(d=>(new Date(d.travelDate)>=new Date(this.packageSer.currentPackage.fromDate)&&new Date(d.travelDate)<= new Date(this.packageSer.currentPackage.toDate)));
         //סינון לפי מוצא
@@ -70,23 +80,22 @@ console.log("data");
   }
   sendEmail()
   {
-  if(this.packageSer.currentPackage.listWaiting.length==0)
-  {
+  // if(this.packageSer.currentPackage.listWaiting.length==0)
    debugger 
    this.emailSer.sendDriveByEmail(this.packageSer.currentPackage, this.userSer.myCustomer.userMail,this.userSer.currentUser.userName+" "+"מעוניין לקחת חבילה שלך",this.driveSer.currentDrive)
    .subscribe(data=> {swal({title:"הבקשה נשלחה בהצלחה",icon:'success'})} ,
-  err=>{swal({title:"שגיאה!",icon:'error'})});
-  }
-  else{
-    //בודק האם בעבר נשלחה בקשה לנסיעה זו
-    let driveInListWaiting=this.packageSer.currentPackage.listWaiting.find(d=>d.driveCode=this.driveSer.currentDrive.driveCode)
-     if(driveInListWaiting)
-         swal({title:"בקשה זו בוצעה בעבר",text:"לצפייה בפרטי הבקשה היכנס לאזור ההודעות ",icon:"error"})
-    else
-    this.emailSer.sendDriveByEmail(this.packageSer.currentPackage, this.userSer.myCustomer.userMail,this.userSer.currentUser.userName+" "+"מעוניין לקחת חבילה שלך",this.driveSer.currentDrive)
-    .subscribe(data=> { swal({title:"הבקשה נשלחה בהצלחה",icon:'success'})} ,
-    err=>{ swal({title:"שגיאה!",icon:'error'}) });
-  }
+   err=>{ swal({title:"בקשה לא נשלחה",text:"נסה שנית",icon:'error'}) } );
+  
+  // else{
+  //   //בודק האם בעבר נשלחה בקשה לנסיעה זו
+  //   let driveInListWaiting=this.packageSer.currentPackage.listWaiting.find(d=>d.driveCode=this.driveSer.currentDrive.driveCode)
+  //    if(driveInListWaiting)
+  //        swal({title:"בקשה זו בוצעה בעבר",text:"לצפייה בפרטי הבקשה היכנס לאזור ההודעות ",icon:"error"})
+  //   else
+  //   this.emailSer.sendDriveByEmail(this.packageSer.currentPackage, this.userSer.myCustomer.userMail,this.userSer.currentUser.userName+" "+"מעוניין לקחת חבילה שלך",this.driveSer.currentDrive)
+  //   .subscribe(data=> { swal({title:"הבקשה נשלחה בהצלחה",icon:'success'})} ,
+  //   err=>{ swal({title:"שגיאה!",icon:'error'}) });
+  // }
   }
 
   showDriveDialog()

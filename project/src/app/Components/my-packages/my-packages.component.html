@@ -1,39 +1,42 @@
 <mat-dialog-content class="mat-typography">
-  <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon><br><br>
-<h2 id="example-radio-group-label" >נמצאו {{len}} חבילות מתאימות לנסיעה זו </h2>
-<h3 id="example-radio-group-label" *ngIf="myFilterPackages">תבחר/י את החבילה אותה אתה מעוניין לשלוח:</h3>
-<div class="row">
-  <div class="col-2">מתאריך</div>
-  <div class="col-1">בשעה</div>
-  <div class="col-2">עד תאריך</div>
-  <div class="col-1">עד שעה </div>
-  <div class="col-2">מוצא</div>
-  <div class="col-2">יעד</div>
-  <div class="col-1">סוג חבילה</div>
-  <div class="col-1">גודל חבילה</div>
-  <!-- <div class="col-2">{{package.describePackage}}</div> -->
+  <div><mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon></div>
+<h1 id="example-radio-group-label" >נמצאו {{len}} חבילות מתאימות לנסיעה שנבחרה </h1>
+<h2 id="example-radio-group-h3" *ngIf="myFilterPackages.length>0">בחר בחבילה אותה תרצה לשלוח בנסיעה זו:</h2>
+
+  <div class="row table_title" *ngIf="myFilterPackages.length>0">
+    
+    <div class="col-1">קוד חבילה</div>
+    <div class="col-1"> איסוף מתאריך </div>
+    <div class="col-1"> משעה </div>
+    <div class="col-1"> עד תאריך </div>
+    <div class="col-1"> עד שעה </div>
+    <div class="col-2"> מוצא </div>
+    <div class="col-2"> יעד </div>
+    <div class="col-1">  סוג חבילה </div>
+    <div class="col-1">  גודל חבילה</div>
 </div>
 
 <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-(ngModelChange)="checkPackage($event)">
-  <mat-radio-button class="example-radio-button" *ngFor="let package of myFilterPackages" [value]="package"
+ *ngIf="myFilterPackages.length>0" (ngModelChange)="checkPackage($event)">
+  <mat-radio-button class="col-1" class="example-radio-button" *ngFor="let package of myFilterPackages" [value]="package"
   (click)="checkPackage(package)">
   
-  <div class="row">
-    <div class="col-1">{{package.packageCode}} </div>
-    <div class="col-2">{{package.fromDate|  date:'dd-MM-yyyy' }} </div>
-    <div class="col-1">{{package.fromTime}} </div>
-    <div class="col-2">{{package.toDate|  date:'dd-MM-yyyy' }} </div>
-    <div class="col-1">{{package.toTime}} </div>
-    <div class="col-2">{{package.fromLocationFormat}}</div>
-    <div class="col-2">{{package.toLocationFormat}}</div>
-    <div class="col-1">{{package.packageType}}</div>
-    <div class="col-1">{{package.packageSize}}</div>
+  <div >
+    <label>{{package.packageCode}} </label>
+    <label >{{package.fromDate|  date:'dd-MM-yyyy' }} </label><span>      </span>
+    <label>{{package.fromTime}} </label>
+    <label >{{package.toDate|  date:'dd-MM-yyyy' }} </label><span>      </span>
+    <label >{{package.toTime}} </label><span>      </span>
+    <label >{{package.fromLocationFormat}}</label><span>      </span>
+    <label >{{package.toLocationFormat}}</label><span>      </span>
+    <label >{{package.packageType}}</label><span>      </span>
+    <label >{{package.packageSize}}</label><span>      </span>
     <!-- <div class="col-2">{{package.describePackage}}</div> -->
   </div>
   </mat-radio-button>
 </mat-radio-group>
-<button (click)="sendEmail()">שלח בקשה במייל</button>
+<br>
+<button class="btn btn-primary" *ngIf="myFilterPackages.length>0" (click)="sendEmail()">שלח בקשה לשליח</button>
 <br><br>
 <a style="color: red;" mat-dialog-close (click)="openPackaeDialog()">צור חבילה חדשה</a><br>
 <a style="color: red;" (click)="showAllPackages()">הצג את כל החבילות שלי</a>

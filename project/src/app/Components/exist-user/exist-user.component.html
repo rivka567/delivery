@@ -5,9 +5,9 @@
     <h1>התחבר / הירשם</h1>
  <div *ngIf="!user.userName&&showEmailInput==false">
 
-      <form>
+      <form [formGroup]="form">
        <div class="mb-3">
-      <input  class="form-control" [type]="hide ? 'password' : 'text'" matInput placeholder="הקש סיסמא" #id type="password" >
+      <input data-toggle="tooltip" data-placement="bottom" title="הסיסמא חייבת להכיל לפחות 6 תויים"  class="form-control" [type]="hide ? 'password' : 'text'"  placeholder="הקש סיסמא" formControlName="password" name="password" #id type="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}} </mat-icon>
         </button>
@@ -15,7 +15,7 @@
     </div> 
 
     <div class="mb-3">
-      <button class="btn btn-primary" mat-button (click)="getUserById(id.value)" >היכנס</button>
+      <button class="btn btn-primary" type="submit" [disabled]="!form.valid"  (click)="getUserById(id.value)" >היכנס</button>
     </div>
   </form>
  
@@ -48,12 +48,13 @@
 
 
      <div *ngIf="showEmailInput==true">
-
+     <form [formGroup]="formEmail">
       <div class="mb-3">
-        <input class="form-control" type="email" matInput placeholder="הזן כתובת מייל" #mail >
+        <input class="form-control" type="email"  placeholder="הזן כתובת מייל" #mail formControlName="email" name="email" [ngClass]="{ 'is-invalid': submitted && fe.email.errors }">
       </div>
-        <button type="submit" class="btn btn-primary" mat-button (click)="sendCodeByEmail(mail.value)">שלח לי את הקוד</button>   
 
+        <button type="submit" style="cursor: pointer;" [disabled]="!formEmail.valid" class="btn btn-primary"  (click)="sendCodeByEmail(mail.value)">שלח לי את הקוד</button>   
+      </form>
       </div>
 
       <div class="userDiv" *ngIf="user.userName" >

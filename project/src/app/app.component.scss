@@ -84,3 +84,11 @@ section.sort {
   color: rgb(66, 66, 66);
 
 }
+.home_page {
+  background-image: url(../assets/HomeBG.png);
+  background-position-x: center;
+    background-repeat: no-repeat;
+    display: table;
+    min-height: 650px;
+    background-size: contain;
+}

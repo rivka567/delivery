@@ -54,6 +54,8 @@ import { ShowAllHappinessComponent } from './Components/show-all-happiness/show-
 import { SendMessageComponent } from './Components/send-message/send-message.component';
 import { ShowMessageAboutPackageComponent } from './Components/show-message-about-package/show-message-about-package.component';
 import { ShowMessageAboutDriveComponent } from './Components/show-message-about-drive/show-message-about-drive.component';
+import { ShowPackageComponent } from './Components/show-package/show-package.component';
+import { ShowDriveComponent } from './Components/show-drive/show-drive.component';
 
 
 const appRoutes: Routes =
@@ -121,6 +123,8 @@ const config = {
     SendMessageComponent,
     ShowMessageAboutPackageComponent,
     ShowMessageAboutDriveComponent,
+    ShowPackageComponent,
+    ShowDriveComponent,
     
   ],
   imports: [

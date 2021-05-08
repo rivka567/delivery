@@ -220,12 +220,10 @@ let t=new Date(1,1,2020,parseInt(h),parseInt(m),0,0)
 }
 if(trans)
 {
-  if(trans==0)
+  if(trans!=0)
   {
-    return this.driversFound;
+    this.driversFound=  this.driversFound.filter(f=>(f.transportation==trans) )
   }
-  else
-  this.driversFound=  this.driversFound.filter(f=>(f.transportation==trans) )
 }
 debugger
 this.len=this.driversFound.length;
@@ -308,6 +306,7 @@ if(value=='date')
 
     }); 
   }
+  this.len=this.driversFound.length;
 }
 
 

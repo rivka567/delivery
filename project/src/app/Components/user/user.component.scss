@@ -1,9 +1,17 @@
 .mat-typography {
-  height: 600px;
+  height: 400px;
   width: 450px;
   background-color: white;
   border-color: grey;
 } 
+
+.ng-invalid.ng-touched.ng-dirty:not(form) {
+  border: 1px solid red;
+}
+
+.is-invalid {
+  border: 2px solid red;
+}
 
 // .b-container{
 //   position: relative;

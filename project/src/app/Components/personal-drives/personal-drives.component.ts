@@ -50,12 +50,12 @@ checkListWaitingForDrive(d:Drive)
   //בדיקה האם החבילה הזו נסגרה עם לקוחות
   filterDrives=filterDrives.filter(d=>d.status==false)
   if(filterDrives.length!=0)
-  alert("נסיעה זו נסגרה עם "+filterDrives.length+" לקוחות")
+ swal({title:"נסיעה זו נסגרה עם "+filterDrives.length+" לקוחות",text:"האם אתה בטוח שברצונך למחוק נסיעה זו ותשלח הודעת ביטול ללקוחות אלו",icon:"warning"})
   else
   alert("נסיעה זו מקושרת לחבילות אחרות")
   }
 else
-alert("נסיעה זו לא מקושרת לשום חבילה")
+swal({text:"האם אתה בטוח שברצונך למחוק נסיעה זו?",icon:"warning"})
 this.deleteDrive(d)
 }
 
@@ -74,7 +74,8 @@ deleteDrive(d:Drive)
     myErr => {
       console.log(myErr.message);
       swal({
-        title: "שגיאה",
+        title: "שגיאה בעת ניסיון המחיקה",
+        text:"נסה שנית",
         icon: "error",     
         
       })

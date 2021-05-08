@@ -1,0 +1,21 @@
+<mat-dialog-content class="mat-typography">
+    <div><mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon></div>
+
+    <div class="card-body">
+        
+        <h3 >פרטי הנסיעה:</h3>
+        <p class="card-text">{{drive.driveCode}}</p>
+        <p class="card-text">{{drive.driverName}}</p>
+        <p class="card-text">{{drive.travelDate | date:'dd-MM-yyyy'}}</p>
+        <p class="card-text">{{drive.drivingTime}}</p>
+        <p class="card-text">{{drive.fromLocationFormat}}</p>
+        <p class="card-text">{{drive.toLocationFormat}}</p>
+        <p class="card-text">{{drive.transportationType}}</p>
+        <p class="card-text">{{drive.price}}</p>
+        <p class="card-text" *ngIf="drive.describeDrive">{{drive.describeDrive}}</p>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" #message></textarea>
+        <button type="button" class="btn btn-primary mb-2 " (click)="sendMessageFromCustomer(message.value)">שלח הודעה</button>
+    
+      </div>
+    </mat-dialog-content> 
+    

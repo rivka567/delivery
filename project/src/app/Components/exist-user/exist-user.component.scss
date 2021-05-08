@@ -33,10 +33,18 @@
 // }  
 
 .mat-typography {
-    height: 600px;
+    height: 400px;
     width: 450px;
     background-color: white;
     border-color: grey;
     font-family: arimo;
   }  
 
+  .ng-invalid.ng-touched.ng-dirty:not(form) {
+    border: 1px solid red;
+  }
+  
+  .is-invalid {
+    border: 2px solid red;
+  }
+  

@@ -1,17 +1,30 @@
 <mat-dialog-content class="mat-typography">
 
 <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon>
-<br><br>
 
+<div ><h2>הוסף חוות דעת:</h2></div>
 <!-- <form *ngIf="form,myHappiness" [formGroup]="form" (ngSubmit)="addHappiness(name.value,happiness.value)"> -->
-<input type="text" placeholder="שם " class="inp"  #name>
-<br>
-<mat-star-rating [rating]="rating"  [starCount]="starCount" [color]="starColor" (ratingUpdated)="onRatingChanged($event)"></mat-star-rating>
+  <div class="row">
+    <h3 for="inputName">הכנס שם:</h3>
+  
+  </div>
+  <div class="row">
+    <input type="text" placeholder="שם " id="inputName" class="form-control col-4"  #name>
+  </div>
+
+  <br>
+  <div class="row">
+  <h3 >דרג את חוות דעתך:</h3>
+  </div>
+<div>
+<mat-star-rating [rating]="rating"  [starCount]="starCount" [color]="color" (ratingUpdated)="onRatingChanged($event)"></mat-star-rating>
 <button mat-icon-button [color]="color" *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i" (click)="onClick(i+1)" [matTooltip]="ratingId+1" matTooltipPosition="above">
     <mat-icon>
       {{showIcon(i)}}
     </mat-icon>
   </button>
+</div>
+
   <mat-error *ngIf="starCount == null || starCount == 0">
     Star count is <strong>required</strong> and cannot be zero
   </mat-error>
@@ -19,8 +32,16 @@
       Your rated <span class="body-2">{{rating}}</span> / <span class="body-2">{{starCount}}</span>
   </p>
 
-  <input type="text" matInput placeholder="הערה" class="inp"  #happiness>
-  <br><br>
- <button mat-button style="cursor: pointer;" (click)="addHappiness(name.value,happiness.value)" mat-dialog-close > שמור</button>
-<!-- </form> -->
+  <div >
+    <div class="row">
+    <h3 for="inputDes">תיאור:</h3>
+  </div>
+  <div class="row">
+    <textarea class="form-control col-6" id="inputDes" rows="3" #happiness></textarea>
+  </div>
+  </div>
+  <div>
+ <button class="btn btn-primary" style="cursor: pointer;" (click)="addHappiness(name.value,happiness.value)" mat-dialog-close > שמור</button>
+</div>
+ <!-- </form> -->
 </mat-dialog-content>

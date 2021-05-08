@@ -5,50 +5,54 @@
        <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon> 
           <h1>פרטים אישיים</h1>                 
               <div class="mb-3">
-              <input class="form-control" matInput [type]="hide ? 'password' : 'text'" id="password" #password formControlName="password" name="password">
+              <input data-toggle="tooltip" data-placement="bottom" title="הסיסמא חייבת להכיל לפחות 6 תויים" class="form-control"  [type]="hide ? 'password' : 'text'" id="password" #password formControlName="password" name="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" >
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}} </mat-icon>
               </button>
-               <!--    <div class="form-text" *ngIf="form.value.password.errors?.required"> שדה חובה </div>
+              <!-- <div for="password" *ngIf="password.errors.required">
+                password is required.
+              </div> -->
+              </div>
+              
+              <!-- <input type="password" name="password" formControlName="password" #password placeholder="סיסמה" autocomplete="off" class="shadow-md border w-full h-10 px-3 py-2 text-orange-500 focus:outline-none focus:border-orange-500 mb-3 rounded"> 
+                <div *ngIf="submitted && password.errors" class="invalid-feedback">
+                    <div *ngIf="password.errors.required">Password is required</div>
+                    <div *ngIf="password.errors.required">Password must be at least 6 characters</div>
+                </div>
+            </div> -->
+              <!-- <div class="form-text" *ngIf="form.value.password.errors?.required"> שדה חובה </div>
           <div class="form-text" *ngIf="password.errors?.pattern"> חייב להכיל לפחות מספר אחד ואותיות גדולות וקטנות, ולפחות 7 תווים או יותר</div>   
            -->
            
-            </div>
-            <!-- <input style="display:inline;" matInput class="inp" placeholder="password" [type]="hide ? 'password' : 'text'" formControlName="password" name="password">
+            <!-- </div>
+           <input style="display:inline;" matInput class="inp" placeholder="password" [type]="hide ? 'password' : 'text'" formControlName="password" name="password">
             <mat-icon style="display:inline;" (mouseover)="hide=!hide" (mouseout)="hide=!hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            <mat-hint *ngIf="!passwordInput.value">Enter your password</mat-hint> -->
-            
+            <mat-hint *ngIf="!passwordInput.value">Enter your password</mat-hint> 
+             -->
             <div class="mb-3">
-              <input class="form-control"  type="text" placeholder="שם "  formControlName="name"  name="name">
+              <input class="form-control"  type="text" placeholder="שם "  formControlName="name"  name="name" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
             </div>
             
-             <!-- <div class="mb-3">
-              <input class="form-control" type="text"  placeholder="טלפון "  formControlName="phone" name="phone">
-            </div> -->
+ 
             
             <div class="mb-3">
-                <input class="form-control" type="text" placeholder="דואר אלקטרוני"  formControlName="gmail" name="gmail" >
+                <input class="form-control" type="text" placeholder="דואר אלקטרוני"  formControlName="gmail" name="gmail" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
              </div>
 
-            <!-- <div class="mb-3">
-              <input class="form-control" type="number"  placeholder="גיל"  formControlName="age" name="age" >
-            </div> -->
-            
-            <!-- <div class="mb-3">
-            <mat-checkbox  formControlName="mes" name="mes" (ngModel)="checked" >האם אתה מעוניין לקבל התראות?</mat-checkbox>   
-          </div>     -->
      
             <div class="mb-3">
             <button class="btn btn-primary" style="cursor: pointer;" type="submit" [disabled]="!form.valid"  (click)="submitted=true" >
               שמור
             </button>
             </div>
-            <!-- <a mat-dialog-close class="b-container" routerLink="exist-user"> התחבר</a> -->
+         <!-- <a mat-dialog-close class="b-container" routerLink="exist-user"> התחבר</a> -->
 
           <br>        
       </div>
     </form>
 </mat-dialog-content>
+
+
 
 <!-- <div class="form-group col-5">
   <label style="font-family: Calibri;">תעודת זהות</label>
@@ -60,3 +64,59 @@
   </div>
 
 </div>‏ -->
+<!-- <div class="login">‏
+  <form class="form-content" *ngIf="form,newUesr" [formGroup]="form" (ngSubmit)="addUser()" style="font-family: monospace;font-weight: bold;">
+      <div class="w-full h-screen flex">
+          <div class="bg-white flex flex-col justify-center items-center w-5/12 shadow-lg">
+              <h1 class="text-3xl font-bold text-orange-500 mb-2" style="color: #FF6600;">כניסה לחשבון שלך</h1>
+              <div class="w-1/2 text-center"> -->
+                  <!-- <div class="col">
+                  <div class="form-group">
+                      <label style="font-weight: bold;color: grey;">שם משתמש</label>
+                      <input type="text" placeholder="מייל" formControlName="email" #email class="form-control" [(ngModel)]="customers.Gmail" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                          <div *ngIf="f.email.errors.required">Email is required</div>
+                          <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                      </div>
+                  </div>
+              </div> -->
+                 
+                  <!-- <div class="form-group">
+                      <input type="password" placeholder="סיסמה" formControlName="password" class="form-control" #password [type]="hide ? 'password' : 'text'" [(ngModel)]="newUser.userCode" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" /> -->
+
+                      <!-- <input type="password" name="password" formControlName="password" #password placeholder="סיסמה" autocomplete="off" class="shadow-md border w-full h-10 px-3 py-2 text-orange-500 focus:outline-none focus:border-orange-500 mb-3 rounded"> -->
+                      <!-- <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                          <div *ngIf="password.errors.required">Password is required</div>
+                          <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+                      </div>
+                  </div> -->
+
+                  <!-- <div class="form-group">
+                    <input type="text" placeholder="שם משתמש" formControlName="gmail" #gmail class="form-control" [(ngModel)]="newUser.userMail" [ngClass]="{ 'is-invalid': submitted && f.gmail.errors }" /> -->
+
+                    <!-- <input type="text" name="username" #email formControlName="email" placeholder="שם משתמש" autocomplete="off" class="shadow-md border w-full h-10 px-3 py-2 text-orange-500 focus:outline-none focus:border-orange-500 mb-3 rounded">
+                    <div *ngIf="submitted && f.gmail.errors" class="invalid-feedback">
+                        <div *ngIf="f.gmail.errors.required">Email is required</div>
+                        <div *ngIf="f.gmail.errors.gmail">Email must be a valid email address</div>
+                    </div>
+                </div> -->
+                  <!-- <button class="bg-orange-500 hover:bg-orange-600 text-white px-3 py-1 rounded text-lg focus:outline-none shadow">Sign In</button> -->
+                  <!-- Auth Buttton -->
+                  <!-- <button type="submit" [disabled]="!form.valid"  (click)="submitted=true"  class="w-full py-3 mt-10 bg-gray-800 rounded-sm
+           font-medium text-white uppercase
+           focus:outline-none hover:bg-gray-700 hover:shadow-none" style="background-color: #FF6600;color: whitesmoke;">
+           התחבר
+       </button> -->
+                  <!-- <br><br>
+                  <div>
+                      <a routerLink="/register" style="color: #FF6600;text-align: center;"> אין לך עדין חשבון?</a>
+                  </div>
+                  <br>
+                  <div>
+                      <a routerLink="/forgetPassword" style="color: #FF6600;text-align: center;"> שכחתי סיסמה?</a>
+                  </div> -->
+              <!-- </div>
+          </div>
+      </div>
+  </form>
+</div> -->

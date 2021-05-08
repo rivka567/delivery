@@ -51,10 +51,14 @@ getDriveById(id:number)
     return this.http.get<Array<Drive>>(this.URL + "/GetDrivesByUserId/"+id);
   }
 
-  updateDrive(updateDrive:Drive): Observable<string> {
+  updateDrive(updateDrive:Drive,listWaiting:Package[]): Observable<string> {
     debugger
+    const array={
+      'listWaiting':listWaiting,
+      'updateDrive':updateDrive
+    }
     console.log("from service:",updateDrive);
-    return this.http.post<string>(this.URL + "/UpdateDrive",updateDrive);
+    return this.http.post<string>(this.URL + "/UpdateDrive",array);
   }
 
   deleteDrive(drive:Drive,listWaiting:Package[]): Observable<Array<Drive>> 
@@ -70,7 +74,8 @@ getDriveById(id:number)
   }
   changeStatusToClose(id:number, status:boolean):Observable<any>
   {
-     return this.http.post<any>(this.URL+"/ChangeStatusToClose/"+id,status);
+    alert("service")
+     return this.http.get<any>(this.URL+"/ChangeStatusToClose/"+id);
   }
 
 //   //אמור לקבל משתמש ולהוסיף אותו לרשימת השליחים 

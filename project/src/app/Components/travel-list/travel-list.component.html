@@ -77,14 +77,14 @@
 <section>
 
 <div class="row table_title">
-  <div class="col-2">שם השליח</div>
-  <div class="col-1">תאריך נסיעה </div>
+  <div class="col-1">שם השליח</div>
+  <div class="col-2">תאריך נסיעה </div>
   <div class="col-1"> שעת נסיעה </div>
   <div class="col-2"> מוצא </div>
   <div class="col-2">  יעד </div>
   <div class="col-1">  כלי רכב </div>
-  <div class="col-1">  מחיר  </div>
- <!-- <div class="col-1">  הערה </div> -->
+  <div class="col-1">  מחיר לק"מ  </div>
+ <div class="col-1">  חוות דעת </div>
   <div class="col-1">
     
     <i class="bi bi-envelope-fill"></i> 
@@ -94,8 +94,8 @@
 
 <div class="row table_list" *ngFor="let drive of driversFound;let i=index" >
   <div class="col-1">{{drive.driveCode}}</div>
-  <div class="col-2">{{drive.driverName}}</div>
-  <div class="col-1"> {{drive.travelDate|  date:'dd-MM-yyyy' }} </div>
+  <div class="col-1">{{drive.driverName}}</div>
+  <div class="col-2"> {{drive.travelDate|  date:'dd-MM-yyyy' }} </div>
   <div class="col-1">{{drive.drivingTime}}</div>
   <div class="col-2"> {{drive.fromLocationFormat}}</div>
   <div class="col-2">{{drive.toLocationFormat}}</div>

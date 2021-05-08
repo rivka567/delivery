@@ -11,6 +11,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { identifierModuleUrl } from '@angular/compiler';
 import { SendMessageComponent } from '../send-message/send-message.component';
 import { matDatepickerAnimations } from '@angular/material/datepicker';
+import { ShowDriveComponent } from '../show-drive/show-drive.component';
+import { ShowPackageComponent } from '../show-package/show-package.component';
+import  swal from 'sweetalert';
 
 @Component({
   selector: 'app-personal-messages',
@@ -35,6 +38,31 @@ export class PersonalMessagesComponent implements OnInit {
     this.getPackagesByUserId()
     this.getDrivesByUserId()
   }
+
+  openShowDriveDialog(drive:Drive,p:Package)
+  {
+    const dialogRef = this.dialog.open(ShowDriveComponent,{ disableClose: true })
+    dialogRef.componentInstance.drive =drive;
+    dialogRef.componentInstance.p =p;
+
+    // dialogRef.componentInstance.customerName =name;
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openShowPackageDialog(p:Package,d:Drive)
+  {
+    const dialogRef = this.dialog.open(ShowPackageComponent,{ disableClose: true })
+    dialogRef.componentInstance.drive =d;
+    dialogRef.componentInstance.package =p;
+
+    // dialogRef.componentInstance.customerName =name;
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
   getPackagesByUserId()
   {   
     debugger
@@ -58,8 +86,13 @@ export class PersonalMessagesComponent implements OnInit {
       myData => {
         debugger
         this.listDrives=myData;
+        debugger
+        this.listDrives=this.listDrives.filter(d=>new Date(d.travelDate)>=new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate(),0,0,0,0))
         this.lenlistDrives=this.listDrives.length;
         this.listDrives.forEach(l => {console.log(l.listWaiting)});
+        debugger
+        console.log(this.listDrives)
+        debugger
       },
       myErr => {
         console.log("from subscribe");
@@ -79,6 +112,7 @@ export class PersonalMessagesComponent implements OnInit {
 
   changeStatusToClose(id:number)
   {
+    swal({title:"נסיעה זו לא תוצג יותר ברשימת הנסיעות",text:"האם אתה בטוח שברצונך לסגור נסיעה זו?",icon:"warning"})
     this.driveSer.changeStatusToClose(id,false).subscribe(
       myData=>{alert(myData)},
       myErr=>{alert(myErr)}    
@@ -99,7 +133,7 @@ export class PersonalMessagesComponent implements OnInit {
   {
   this.wait.deleteWaitingMessageFromCustomer(p,driveToDelete).subscribe(myData=>{alert(myData)})
   }
-//שליח מוחק חבילה משימת הלקוחות המעוניינים בנסיעה שלו
+//שליח מוחק חבילה מרשימת הלקוחות המעוניינים בנסיעה שלו
   deleteWaitingMessageFromDelivery(d:Drive,packageToDelete:Package)
   {
     this.wait.deleteWaitingMessageFromDelivery(d,packageToDelete).subscribe(myData=>{alert(myData)})

@@ -24,15 +24,29 @@ export class ExistUserComponent implements OnInit {
   showEmailInput=false;
   form:FormGroup;
   submitted=false;
+  formEmail:FormGroup;
+
+  get f() { return this.form.controls; }
+  get fe() { return this.form.controls; }
+
 
   ngOnInit(): void {
   this.initForm();
+  this.initFormEmail();
   }
 
 initForm(){
   this.form = this.formBuilder.group({
-    password:['',[Validators.required,Validators.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}")]],
+    //Validators.pattern("(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{7,}")
+    password:['',[Validators.required,Validators.minLength(6)]],
   })
+  }
+
+  initFormEmail()
+  {
+    this.formEmail=this.formBuilder.group({
+      email:['',[Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+    })
   }
 
   openDialog() {
@@ -52,7 +66,7 @@ initForm(){
         myData => { this.user = myData; 
         this.UserSer.currentUser=myData;
        },
-        myErr => { swal({title:"לקוח זה לא קיים במערכת",text:"נסה שנית ",icon:"error"}); });
+        myErr => { swal({title:"משתמש זה לא קיים במערכת",text:"נסה שנית ",icon:"error"}); });
       }
         else
         swal("לא הוקש סיסמא")
@@ -75,8 +89,13 @@ initForm(){
   alert("הקש כתובת מייל")
   else{
     this.emailSer.sendCodeByEmail(mail).subscribe(
-      myData=>{alert(myData)},
-      myErr=>{console.log(myErr)}    
+      myData=>{
+        if(myData=='מייל זה לא קיים במערכת')
+        swal({title:myData,text:"נסה שנית",icon:"error"})
+        else
+        swal({title:"נשלח בהצלחה",icon:"success"})
+      },
+      myErr=>{}    
       );
     }
   }
