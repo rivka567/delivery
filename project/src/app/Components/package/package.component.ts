@@ -38,6 +38,7 @@ export class PackageComponent implements OnInit {
   maxDateFromDate:Date;
   minTime:any
   price:number
+  get f(){return this.form.controls;}
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
   constructor(private emailSer:EmailManagementService, private userSer:UserService,private activatedRoute:ActivatedRoute, private formBuilder: FormBuilder,private dialog:MatDialog, 
@@ -103,7 +104,7 @@ showPrice()
   debugger
   this.newPackage=new Package(0,this.userSer.currentUser.userCode,null,0,this.from,this.fromLat,this.fromLng,0,this.to,this.toLat,this.toLng,
     this.form.value.fromDate,this.form.value.toDate,this.form.value.fromTime,this.form.value.toTime,true,
-    this.form.value.type,this.form.value.describePackage,this.form.value.size,this.form.value.mes,this.form.value.distance||0);
+    this.form.value.type,this.form.value.describePackage,this.form.value.size,this.form.value.mes,this.form.value.distance||500);
   
     if(this.isPackage)
   {
@@ -149,8 +150,12 @@ showPrice()
   sendEmailToMatchDrives()
   {
     debugger
+  this.myFilterDrives= this.myFilterDrives.filter(d=>d.driverCode!=this.userSer.currentUser.userCode)
+
 //בודק מי נרשם לקבלת התראה
   this.myFilterDrives= this.myFilterDrives.filter(d=>d.message==true)
+  //בדיקה שהנסיעה לא סגורה
+  this.myFilterDrives=this.myFilterDrives.filter(d=>d.status==true)
 // סינון לפי תאריך נסיעה
 if(this.myFilterDrives)
   {

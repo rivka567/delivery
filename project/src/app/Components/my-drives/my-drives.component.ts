@@ -41,6 +41,7 @@ console.log("data");
         debugger
         if(this.packageSer.currentPackage.listWaiting.length>0)
         {
+          //מוחק מהרשימה את הנסיעות שכבר מקושרות לחבילה זו
           this.packageSer.currentPackage.listWaiting.forEach(d => {
             let driveInListWaiting=this.myListDrive.find(d1=>d1.driveCode==d.driveCode)
             if(driveInListWaiting)
@@ -50,7 +51,7 @@ console.log("data");
 
         this.myFilterDrives=this.myListDrive;
        // סינון לפי תאריך נסיעה
-       this.myFilterDrives= this.myFilterDrives.filter(d=>(new Date(d.travelDate)>=new Date(this.packageSer.currentPackage.fromDate)&&new Date(d.travelDate)<= new Date(this.packageSer.currentPackage.toDate)));
+       this.myFilterDrives= this.myFilterDrives.filter(d=>new Date(d.travelDate)>=new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate(),0,0,0,0)&& (new Date(d.travelDate)>=new Date(this.packageSer.currentPackage.fromDate)&&new Date(d.travelDate)<= new Date(this.packageSer.currentPackage.toDate)));
         //סינון לפי מוצא
   //   this.myFilterDrives=  this.myFilterDrives.filter(f=> 
   //   5000>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f.fromLocationLat, f.fromLocationLng), new google.maps.LatLng(this.currentPackage.fromLocationLat,this.currentPackage.fromLocationLng)));

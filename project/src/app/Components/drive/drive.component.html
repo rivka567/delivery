@@ -1,7 +1,9 @@
 <mat-dialog-content  class="mat-typography">
   <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon>
     <form *ngIf="form,newDrive" [formGroup]="form" (ngSubmit)="addDrive()">
-        <h1>פרטי נסיעה:</h1><br>
+        <h2>הכנס פרטי נסיעה:</h2>
+        <div class="form-group row">
+
         <section>
           <div class="example-button-row">
             <div class="example-flex-container container">
@@ -45,49 +47,59 @@
             </div>
           </div>
       </section>
-      <br>
+      </div>
+      <div class="form-group ">
         <input type="radio" value="1" style="visibility: hidden;"  id="1" #1  formControlName="trans" name="trans"  >
         <input type="radio" value="2" style="visibility: hidden;"  id="2" #2  formControlName="trans" name="trans"  >
         <input type="radio" value="3" style="visibility: hidden;"  id="3" #3  formControlName="trans" name="trans"  >
         <input type="radio" value="4" style="visibility: hidden;"  id="4" #4  formControlName="trans" name="trans"  >
         <input type="radio" value="5" style="visibility: hidden;"  id="5" #5  formControlName="trans" name="trans"  >
+        <div class="form-text" *ngIf="f.trans.errors">שדה חובה</div>
 
-      <br>
-        <mat-form-field >
-          <input matInput placeholder="driverCode" type="text" class="inp" readonly formControlName="driverCode" name="driverCode" >
-        </mat-form-field>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <label for="inputFrom" >מוצא</label>
+        <input class="form-control" matInput ngx-google-places-autocomplete id="inputFrom" #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)"
+        placeholder=" מוצא" formControlName="fromLocation" name="fromLocation" [ngClass]="{ 'is-invalid': submitted && f.fromLocation.errors }"/>
+        <div class="form-text" *ngIf="f.fromLocation.errors">שדה חובה</div>
+      </div>
+
+    <div class=" col-md-4"> 
+      <label for="inputTo" >יעד</label>    
+          <input class="form-control" ngx-google-places-autocomplete id="inputTo" #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)"
+          placeholder=" יעד" formControlName="toLocation"  name="toLocation"[ngClass]="{ 'is-invalid': submitted && f.toLocation.errors }"/>
+          <div class="form-text" *ngIf="f.toLocation.errors">שדה חובה</div>
+
+        </div>
+    </div> 
         <br>
-  
-        <mat-form-field >
-            <input type="time" matInput placeholder="שעת נסיעה" class="inp" formControlName="driving" name="driving"> 
-          </mat-form-field>
-          <br> 
-  
-          <mat-form-field >
-            <mat-label>Choose a date</mat-label>
-            <input matInput [min]="minDate" [matDatepicker]="picker" placeholder="date" class="inp" formControlName="date" name="date">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
-         <br>
-  
-         <!-- קישור לגוגל מאפ -->
-        <mat-form-field >
-          <input matInput ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)"
-          placeholder="מקום מוצא" formControlName="fromLocation" name="fromLocation"/>
-        </mat-form-field>
-         <br>
-  
-          <!-- קישור לגוגל מאפ -->
-          <mat-form-field >
-            <input matInput ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)"
-            placeholder="מקום יעד" formControlName="toLocation"  name="toLocation"/>
-          </mat-form-field>
-          <br>
-          <mat-form-field >
+
+        <div class="row">
+    <div class=" col-md-4">
+      <!-- <mat-form-field class="example-full-width"> -->
+        <label for="inputFromDate" class="form-label">תאריך נסיעה</label>
+          <input class="form-control" id="inputFromDate" [min]="minDate" [matDatepicker]="picker" placeholder="date" formControlName="date" name="date" [ngClass]="{ 'is-invalid': submitted && f.date.errors }">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <div class="form-text" *ngIf="f.date.errors">שדה חובה</div>
+
+        </div>
+    
+          <div class="col-md-4">
+            <label for="inputTime" class="form-label">שעת נסיעה</label>
+            <input class="form-control" type="time" id="inputTime"  placeholder="שעת נסיעה"  formControlName="driving" name="driving" [ngClass]="{ 'is-invalid': submitted && f.driving.errors }"> 
+            <div class="form-text" *ngIf="f.driving.errors">שדה חובה</div>
+
+          </div>
+       
+        </div>
+    <br>
+      
+    <div class="col-md-4">
             <label>מחיר לק"מ:</label>
-            <input matInput type="number" formControlName="price"  name="price" />
-          </mat-form-field>
+            <input class="form-control" type="number" formControlName="price"  name="price" />
+    </div>
           <br>
          <!-- <mat-form-field >
             <input matInput placeholder="קוד גודל חבילה" class="inp" formControlName="packageSizeCode" name="packageSizeCode">
@@ -97,30 +109,33 @@
    <div >
     <!-- <div class="form-group"> -->
       <!-- <div class="form-check"> -->
+
         <input  type="checkbox" id="checkMes" formControlName="mes" name="mes" #message>
-        <label  for="checkMes">מעוניין לקבל התראות למייל על נסיעות שיתאימו לחבילה זו?</label>
+        <label  for="checkMes">מעוניין לקבל התראות למייל על חבילות שיתאימו לנסיעה זו?</label>
+
       <!-- </div> -->
      <!-- </div> -->
     </div> 
 <br>
 <div class="row">
-   <div class="col-md-4" [ngStyle]="{'visibility': message.checked ? 'visible' : 'hidden'}"> 
+   <div class="col-md-4" [ngStyle]="{'visibility': message.checked ? 'visible' : 'hidden'}" > 
       <label for="inputDis"> מרחק:</label>        
       <input class="form-control" type="number" id="inputDis" formControlName="distance" name="distance">
   </div>
 </div>
 <br>
-          <mat-form-field >
+          <!-- <mat-form-field >
             <input matInput placeholder="הערה" type="text" class="inp" formControlName="describeDrive" name="describeDrive">
           </mat-form-field>
-          <br>  
+          <br>   -->
             <!-- TODO: לשנות שיראה כקישור -->
             <!-- <a style="cursor: pointer;" (click)="openDialog()" mat-dialog-close>התחבר</a> -->
-           
-            <button *ngIf="!isDrive" mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid"
+            <div class="mb-3">   
+            <button class="btn btn-primary " *ngIf="!isDrive"  style="cursor: pointer;" type="submit"  [disabled]="!form.valid"
             (click)="submitted=true" > שמור</button> 
-            <button *ngIf="isDrive" mat-button style="cursor: pointer;" type="submit" mat-button [disabled]="!form.valid"
+            <button class="btn btn-primary " *ngIf="isDrive"  style="cursor: pointer;" type="submit"  [disabled]="!form.valid"
             (click)="submitted=true"  > שלח</button> 
+            </div>
     </form>   
     </mat-dialog-content>
 

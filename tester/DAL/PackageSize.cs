@@ -14,16 +14,7 @@ namespace DAL
     
     public partial class PackageSize
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PackageSize()
-        {
-            this.Packages = new HashSet<Package>();
-        }
-    
         public int packageSizeCode { get; set; }
         public string packageSizeName { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Package> Packages { get; set; }
     }
 }

@@ -45,10 +45,12 @@ export class MyPackagesComponent implements OnInit {
       myData => {
         debugger
         this.myListPackage=myData;
+        //מציג חבילות שעדיין פתוחות
         this.myListPackage=this.myListPackage.filter(p=>p.status==true)
         if(this.driveSer.currentDrive.listWaiting.length>0)
         {
           debugger
+          //מוחק מהרשימה את החבילות שכבר מקושרות לנסיעה זו
           this.driveSer.currentDrive.listWaiting.forEach(p => {
             let packageInListWaiting=this.myListPackage.find(p1=>p1.packageCode==p.packageCode)
             if(packageInListWaiting)

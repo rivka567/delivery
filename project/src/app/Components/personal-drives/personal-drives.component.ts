@@ -49,14 +49,44 @@ checkListWaitingForDrive(d:Drive)
   let filterDrives=d.listWaiting;
   //בדיקה האם החבילה הזו נסגרה עם לקוחות
   filterDrives=filterDrives.filter(d=>d.status==false)
-  if(filterDrives.length!=0)
- swal({title:"נסיעה זו נסגרה עם "+filterDrives.length+" לקוחות",text:"האם אתה בטוח שברצונך למחוק נסיעה זו ותשלח הודעת ביטול ללקוחות אלו",icon:"warning"})
+  if(filterDrives.length>0)
+  {
+    swal({
+      title: "נסיעה זו נסגרה עם "+filterDrives.length+" לקוחות",
+      text:"האם אתה בטוח שברצונך למחוק נסיעה זו ותשלח הודעת ביטול ללקוחות אלו",
+      icon: "warning",
+      buttons:true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      this.deleteDrive(d)
+    });
+  }
   else
-  alert("נסיעה זו מקושרת לחבילות אחרות")
+  swal({
+    title: "האם אתה בטוח שברצונך למחוק נסיעה זו?",
+    text:"לנסיעה זו יש בקשות",
+    icon: "warning",
+    buttons:true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    this.deleteDrive(d)
+  });
   }
 else
-swal({text:"האם אתה בטוח שברצונך למחוק נסיעה זו?",icon:"warning"})
-this.deleteDrive(d)
+{
+swal({
+  title: "האם אתה בטוח שברצונך למחוק נסיעה זו?",
+  text: "לנסיעה זו אין בקשות",
+  icon: "warning",
+  buttons:true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  this.deleteDrive(d)
+});
+}
 }
 
 

@@ -8,8 +8,8 @@
 <div style="float: left;" *ngIf="userSer.currentUser">
   <button mat-button [matMenuTriggerFor]="beforeMenu">שלום {{userSer.currentUser.userName}}</button> 
    <mat-menu #beforeMenu="matMenu" xPosition="before">
-    <button mat-menu-item routerLink="personal-area">כניסה לאזור האישי</button>
-    <button mat-menu-item routerLink="/" (click)="userSer.currentUser=undefined" >התנתק</button>
+    <button style="color: black;" mat-menu-item routerLink="personal-area">כניסה לאזור האישי</button>
+    <button style="color: black;" mat-menu-item routerLink="/" (click)="userSer.currentUser=undefined" >התנתק</button>
   </mat-menu> 
 </div>
 <button mat-button class="btn" *ngIf="userSer.currentUser" routerLink="waiting-messages">

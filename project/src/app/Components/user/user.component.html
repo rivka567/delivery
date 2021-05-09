@@ -12,6 +12,9 @@
               <!-- <div for="password" *ngIf="password.errors.required">
                 password is required.
               </div> -->
+              <div class="form-text" *ngIf="f.password.errors.required" >שדה חובה</div>
+              <!-- <div class="form-text" *ngIf="f.password.errors.minLength(6)" >חייב להכיל לפחות 6 תווים</div> -->
+
               </div>
               
               <!-- <input type="password" name="password" formControlName="password" #password placeholder="סיסמה" autocomplete="off" class="shadow-md border w-full h-10 px-3 py-2 text-orange-500 focus:outline-none focus:border-orange-500 mb-3 rounded"> 
@@ -31,13 +34,17 @@
              -->
             <div class="mb-3">
               <input class="form-control"  type="text" placeholder="שם "  formControlName="name"  name="name" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+              <div class="form-text" *ngIf="f.name.errors.required" >שדה חובה</div>
+
             </div>
             
  
             
             <div class="mb-3">
                 <input class="form-control" type="text" placeholder="דואר אלקטרוני"  formControlName="gmail" name="gmail" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-             </div>
+                <div class="form-text" *ngIf="f.gmail.errors.required" >שדה חובה</div>
+
+            </div>
 
      
             <div class="mb-3">
@@ -45,7 +52,7 @@
               שמור
             </button>
             </div>
-         <!-- <a mat-dialog-close class="b-container" routerLink="exist-user"> התחבר</a> -->
+         <a mat-dialog-close class="b-container" routerLink="exist-user"> התחבר</a>
 
           <br>        
       </div>

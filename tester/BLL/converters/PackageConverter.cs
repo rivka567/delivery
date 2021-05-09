@@ -16,29 +16,39 @@ namespace BLL.converters
 
             Loction fromL = LocationDAL.GetLocationById(package.fromLocation);
             Loction toL = LocationDAL.GetLocationById(package.toLocation);
+            PackageSize pSize = PackageSizeDAL.GetPackageSizeById(package.packageSize);
+            PackageType pType = PackageTypeDAL.GetPackageTypeById(package.packageType);
+            User u = UserDAL.GetUserById(package.userCustomerCode);
 
             DTO.PackageDTO newPackage = new DTO.PackageDTO()
             {
-                //packageCode = package.packageCode,
-                userCustomerCode=package.userCustomerCode,
-                userDeliveryCode=package.userDeliveryCode,
-                fromLocatioFormat = fromL.locationFormat,
-                fromLocatioLat =fromL.locationLat,
-                fromLocatioLng = fromL.locationLng,
-                toLocatioFormat = toL.locationFormat,
-                toLocatioLat = toL.locationLat,
-                toLocationLng =toL.locationLng,
-                //fromLocation=package.fromLocation,
-                //toLocation=package.toLocation,
-                travelDate =package.travelDate,
-                drivingTime=package.drivingTime,
-                packageSize=package.packageSize,
-                packageType=package.packageType,
-                confirmationDelivery=package.confirmationDelivery,
-                happinesslevel=package.happinesslevel,
-                describeHappiness=package.describeHappiness,
-                describePackage=package.describePackage,
-               
+                packageCode = package.packageCode,
+                userCustomerCode = package.userCustomerCode,
+                userDeliveryCode = package.userDeliveryCode,
+                fromLocationId =fromL.locationId,
+                fromLocationFormat = fromL.locationFormat,
+                fromLocationLat = fromL.locationLat,
+                fromLocationLng = fromL.locationLng,
+                toLocationId=toL.locationId,
+                toLocationFormat = toL.locationFormat,
+                toLocationLat = toL.locationLat,
+                toLocationLng = toL.locationLng,
+                fromDate = package.fromDate,
+                toDate=package.toDate,
+                fromTime = package.toTime,
+                toTime=package.toTime,
+                status = package.status,
+                packageTypeCode = pType.packageTypeCode,
+                packageType = pType.packageTypeName,
+                describePackage = package.describePackage,
+                packageSizeCode = pSize.packageSizeCode,
+                packageSize = pSize.packageSizeName,
+                timeInDate = new DateTime(),
+             //   timeInDate = new DateTime(package.travelDate.Date.Year, package.travelDate.Date.Month, package.travelDate.Date.Day, package.drivingTime.Hours, package.drivingTime.Minutes, 0),
+             //   listWaiting = BLL.converters.DriveConverter.convertToDriveDTOList(listDrives),
+                customerName =u.userName,
+                message=package.message,
+                distance=package.distance
             };
            
        
@@ -55,20 +65,21 @@ namespace BLL.converters
         {
             DAL.Package p = new DAL.Package()
             {
+                packageCode=packageDTO.packageCode,
                 userCustomerCode = packageDTO.userCustomerCode,
                 userDeliveryCode = packageDTO.userDeliveryCode,
-                
-                //fromLocation=package.fromLocation,
-                //toLocation=package.toLocation,
-                travelDate = packageDTO.travelDate,
-                drivingTime = packageDTO.drivingTime,
-                packageSize = packageDTO.packageSize,
-                packageType = packageDTO.packageType,
-                confirmationDelivery = packageDTO.confirmationDelivery,
-                happinesslevel = packageDTO.happinesslevel,
-                describeHappiness = packageDTO.describeHappiness,
+                fromLocation = packageDTO.fromLocationId,
+                toLocation = packageDTO.toLocationId,
+                fromDate = packageDTO.fromDate,
+                toDate=packageDTO.toDate,
+                fromTime=packageDTO.fromTime,
+                toTime = packageDTO.toTime,
+                status = packageDTO.status,
+                packageType= packageDTO.packageTypeCode,
                 describePackage = packageDTO.describePackage,
-
+                packageSize = packageDTO.packageSizeCode,
+                message=packageDTO.message,
+                distance=packageDTO.distance              
             };
 
             return p;

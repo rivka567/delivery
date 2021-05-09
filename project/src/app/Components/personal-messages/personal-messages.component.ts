@@ -69,7 +69,9 @@ export class PersonalMessagesComponent implements OnInit {
       this.packageSer.getPackagesByUserId(this.userSer.currentUser.userCode).subscribe(
       myData => {
         debugger
+        //listWaiting-מחזיר חבילות שלא עברו את התאריך של היום
         this.listPackages=myData;
+
         this.listPackages.forEach(l => {console.log(l.listWaiting)});
         this.lenlistPackages=this.listPackages.length;
       },
@@ -85,8 +87,11 @@ export class PersonalMessagesComponent implements OnInit {
       this.driveSer.getDrivesByUserId(this.userSer.currentUser.userCode).subscribe(
       myData => {
         debugger
+       //listWaiting-מחזיר נסיעות שלא עברו את התאריך של היום
+
         this.listDrives=myData;
         debugger
+        //מציג רק חבילות שהתאריך נסיעה לא עבר את היום
         this.listDrives=this.listDrives.filter(d=>new Date(d.travelDate)>=new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate(),0,0,0,0))
         this.lenlistDrives=this.listDrives.length;
         this.listDrives.forEach(l => {console.log(l.listWaiting)});

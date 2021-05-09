@@ -1,4 +1,4 @@
-<p>show-message-about-drive works!</p>
+<h2>פרטי הנסיעה שמתאימה לחבילה שלך:</h2>
 <div *ngIf="drive!=undefined">
 <p>{{drive.driverName}}</p>
 <p>{{drive.fromLocationFormat}}</p>
@@ -10,12 +10,12 @@
 </div>
 
 <div *ngIf="showPackageDetails">
-    <mat-dialog-content>
+    <h2>פרטי החבילה אותה אתה מעוניין לשלוח:</h2>
 <p>{{package.fromLocationFormat}}</p>
 <p>{{package.toLocationFormat}}</p>
 <p>{{package.fromDate}}</p>
 <p>{{package.toDate}}</p>
 <button (click)="sendEmailToDelivery()">שלח מייל</button>
-    </mat-dialog-content>
+ 
 </div>
 

@@ -34,3 +34,27 @@ C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\DAL\obj\Debug\DA
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\DAL\obj\Debug\DAL.dll
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\DAL\obj\Debug\DAL.pdb
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\DAL\bin\Debug\DAL.dll.config
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\DAL\bin\Debug\DAL.dll
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\DAL\bin\Debug\DAL.pdb
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\DAL\bin\Debug\EntityFramework.dll
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\DAL\bin\Debug\EntityFramework.xml
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\DAL\obj\Debug\DAL.dll
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\DAL\obj\Debug\DAL.pdb
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\dvora bloch\Desktop\new tester\tester\DAL\bin\Debug\DAL.dll.config
+C:\Users\dvora bloch\Desktop\new tester\tester\DAL\bin\Debug\DAL.dll
+C:\Users\dvora bloch\Desktop\new tester\tester\DAL\bin\Debug\DAL.pdb
+C:\Users\dvora bloch\Desktop\new tester\tester\DAL\bin\Debug\EntityFramework.dll
+C:\Users\dvora bloch\Desktop\new tester\tester\DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\dvora bloch\Desktop\new tester\tester\DAL\bin\Debug\EntityFramework.xml
+C:\Users\dvora bloch\Desktop\new tester\tester\DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\dvora bloch\Desktop\new tester\tester\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+C:\Users\dvora bloch\Desktop\new tester\tester\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\dvora bloch\Desktop\new tester\tester\DAL\obj\Debug\DAL.csproj.CopyComplete
+C:\Users\dvora bloch\Desktop\new tester\tester\DAL\obj\Debug\DAL.dll
+C:\Users\dvora bloch\Desktop\new tester\tester\DAL\obj\Debug\DAL.pdb

@@ -14,22 +14,7 @@ namespace DAL
     
     public partial class PackageType
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PackageType()
-        {
-            this.Packages = new HashSet<Package>();
-            this.PackageDescriptions = new HashSet<PackageDescription>();
-            this.RefusesPackages = new HashSet<RefusesPackage>();
-        }
-    
         public int packageTypeCode { get; set; }
         public string packageTypeName { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Package> Packages { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PackageDescription> PackageDescriptions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RefusesPackage> RefusesPackages { get; set; }
     }
 }

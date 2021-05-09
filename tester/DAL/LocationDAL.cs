@@ -12,7 +12,7 @@ namespace DAL
         {
             try
             {
-            using (DBDeliveries1Entities db = new DBDeliveries1Entities())
+            using (DBDeliveries2Entities db = new DBDeliveries2Entities())
                 {
                     Loction lo = db.Loctions.FirstOrDefault(u => u.locationLat == l.locationLat && u.locationLng == l.locationLng && u.locationFormat == l.locationFormat);
                     if (lo == null)
@@ -36,10 +36,18 @@ namespace DAL
         }
         public static Loction GetLocationById(int id)
         {
-            using (DBDeliveries1Entities db = new DBDeliveries1Entities())
+            try
             {
-                return db.Loctions.FirstOrDefault(l => l.locationId.Equals(id));
+                using (DBDeliveries2Entities db = new DBDeliveries2Entities())
+                {
+                    db.Configuration.LazyLoadingEnabled = false;
+                    return db.Loctions.FirstOrDefault(l => l.locationId.Equals(id));
+                }
+            }catch(Exception e)
+            {
+                return null;
             }
+           
         }
 
     }

@@ -1,6 +1,7 @@
 ﻿using BLL;
 using DAL;
 using DTO;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,25 +19,38 @@ namespace WebAPI.Controllers
         [Route("GetAllDrives")]
         public IHttpActionResult GetAllDrives()
         {
-            var p = BLL.DriveBLL.GetAllDrives();
+          
+            var p = DriveBLL.GetAllDrives();
             if (p == null)
                 return NotFound();
             return Ok(p);
         }
+
         [HttpGet]
-        [Route("GetSpesificDrives")]
-        public IHttpActionResult GetSpesificDrives(DateTime date,TimeSpan time)
+        [Route("GetDrivesByUserId/{id}")]
+        public IHttpActionResult GetDrivesByUserId(string id)
         {
-            var p = BLL.DriveBLL.GetSpesificDrives();
+            var p = BLL.DriveBLL.GetDrivesByUserId(id);
             if (p == null)
                 return NotFound();
             return Ok(p);
         }
+
         [HttpGet]
         [Route("GetDriveById/{id}")]
         public IHttpActionResult GetDriveById(int id)
         {
             var p = DriveBLL.GetDriveById(id);
+            if (p == null)
+                return NotFound();
+            return Ok(p);
+        }
+
+        [HttpGet]
+        [Route("ChangeStatusToClose/{id}")]
+        public IHttpActionResult ChangeStatusToClose(int id)
+        {
+            var p = DriveBLL.ChangeStatus(id,false);
             if (p == null)
                 return NotFound();
             return Ok(p);
@@ -51,20 +65,46 @@ namespace WebAPI.Controllers
                 return NotFound();
             return Ok(p);
         }
-        // POST: api/Drive
-        public void Post([FromBody]string value)
+        [HttpPost]
+        [Route("UpdateDrive")]
+        public IHttpActionResult UpdateDrive([FromBody] JObject data)
         {
+
+            DriveDTO drive = data["updateDrive"].ToObject<DriveDTO>();
+            List<PackageDTO> listWaiting = data["listWaiting"].ToObject<List<PackageDTO>>();
+            var u = BLL.DriveBLL.UpdateDrive(drive,listWaiting);
+            if (u == null)
+                return NotFound();
+            return Ok(u);
         }
 
-        // PUT: api/Drive/5
-        public void Put(int id, [FromBody]string value)
+        [HttpPost]
+        [Route("ConfirmDrive")]
+        public IHttpActionResult ConfirmDrive([FromBody]JObject data)
         {
+            PackageDTO package = data["package"].ToObject<PackageDTO>();
+            DriveDTO confirmDrive = data["confirmDrive"].ToObject<DriveDTO>();
+            List<DriveDTO> listToDelete = data["listToDelete"].ToObject<List<DriveDTO>>();
+            string w = null;
+            if (EmailManagementBLL.SendEmailAboutConfirmDrive(UserBLL.GetUserById(confirmDrive.driverCode).userMail, package.customerName + " " + "אישר/ה נסיעה שלך", package, confirmDrive)!=null)
+             w= WaitingMessageBLL.deleteAllWaitingMessage(package, confirmDrive, listToDelete);
+            if (w == null)
+                return NotFound();
+            return Ok(w);
+        }
+        [HttpPost]
+        [Route("DeleteDrive")]
+        public IHttpActionResult DeleteDrive([FromBody]JObject data)
+        {
+            DriveDTO drive = data["drive"].ToObject<DriveDTO>();
+            string url = data["url"].ToString();
+            List<PackageDTO> listWaiting = data["listWaiting"].ToObject<List<PackageDTO>>();
+            var d = DriveBLL.DeleteDrive(drive, listWaiting,url);
+            if (d == null)
+                return NotFound();
+            return Ok(d);
         }
 
-        // DELETE: api/Drive/5
-        public void Delete(int id)
-        {
-        }
     }
 
 }

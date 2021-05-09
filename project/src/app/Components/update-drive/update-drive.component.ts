@@ -26,6 +26,7 @@ export class UpdateDriveComponent implements OnInit {
   to="";
   toLat=0;
   toLng=0;
+  get f(){return this.form.controls;}
   
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
@@ -40,14 +41,14 @@ export class UpdateDriveComponent implements OnInit {
 
   initForm() {    
     this.form = this.formBuilder.group({
-      driverCode: [this.userSer.currentUser.userCode||''],
+      driveCode: [this.drive.driveCode],
       trans:[this.drive.transportation||'',Validators.required],
       driving:[this.drive.drivingTime||'',Validators.required],
       date:[this.drive.travelDate||'',Validators.required],
       fromLocation:[this.drive.fromLocationFormat||'',Validators.required],
       toLocation:[this.drive.toLocationFormat||'',Validators.required],
       price:[this.drive.price||''],
-      describeDrive:[this.drive.describeDrive||'']
+      // describeDrive:[this.drive.describeDrive||'']
     })
    
   }
@@ -57,19 +58,19 @@ export class UpdateDriveComponent implements OnInit {
     //במידה ושינה את 2 הכתובות
     if(this.from&&this.to)
     this.newDrive=new Drive(this.drive.driveCode,this.userSer.currentUser.userCode,null,this.form.value.driving,this.form.value.date,
-      0,this.from,this.fromLat,this.fromLng,0,this.to,this.toLat,this.toLng,this.form.value.describeDrive,true,this.form.value.trans,this.form.value.price,this.drive.message,this.drive.distance,this.drive.transportationType,new Date(),this.drive.listWaiting,this.drive.driverName);
+      0,this.from,this.fromLat,this.fromLng,0,this.to,this.toLat,this.toLng,this.drive.describeDrive,true,this.form.value.trans,this.form.value.price,this.drive.message,this.drive.distance,this.drive.transportationType,new Date(),this.drive.listWaiting,this.drive.driverName);
       //במידה ושינה רק את המוצא
     else if(this.from&&!this.to)
     this.newDrive=new Drive(this.drive.driveCode,this.userSer.currentUser.userCode,null,this.form.value.driving,this.form.value.date,
-      0,this.from,this.fromLat,this.fromLng,this.drive.toLocationId,null,0,0,this.form.value.describeDrive,true,this.form.value.trans,this.form.value.price,this.drive.message,this.drive.distance,this.drive.transportationType,new Date(),this.drive.listWaiting,this.drive.driverName );
+      0,this.from,this.fromLat,this.fromLng,this.drive.toLocationId,null,0,0,this.drive.describeDrive,true,this.form.value.trans,this.form.value.price,this.drive.message,this.drive.distance,this.drive.transportationType,new Date(),this.drive.listWaiting,this.drive.driverName );
       //במידה ושינה רק את היעד
     else if(!this.from&&this.to)
     this.newDrive=new Drive(this.drive.driveCode,this.userSer.currentUser.userCode,null,this.form.value.driving,this.form.value.date,
-    this.drive.fromLocationId,null,0,0,0,this.to,this.toLat,this.toLng,this.form.value.describeDrive,true,this.form.value.trans,this.form.value.price,this.drive.message,this.drive.distance,this.drive.transportationType,new Date(),this.drive.listWaiting,this.drive.driverName);
+    this.drive.fromLocationId,null,0,0,0,this.to,this.toLat,this.toLng,this.drive.describeDrive,true,this.form.value.trans,this.form.value.price,this.drive.message,this.drive.distance,this.drive.transportationType,new Date(),this.drive.listWaiting,this.drive.driverName);
      //במידה ולא שינה כלום
      else if(!this.from&&!this.to)
      this.newDrive=new Drive(this.drive.driveCode,this.userSer.currentUser.userCode,null,this.form.value.driving,this.form.value.date,
-      this.drive.fromLocationId,null,0,0,this.drive.toLocationId,null,0,0,this.form.value.describeDrive,true,this.form.value.trans,this.form.value.price,this.drive.message,this.drive.distance,this.drive.transportationType,new Date(),this.drive.listWaiting,this.drive.driverName);    
+      this.drive.fromLocationId,null,0,0,this.drive.toLocationId,null,0,0,this.drive.describeDrive,true,this.form.value.trans,this.form.value.price,this.drive.message,this.drive.distance,this.drive.transportationType,new Date(),this.drive.listWaiting,this.drive.driverName);    
       debugger
       console.log("new package",this.newDrive);
      this.driveSer.updateDrive(this.newDrive,this.drive.listWaiting).subscribe(

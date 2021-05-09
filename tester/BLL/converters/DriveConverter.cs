@@ -15,29 +15,36 @@ namespace BLL.converters
                 return null;
             Loction fromL= LocationDAL.GetLocationById(drive.fromLocation);
             Loction toL= LocationDAL.GetLocationById(drive.toLocation);
-
+            Transportation trans = TransportationDAL.GetTransportationById(drive.transportation);
+            User u = UserDAL.GetUserById(drive.driverCode);
+          //  List<Package> listPackages = WaitingPackageDAL.GetgPackagesByDrive(drive.driveCode);
 
             DTO.DriveDTO newdrive = new DTO.DriveDTO()
             {
-                //driveCode = drive.driveCode,
+                driveCode = drive.driveCode,
                 driverCode = drive.driverCode,
-                customerCode=drive.customerCode,
+                customerCode = drive.customerCode,
                 drivingTime = drive.drivingTime,
                 travelDate = drive.travelDate,
-                fromLocationFormat=fromL.locationFormat,
-                fromLocationLat=fromL.locationLat,
+                fromLocationFormat = fromL.locationFormat,
+                fromLocationLat = fromL.locationLat,
                 fromLocationLng = fromL.locationLng,
-                toLocationFormat=toL.locationFormat,
-                toLocationLat=toL.locationLat,
-                toLocationLng=toL.locationLng,
-                //fromLocation = drive.fromLocation,
-                //toLocation = drive.toLocation,
-                packageSizeCode = drive.packageSizeCode,
-                howLongBeforeReminder = drive.howLongBeforeReminder,
-                transportation = drive.transportation,
-                describeDrive=drive.describeDrive,
-                confirmationCustomer=drive.confirmationCustomer
-             };
+                toLocationFormat = toL.locationFormat,
+                toLocationLat = toL.locationLat,
+                toLocationLng = toL.locationLng,
+                fromLocationId = drive.fromLocation,
+                toLocationId = drive.toLocation,
+                describeDrive = drive.describeDrive,
+                status = drive.status,
+                transportation = trans.transportationId,
+                price=drive.price,
+                transportationType = trans.transportationType,
+                timeInDate = new DateTime(drive.travelDate.Date.Year, drive.travelDate.Date.Month, drive.travelDate.Date.Day, drive.drivingTime.Hours, drive.drivingTime.Minutes, 0),
+              //  listWaiting = BLL.converters.PackageConverter.convertToPackageDTOList(listPackages),
+                driverName = u.userName,
+                message=drive.message,
+                distance=drive.distance
+            };
             return newdrive;
         }
         public static List<DTO.DriveDTO> convertToDriveDTOList(List<DAL.Drive> drives)
@@ -50,21 +57,22 @@ namespace BLL.converters
         {
             DAL.Drive d = new DAL.Drive()
             {
-                //driveCode = driveDTO.driveCode,
+                driveCode = driveDTO.driveCode,
                 driverCode = driveDTO.driverCode,
                 customerCode = driveDTO.customerCode,
                 drivingTime = driveDTO.drivingTime,
                 travelDate = driveDTO.travelDate,
-
-                //fromLocation = drive.fromLocation,
-                //toLocation = drive.toLocation,
-                packageSizeCode = driveDTO.packageSizeCode,
-                howLongBeforeReminder = driveDTO.howLongBeforeReminder,
-                transportation = driveDTO.transportation,
+                fromLocation = driveDTO.fromLocationId,
+                toLocation = driveDTO.toLocationId,
                 describeDrive = driveDTO.describeDrive,
-                confirmationCustomer = driveDTO.confirmationCustomer
+                status=driveDTO.status,
+                transportation = driveDTO.transportation,
+                price=driveDTO.price,
+                message=driveDTO.message,
+                distance=driveDTO.distance
+               
             };
-
+       
             return d;
         }
 

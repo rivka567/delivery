@@ -44,8 +44,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="BLL">
       <HintPath>..\BLL\bin\Debug\BLL.dll</HintPath>
     </Reference>
     <Reference Include="DAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -97,6 +96,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="HtmlPages\ConfirmDrive.html" />
+    <Content Include="HtmlPages\DeleteDrive.html" />
+    <Content Include="HtmlPages\MatchDrive.html" />
+    <Content Include="HtmlPages\MatchPackage.html" />
+    <Content Include="HtmlPages\MyDrive.html" />
+    <Content Include="HtmlPages\myPackage.html" />
+    <Content Include="HtmlPages\RemoveDrive.html" />
+    <Content Include="HtmlPages\RemovePackage.html" />
+    <Content Include="HtmlPages\UpdateDrive.html" />
+    <Content Include="HtmlPages\UpdatePackage.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -104,8 +113,12 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DriveController.cs" />
+    <Compile Include="Controllers\EmailManagementController.cs" />
+    <Compile Include="Controllers\HappinessController.cs" />
     <Compile Include="Controllers\PackageController.cs" />
+    <Compile Include="Controllers\SendMessageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\WaitingMessageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -126,7 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">
-      <Project>{499A4516-3A27-4B87-A335-B3821810E01D}</Project>
+      <Project>{499a4516-3a27-4b87-a335-b3821810e01d}</Project>
       <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>

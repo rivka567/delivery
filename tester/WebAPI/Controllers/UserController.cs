@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 using BLL;
 using DAL;
+using DTO;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace WebAPI.Controllers
 {
@@ -27,6 +32,7 @@ namespace WebAPI.Controllers
         public IHttpActionResult GetUserById(string id)
         {
             var u = BLL.UserBLL.GetUserById(id);
+
             if (u == null)
                 return NotFound();
             return Ok(u);
@@ -37,20 +43,24 @@ namespace WebAPI.Controllers
         public IHttpActionResult AddUser(User user)
         {
             var u = BLL.UserBLL.AddUser(user);
-            if (u == null)
-                return NotFound();
-            return Ok(u);
+            if (u != null)
+                return Ok(u);
+            return NotFound();
+
         }
 
-       [HttpGet]
-        [Route("SendEmail")]
-        public IHttpActionResult SendEmail(string sender, string contactAddress, string subject, string body)
+        [HttpPost]
+        [Route("UpdateUser")]
+        public IHttpActionResult UpdateUser([FromBody]User user)
         {
-          var u= UserBLL.SendEmail(sender, contactAddress, subject, body);
+            var u = BLL.UserBLL.UpdateUser(user);
             if (u == null)
                 return NotFound();
             return Ok(u);
         }
+        [HttpGet]
+      
+      
 
         // PUT: api/User/5
         [HttpPut]

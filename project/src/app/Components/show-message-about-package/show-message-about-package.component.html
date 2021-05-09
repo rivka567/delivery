@@ -1,5 +1,5 @@
-<p>show-message-about-package works!</p>
-<div *ngIf="package!=undefined">
+<h2>פרטי החבילה שמתאימה לנסיעה שלך</h2>
+    <div *ngIf="package!=undefined">
 <p>{{package.fromLocationFormat}}</p>
 <p>{{package.toLocationFormat}}</p>
 <p>{{package.fromDate}}</p>
@@ -9,7 +9,7 @@
 </div>
 
 <div *ngIf="showDriveDetails">
-    <mat-dialog-content>
+   <h2>פרטי יהנסיעה בה אתה מעוניין לקחת חבילה זו</h2>
         <p>{{drive.driverName}}</p>
         <p>{{drive.fromLocationFormat}}</p>
         <p>{{drive.toLocationFormat}}</p>
@@ -17,5 +17,4 @@
         <p>{{drive.travelDate}}</p>
         <p>{{drive.drivingTime}</p>
 <button (click)="sendEmailToCustomer()">שלח מייל</button>
-    </mat-dialog-content>
-</div>
+   

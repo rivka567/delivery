@@ -42,17 +42,76 @@ export class PersonalPackagesComponent implements OnInit {
 
   deletePackage(p:Package)
   {
-    swal("האם אתה בטוח שברצונך למחוק חבילה זו?")
-    debugger
-    if(p.listWaiting.length!=0)
-     alert("יש לך רשימת ממתינים")
-      this.packageSer.deletePackage(p.packageCode,p.listWaiting).subscribe(
+if(p.listWaiting.length==0){
+    swal({
+      title: "האם אתה בטוח שברצונך למחוק חבילה זו?",
+      text: "לחבילה זו אין בקשות",
+      icon: "warning",
+      buttons:true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+       this.packageSer.deletePackage(p.packageCode,p.listWaiting).subscribe(
       myData => {
        this.myListPackage=myData;
+       swal({title:"נמחק בהצלחה",icon:"success"})
       },
       myErr => {
-        console.log(myErr.message);
+        swal({title:"שגיאה בניסיון המחיקה ",icon:"error"})
       });
+      }
+    });
+  }   
+    debugger
+    if(p.listWaiting.length>0)
+    {
+if(p.status==true)
+    {
+swal({
+  title: "האם אתה בטוח שברצונך למחוק חבילה זו?",
+  text: "חבילה זו כבר נסגרה עם שליח",
+  icon: "warning",
+  buttons:true,
+  dangerMode: true,
+})
+.then((willDelete) => {
+  if (willDelete) {
+   this.packageSer.deletePackage(p.packageCode,p.listWaiting).subscribe(
+  myData => {
+   this.myListPackage=myData;
+   swal({title:"נמחק בהצלחה",icon:"success"})
+  },
+  myErr => {
+    swal({title:"שגיאה בניסיון המחיקה ",icon:"error"})
+  });
+  }
+});
+}
+
+else{
+  swal({
+    title: "האם אתה בטוח שברצונך למחוק חבילה זו?",
+    text: "לחבילה זו יש בקשות למשלוח",
+    icon: "warning",
+    buttons:true,
+    dangerMode: true,
+  })
+  .then((willDelete) => {
+    if (willDelete) {
+     this.packageSer.deletePackage(p.packageCode,p.listWaiting).subscribe(
+    myData => {
+     this.myListPackage=myData;
+     swal({title:"נמחק בהצלחה",icon:"success"})
+    },
+    myErr => {
+      swal({title:"שגיאה בניסיון המחיקה ",icon:"error"})
+    });
+    }
+  });
+}
+   }
+
   }
 
 

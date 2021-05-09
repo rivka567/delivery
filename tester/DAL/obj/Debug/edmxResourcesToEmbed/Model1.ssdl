@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="DBDeliveries1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="DBDeliveries2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Drive">
     <Key>
       <PropertyRef Name="driveCode" />
@@ -11,11 +11,23 @@
     <Property Name="travelDate" Type="date" Nullable="false" />
     <Property Name="fromLocation" Type="int" Nullable="false" />
     <Property Name="toLocation" Type="int" Nullable="false" />
-    <Property Name="packageSizeCode" Type="int" Nullable="false" />
-    <Property Name="howLongBeforeReminder" Type="time" Precision="7" />
-    <Property Name="transportation" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="describeDrive" Type="nvarchar" MaxLength="50" />
-    <Property Name="confirmationCustomer" Type="bit" Nullable="false" />
+    <Property Name="status" Type="bit" />
+    <Property Name="transportation" Type="int" Nullable="false" />
+    <Property Name="price" Type="int" />
+    <Property Name="message" Type="bit" Nullable="false" />
+    <Property Name="distance" Type="float" />
+  </EntityType>
+  <EntityType Name="Happiness">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="deliveryId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="customerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="happinessLevel" Type="int" Nullable="false" />
+    <Property Name="describeHappiness" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Loction">
     <Key>
@@ -35,23 +47,16 @@
     <Property Name="userDeliveryCode" Type="nvarchar" MaxLength="50" />
     <Property Name="fromLocation" Type="int" Nullable="false" />
     <Property Name="toLocation" Type="int" Nullable="false" />
-    <Property Name="travelDate" Type="date" Nullable="false" />
-    <Property Name="drivingTime" Type="time" Precision="7" Nullable="false" />
-    <Property Name="confirmationDelivery" Type="bit" Nullable="false" />
-    <Property Name="happinesslevel" Type="int" Nullable="false" />
-    <Property Name="describeHappiness" Type="nvarchar" MaxLength="50" />
+    <Property Name="fromDate" Type="date" Nullable="false" />
+    <Property Name="toDate" Type="date" Nullable="false" />
+    <Property Name="fromTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="toTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="packageType" Type="int" Nullable="false" />
     <Property Name="describePackage" Type="nvarchar" MaxLength="50" />
     <Property Name="packageSize" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="PackageDescription">
-    <Key>
-      <PropertyRef Name="packageDescriptionCode" />
-    </Key>
-    <Property Name="packageDescriptionCode" Type="int" Nullable="false" />
-    <Property Name="userCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="packageType" Type="int" Nullable="false" />
-    <Property Name="value" Type="nvarchar(max)" />
+    <Property Name="message" Type="bit" Nullable="false" />
+    <Property Name="distance" Type="float" />
   </EntityType>
   <EntityType Name="PackageSize">
     <Key>
@@ -67,15 +72,6 @@
     <Property Name="packageTypeCode" Type="int" Nullable="false" />
     <Property Name="packageTypeName" Type="nvarchar(max)" />
   </EntityType>
-  <EntityType Name="RefusesPackage">
-    <Key>
-      <PropertyRef Name="packageCode" />
-    </Key>
-    <Property Name="packageCode" Type="int" Nullable="false" />
-    <Property Name="userCode" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="packageTypeCode" Type="int" Nullable="false" />
-    <Property Name="value" Type="nvarchar" MaxLength="50" Nullable="false" />
-  </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -86,248 +82,41 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <EntityType Name="Transportation">
+    <Key>
+      <PropertyRef Name="transportationId" />
+    </Key>
+    <Property Name="transportationId" Type="int" Nullable="false" />
+    <Property Name="transportationType" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="userCode" />
     </Key>
     <Property Name="userCode" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="userName" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="userPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="userMail" Type="nvarchar" MaxLength="50" />
+    <Property Name="userMail" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="FK_Drive_Loction">
-    <End Role="Loction" Type="Self.Loction" Multiplicity="1" />
-    <End Role="Drive" Type="Self.Drive" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Loction">
-        <PropertyRef Name="locationId" />
-      </Principal>
-      <Dependent Role="Drive">
-        <PropertyRef Name="fromLocation" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Drive_Loction1">
-    <End Role="Loction" Type="Self.Loction" Multiplicity="1" />
-    <End Role="Drive" Type="Self.Drive" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Loction">
-        <PropertyRef Name="locationId" />
-      </Principal>
-      <Dependent Role="Drive">
-        <PropertyRef Name="toLocation" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Drive_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Drive" Type="Self.Drive" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="userCode" />
-      </Principal>
-      <Dependent Role="Drive">
-        <PropertyRef Name="driverCode" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Drives_Users">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Drive" Type="Self.Drive" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="userCode" />
-      </Principal>
-      <Dependent Role="Drive">
-        <PropertyRef Name="driverCode" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Package_Loction">
-    <End Role="Loction" Type="Self.Loction" Multiplicity="1" />
-    <End Role="Package" Type="Self.Package" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Loction">
-        <PropertyRef Name="locationId" />
-      </Principal>
-      <Dependent Role="Package">
-        <PropertyRef Name="fromLocation" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Package_Loction1">
-    <End Role="Loction" Type="Self.Loction" Multiplicity="1" />
-    <End Role="Package" Type="Self.Package" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Loction">
-        <PropertyRef Name="locationId" />
-      </Principal>
-      <Dependent Role="Package">
-        <PropertyRef Name="toLocation" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_packageDescription_PackageType">
-    <End Role="PackageType" Type="Self.PackageType" Multiplicity="1" />
-    <End Role="PackageDescription" Type="Self.PackageDescription" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PackageType">
-        <PropertyRef Name="packageTypeCode" />
-      </Principal>
-      <Dependent Role="PackageDescription">
-        <PropertyRef Name="packageType" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_packageDescription_Users">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="PackageDescription" Type="Self.PackageDescription" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="userCode" />
-      </Principal>
-      <Dependent Role="PackageDescription">
-        <PropertyRef Name="userCode" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Packages_PackageSize">
-    <End Role="PackageSize" Type="Self.PackageSize" Multiplicity="1" />
-    <End Role="Package" Type="Self.Package" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PackageSize">
-        <PropertyRef Name="packageSizeCode" />
-      </Principal>
-      <Dependent Role="Package">
-        <PropertyRef Name="packageSize" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Packages_PackageType">
-    <End Role="PackageType" Type="Self.PackageType" Multiplicity="1" />
-    <End Role="Package" Type="Self.Package" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PackageType">
-        <PropertyRef Name="packageTypeCode" />
-      </Principal>
-      <Dependent Role="Package">
-        <PropertyRef Name="packageType" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Packages_Users">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="Package" Type="Self.Package" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="userCode" />
-      </Principal>
-      <Dependent Role="Package">
-        <PropertyRef Name="userCustomerCode" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Packages_Users1">
-    <End Role="User" Type="Self.User" Multiplicity="0..1" />
-    <End Role="Package" Type="Self.Package" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="userCode" />
-      </Principal>
-      <Dependent Role="Package">
-        <PropertyRef Name="userDeliveryCode" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_RefusesPackages_PackageType">
-    <End Role="PackageType" Type="Self.PackageType" Multiplicity="1" />
-    <End Role="RefusesPackage" Type="Self.RefusesPackage" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="PackageType">
-        <PropertyRef Name="packageTypeCode" />
-      </Principal>
-      <Dependent Role="RefusesPackage">
-        <PropertyRef Name="packageTypeCode" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_RefusesPackages_Users">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="RefusesPackage" Type="Self.RefusesPackage" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="userCode" />
-      </Principal>
-      <Dependent Role="RefusesPackage">
-        <PropertyRef Name="userCode" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityContainer Name="DBDeliveries1ModelStoreContainer">
+  <EntityType Name="WaitingMessages">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="packageId" Type="int" Nullable="false" />
+    <Property Name="driveId" Type="int" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+    <Property Name="totalPrice" Type="int" />
+  </EntityType>
+  <EntityContainer Name="DBDeliveries2ModelStoreContainer">
     <EntitySet Name="Drive" EntityType="Self.Drive" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Happiness" EntityType="Self.Happiness" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Loction" EntityType="Self.Loction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Package" EntityType="Self.Package" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="PackageDescription" EntityType="Self.PackageDescription" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PackageSize" EntityType="Self.PackageSize" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PackageType" EntityType="Self.PackageType" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="RefusesPackage" EntityType="Self.RefusesPackage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Transportation" EntityType="Self.Transportation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Drive_Loction" Association="Self.FK_Drive_Loction">
-      <End Role="Loction" EntitySet="Loction" />
-      <End Role="Drive" EntitySet="Drive" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Drive_Loction1" Association="Self.FK_Drive_Loction1">
-      <End Role="Loction" EntitySet="Loction" />
-      <End Role="Drive" EntitySet="Drive" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Drive_User" Association="Self.FK_Drive_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="Drive" EntitySet="Drive" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Drives_Users" Association="Self.FK_Drives_Users">
-      <End Role="User" EntitySet="User" />
-      <End Role="Drive" EntitySet="Drive" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Package_Loction" Association="Self.FK_Package_Loction">
-      <End Role="Loction" EntitySet="Loction" />
-      <End Role="Package" EntitySet="Package" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Package_Loction1" Association="Self.FK_Package_Loction1">
-      <End Role="Loction" EntitySet="Loction" />
-      <End Role="Package" EntitySet="Package" />
-    </AssociationSet>
-    <AssociationSet Name="FK_packageDescription_PackageType" Association="Self.FK_packageDescription_PackageType">
-      <End Role="PackageType" EntitySet="PackageType" />
-      <End Role="PackageDescription" EntitySet="PackageDescription" />
-    </AssociationSet>
-    <AssociationSet Name="FK_packageDescription_Users" Association="Self.FK_packageDescription_Users">
-      <End Role="User" EntitySet="User" />
-      <End Role="PackageDescription" EntitySet="PackageDescription" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Packages_PackageSize" Association="Self.FK_Packages_PackageSize">
-      <End Role="PackageSize" EntitySet="PackageSize" />
-      <End Role="Package" EntitySet="Package" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Packages_PackageType" Association="Self.FK_Packages_PackageType">
-      <End Role="PackageType" EntitySet="PackageType" />
-      <End Role="Package" EntitySet="Package" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Packages_Users" Association="Self.FK_Packages_Users">
-      <End Role="User" EntitySet="User" />
-      <End Role="Package" EntitySet="Package" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Packages_Users1" Association="Self.FK_Packages_Users1">
-      <End Role="User" EntitySet="User" />
-      <End Role="Package" EntitySet="Package" />
-    </AssociationSet>
-    <AssociationSet Name="FK_RefusesPackages_PackageType" Association="Self.FK_RefusesPackages_PackageType">
-      <End Role="PackageType" EntitySet="PackageType" />
-      <End Role="RefusesPackage" EntitySet="RefusesPackage" />
-    </AssociationSet>
-    <AssociationSet Name="FK_RefusesPackages_Users" Association="Self.FK_RefusesPackages_Users">
-      <End Role="User" EntitySet="User" />
-      <End Role="RefusesPackage" EntitySet="RefusesPackage" />
-    </AssociationSet>
+    <EntitySet Name="WaitingMessages" EntityType="Self.WaitingMessages" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

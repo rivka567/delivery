@@ -12,14 +12,13 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class PackageDescription
+    public partial class Happiness
     {
-        public int packageDescriptionCode { get; set; }
-        public string userCode { get; set; }
-        public int packageType { get; set; }
-        public string value { get; set; }
-    
-        public virtual PackageType PackageType1 { get; set; }
-        public virtual User User { get; set; }
+        public int id { get; set; }
+        public string deliveryId { get; set; }
+        public string customerName { get; set; }
+        public System.DateTime date { get; set; }
+        public int happinessLevel { get; set; }
+        public string describeHappiness { get; set; }
     }
 }

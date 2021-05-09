@@ -12,6 +12,7 @@ import { isNullOrUndefined } from 'util';
 import { PackageService } from 'src/app/Services/package.service';
 import { EmailManagementService } from 'src/app/Services/email-management.service';
 import  swal from 'sweetalert';
+import { Package } from 'src/app/Classes/package';
 
 
 @Component({
@@ -26,6 +27,8 @@ export class DriveComponent implements OnInit {
   listDrive:Array<Drive>=[];
   minDate:Date;
   isDrive:boolean;
+  myFilterPackages:Package[]
+  get f(){return this.form.controls;}
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
 
@@ -53,13 +56,13 @@ export class DriveComponent implements OnInit {
     
     this.form = this.formBuilder.group({
       trans:['',Validators.required],
-      driverCode: [this.userSer.currentUser.userCode||''],
+      // driverCode: [this.userSer.currentUser.userCode||''],
       driving:['',Validators.required],
       date:[new Date()||'',Validators.required],
       fromLocation:['',Validators.required],
       toLocation:['',Validators.required],
       price:[''],
-      describeDrive:[''],
+      // describeDrive:[''],
       mes:[''||false,Validators.required],
       distance:['']
     })
@@ -68,9 +71,9 @@ export class DriveComponent implements OnInit {
   addDrive() {
     debugger
  this.submitted=true;
- this.newDrive=new Drive(0,this.form.value.driverCode,null,this.form.value.driving,this.form.value.date,
-  0,this.from,this.fromLat,this.fromLng,0,this.to,this.toLat,this.toLng,this.form.value.describeDrive,
-  true,this.form.value.trans,this.form.value.price,this.form.value.mes,this.form.value.distance);
+ this.newDrive=new Drive(0,this.userSer.currentUser.userCode,null,this.form.value.driving,this.form.value.date,
+  0,this.from,this.fromLat,this.fromLng,0,this.to,this.toLat,this.toLng,null,
+  true,this.form.value.trans,this.form.value.price||0,this.form.value.mes,this.form.value.distance||500);
  this.driveSer.addDrive(this.newDrive).subscribe(
   myData => { 
     swal({title:"נוסף בהצלחה!",icon:"success"})
@@ -87,12 +90,57 @@ export class DriveComponent implements OnInit {
         this.dialogRef.close();
 
       },
-        myErr=>{alert("error")}
-    );
+        myErr=>{alert("error")});
   }
-},
-  myErr => { console.log(myErr.message); });
 
+this.packageSer.getAllPackages().subscribe(
+  myData=>{
+   this.myFilterPackages=myData
+   debugger
+   this.sendEmailToMatchPackages()
+  },
+  myErr=>{}
+  )
+   },
+   myErr => {
+   console.log("from subscribe",this.newDrive); 
+   console.log(myErr.message);
+ });
+
+  }
+
+  sendEmailToMatchPackages()
+  {
+    debugger
+    //מוציא את החבילות של השליח בעצמו
+    this.myFilterPackages=this.myFilterPackages.filter(p=>p.userCustomerCode!=this.userSer.currentUser.userCode)
+//בודק מי נרשם לקבלת התראה
+this.myFilterPackages= this.myFilterPackages.filter(p=>p.message==true)
+//בודק שהחבילה עדיין לא סגורה
+this.myFilterPackages=this.myFilterPackages.filter(p=>p.status==true)
+// סינון לפי תאריך נסיעה
+if(this.myFilterPackages)
+  {
+   this.myFilterPackages= this.myFilterPackages.filter(p=>(new Date(p.toDate)>=new Date(this.driveSer.currentDrive.travelDate)));
+  } 
+   //סינון לפי מוצא
+   if(this.myFilterPackages)
+  {
+   this.myFilterPackages=  this.myFilterPackages.filter(f=> 
+    f.distance>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f.fromLocationLat, f.fromLocationLng), new google.maps.LatLng(this.driveSer.currentDrive.fromLocationLat,this.driveSer.currentDrive.fromLocationLng)));
+   }
+  //סינון לפי יעד
+  if(this.myFilterPackages)
+  {
+   this.myFilterPackages=  this.myFilterPackages.filter(f=>
+   f.distance>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f. toLocationLat, f.toLocationLng), new google.maps.LatLng(this.driveSer.currentDrive.toLocationLat,this.driveSer.currentDrive.toLocationLng)));  
+   }
+
+   if(this.myFilterPackages)
+   {
+     debugger
+     this.emailSer.sendEmailToMatchPackages(this.myFilterPackages,this.driveSer.currentDrive,'http://localhost:4200/show-message-d').subscribe(data=>{},err=>{})
+   }
 
   }
 

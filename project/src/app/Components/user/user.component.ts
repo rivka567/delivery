@@ -62,7 +62,6 @@ export class UserComponent implements OnInit {
  this.newUser=new User(this.form.value.password,this.form.value.name,this.form.value.gmail)
  this.userSer.addUser(this.newUser).subscribe(
   myData => { 
-    console.log("from myData",myData)
     this.dialogRef.close();
     alert("נוסף בהצלחה")
     this.userSer.currentUser=myData;

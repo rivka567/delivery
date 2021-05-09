@@ -14,27 +14,9 @@ namespace DAL
     
     public partial class Loction
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Loction()
-        {
-            this.Drives = new HashSet<Drive>();
-            this.Drives1 = new HashSet<Drive>();
-            this.Packages = new HashSet<Package>();
-            this.Packages1 = new HashSet<Package>();
-        }
-    
         public int locationId { get; set; }
         public string locationFormat { get; set; }
         public Nullable<double> locationLat { get; set; }
         public Nullable<double> locationLng { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Drive> Drives { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Drive> Drives1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Package> Packages { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Package> Packages1 { get; set; }
     }
 }

@@ -21,15 +21,11 @@ namespace DAL
         public System.DateTime travelDate { get; set; }
         public int fromLocation { get; set; }
         public int toLocation { get; set; }
-        public int packageSizeCode { get; set; }
-        public Nullable<System.TimeSpan> howLongBeforeReminder { get; set; }
-        public string transportation { get; set; }
         public string describeDrive { get; set; }
-        public bool confirmationCustomer { get; set; }
-    
-        public virtual Loction Loction { get; set; }
-        public virtual Loction Loction1 { get; set; }
-        public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
+        public Nullable<bool> status { get; set; }
+        public int transportation { get; set; }
+        public Nullable<int> price { get; set; }
+        public bool message { get; set; }
+        public Nullable<double> distance { get; set; }
     }
 }

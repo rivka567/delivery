@@ -23,6 +23,12 @@ section {
 .is-invalid {
   border: 2px solid red;
 }
+.is-invalid-text {
+  color:  red;
+}
+.ng-invalid-text.ng-touched.ng-dirty:not(form) {
+  color: red;
+}
 
 .mat-typography {
   height:600px;

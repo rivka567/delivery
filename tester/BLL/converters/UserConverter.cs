@@ -16,8 +16,8 @@ namespace BLL.converters
             {
                 userCode = user.userCode,
                 userName = user.userName,
-                userPhone = user.userPhone,
-                userMail=user.userMail
+                userMail=user.userMail,
+             
             };
             return newuser;
         }

@@ -1,5 +1,6 @@
 ﻿using DAL;
 using DTO;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,8 +16,18 @@ namespace WebAPI.Controllers
         [HttpGet]
         [Route("GetAllPackages")]
         public IHttpActionResult GetAllPackages()
-        {
+            {
             var p = BLL.PackageBLL.GetAllPackages();
+            if (p == null)
+                return NotFound();
+            return Ok(p);
+        }
+
+        [HttpGet]
+        [Route("GetPackagesByUserId/{id}")]
+        public IHttpActionResult GetPackagesByUserId(string id)
+        {
+            var p = BLL.PackageBLL.GetPackagesByUserId(id);
             if (p == null)
                 return NotFound();
             return Ok(p);
@@ -43,16 +54,31 @@ namespace WebAPI.Controllers
             return Ok(p);
         }
 
+        [HttpPost]
+        [Route("UpdatePackage")]
+        public IHttpActionResult UpdatePackage([FromBody]JObject data)
+        {
+            PackageDTO updatePackage = data["updatePackage"].ToObject<PackageDTO>();
+            List<DriveDTO> listWaiting = data["listWaiting"].ToObject < List<DriveDTO>>();
+            var u = BLL.PackageBLL.UpdatePackage(updatePackage,listWaiting);
+            if (u == null)
+                return NotFound();
+            return Ok(u);
+        }
         // PUT: api/Package/5
         [HttpPut]
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: api/Package/5
-        [HttpDelete]
-        public void Delete(int id)
+        [HttpPost]
+        [Route("DeletePackage/{id}")]
+        public IHttpActionResult DeletePackage(int id,List<DriveDTO> listWaiting)
         {
+            var u = BLL.PackageBLL.DeletePackage(id,listWaiting);
+            if (u == null)
+                return NotFound();
+            return Ok(u);
         }
     }
 }

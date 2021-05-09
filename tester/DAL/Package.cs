@@ -19,20 +19,15 @@ namespace DAL
         public string userDeliveryCode { get; set; }
         public int fromLocation { get; set; }
         public int toLocation { get; set; }
-        public System.DateTime travelDate { get; set; }
-        public System.TimeSpan drivingTime { get; set; }
-        public bool confirmationDelivery { get; set; }
-        public int happinesslevel { get; set; }
-        public string describeHappiness { get; set; }
+        public System.DateTime fromDate { get; set; }
+        public System.DateTime toDate { get; set; }
+        public System.TimeSpan fromTime { get; set; }
+        public System.TimeSpan toTime { get; set; }
+        public bool status { get; set; }
         public int packageType { get; set; }
         public string describePackage { get; set; }
         public int packageSize { get; set; }
-    
-        public virtual Loction Loction { get; set; }
-        public virtual Loction Loction1 { get; set; }
-        public virtual PackageSize PackageSize1 { get; set; }
-        public virtual PackageType PackageType1 { get; set; }
-        public virtual User User { get; set; }
-        public virtual User User1 { get; set; }
+        public bool message { get; set; }
+        public Nullable<double> distance { get; set; }
     }
 }

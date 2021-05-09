@@ -2,11 +2,14 @@
 <mat-dialog-content class="mat-typography">
     <mat-icon style="cursor: pointer;" mat-dialog-close >highlight_off </mat-icon>
      <form *ngIf="form,newPackage" [formGroup]="form" (ngSubmit)="updatePackage()">
-       
-      <div class="mb-3">
+     <h2>עדכן פרטי חבילה</h2>  
+     <div class="col-md-2">
+       <label>קוד חבילה</label>
             <input class="form-control" type="text" placeholder="קוד חבילה"  readonly formControlName="packageCode" name="packageCode">
       </div>
-      <div class="mb-3">
+      <div class="form-group row">
+        <label>גודל חבילה</label>
+
         <section>
             <div class="example-button-row">
               <div class="example-flex-container container">
@@ -45,49 +48,77 @@
         </section>
       </div>
 
-        <div>
-          <input type="radio" value="1" style="visibility: hidden;"  id="1" #1  formControlName="size" name="size"  >
+      <div class="form-group ">
+        <input type="radio" value="1" style="visibility: hidden;"  id="1" #1  formControlName="size" name="size"  >
           <input type="radio" value="2" style="visibility: hidden;"  id="2" #2  formControlName="size" name="size"  >
           <input type="radio" value="3" style="visibility: hidden;"  id="3" #3  formControlName="size" name="size"  >
           <input type="radio" value="4" style="visibility: hidden;"  id="4" #4  formControlName="size" name="size"  >
-         </div>
+          <div class="form-text" *ngIf="f.size.errors" >שדה חובה</div>
+
+        </div>
 
 
-          <div class="mb-3">
-          <input class="form-control" placeholder=" מוצא" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)"
+         <div class="row">
+          <div class="col-md-4">
+              <label for="inputFrom" >מוצא</label>
+          <input class="form-control" id="inputFrom" placeholder=" מוצא" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressFromChange($event)"
           formControlName="fromLocation" name="fromLocation" [ngClass]="{ 'is-invalid': submitted && f.fromLocation.errors }" />
-          </div>
+          <div class="form-text" *ngIf="f.fromLocation.errors" >שדה חובה</div>
 
-          <div class="mb-3">
-          <input class="form-control" placeholder=" יעד" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)"
+        </div>
+
+          <div class=" col-md-4">     
+            <label for="inputTo" >יעד</label>
+          <input class="form-control" id="inputTo" placeholder=" יעד" ngx-google-places-autocomplete  #placesRef="ngx-places" (onAddressChange)="handleAddressToChange($event)"
           formControlName="toLocation" name="toLocation" [ngClass]="{ 'is-invalid': submitted && f.toLocation.errors }" />
-          </div>
+          <div class="form-text" *ngIf="f.toLocation.errors" >שדה חובה</div>
 
-          <div class="mb-3">
-        <mat-form-field class="example-full-width">
-          <mat-label>מתאריך</mat-label>
-          <input class="form-control"  [min]="minDate" [matDatepicker]="picker" [min]="minDateFromDate" [max]="maxDateFromDate" formControlName="fromDate" name="fromDate" #fromDate [ngClass]="{ 'is-invalid': submitted && f.fromDate.errors }" >
+        </div>
+    </div> 
+  <br>
+  <div class="row">
+    <div class=" col-md-4">
+      <!-- <mat-form-field class="example-full-width"> -->
+        <label for="inputFromDate" class="form-label">מתאריך</label>
+          <input class="form-control" id="inputFromDate" [min]="minDate" [matDatepicker]="picker" [min]="minDateFromDate" [max]="maxDateFromDate" formControlName="fromDate" name="fromDate" #fromDate [ngClass]="{ 'is-invalid': submitted && f.fromDate.errors }" >
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker  [dateClass]="dateClass" #picker (closed)="updateMinDateToDate(fromDate.value)"></mat-datepicker>
-        </mat-form-field>
+          <div class="form-text" *ngIf="f.fromDate.errors" >שדה חובה</div>
+
         </div>
-        <div class="mb-3">
-          <input class="form-control" type="time" placeholder="שעת הגעה"  formControlName="fromTime" name="fromTime" [ngClass]="{ 'is-invalid': submitted && f.fromTime.errors }" >
+    
+          <div class="col-md-4">
+            <label for="inputFromTime" class="form-label">משעה</label>
+          <input class="form-control" id="inputFromTime" type="time" placeholder="משעה"  formControlName="fromTime" name="fromTime" [ngClass]="{ 'is-invalid': submitted && f.fromTime.errors }" >
+          <div class="form-text" *ngIf="f.fromTime.errors" >שדה חובה</div>
+
         </div>
-          <div class="mb-3">
-        <mat-form-field class="example-full-width">
-          <mat-label>עד תאריך </mat-label>
-          <input  class="form-control" [min]="minDate" [matDatepicker]="picker1" [min]="minDateToDate" formControlName="toDate" name="toDate" #toDate [ngClass]="{ 'is-invalid': submitted && f.toDate.errors }" >
+     
+      </div>
+  <br>
+      <div class="row">
+        <div class=" col-md-4">
+        <!-- <mat-form-field class="example-full-width"> -->
+          <label for="inputToDate" class="form-label">עד תאריך</label>
+          <input  class="form-control" id="inputToDate" placeholder="עד תאריך"  [min]="minDate" [matDatepicker]="picker1" [min]="minDateToDate" formControlName="toDate" name="toDate" #toDate [ngClass]="{ 'is-invalid': submitted && f.toDate.errors }" >
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
           <mat-datepicker  [dateClass]="dateClass" #picker1 (closed)="updatemaxDateFromDate(toDate.value)"></mat-datepicker>
-        </mat-form-field>
-        </div>
+          <div class="form-text" *ngIf="f.toDate.errors" >שדה חובה</div>
 
-         <div class="mb-3">
-          <input  class="form-control" type="time" placeholder="שעת הגעה"  formControlName="toTime" name="toTime" [ngClass]="{ 'is-invalid': submitted && f.toTime.errors }" >
-         </div>
-        <label>סוג חבילה:</label>
-        <br>
+        </div>
+    
+          <div class="col-md-4">
+            <label for="inputToTime">עד שעה</label>
+          <input  class="form-control" id="inputToTime" type="time" placeholder="עד שעה"  formControlName="toTime" name="toTime" [ngClass]="{ 'is-invalid': submitted && f.toTime.errors }" >
+          <div class="form-text" *ngIf="f.toTime.errors" >שדה חובה</div>
+
+      </div>
+    </div>
+
+
+    <div class="form-group "[ngClass]="{ 'is-invalid': submitted && f.type.errors }" >
+      <label>סוג חבילה:</label>
+      <br>
         <input  type="radio" value="1 "  id="1"  formControlName="type" name="type" >
         <label> שביר</label>
         <br>
@@ -99,7 +130,10 @@
         <br>
         <input  type="radio" value="4"  id="4"  formControlName="type" name="type" >
         <label> אחר</label>
-        <br>
+        <div class="form-text" *ngIf="f.type.errors" >שדה חובה</div>
+
+    </div>
+<br>
          <!-- <mat-form-field>
           <input matInput type="text" placeholder=" תאור נוסף או הערה" class="inp" formControlName="describePackage" name="describePackage">
         </mat-form-field>

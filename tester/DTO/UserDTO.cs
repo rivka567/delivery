@@ -11,7 +11,7 @@ namespace DTO
     {
         public string userCode { get; set; }
         public string userName { get; set; }
-        public string userPhone { get; set; }
         public string userMail { get; set; }
+     
     }
 }
