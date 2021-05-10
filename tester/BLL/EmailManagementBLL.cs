@@ -27,14 +27,14 @@ namespace BLL
 
         public static string SendPackageToMatchCustomer(string contactAddress, string subject, DriveDTO body, PackageDTO package)
         {
-            string mailBody = File.ReadAllText("C: \\Users\\dvora bloch\\Desktop\\new tester\\tester\\WebAPI\\HtmlPages\\MatchDrive.html");
+            string mailBody = File.ReadAllText("C:\\Users\\dvora bloch\\Desktop\\delivery\\delivery\\tester\\WebAPI\\HtmlPages\\MatchDrive.html");
             string str = mailBody;
             str = str.Replace("$customerName", package.customerName);
             str = str.Replace("$packageId", package.packageCode.ToString());
             str = str.Replace("$driveId", body.driveCode.ToString());
             str = str.Replace("$fromlocation", body.fromLocationFormat);
             str = str.Replace("$tolocation", body.toLocationFormat);
-            str = str.Replace("$date", body.travelDate.ToString());
+            str = str.Replace("$date", body.travelDate.Date.ToString());
             str = str.Replace("$time", body.drivingTime.ToString());
             str = str.Replace("$trans", body.transportationType);
             str = str.Replace("$price", body.price.ToString());
@@ -56,16 +56,16 @@ namespace BLL
         //שולח פרי חבילה ללקוח שנרשם לקבלת התראה זו והנסיעה שלו מתאימה
         public static string SendPackageToMatchDriver(string contactAddress, string subject, PackageDTO body, DriveDTO drive)
         {
-            string mailBody = File.ReadAllText("C: \\Users\\dvora bloch\\Desktop\\new tester\\tester\\WebAPI\\HtmlPages\\MatchPackage.html");
+            string mailBody = File.ReadAllText("C:\\Users\\dvora bloch\\Desktop\\delivery\\delivery\\tester\\WebAPI\\HtmlPages\\MatchPackage.html");
             string str = mailBody;
             str = str.Replace("$driverName", drive.driverName);
             str = str.Replace("$driveId", drive.driveCode.ToString());
             str = str.Replace("$packageId", body.packageCode.ToString());
             str = str.Replace("$fromlocation", body.fromLocationFormat);
             str = str.Replace("$tolocation", body.toLocationFormat);
-            str = str.Replace("$fromDate", body.fromDate.ToString());
+            str = str.Replace("$fromDate", body.fromDate.Date.ToString());
             str = str.Replace("$fromTime", body.fromTime.ToString());
-            str = str.Replace("$toDate", body.toDate.ToString());
+            str = str.Replace("$toDate", body.toDate.Date.ToString());
             str = str.Replace("$toTime", body.toTime.ToString());
             str = str.Replace("$type", body.packageType);
             str = str.Replace("$size", body.packageSize);
@@ -77,7 +77,7 @@ namespace BLL
 
         public static string SendPackageByEmail(string contactAddress, string subject,PackageDTO body,DriveDTO drive)
         {
-            string mailBody = File.ReadAllText("C: \\Users\\dvora bloch\\Desktop\\new tester\\tester\\WebAPI\\HtmlPages\\myPackage.html");
+            string mailBody = File.ReadAllText("C:\\Users\\dvora bloch\\Desktop\\delivery\\delivery\\tester\\WebAPI\\HtmlPages\\myPackage.html");
             string str = mailBody;
             str = str.Replace("$deliveryName", drive.driverName);
             str = str.Replace("$customerName", body.customerName);
@@ -85,9 +85,9 @@ namespace BLL
             str = str.Replace("$packageId", body.packageCode.ToString());
             str = str.Replace("$fromlocation", body.fromLocationFormat);
             str = str.Replace("$tolocation", body.toLocationFormat);
-            str = str.Replace("$fromDate", body.fromDate.ToString());
+            str = str.Replace("$fromDate", body.fromDate.Date.ToString());
             str = str.Replace("$fromTime", body.fromTime.ToString());
-            str = str.Replace("$toDate", body.toDate.ToString());
+            str = str.Replace("$toDate", body.toDate.Date.ToString());
             str = str.Replace("$toTime", body.toTime.ToString());
             str = str.Replace("$type", body.packageType);
             str = str.Replace("$size", body.packageSize);
@@ -98,7 +98,7 @@ namespace BLL
 
         public static string SendDriveByEmail(string contactAddress, string subject, PackageDTO package, DriveDTO body)
         {
-            string mailBody = File.ReadAllText("C: \\Users\\dvora bloch\\Desktop\\new tester\\tester\\WebAPI\\HtmlPages\\MyDrive.html");
+            string mailBody = File.ReadAllText("C:\\Users\\dvora bloch\\Desktop\\delivery\\delivery\\tester\\WebAPI\\HtmlPages\\MyDrive.html");
             string str = mailBody;
 
             str = str.Replace("$customerName", package.customerName);
@@ -107,7 +107,7 @@ namespace BLL
             str = str.Replace("$driveId", body.driveCode.ToString());
             str = str.Replace("$fromlocation", body.fromLocationFormat);
             str = str.Replace("$tolocation", body.toLocationFormat);
-            str = str.Replace("$date", body.travelDate.ToString());
+            str = str.Replace("$date", body.travelDate.Date.ToString());
             str = str.Replace("$time", body.drivingTime.ToString());
             str = str.Replace("$trans", body.transportationType);
             str = str.Replace("$price", body.price.ToString());
@@ -117,7 +117,7 @@ namespace BLL
 
         public static string SendEmailTAboutDeleteDrive(string contactAddress, string subject, PackageDTO package, DriveDTO drive,string url)
         {
-            string mailBody = File.ReadAllText("C: \\Users\\dvora bloch\\Desktop\\new tester\\tester\\WebAPI\\HtmlPages\\DeleteDrive.html");
+            string mailBody = File.ReadAllText("C:\\Users\\dvora bloch\\Desktop\\delivery\\delivery\\tester\\WebAPI\\HtmlPages\\DeleteDrive.html");
             string str = mailBody;
             str = str.Replace("$deliveryName", drive.driverName);
             str = str.Replace("$customerName", package.customerName);
@@ -125,7 +125,7 @@ namespace BLL
             str = str.Replace("$driveId", drive.driveCode.ToString());
             str = str.Replace("$fromlocation", drive.fromLocationFormat);
             str = str.Replace("$tolocation", drive.toLocationFormat);
-            str = str.Replace("$date", drive.travelDate.ToString());
+            str = str.Replace("$date", drive.travelDate.Date.ToString());
             str = str.Replace("$time", drive.drivingTime.ToString());
             str = str.Replace("$trans", drive.transportationType);
             str = str.Replace("$price", drive.price.ToString());
@@ -138,7 +138,7 @@ namespace BLL
 
         public static string SendEmailAboutRemoveDrive(string contactAddress, string subject, PackageDTO package, DriveDTO drive)
         {
-            string mailBody = File.ReadAllText("C: \\Users\\dvora bloch\\Desktop\\new tester\\tester\\WebAPI\\HtmlPages\\RemoveDrive.html");
+            string mailBody = File.ReadAllText("C:\\Users\\dvora bloch\\Desktop\\delivery\\delivery\\tester\\WebAPI\\HtmlPages\\RemoveDrive.html");
             string str = mailBody;
             str = str.Replace("$deliveryName", drive.driverName);
             str = str.Replace("$customerName", package.customerName);
@@ -146,9 +146,9 @@ namespace BLL
             str = str.Replace("$packageId", package.packageCode.ToString());
             str = str.Replace("$fromlocation", package.fromLocationFormat);
             str = str.Replace("$tolocation", package.toLocationFormat);
-            str = str.Replace("$fromDate", package.fromDate.ToString());
+            str = str.Replace("$fromDate", package.fromDate.Date.ToString());
             str = str.Replace("$fromTime", package.fromTime.ToString());
-            str = str.Replace("$toDate", package.toDate.ToString());
+            str = str.Replace("$toDate", package.toDate.Date.ToString());
             str = str.Replace("$toTime", package.toTime.ToString());
             str = str.Replace("$type", package.packageType);
             str = str.Replace("$size", package.packageSize);
@@ -158,7 +158,7 @@ namespace BLL
         }
         public static string SendEmailAboutRemovePackage(string contactAddress, string subject, PackageDTO package, DriveDTO drive)
         {
-            string mailBody = File.ReadAllText("C: \\Users\\dvora bloch\\Desktop\\new tester\\tester\\WebAPI\\HtmlPages\\RemovePackage.html");
+            string mailBody = File.ReadAllText("C: \\Users\\dvora bloch\\Desktop\\delivery\\delivery\\tester\\WebAPI\\HtmlPages\\RemovePackage.html");
             string str = mailBody;
             str = str.Replace("$deliveryName", drive.driverName);
             str = str.Replace("$customerName", package.customerName);
@@ -166,7 +166,7 @@ namespace BLL
             str = str.Replace("$driveId", drive.driveCode.ToString());
             str = str.Replace("$fromlocation", drive.fromLocationFormat);
             str = str.Replace("$tolocation", drive.toLocationFormat);
-            str = str.Replace("$date", drive.travelDate.ToString());
+            str = str.Replace("$date", drive.travelDate.Date.ToString());
             str = str.Replace("$time", drive.drivingTime.ToString());
             str = str.Replace("$trans", drive.transportationType);
             str = str.Replace("$price", drive.price.ToString());
@@ -177,7 +177,7 @@ namespace BLL
 
         public static string SendEmailAboutUpdatePackage(string contactAddress,string subject,PackageDTO package,DriveDTO drive)
         {
-            string mailBody = File.ReadAllText("C: \\Users\\dvora bloch\\Desktop\\new tester\\tester\\WebAPI\\HtmlPages\\UpdatePackage.html");
+            string mailBody = File.ReadAllText("C: \\Users\\dvora bloch\\Desktop\\delivery\\delivery\\tester\\WebAPI\\HtmlPages\\UpdatePackage.html");
             string str = mailBody;
             str = str.Replace("$deliveryName", drive.driverName);
             str = str.Replace("$packageId", package.packageCode.ToString());
@@ -185,9 +185,9 @@ namespace BLL
             str = str.Replace("$packageId", package.packageCode.ToString());
             str = str.Replace("$fromlocation", package.fromLocationFormat);
             str = str.Replace("$tolocation", package.toLocationFormat);
-            str = str.Replace("$fromDate", package.fromDate.ToString());
+            str = str.Replace("$fromDate", package.fromDate.Date.ToString());
             str = str.Replace("$fromTime", package.fromTime.ToString());
-            str = str.Replace("$toDate", package.toDate.ToString());
+            str = str.Replace("$toDate", package.toDate.Date.ToString());
             str = str.Replace("$toTime", package.toTime.ToString());
             str = str.Replace("$type", package.packageType);
             str = str.Replace("$size", package.packageSize);
@@ -198,7 +198,7 @@ namespace BLL
 
         public static string SendEmailAboutUpdateDrive(string contactAddress, string subject, PackageDTO package, DriveDTO drive)
         {
-            string mailBody = File.ReadAllText("C: \\Users\\dvora bloch\\Desktop\\new tester\\tester\\WebAPI\\HtmlPages\\UpdateDrive.html");
+            string mailBody = File.ReadAllText("C: \\Users\\dvora bloch\\Desktop\\delivery\\delivery\\tester\\WebAPI\\HtmlPages\\UpdateDrive.html");
             string str = mailBody;
 
             str = str.Replace("$customerName", package.customerName);
@@ -207,7 +207,7 @@ namespace BLL
             str = str.Replace("$driveId", drive.driveCode.ToString());
             str = str.Replace("$fromlocation", drive.fromLocationFormat);
             str = str.Replace("$tolocation", drive.toLocationFormat);
-            str = str.Replace("$date", drive.travelDate.ToString());
+            str = str.Replace("$date", drive.travelDate.Date.ToString());
             str = str.Replace("$time", drive.drivingTime.ToString());
             str = str.Replace("$trans", drive.transportationType);
             str = str.Replace("$price", drive.price.ToString());
@@ -219,7 +219,7 @@ namespace BLL
 
         public static string SendEmailAboutConfirmDrive(string contactAddress, string subject, PackageDTO package, DriveDTO drive)
         {
-            string mailBody = File.ReadAllText("C: \\Users\\dvora bloch\\Desktop\\new tester\\tester\\WebAPI\\HtmlPages\\ConfirmDrive.html");
+            string mailBody = File.ReadAllText("C: \\Users\\dvora bloch\\Desktop\\delivery\\delivery\\tester\\WebAPI\\HtmlPages\\ConfirmDrive.html");
             string str = mailBody;
             str = str.Replace("$deliveryName", drive.driverName);
             str = str.Replace("$customerName", package.customerName);
@@ -227,9 +227,9 @@ namespace BLL
             str = str.Replace("$packageId", package.packageCode.ToString());
             str = str.Replace("$fromlocation", package.fromLocationFormat);
             str = str.Replace("$tolocation", package.toLocationFormat);
-            str = str.Replace("$fromDate", package.fromDate.ToString());
+            str = str.Replace("$fromDate", package.fromDate.Date.ToString());
             str = str.Replace("$fromTime", package.fromTime.ToString());
-            str = str.Replace("$toDate", package.toDate.ToString());
+            str = str.Replace("$toDate", package.toDate.Date.ToString());
             str = str.Replace("$toTime", package.toTime.ToString());
             str = str.Replace("$type", package.packageType);
             str = str.Replace("$size", package.packageSize);

@@ -69,8 +69,10 @@ export class PersonalMessagesComponent implements OnInit {
       this.packageSer.getPackagesByUserId(this.userSer.currentUser.userCode).subscribe(
       myData => {
         debugger
-        //listWaiting-מחזיר חבילות שלא עברו את התאריך של היום
+        //listWaiting-מחזיר נסיעות שלא עברו את התאריך של היום
         this.listPackages=myData;
+
+     this.listPackages=this.listPackages.filter(p=>new Date(p.toDate)>=new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate(),0,0,0,0))
 
         this.listPackages.forEach(l => {console.log(l.listWaiting)});
         this.lenlistPackages=this.listPackages.length;
@@ -87,11 +89,11 @@ export class PersonalMessagesComponent implements OnInit {
       this.driveSer.getDrivesByUserId(this.userSer.currentUser.userCode).subscribe(
       myData => {
         debugger
-       //listWaiting-מחזיר נסיעות שלא עברו את התאריך של היום
+       //listWaiting-מחזיר חבילות שלא עברו את התאריך של היום
 
         this.listDrives=myData;
         debugger
-        //מציג רק חבילות שהתאריך נסיעה לא עבר את היום
+        //מציג רק נסיעות שהתאריך נסיעה לא עבר את היום
         this.listDrives=this.listDrives.filter(d=>new Date(d.travelDate)>=new Date(new Date().getFullYear(),new Date().getMonth(),new Date().getDate(),0,0,0,0))
         this.lenlistDrives=this.listDrives.length;
         this.listDrives.forEach(l => {console.log(l.listWaiting)});
@@ -126,13 +128,26 @@ export class PersonalMessagesComponent implements OnInit {
 
   confirmDrive(p:Package,confirmDrive:Drive,listToDelete:Drive[])
   {
-    debugger
-   listToDelete= listToDelete.filter(d=>d.driveCode!=confirmDrive.driveCode);
-    this.driveSer.confirmDrive(p,confirmDrive,listToDelete).subscribe(
-      myData=>{alert(myData)},
-      myErr=>{alert(myErr)}
-    );
-  }
+    listToDelete= listToDelete.filter(d=>d.driveCode!=confirmDrive.driveCode);
+
+    swal({
+      title: "האם אתה בטוח שברצונך לאשר נסיעה זו?",
+      text: "במידה ותאשר נסיעה זו, הבקשות הנוספות לחבילה זו ימחקו וחבילה זו לא תוצג יותר",
+      icon: "warning",
+      buttons:true,
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete){
+        this.driveSer.confirmDrive(p,confirmDrive,listToDelete).subscribe(
+          myData=>{alert(myData)},
+          myErr=>{alert(myErr)}
+        );     
+       }
+    });
+    }
+   
+
   //לקוח מוחק נסיעה מרשימת השליחים המעוניינים בנסיעה שלו
   deleteWaitingMessageFromCustomer(p:Package,driveToDelete:Drive)
   {

@@ -18,7 +18,7 @@ export class MyDrivesComponent implements OnInit {
 
   constructor(private emailSer:EmailManagementService, private driveSer:DriveService,private userSer:UserService,private dialog:MatDialog,private packageSer:PackageService) { }
   myListDrive:Drive[];
-  myFilterDrives:Drive[];
+  myFilterDrives:Array<Drive>=[]
   len:number;
   myDrive:Drive;
   currentPackage:Package;

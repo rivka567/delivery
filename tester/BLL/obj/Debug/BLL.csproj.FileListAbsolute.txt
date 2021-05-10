@@ -38,20 +38,6 @@ C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\BLL\obj\Debug\BL
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\BLL\obj\Debug\BLL.csproj.CopyComplete
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\BLL\obj\Debug\BLL.dll
 C:\Users\dvora bloch\Desktop\פרוייקט שליחים\tester\BLL\obj\Debug\BLL.pdb
-C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\BLL.dll
-C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\BLL.pdb
-C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\DAL.dll
-C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\DTO.dll
-C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\EntityFramework.dll
-C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\DAL.pdb
-C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\DAL.dll.config
-C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\DTO.pdb
-C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\EntityFramework.xml
-C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
-C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\obj\Debug\BLL.csproj.CopyComplete
-C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\obj\Debug\BLL.dll
-C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\obj\Debug\BLL.pdb
-C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
 C:\Users\dvora bloch\Desktop\new tester\tester\BLL\bin\Debug\BLL.dll
 C:\Users\dvora bloch\Desktop\new tester\tester\BLL\bin\Debug\BLL.pdb
 C:\Users\dvora bloch\Desktop\new tester\tester\BLL\bin\Debug\DAL.dll
@@ -66,3 +52,17 @@ C:\Users\dvora bloch\Desktop\new tester\tester\BLL\obj\Debug\BLL.csproj.CopyComp
 C:\Users\dvora bloch\Desktop\new tester\tester\BLL\obj\Debug\BLL.dll
 C:\Users\dvora bloch\Desktop\new tester\tester\BLL\obj\Debug\BLL.pdb
 C:\Users\dvora bloch\Desktop\new tester\tester\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\BLL.dll
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\BLL.pdb
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\DAL.dll
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\DTO.dll
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\EntityFramework.dll
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\DAL.pdb
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\DAL.dll.config
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\DTO.pdb
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\bin\Debug\EntityFramework.xml
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\obj\Debug\BLL.dll
+C:\Users\dvora bloch\Desktop\delivery\delivery\tester\BLL\obj\Debug\BLL.pdb

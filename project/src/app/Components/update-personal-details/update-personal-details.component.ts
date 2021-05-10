@@ -38,7 +38,7 @@ export class UpdatePersonalDetailsComponent implements OnInit {
   {
     
     debugger
-    this.myUser=new User(this.userSer.currentUser.userCode,this.form.value.name,this.form.value.email);
+    this.myUser=new User(this.myUser.userCode,this.form.value.name,this.form.value.email);
     this.userSer.updateUser(this.myUser).subscribe(
       myData=>{
         this.userSer.currentUser=myData

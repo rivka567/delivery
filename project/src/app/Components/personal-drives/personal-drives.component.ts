@@ -59,7 +59,9 @@ checkListWaitingForDrive(d:Drive)
       dangerMode: true,
     })
     .then((willDelete) => {
+      if (willDelete){
       this.deleteDrive(d)
+    }
     });
   }
   else
@@ -71,7 +73,9 @@ checkListWaitingForDrive(d:Drive)
     dangerMode: true,
   })
   .then((willDelete) => {
+    if (willDelete){
     this.deleteDrive(d)
+    }
   });
   }
 else
@@ -84,7 +88,9 @@ swal({
   dangerMode: true,
 })
 .then((willDelete) => {
+  if (willDelete){
   this.deleteDrive(d)
+  }
 });
 }
 }

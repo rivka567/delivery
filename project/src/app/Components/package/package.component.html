@@ -49,6 +49,10 @@
         <input type="radio" value="2" style="visibility: hidden;"  id="2" #2  formControlName="size" name="size"  >
         <input type="radio" value="3" style="visibility: hidden;"  id="3" #3  formControlName="size" name="size"  >
         <input type="radio" value="4" style="visibility: hidden;"  id="4" #4  formControlName="size" name="size"  >
+        <div class="form-text" *ngIf="f.size.value==2" >  0-500 גרם</div>
+        <div class="form-text" *ngIf="f.size.value==3" >500-5000 גרם</div>
+        <div class="form-text" *ngIf="f.size.value==4" >5-10 קילו</div>
+
         <div class="form-text" *ngIf="f.size.errors" >שדה חובה</div>
 
       </div>

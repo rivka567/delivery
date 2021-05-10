@@ -12,8 +12,7 @@
               <!-- <div for="password" *ngIf="password.errors.required">
                 password is required.
               </div> -->
-              <div class="form-text" *ngIf="f.password.errors.required" >שדה חובה</div>
-              <!-- <div class="form-text" *ngIf="f.password.errors.minLength(6)" >חייב להכיל לפחות 6 תווים</div> -->
+              <div class="form-text" *ngIf="f.password.errors" >שדה חובה</div>
 
               </div>
               
@@ -34,7 +33,7 @@
              -->
             <div class="mb-3">
               <input class="form-control"  type="text" placeholder="שם "  formControlName="name"  name="name" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-              <div class="form-text" *ngIf="f.name.errors.required" >שדה חובה</div>
+              <div class="form-text" *ngIf="f.name.errors" >שדה חובה</div>
 
             </div>
             
@@ -42,7 +41,7 @@
             
             <div class="mb-3">
                 <input class="form-control" type="text" placeholder="דואר אלקטרוני"  formControlName="gmail" name="gmail" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-                <div class="form-text" *ngIf="f.gmail.errors.required" >שדה חובה</div>
+                <div class="form-text" *ngIf="f.gmail.errors" >שדה חובה</div>
 
             </div>
 

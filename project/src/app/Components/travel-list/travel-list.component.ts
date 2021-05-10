@@ -168,6 +168,7 @@ getAllDrives() {
 filterDrives(fromDate:string,toDate:string,from:Address,to:Address,time:string,trans:number) {
   debugger
   this.driversFound=this.driveSer.allDrives;
+  this.driversFound=this.driversFound.filter(d=>d.driverCode!=this.userSer.currentUser.userCode)
 
   if(fromDate)
   {

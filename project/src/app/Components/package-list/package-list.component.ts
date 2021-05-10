@@ -146,6 +146,7 @@ sendEmail(p:Package)
 filterPackages(fromDate:string,toDate:string,from:Address,to:Address,time:string,size:number) {
     debugger
     this.packagesFound=this.packageSer.allPackages;
+    this.packagesFound=this.packagesFound.filter(p=>p.userCustomerCode!=this.userSer.currentUser.userCode)
     if(fromDate)
       this.packagesFound=this.packagesFound.filter(d=>new Date(d.toDate)>= new Date(fromDate));
 

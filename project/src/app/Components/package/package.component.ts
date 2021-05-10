@@ -38,6 +38,12 @@ export class PackageComponent implements OnInit {
   maxDateFromDate:Date;
   minTime:any
   price:number
+  from="";
+  fromLat=0;
+  fromLng=0;
+  to="";
+  toLat=0;
+  toLng=0;
   get f(){return this.form.controls;}
   @ViewChild("placesRef") placesRef : GooglePlaceDirective;
 
@@ -106,16 +112,20 @@ showPrice()
     this.form.value.fromDate,this.form.value.toDate,this.form.value.fromTime,this.form.value.toTime,true,
     this.form.value.type,this.form.value.describePackage,this.form.value.size,this.form.value.mes,this.form.value.distance||500);
   
-    if(this.isPackage)
-  {
-    this.showPrice();
-  }
+ 
     this.packageSer.addPackage(this.newPackage).subscribe(
     myData => {
+      this.packageSer.currentPackage=myData;
+if(this.packageSer.currentPackage)
+{
+      if(this.isPackage)
+      {
+        this.showPrice();
+      }
+    }
     console.log("from subscribe",this.newPackage);
     swal({title:"נוסף בהצלחה!",icon:"success"})
     // this.dialogRef.close();
-    this.packageSer.currentPackage=myData;
     debugger
 
     //אם יצר חבילה חדשה לשליחת מייל
@@ -171,7 +181,7 @@ if(this.myFilterDrives)
   if(this.myFilterDrives)
   {
    this.myFilterDrives=  this.myFilterDrives.filter(f=>
-   f.distance>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f. toLocationLat, f.toLocationLng), new google.maps.LatLng(this.packageSer.currentPackage.toLocationLat,this.packageSer.currentPackage.toLocationLng)));  
+   f.distance>google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(f.toLocationLat, f.toLocationLng), new google.maps.LatLng(this.packageSer.currentPackage.toLocationLat,this.packageSer.currentPackage.toLocationLng)));  
    }
 
    if(this.myFilterDrives)
@@ -182,12 +192,7 @@ if(this.myFilterDrives)
 
   }
 
-  from="";
-  fromLat=0;
-  fromLng=0;
-  to="";
-  toLat=0;
-  toLng=0;
+ 
 public handleAddressFromChange(address: Address) {
   debugger
   this.from=address.formatted_address;

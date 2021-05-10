@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Routing;
+using BLL;
 
 namespace WebAPI
 {
@@ -25,6 +26,13 @@ namespace WebAPI
                 Response.End();
             }
         }
+
+        protected void RunPrepareDaily()
+        {
+            PackageBLL.RunPrepareDaily(new DateTime(DateTime.Today.Year,
+            DateTime.Today.Month, DateTime.Today.Day, 22, 10, 0));   
+        }
+          
 
     }
 }
