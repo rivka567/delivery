@@ -3,8 +3,7 @@
 <h1 id="example-radio-group-label" >נמצאו {{len}} חבילות מתאימות לנסיעה שנבחרה </h1>
 <h2 id="example-radio-group-h3" *ngIf="myFilterPackages.length>0">בחר בחבילה אותה תרצה לשלוח בנסיעה זו:</h2>
 
-  <div class="row table_title" *ngIf="myFilterPackages.length>0">
-    
+  <!-- <div class="row table_title" *ngIf="myFilterPackages.length>0">
     <div class="col-1">קוד חבילה</div>
     <div class="col-1"> איסוף מתאריך </div>
     <div class="col-1"> משעה </div>
@@ -18,27 +17,81 @@
 
 <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
  *ngIf="myFilterPackages.length>0" (ngModelChange)="checkPackage($event)">
-  <mat-radio-button class="col-1" class="example-radio-button" *ngFor="let package of myFilterPackages" [value]="package"
+  <mat-radio-button class="col-1"  class="example-radio-button" *ngFor="let package of myFilterPackages" [value]="package"
   (click)="checkPackage(package)">
   
-  <div >
-    <label>{{package.packageCode}} </label>
-    <label >{{package.fromDate|  date:'dd-MM-yyyy' }} </label><span>      </span>
-    <label>{{package.fromTime}} </label>
-    <label >{{package.toDate|  date:'dd-MM-yyyy' }} </label><span>      </span>
-    <label >{{package.toTime}} </label><span>      </span>
-    <label >{{package.fromLocationFormat}}</label><span>      </span>
-    <label >{{package.toLocationFormat}}</label><span>      </span>
-    <label >{{package.packageType}}</label><span>      </span>
-    <label >{{package.packageSize}}</label><span>      </span>
-    <!-- <div class="col-2">{{package.describePackage}}</div> -->
+  <div class="row" >
+    <label class="col-1">{{package.packageCode}} </label>
+    <label class="col-1">{{package.fromDate|  date:'dd-MM-yyyy' }} </label>
+    <label class="col-1">{{package.fromTime}} </label>
+    <label class="col-1">{{package.toDate|  date:'dd-MM-yyyy' }} </label>
+    <label class="col-1">{{package.toTime}} </label>
+    <label class="col-2">{{package.fromLocationFormat}}</label>
+    <label class="col-2">{{package.toLocationFormat}}</label>
+    <label class="col-1">{{package.packageType}}</label>
+    <label class="col-1">{{package.packageSize}}</label>
+    <div class="col-2">{{package.describePackage}}</div> 
   </div>
   </mat-radio-button>
+</mat-radio-group> -->
+<table class="table table-striped">
+<tr class="table_title" *ngIf="myFilterPackages.length>0">
+  <th>בחר</th>
+  <th xclass="col-1">קוד חבילה</th>
+  <th xclass="col-1"> איסוף מתאריך </th>
+  <th xclass="col-1"> משעה </th>
+  <th xclass="col-1"> עד תאריך </th>
+  <th xclass="col-1"> עד שעה </th>
+  <th xclass="col-2"> מוצא </th>
+  <th xclass="col-2"> יעד </th>
+  <th xclass="col-1">  סוג חבילה </th>
+  <th xclass="col-1">  גודל חבילה</th>
+</tr>
+<tr
+*ngFor="let package of myFilterPackages"
+>
+<td>
+  <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+   (ngModelChange)="checkPackage($event)">
+  <mat-radio-button class="col-1"  class="example-radio-button" [value]="package"
+  (click)="checkPackage(package)">
+  </mat-radio-button>
+  </mat-radio-group>
+  </td>
+  <td>{{package.packageCode}}</td>
+  <td>{{package.fromDate|  date:'dd-MM-yyyy' }}</td>
+  <td>{{package.fromTime}}</td>
+  <td>{{package.toDate|  date:'dd-MM-yyyy' }}</td>
+  <td>{{package.toTime}}</td>
+  <td>{{package.fromLocationFormat}}</td>
+  <td>{{package.toLocationFormat}}</td>
+  <td>{{package.packageType}}</td>
+  <td>{{package.packageSize}}</td>
+</tr>
+</table>
+<!-- <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+*ngIf="myFilterPackages.length>0" (ngModelChange)="checkPackage($event)">
+<mat-radio-button class="col-1"  class="example-radio-button" *ngFor="let package of myFilterPackages" [value]="package"
+(click)="checkPackage(package)">
+
+<div class="row" >
+  <label class="col-1">{{package.packageCode}} </label>
+  <label class="col-1">{{package.fromDate|  date:'dd-MM-yyyy' }} </label>
+  <label class="col-1">{{package.fromTime}} </label>
+  <label class="col-1">{{package.toDate|  date:'dd-MM-yyyy' }} </label>
+  <label class="col-1">{{package.toTime}} </label>
+  <label class="col-2">{{package.fromLocationFormat}}</label>
+  <label class="col-2">{{package.toLocationFormat}}</label>
+  <label class="col-1">{{package.packageType}}</label>
+  <label class="col-1">{{package.packageSize}}</label>
+   <div class="col-2">{{package.describePackage}}</div> 
+</div>
+</mat-radio-button>
 </mat-radio-group>
-<br>
+<br> -->
 <button class="btn btn-primary" *ngIf="myFilterPackages.length>0" (click)="sendEmail()">שלח בקשה לשליח</button>
 <br><br>
-<a style="color: red;" mat-dialog-close (click)="openPackaeDialog()">צור חבילה חדשה</a><br>
-<a style="color: red;" (click)="showAllPackages()">הצג את כל החבילות שלי</a>
+<a style="color: red;font-size: larger;cursor: pointer;" mat-dialog-close (click)="openPackaeDialog()">צור חבילה חדשה</a><br>
+<a style="color: red;font-size: larger;cursor: pointer;" (click)="showAllPackages()">הצג את כל החבילות שלי</a>
 
 </mat-dialog-content>

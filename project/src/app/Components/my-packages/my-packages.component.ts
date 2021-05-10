@@ -22,8 +22,8 @@ export class MyPackagesComponent implements OnInit {
 
   constructor(private emailSer:EmailManagementService, private userSer: UserService,private packageSer:PackageService, private dialog:MatDialog,private driveSer:DriveService) { }
 
-  myListPackage:Package[];
-  myFilterPackages:Package[];
+  myListPackage:Array<Package>=[]
+  myFilterPackages:Array<Package>=[]
   len:number;
   myPackage:Package;
   travelDate:Date;
