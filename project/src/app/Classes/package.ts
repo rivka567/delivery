@@ -28,7 +28,8 @@ export class Package {
        public packageType?:string,
        public timeInDate?:Date,
        public listWaiting?:Drive[],
-       public customerName?:string
+       public customerName?:string,
+       public totalPrice?:number
     )
  
     {}

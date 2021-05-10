@@ -26,5 +26,7 @@ export class Drive {
             public timeInDate?:Date,
             public listWaiting?:Package[],
             public driverName?:string,
+            public totalPrice?:number
+
         ) { }
 }

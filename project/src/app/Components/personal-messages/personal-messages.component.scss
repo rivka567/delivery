@@ -16,13 +16,26 @@ select{
     width: 78%;
   }
   
-  button.btn{
-    background-color: white;
-    border: none;
-  }
+  // button.btn{
+  //   background-color: white;
+  //   border: none;
+  // }
   
-  button:hover{
-    background-color: grey;
+  // button:hover{
+  //   background-color: grey;
+  // }
+  
+  button{
+    background-color:white;
+    border: none;
+    color: rgb(219, 42, 42);
+}
+button:hover{
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    cursor: pointer;
+    color: rgb(53, 48, 48);
+
   }
 
   h1{

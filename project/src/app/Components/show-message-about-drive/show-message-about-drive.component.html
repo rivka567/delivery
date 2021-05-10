@@ -1,4 +1,5 @@
 <h2>פרטי הנסיעה שמתאימה לחבילה שלך:</h2>
+
 <div *ngIf="drive!=undefined">
 <p>קוד נסיעה:   {{drive.driveCode}}</p>
 <p>שם השליח:   {{drive.driverName}}</p>
@@ -9,12 +10,14 @@
 <p>שעת נסיעה:   {{drive.drivingTime}}</p>
 <p>מחיר לק"מ:   {{drive.price}}</p>
 
-<!-- <button class="btn btn-primary" (click)="showPackageDetails=true">שלח מייל</button> -->
+<!-- <button class="btn btn-primary" (click)="showPackageDetails=true">שלח מייל</button> 
 </div>
 
-<!-- <div *ngIf="showPackageDetails"> -->
-    <!-- <mat-dialog-content> -->
-    <h3>פרטי החבילה אותה אתה מעוניין לשלוח:</h3>
+<div *ngIf="showPackageDetails"> 
+ <mat-dialog-content> -->
+     <br>
+    <b>פרטי החבילה אותה אתה מעוניין לשלוח:</b>
+    <br>
  <div *ngIf="package!=undefined">
 
 <p>קוד החבילה:  {{package.packageCode}}</p>
@@ -24,9 +27,54 @@
     <p >עד שעה:  {{package.toTime}}</p>
     <p>מוצא:   {{package.fromLocationFormat}}</p>
     <p >יעד:  {{package.toLocationFormat}}</p>
-    <p >גודל חבילה:  {{package.packageSize}}</p>
+    <!-- <p >גודל חבילה:  {{package.packageSize}}</p>
     <p >סוג חבילה:  {{package.packageType}}</p>
+    -->
+<button class="btn btn-primary" (click)="sendEmailToDelivery()">שלח מייל</button>
+</div> 
+
+
+
+<!-- <h2>פרטי הנסיעה שמתאימה לחבילה שלך:</h2>
+
+<table *ngIf="drive!=undefined">
+    <tr>
+    <th>קוד נסיעה: </th>
+    <th>שם השליח: </th>
+    <th> מוצא: </th>
+    <th>יעד: </th>
+    <th>כלי רכב: </th>
+    <th>תאריך נסיעה: </th>
+    <th>שעת נסיעה: </th>
+    <th>מחיר לק"מ: </th>
+</tr>
+<tr>
+<td> {{drive.driveCode}}</td>
+<td> {{drive.driverName}}</td>
+<td> {{drive.fromLocationFormat}}</td>
+<td> {{drive.toLocationFormat}}</td>
+<td> {{drive.transportationType}}</td>
+<td> {{drive.travelDate| date:'dd-MM-yyyy'}}</td>
+<td> {{drive.drivingTime}}</td>
+<td>  {{drive.price}}</td>
+</tr>
+<button class="btn btn-primary" (click)="showPackageDetails=true">שלח מייל</button>
+</table>
+
+ <div *ngIf="showPackageDetails"> 
+   <mat-dialog-content> 
+    <h3>פרטי החבילה אותה אתה מעוניין לשלוח:</h3>
+ <table *ngIf="package!=undefined">
+
+<td>קוד החבילה:  {{package.packageCode}}</td>
+    <td>איסוף מתאריך:   {{package.fromDate| date:'dd-MM-yyyy'}}</td>
+    <td >משעה:   {{package.fromTime}}</td>
+    <td >עד תאריך:   {{package.toDate| date:'dd-MM-yyyy'}}</td>
+    <td >עד שעה:  {{package.toTime}}</td>
+    <td>מוצא:   {{package.fromLocationFormat}}</td>
+    <td >יעד:  {{package.toLocationFormat}}</td>
+    <td >גודל חבילה:  {{package.packageSize}}</td>
+    <td >סוג חבילה:  {{package.packageType}}</td>
    
 <button class="btn btn-primary" (click)="sendEmailToDelivery()">שלח מייל</button>
-</div>
-
+ </table> -->

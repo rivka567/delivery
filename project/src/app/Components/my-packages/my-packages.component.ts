@@ -111,7 +111,7 @@ export class MyPackagesComponent implements OnInit {
     this.price=((distance/1000)*this.driveSer.currentDrive.price)
     alert(distance/1000+"*"+this.driveSer.currentDrive.price+"="+this.price)
     // swal("עלות המשלוח "+this.price,"-מרחק של כ"+distance/1000+" קילומטר")
-    swal("עלות המשלוח "+this.price,"-מרחק של כ"+distance/1000%1000+" קילומטר")
+    swal("עלות המשלוח "+this.price,"-מרחק של כ"+distance/1000+" קילומטר")
 
   }
   sendEmail()

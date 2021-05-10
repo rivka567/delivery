@@ -10,8 +10,8 @@
     <p class="card-text">{{package.fromTime}}</p>
     <p class="card-text">{{package.toDate}}</p>
     <p class="card-text">{{package.toTime}}</p>
-    <p class="card-text">{{package.fromLocationFormat}}</p>
-    <p class="card-text">{{package.toLocationFormat}}</p>
+    <p class="card-text">{{package.fromLocationFormat| date:'dd-MM-yyyy'}}</p>
+    <p class="card-text">{{package.toLocationFormat| date:'dd-MM-yyyy'}}</p>
     <p class="card-text">{{package.packageSize}}</p>
     <p class="card-text">{{package.packageType}}</p>
     <p class="card-text" *ngIf="package.describePackage">{{package.describePackage}}</p>
